@@ -10,11 +10,7 @@ import { productService } from '../../services/productService';
 import { openCartDrawer } from '../cart/CartDrawer';
 import { toast } from 'sonner';
 
-const MARQUEE_MESSAGES = [
-  '✦ Free shipping on orders above ₹999',
-  '✦ Use code TARINI10 for 10% off your first order',
-  '✦ Designed for Everyday Elegance',
-];
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -69,7 +65,7 @@ export default function Navbar() {
     navigate('/login');
   };
 
-  const marqueeContent = [...MARQUEE_MESSAGES, ...MARQUEE_MESSAGES].join('  ·  ');
+
 
   const NavLink = ({ to, children }) => (
     <Link to={to} className="relative group text-[11px] text-[#181516] tracking-[0.10em] uppercase font-medium py-2">
@@ -80,17 +76,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Announcement Bar ─────────────────────────────────── */}
-      <div className="bg-[#F8F4EC] overflow-hidden h-8 flex items-center border-b border-[#FAF6EE]">
-        <div className="marquee-track whitespace-nowrap">
-          <span className="text-[10px] text-[#560817] font-semibold tracking-widest px-8 uppercase">
-            {marqueeContent}
-          </span>
-          <span className="text-[10px] text-[#560817] font-semibold tracking-widest px-8 uppercase" aria-hidden>
-            {marqueeContent}
-          </span>
-        </div>
-      </div>
+
 
       {/* ── Main Navbar ─────────────────────────────────────── */}
       <header
