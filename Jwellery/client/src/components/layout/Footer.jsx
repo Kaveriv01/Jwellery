@@ -9,7 +9,7 @@ function FooterLink({ to, children }) {
   return (
     <Link
       to={to}
-      className="footer-link-animated relative inline-block text-[12px] lg:text-[13px] text-[#746760] hover:text-[#560817] font-light transition-colors duration-[250ms]"
+      className="footer-link-animated relative inline-block text-[15px] lg:text-[16px] text-[#746760] hover:text-[#560817] font-light transition-colors duration-[250ms]"
     >
       {children}
     </Link>
@@ -203,14 +203,14 @@ export default function Footer() {
                 JEWELLERS
               </p>
             </Link>
-            <p className="text-[13px] lg:text-[14px] text-[#746760] font-light max-w-sm mb-8 leading-relaxed">
+            <p className="text-[16px] lg:text-[17px] text-[#746760] font-light max-w-sm mb-8 leading-relaxed">
               Jewellery for every chapter of your story. Designed with elegance and crafted for everyday luxury.
             </p>
           </motion.div>
 
           {/* Shop Links */}
           <motion.div variants={colReveal}>
-            <h4 className="text-xs font-medium uppercase tracking-[0.12em] text-[#560817] mb-6">Shop</h4>
+            <h4 className="text-[12px] lg:text-[13px] font-medium uppercase tracking-[0.12em] text-[#560817] mb-6">Shop</h4>
             <ul className="space-y-4">
               <li className="group"><FooterLink to="/category/rings">Rings</FooterLink></li>
               <li className="group"><FooterLink to="/category/necklaces">Necklaces</FooterLink></li>
@@ -223,7 +223,7 @@ export default function Footer() {
 
           {/* Help Links */}
           <motion.div variants={colReveal}>
-            <h4 className="text-xs font-medium uppercase tracking-[0.12em] text-[#560817] mb-6">Help</h4>
+            <h4 className="text-[12px] lg:text-[13px] font-medium uppercase tracking-[0.12em] text-[#560817] mb-6">Help</h4>
             <ul className="space-y-4">
               <li className="group"><FooterLink to="/contact">Contact Us</FooterLink></li>
               <li className="group"><FooterLink to="/shipping">Shipping</FooterLink></li>
@@ -235,14 +235,14 @@ export default function Footer() {
 
           {/* About Links + Social */}
           <motion.div variants={colReveal}>
-            <h4 className="text-xs font-medium uppercase tracking-[0.12em] text-[#560817] mb-6">About</h4>
+            <h4 className="text-[12px] lg:text-[13px] font-medium uppercase tracking-[0.12em] text-[#560817] mb-6">About</h4>
             <ul className="space-y-4">
               <li className="group"><FooterLink to="/about">Our Story</FooterLink></li>
               <li className="group"><FooterLink to="/about">Our Materials</FooterLink></li>
               <li className="group"><FooterLink to="/about">Journal</FooterLink></li>
             </ul>
             
-            <h4 className="text-xs font-medium uppercase tracking-[0.12em] text-[#560817] mb-4 mt-10">Follow</h4>
+            <h4 className="text-[12px] lg:text-[13px] font-medium uppercase tracking-[0.12em] text-[#560817] mb-4 mt-10">Follow</h4>
             <div className="flex gap-4">
               <a href="#" className="w-9 h-9 rounded-full border border-[#FAF6EE] flex items-center justify-center text-[#560817] hover:text-white hover:border-[#560817] hover:bg-[#560817] bg-[#F8F4EC] transition-all duration-300">
                 <FiInstagram size={14} />
@@ -267,10 +267,10 @@ export default function Footer() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left"
         >
-          <p className="text-[10px] tracking-[0.15em] uppercase text-[#746760] font-light">
+          <p className="text-[12px] lg:text-[13px] tracking-[0.15em] uppercase text-[#746760] font-light">
             © {new Date().getFullYear()} TARINI JEWELLERS. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-6 text-[10px] tracking-[0.15em] uppercase text-[#746760] font-light">
+          <div className="flex gap-6 text-[12px] lg:text-[13px] tracking-[0.15em] uppercase text-[#746760] font-light">
             <Link to="/privacy" className="hover:text-[#560817] transition-colors duration-[250ms]">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-[#560817] transition-colors duration-[250ms]">Terms of Service</Link>
           </div>
