@@ -149,23 +149,24 @@ export default function Footer() {
                     <Link 
                       key={`${item._id}-${index}`}
                       to={`/products/${item.slug}`} 
-                      className="flex-shrink-0 block w-[260px] md:w-[280px] group/card relative bg-white rounded-[2px] overflow-hidden border border-[#FAF6EE] shadow-[0_12px_35px_rgba(86,8,23,0.02)] hover:shadow-[0_20px_45px_rgba(86,8,23,0.04)] hover:border-[#B08A45]/30 hover:-translate-y-1 transition-all duration-[450ms] ease-out"
+                      className="flex-shrink-0 block w-[260px] md:w-[280px] group/card bg-white rounded-[2px] overflow-hidden border border-[#FAF6EE] shadow-[0_12px_35px_rgba(86,8,23,0.02)] hover:shadow-[0_20px_45px_rgba(86,8,23,0.04)] hover:border-[#B59A68]/30 hover:-translate-y-1 transition-all duration-[450ms] ease-out flex flex-col"
                     >
                       <div className={`relative overflow-hidden bg-[#F8F4EC] w-full ${isLarge ? 'aspect-[4/5] md:aspect-[3/4]' : 'aspect-square'}`}>
                         <img src={item.images?.[0]?.url || '/placeholder.jpg'} className="w-full h-full object-cover transition-transform duration-[450ms] ease-out group-hover/card:scale-[1.02]" alt={item.name} />
-                        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-white via-white/70 to-transparent pointer-events-none"></div>
-                        
-                        <div className="absolute bottom-0 left-0 w-full p-5 md:p-6 flex flex-col justify-end pointer-events-none">
-                          <p className="text-[9px] text-[#B08A45] tracking-[0.12em] uppercase mb-1.5 font-medium">
+                      </div>
+                      
+                      <div className="p-5 md:p-6 flex flex-col justify-between flex-1 bg-white border-t border-[#FAF6EE]">
+                        <div>
+                          <p className="text-[9px] text-[#B59A68] tracking-[0.12em] uppercase mb-1.5 font-medium">
                             {item.category?.name || 'Signature'}
                           </p>
-                          <h4 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[#181516] font-medium text-lg line-clamp-1 mb-3">
+                          <h4 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[#332B27] font-medium text-[15px] md:text-[16px] line-clamp-1 mb-3">
                             {item.name}
                           </h4>
-                          <div className="flex items-center gap-2 text-[10px] text-[#560817] uppercase tracking-[0.12em] font-medium group/cta">
-                            <span>Shop Now</span>
-                            <FiArrowRight size={14} className="text-[#B08A45] transform transition-transform duration-300 group-hover/card:translate-x-1.5" />
-                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-[10px] text-[#3A0508] uppercase tracking-[0.12em] font-medium group/cta">
+                          <span>Shop Now</span>
+                          <FiArrowRight size={14} className="text-[#B59A68] transform transition-transform duration-300 group-hover/card:translate-x-1.5" />
                         </div>
                       </div>
                     </Link>
