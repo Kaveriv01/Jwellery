@@ -122,11 +122,11 @@ export default function ProductsPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="font-serif text-3xl text-gray-900">
+            <h1 className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide text-[#3A0508]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               {categoryName ? categoryName : (search ? `Results for "${search}"` : 'All Jewelry')}
             </h1>
             {pagination.total !== undefined && (
-              <p className="text-sm text-gray-500 mt-1">{pagination.total} products</p>
+              <p className="text-[13px] text-[#756B62] mt-1">{pagination.total} products</p>
             )}
           </div>
           <div className="flex items-center gap-3">
@@ -134,23 +134,23 @@ export default function ProductsPage() {
             <select
               value={sortBy}
               onChange={(e) => updateParam('sortBy', e.target.value)}
-              className="input-gold w-auto text-sm cursor-pointer"
+              className="input-gold w-auto text-[13px] cursor-pointer rounded-[2px]"
             >
               {SORT_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
             </select>
             {/* View toggle */}
-            <div className="hidden sm:flex border border-gray-200 rounded-lg overflow-hidden">
-              <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-[#c9a84c] text-white' : 'text-gray-500 hover:bg-gray-50'}`}>
-                <Grid3X3 size={16} />
+            <div className="hidden sm:flex border border-[#FAF6EE] rounded-[2px] overflow-hidden">
+              <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-[#3A0508] text-[#F7F3EA]' : 'text-[#756B62] hover:bg-[#FAF6EE]'}`}>
+                <Grid3X3 size={15} />
               </button>
-              <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-[#c9a84c] text-white' : 'text-gray-500 hover:bg-gray-50'}`}>
-                <List size={16} />
+              <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-[#3A0508] text-[#F7F3EA]' : 'text-[#756B62] hover:bg-[#FAF6EE]'}`}>
+                <List size={15} />
               </button>
             </div>
             {/* Mobile filter */}
-            <button onClick={() => setFilterOpen(true)} className="lg:hidden flex items-center gap-2 btn-outline-gold py-2 px-3 text-xs rounded-lg">
+            <button onClick={() => setFilterOpen(true)} className="lg:hidden flex items-center gap-2 btn-outline-gold py-2 px-3 text-[11px] uppercase tracking-wider rounded-[2px]">
               <Filter size={14} /> Filters
             </button>
           </div>
@@ -211,19 +211,19 @@ export default function ProductsPage() {
 
             {/* Pagination */}
             {pagination.totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-10">
-                <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors">
+              <div className="flex items-center justify-center gap-2 mt-12">
+                <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-4 py-2 border border-[#FAF6EE] rounded-[2px] text-[12px] uppercase tracking-wider text-[#3A0508] hover:border-[#B59A68] disabled:opacity-40 transition-all duration-300">
                   Previous
                 </button>
                 {[...Array(Math.min(pagination.totalPages, 7))].map((_, i) => {
                   const pageNum = i + 1;
                   return (
-                    <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${page === pageNum ? 'bg-[#c9a84c] text-white' : 'border border-gray-200 hover:border-[#c9a84c] text-gray-700'}`}>
+                    <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-9 h-9 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#3A0508] text-[#F7F3EA]' : 'border border-[#FAF6EE] hover:border-[#B59A68] text-[#756B62] hover:text-[#3A0508]'}`}>
                       {pageNum}
                     </button>
                   );
                 })}
-                <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors">
+                <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-4 py-2 border border-[#FAF6EE] rounded-[2px] text-[12px] uppercase tracking-wider text-[#3A0508] hover:border-[#B59A68] disabled:opacity-40 transition-all duration-300">
                   Next
                 </button>
               </div>
@@ -250,9 +250,9 @@ export default function ProductsPage() {
 
 function FilterChip({ label, onRemove }) {
   return (
-    <span className="flex items-center gap-1 bg-[#fdf9ee] border border-[#c9a84c]/30 text-[#c9a84c] text-xs px-2.5 py-1 rounded-full">
+    <span className="flex items-center gap-1.5 bg-[#FAF6EE] border border-[#B59A68]/30 text-[#3A0508] text-[11px] font-medium tracking-wide px-3 py-1 rounded-[2px]">
       {label}
-      <button onClick={onRemove}><X size={12} /></button>
+      <button onClick={onRemove} className="hover:text-[#B59A68] transition-colors"><X size={11} /></button>
     </span>
   );
 }
@@ -264,8 +264,8 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
       <FilterGroup title="Category">
         {categories.slice(0, 10).map((cat) => (
           <label key={cat._id} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="category" checked={selectedCategory === cat._id} onChange={() => onUpdate('category', selectedCategory === cat._id ? '' : cat._id)} className="accent-[#c9a84c]" />
-            <span className="text-sm text-gray-700">{cat.name}</span>
+            <input type="radio" name="category" checked={selectedCategory === cat._id} onChange={() => onUpdate('category', selectedCategory === cat._id ? '' : cat._id)} className="accent-[#3A0508]" />
+            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{cat.name}</span>
           </label>
         ))}
       </FilterGroup>
@@ -274,8 +274,8 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
       <FilterGroup title="Price Range">
         {PRICE_RANGES.map((range) => (
           <label key={range.label} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="price" checked={minPrice === String(range.min) && maxPrice === String(range.max)} onChange={() => { onUpdate('minPrice', String(range.min)); onUpdate('maxPrice', String(range.max)); }} className="accent-[#c9a84c]" />
-            <span className="text-sm text-gray-700">{range.label}</span>
+            <input type="radio" name="price" checked={minPrice === String(range.min) && maxPrice === String(range.max)} onChange={() => { onUpdate('minPrice', String(range.min)); onUpdate('maxPrice', String(range.max)); }} className="accent-[#3A0508]" />
+            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{range.label}</span>
           </label>
         ))}
       </FilterGroup>
@@ -284,8 +284,8 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
       <FilterGroup title="Material">
         {MATERIAL_OPTIONS.map((mat) => (
           <label key={mat} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="material" checked={selectedMaterial === mat} onChange={() => onUpdate('material', selectedMaterial === mat ? '' : mat)} className="accent-[#c9a84c]" />
-            <span className="text-sm text-gray-700">{mat}</span>
+            <input type="radio" name="material" checked={selectedMaterial === mat} onChange={() => onUpdate('material', selectedMaterial === mat ? '' : mat)} className="accent-[#3A0508]" />
+            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{mat}</span>
           </label>
         ))}
       </FilterGroup>
@@ -294,8 +294,8 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
       <FilterGroup title="Gender">
         {GENDER_OPTIONS.map((gen) => (
           <label key={gen} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="gender" checked={selectedGender === gen} onChange={() => onUpdate('gender', selectedGender === gen ? '' : gen)} className="accent-[#c9a84c]" />
-            <span className="text-sm text-gray-700">{gen}</span>
+            <input type="radio" name="gender" checked={selectedGender === gen} onChange={() => onUpdate('gender', selectedGender === gen ? '' : gen)} className="accent-[#3A0508]" />
+            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{gen}</span>
           </label>
         ))}
       </FilterGroup>
@@ -303,8 +303,8 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
       {/* Availability */}
       <FilterGroup title="Availability">
         <label className="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" checked={inStock === 'true'} onChange={(e) => onUpdate('inStock', e.target.checked ? 'true' : '')} className="accent-[#c9a84c]" />
-          <span className="text-sm text-gray-700">In Stock Only</span>
+          <input type="checkbox" checked={inStock === 'true'} onChange={(e) => onUpdate('inStock', e.target.checked ? 'true' : '')} className="accent-[#3A0508]" />
+          <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">In Stock Only</span>
         </label>
       </FilterGroup>
     </div>
@@ -314,10 +314,10 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
 function FilterGroup({ title, children }) {
   const [open, setOpen] = useState(true);
   return (
-    <div className="border-b border-gray-100 pb-5">
+    <div className="border-b border-[#FAF6EE] pb-5">
       <button onClick={() => setOpen(!open)} className="flex items-center justify-between w-full text-left mb-3">
-        <span className="text-xs font-semibold uppercase tracking-wider text-gray-800">{title}</span>
-        <ChevronDown size={14} className={`text-gray-400 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27]">{title}</span>
+        <ChevronDown size={13} className={`text-[#756B62]/60 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && <div className="space-y-2">{children}</div>}
     </div>
