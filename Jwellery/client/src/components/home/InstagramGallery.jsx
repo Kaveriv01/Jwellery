@@ -27,10 +27,10 @@ export default function InstagramGallery() {
   };
 
   return (
-    <section className="relative py-28 lg:py-32 bg-[#F8F4EC]/50 overflow-hidden border-t border-[#FAF6EE]">
+    <section className="relative py-28 lg:py-32 bg-[#FBF8F2] overflow-hidden border-t border-[#FAF6EE]">
       {/* ── Optional Premium Effect: Subtle Warm Glow Background ── */}
       <div className="absolute inset-0 pointer-events-none z-0" style={{
-        background: 'radial-gradient(circle at 50% 50%, rgba(176, 138, 69, 0.03), transparent 70%)'
+        background: 'radial-gradient(circle at 50% 50%, rgba(181, 154, 104, 0.03), transparent 70%)'
       }} />
 
       <div className="container-luxury relative z-10">
@@ -39,16 +39,16 @@ export default function InstagramGallery() {
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="relative flex items-center justify-center w-2 h-2">
               {!shouldReduceMotion && (
-                <span className="absolute inline-flex w-full h-full rounded-full bg-[#B08A45] opacity-75 animate-[ping_2.5s_cubic-bezier(0,0,0.2,1)_infinite]"></span>
+                <span className="absolute inline-flex w-full h-full rounded-full bg-[#B59A68] opacity-75 animate-[ping_2.5s_cubic-bezier(0,0,0.2,1)_infinite]"></span>
               )}
-              <span className="relative inline-flex rounded-full w-2 h-2 bg-[#B08A45]"></span>
+              <span className="relative inline-flex rounded-full w-2 h-2 bg-[#B59A68]"></span>
             </div>
-            <span className="text-[#B08A45] text-[10px] lg:text-[11px] tracking-[0.20em] font-medium uppercase">
+            <span className="text-[#B59A68] text-[10px] lg:text-[11px] tracking-[0.20em] font-medium uppercase">
               LIVE <span className="text-gray-500 font-normal ml-2">Fresh from the Tarini Journal</span>
             </span>
           </div>
 
-          <h2 className="text-[23px] sm:text-[27px] lg:text-[32px] text-[#560817] font-normal tracking-wide mb-[16px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="text-[23px] sm:text-[27px] lg:text-[32px] text-[#3A0508] font-normal tracking-wide mb-[16px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Follow The Tarini Journey
           </h2>
           
@@ -57,7 +57,7 @@ export default function InstagramGallery() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-[11px] lg:text-[12px] font-medium tracking-[0.12em] uppercase text-[#560817] hover:text-[#B08A45] transition-colors"
+            className="group flex items-center gap-3 text-[11px] lg:text-[12px] font-medium tracking-[0.12em] uppercase text-[#3A0508] hover:text-[#B59A68] transition-colors"
           >
             <FiInstagram size={16} /> 
             {APP_INSTAGRAM}
@@ -88,7 +88,7 @@ export default function InstagramGallery() {
               />
               
               {/* ── Hover Overlay ── */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#560817]/95 via-[#3D0610]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-between p-4 md:p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3A0508]/95 via-[#220306]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-between p-4 md:p-6">
                 
                 {/* Unsplash Attribution */}
                 <div className="flex justify-end transform -translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -107,7 +107,7 @@ export default function InstagramGallery() {
                 <div className="flex flex-col transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   {post.featured ? (
                     <div className="text-center mb-6 mt-auto">
-                      <span className="text-[#C9A24A] text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold mb-3 block">TARINI JOURNAL</span>
+                      <span className="text-[#B59A68] text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold mb-3 block">TARINI JOURNAL</span>
                       <h3 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-white text-3xl md:text-4xl font-light">"{post.title}"</h3>
                     </div>
                   ) : (
@@ -122,13 +122,13 @@ export default function InstagramGallery() {
                       href={post.sourceUrl} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="flex items-center gap-2 text-white/90 text-[10px] uppercase tracking-[0.2em] font-medium group/btn hover:text-[#C9A24A] transition-colors"
+                      className="flex items-center gap-2 text-white/90 text-[10px] uppercase tracking-[0.2em] font-medium group/btn hover:text-[#B59A68] transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {post.featured ? 'VIEW STORY' : 'EXPLORE'} <FiArrowRight className="transform transition-transform group-hover/btn:translate-x-1" />
                     </a>
 
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#C9A24A] hover:border-[#C9A24A] transition-colors">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#B59A68] hover:border-[#B59A68] transition-colors">
                       <FiInstagram size={16} />
                     </div>
                   </div>
@@ -145,7 +145,7 @@ export default function InstagramGallery() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-10 py-4 bg-[#5B0715] hover:bg-[#C9A24A] text-white text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-[2px] shadow-md"
+            className="group inline-flex items-center gap-3 px-10 py-4 bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-300 rounded-[2px] border-b-2 border-transparent hover:border-[#B59A68] shadow-md"
           >
             FOLLOW US ON INSTAGRAM
             <FiArrowRight size={14} className="transform transition-transform duration-300 group-hover:translate-x-1" />

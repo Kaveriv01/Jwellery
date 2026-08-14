@@ -79,13 +79,13 @@ export default function ShopByCategory() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
       >
-        <motion.span variants={eyebrowReveal} className="text-[#B08A45] text-[10px] lg:text-[11px] tracking-[0.20em] uppercase mb-3 block font-medium">
+        <motion.span variants={eyebrowReveal} className="text-[#B59A68] text-[9px] lg:text-[10px] tracking-[0.20em] uppercase mb-3 block font-medium">
           CURATED COLLECTIONS
         </motion.span>
-        <motion.h2 variants={headingReveal} className="text-[23px] sm:text-[27px] lg:text-[32px] text-[#560817] font-normal tracking-wide mb-[16px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <motion.h2 variants={headingReveal} className="text-[23px] sm:text-[27px] lg:text-[32px] text-[#3A0508] font-normal tracking-wide mb-[16px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Shop by Category
         </motion.h2>
-        <motion.div style={{ originX: 0.5 }} variants={dividerReveal} className="w-12 h-[1px] bg-[#B08A45] mx-auto" />
+        <motion.div style={{ originX: 0.5 }} variants={dividerReveal} className="w-12 h-[1px] bg-[#B59A68] mx-auto" />
       </motion.div>
 
       <motion.div 
@@ -99,26 +99,26 @@ export default function ShopByCategory() {
           <motion.div key={cat.slug} variants={itemVariants} className="h-full">
             <Link 
               to={`/category/${cat.slug}`} 
-              className="group block relative overflow-hidden bg-[#F8F4EC] border border-[#FAF6EE] hover:border-[#B08A45]/40 rounded-[3px] transition-all duration-[450ms] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(86,8,23,0.02)] z-10 h-full flex flex-col"
+              className="group block relative overflow-hidden bg-[#FAF6EE] border border-[#FAF6EE] hover:border-[#B59A68]/30 rounded-[3px] transition-all duration-[450ms] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(58,5,8,0.02)] z-10 h-full flex flex-col"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#FAF6EE]">
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-[450ms] ease-out group-hover:scale-[1.03]"
+                  className="w-full h-full object-cover transition-transform duration-[450ms] ease-out group-hover:scale-[1.02]"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-[#560817]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-[450ms]" />
+                <div className="absolute inset-0 bg-[#3A0508]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-[450ms]" />
               </div>
               
               <div className="p-6 bg-white border-t border-[#FAF6EE]/50 flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-[#560817] text-[13px] lg:text-[15px] font-normal tracking-wide mb-1 flex items-center justify-between transition-colors duration-[450ms] group-hover:text-[#560817]/90" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <h3 className="text-[#3A0508] text-[13px] lg:text-[15px] font-normal tracking-wide mb-1 flex items-center justify-between transition-colors duration-[450ms] group-hover:text-[#3A0508]/90" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     <span>{cat.name}</span>
-                    <FiArrowRight className="text-[#B08A45] transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" size={16} />
+                    <FiArrowRight className="text-[#B59A68] transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" size={16} />
                   </h3>
-                  <div className="w-8 h-[1px] bg-[#B08A45] my-2 transition-all duration-500 group-hover:w-16 group-hover:bg-[#560817]" />
-                  <p className="text-[#746760] text-[11px] lg:text-[12px] font-light tracking-wide leading-relaxed mt-1">
+                  <div className="w-8 h-[1px] bg-[#B59A68] my-2 transition-all duration-500 group-hover:w-16 group-hover:bg-[#3A0508]" />
+                  <p className="text-[#756B62] text-[11px] lg:text-[12px] font-light tracking-wide leading-relaxed mt-1">
                     {cat.description}
                   </p>
                 </div>

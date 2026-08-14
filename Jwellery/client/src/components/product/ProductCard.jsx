@@ -44,7 +44,7 @@ const ProductCard = memo(function ProductCard({ product }) {
 
   return (
     <motion.div
-      className={`group relative flex flex-col h-full bg-white border border-[#FAF6EE] hover:border-[#B08A45]/30 transition-all duration-[450ms] ease-out rounded-[2px] p-2.5 ${shouldReduceMotion ? '' : 'lg:hover:-translate-y-[3px] lg:hover:shadow-[0_8px_20px_rgba(86,8,23,0.02)]'}`}
+      className={`group relative flex flex-col h-full bg-white border border-[#FAF6EE] hover:border-[#B59A68]/30 transition-all duration-[450ms] ease-out rounded-[2px] p-2.5 ${shouldReduceMotion ? '' : 'lg:hover:-translate-y-[3px] lg:hover:shadow-[0_8px_20px_rgba(58,5,8,0.02)]'}`}
     >
       <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#F8F4EC] rounded-[2px]" style={{ aspectRatio: '4/5' }}>
         {/* Main image */}
@@ -74,7 +74,7 @@ const ProductCard = memo(function ProductCard({ product }) {
 
         {/* View Product (Hover) */}
         <div className="absolute bottom-6 left-0 right-0 flex justify-center transform transition-all duration-[450ms] ease-out translate-y-[10px] opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 hidden lg:flex">
-          <span className="text-[11px] lg:text-[12px] font-medium uppercase tracking-[0.12em] text-[#FFFFFF] bg-[#560817]/90 backdrop-blur-sm px-6 py-2.5 shadow-sm rounded-[2px] transition-all duration-300 hover:bg-[#3D0610] border-b-2 border-transparent hover:border-[#B08A45]">
+          <span className="text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#F7F3EA] bg-[#3A0508]/90 backdrop-blur-sm px-6 py-2.5 shadow-sm rounded-[2px] transition-all duration-300 hover:bg-[#220306] border-b-2 border-transparent hover:border-[#B59A68]">
             View Details &rarr;
           </span>
         </div>
@@ -94,27 +94,27 @@ const ProductCard = memo(function ProductCard({ product }) {
           transition={{ duration: 0.25 }}
           className="pointer-events-none"
         >
-          <Heart size={14} className={`transition-colors duration-300 ${wishlisted ? 'fill-[#B08A45] text-[#B08A45] drop-shadow-[0_0_4px_rgba(176,138,69,0.3)]' : 'text-[#560817]/70 hover:text-[#B08A45]'}`} />
+          <Heart size={14} className={`transition-colors duration-300 ${wishlisted ? 'fill-[#B59A68] text-[#B59A68] drop-shadow-[0_0_4px_rgba(181,154,104,0.3)]' : 'text-[#3A0508]/70 hover:text-[#B59A68]'}`} />
         </motion.div>
       </button>
 
       {/* Badges */}
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }} className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 pointer-events-none">
-        {isOutOfStock && <span className="bg-[#181516] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Sold Out</span>}
-        {!isOutOfStock && isNewArrival && <span className="bg-[#560817] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">New</span>}
-        {!isOutOfStock && isBestSeller && <span className="bg-[#560817] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Bestseller</span>}
-        {!isOutOfStock && !isNewArrival && !isBestSeller && stock > 0 && stock <= 5 && <span className="bg-[#560817] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Limited</span>}
+        {isOutOfStock && <span className="bg-[#332B27] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Sold Out</span>}
+        {!isOutOfStock && isNewArrival && <span className="bg-[#3A0508] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">New</span>}
+        {!isOutOfStock && isBestSeller && <span className="bg-[#3A0508] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Bestseller</span>}
+        {!isOutOfStock && !isNewArrival && !isBestSeller && stock > 0 && stock <= 5 && <span className="bg-[#3A0508] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Limited</span>}
       </motion.div>
 
       <div className="pt-4 pb-2 text-center flex flex-col flex-1 bg-transparent">
         <Link to={`/products/${slug}`} className="block mb-2">
-          <h3 className={`text-[12px] lg:text-[14px] text-[#181516] font-medium leading-relaxed tracking-wide transition-all duration-[450ms] line-clamp-1 translate-y-0 hover:text-[#560817] ${shouldReduceMotion ? '' : 'lg:group-hover:-translate-y-[2px]'}`}>
+          <h3 className={`text-[12px] lg:text-[13px] text-[#332B27] font-medium leading-relaxed tracking-wide transition-all duration-[450ms] line-clamp-1 translate-y-0 hover:text-[#3A0508] ${shouldReduceMotion ? '' : 'lg:group-hover:-translate-y-[2px]'}`}>
             {name}
           </h3>
         </Link>
         <div className="mt-auto flex items-center justify-center gap-2">
-          <span className="text-[13px] lg:text-[15px] font-semibold text-[#560817]">{formatPrice(effectivePrice)}</span>
-          {discountPrice && <span className="text-[11px] lg:text-[12px] text-[#746760] line-through">{formatPrice(price)}</span>}
+          <span className="text-[13px] lg:text-[14px] font-medium text-[#3A0508]">{formatPrice(effectivePrice)}</span>
+          {discountPrice && <span className="text-[11px] lg:text-[12px] text-[#756B62] line-through">{formatPrice(price)}</span>}
         </div>
       </div>
     </motion.div>

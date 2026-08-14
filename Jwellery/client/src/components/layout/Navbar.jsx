@@ -68,9 +68,9 @@ export default function Navbar() {
 
 
   const NavLink = ({ to, children }) => (
-    <Link to={to} className="relative group text-[11px] text-[#181516] tracking-[0.10em] uppercase font-medium py-2">
-      <span className="relative z-10 transition-colors duration-300 group-hover:text-[#560817]">{children}</span>
-      <span className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#560817] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-[250ms] origin-center ease-out"></span>
+    <Link to={to} className="relative group text-[10px] lg:text-[11px] text-[#332B27] tracking-[0.12em] uppercase font-medium py-2">
+      <span className="relative z-10 transition-colors duration-[300ms] ease-out group-hover:text-[#3A0508]">{children}</span>
+      <span className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#B59A68] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-[300ms] origin-center ease-out"></span>
     </Link>
   );
 
@@ -90,16 +90,16 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             
             {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2 text-[#560817] hover:text-[#B08A45] hover:scale-110 transition-all duration-300" onClick={() => setMenuOpen(true)}>
+            <button className="lg:hidden p-2 text-[#3A0508] hover:text-[#B59A68] hover:scale-110 transition-all duration-300" onClick={() => setMenuOpen(true)}>
               <Menu size={21} strokeWidth={1.8} />
             </button>
 
             {/* LEFT: Logo */}
             <Link to="/" className="flex flex-col items-center justify-center lg:items-start flex-shrink-0 group lg:pr-10 lg:mr-4">
-              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-xl lg:text-2xl text-[#560817] tracking-[0.25em] leading-none font-semibold group-hover:opacity-85 transition-opacity duration-500">
+              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-xl lg:text-2xl text-[#3A0508] tracking-[0.25em] leading-none font-semibold group-hover:opacity-85 transition-opacity duration-500">
                 TARINI
               </span>
-              <span className="text-[8px] lg:text-[9px] text-[#B08A45] tracking-[0.35em] uppercase leading-none mt-1.5 font-bold group-hover:opacity-80 transition-opacity">
+              <span className="text-[8px] lg:text-[9px] text-[#B59A68] tracking-[0.35em] uppercase leading-none mt-1.5 font-bold group-hover:opacity-80 transition-opacity">
                 JEWELLERS
               </span>
             </Link>
@@ -116,34 +116,34 @@ export default function Navbar() {
 
             {/* RIGHT: Actions */}
             <div className="flex items-center gap-4 sm:gap-6">
-              <button onClick={() => setSearchOpen(true)} className="group text-[#181516] hover:text-[#560817] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5" aria-label="Search">
+              <button onClick={() => setSearchOpen(true)} className="group text-[#332B27] hover:text-[#3A0508] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5" aria-label="Search">
                 <Search size={21} strokeWidth={1.8} className="transition-transform duration-300" />
               </button>
 
               <div className="relative hidden lg:block">
-                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#181516] hover:text-[#560817] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5" aria-label="Account">
+                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#332B27] hover:text-[#3A0508] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5" aria-label="Account">
                   <User size={21} strokeWidth={1.8} className="transition-transform duration-300" />
                 </button>
                 <AnimatePresence>
                   {userMenuOpen && (
-                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} transition={{ duration: 0.2, ease: "easeOut" }} className="absolute right-0 top-full mt-4 w-56 bg-white border border-[#FAF6EE] shadow-[0_20px_40px_rgba(86,8,23,0.04)] z-50 rounded-sm">
+                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} transition={{ duration: 0.2, ease: "easeOut" }} className="absolute right-0 top-full mt-4 w-56 bg-white border border-[#FAF6EE] shadow-[0_20px_40px_rgba(58,5,8,0.03)] z-50 rounded-sm">
                       {isAuthenticated ? (
                         <>
-                          <div className="px-5 py-4 bg-[#F8F4EC] border-b border-[#FAF6EE]">
-                            <p className="font-semibold text-sm text-[#560817]">{user?.name}</p>
-                            <p className="text-xs text-[#746760] truncate mt-0.5">{user?.email}</p>
+                          <div className="px-5 py-4 bg-[#F7F3EA] border-b border-[#FAF6EE]">
+                            <p className="font-semibold text-sm text-[#3A0508]">{user?.name}</p>
+                            <p className="text-xs text-[#756B62] truncate mt-0.5">{user?.email}</p>
                           </div>
                           <div className="py-2">
-                            {isAdmin && <Link to="/admin" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#746760] hover:text-[#560817] hover:bg-[#F8F4EC] transition-colors"><Settings size={14} className="group-hover:rotate-90 transition-transform duration-500" /> Admin</Link>}
-                            <Link to="/profile" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#746760] hover:text-[#560817] hover:bg-[#F8F4EC] transition-colors"><User size={14} className="group-hover:scale-110 transition-transform" /> Profile</Link>
-                            <Link to="/profile/orders" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#746760] hover:text-[#560817] hover:bg-[#F8F4EC] transition-colors"><Package size={14} className="group-hover:scale-110 transition-transform" /> Orders</Link>
-                            <button onClick={handleLogout} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-red-500 hover:bg-[#F8F4EC] w-full text-left transition-colors"><LogOut size={14} className="group-hover:-translate-x-1 transition-transform" /> Logout</button>
+                            {isAdmin && <Link to="/admin" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#756B62] hover:text-[#3A0508] hover:bg-[#F7F3EA] transition-colors"><Settings size={14} className="group-hover:rotate-90 transition-transform duration-500" /> Admin</Link>}
+                            <Link to="/profile" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#756B62] hover:text-[#3A0508] hover:bg-[#F7F3EA] transition-colors"><User size={14} className="group-hover:scale-110 transition-transform" /> Profile</Link>
+                            <Link to="/profile/orders" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#756B62] hover:text-[#3A0508] hover:bg-[#F7F3EA] transition-colors"><Package size={14} className="group-hover:scale-110 transition-transform" /> Orders</Link>
+                            <button onClick={handleLogout} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-red-500 hover:bg-[#F7F3EA] w-full text-left transition-colors"><LogOut size={14} className="group-hover:-translate-x-1 transition-transform" /> Logout</button>
                           </div>
                         </>
                       ) : (
                         <div className="p-5">
-                          <Link to="/login" onClick={() => setUserMenuOpen(false)} className="block w-full text-center mb-2 py-3 text-[10px] font-bold uppercase tracking-widest bg-[#560817] text-white hover:bg-[#3D0610] transition-colors duration-300 rounded-[2px]">Sign In</Link>
-                          <Link to="/register" onClick={() => setUserMenuOpen(false)} className="block w-full text-center py-3 text-[10px] font-bold uppercase tracking-widest border border-[#560817] text-[#560817] hover:bg-[#F8F4EC] transition-colors duration-300 rounded-[2px]">Create Account</Link>
+                          <Link to="/login" onClick={() => setUserMenuOpen(false)} className="block w-full text-center mb-2 py-3 text-[10px] font-medium uppercase tracking-[0.12em] bg-[#3A0508] text-white hover:bg-[#220306] transition-colors duration-300 rounded-[2px]">Sign In</Link>
+                          <Link to="/register" onClick={() => setUserMenuOpen(false)} className="block w-full text-center py-3 text-[10px] font-medium uppercase tracking-[0.12em] border border-[#3A0508] text-[#3A0508] hover:bg-[#F7F3EA] transition-colors duration-300 rounded-[2px]">Create Account</Link>
                         </div>
                       )}
                     </motion.div>
@@ -151,14 +151,14 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link to="/wishlist" className="relative group text-[#181516] hover:text-[#560817] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hidden sm:block" aria-label="Wishlist">
+              <Link to="/wishlist" className="relative group text-[#332B27] hover:text-[#3A0508] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 hidden sm:block" aria-label="Wishlist">
                 <Heart size={21} strokeWidth={1.8} className="transition-transform duration-300" />
-                {wishlistCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#560817] text-white text-[9px] rounded-full flex items-center justify-center font-bold shadow-[0_0_8px_rgba(86,8,23,0.2)] transition-transform duration-300 group-hover:scale-110">{wishlistCount}</span>}
+                {wishlistCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#3A0508] text-white text-[9px] rounded-full flex items-center justify-center font-bold shadow-[0_0_8px_rgba(58,5,8,0.2)] transition-transform duration-300 group-hover:scale-110">{wishlistCount}</span>}
               </Link>
 
-              <button onClick={() => openCartDrawer()} className="relative group text-[#181516] hover:text-[#560817] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5" aria-label="Cart">
+              <button onClick={() => openCartDrawer()} className="relative group text-[#332B27] hover:text-[#3A0508] transition-all duration-300 hover:scale-110 hover:-translate-y-0.5" aria-label="Cart">
                 <ShoppingBag size={21} strokeWidth={1.8} className="transition-transform duration-300" />
-                {totalItems > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#560817] text-white text-[9px] rounded-full flex items-center justify-center font-bold shadow-[0_0_8px_rgba(86,8,23,0.2)] transition-transform duration-300 group-hover:scale-110">{totalItems}</span>}
+                {totalItems > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#3A0508] text-white text-[9px] rounded-full flex items-center justify-center font-bold shadow-[0_0_8px_rgba(58,5,8,0.2)] transition-transform duration-300 group-hover:scale-110">{totalItems}</span>}
               </button>
             </div>
           </div>
@@ -170,24 +170,24 @@ export default function Navbar() {
         {menuOpen && (
           <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 lg:hidden" onClick={() => setMenuOpen(false)} />
-            <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-[#F8F4EC] z-50 overflow-y-auto flex flex-col shadow-2xl">
+            <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-[#F7F3EA] z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-[#FAF6EE] bg-white">
-                <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-xl text-[#181516] tracking-widest font-medium">TARINI</span>
-                <button onClick={() => setMenuOpen(false)} className="text-[#181516] hover:text-[#560817] hover:rotate-90 transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-xl text-[#332B27] tracking-widest font-medium">TARINI</span>
+                <button onClick={() => setMenuOpen(false)} className="text-[#332B27] hover:text-[#3A0508] hover:rotate-90 transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
-              <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-[#F8F4EC]">
-                <Link to="/products?sort=-createdAt" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#181516] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#560817] hover:pl-2 transition-all duration-300">New Arrivals</Link>
-                <Link to="/category/rings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#181516] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#560817] hover:pl-2 transition-all duration-300">Rings</Link>
-                <Link to="/category/necklaces" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#181516] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#560817] hover:pl-2 transition-all duration-300">Necklaces</Link>
-                <Link to="/category/earrings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#181516] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#560817] hover:pl-2 transition-all duration-300">Earrings</Link>
-                <Link to="/category/bracelets" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#181516] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#560817] hover:pl-2 transition-all duration-300">Bracelets</Link>
-                <Link to="/products?sort=-rating" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#181516] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#560817] hover:pl-2 transition-all duration-300">Bestsellers</Link>
+              <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-[#F7F3EA]">
+                <Link to="/products?sort=-createdAt" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#332B27] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#3A0508] hover:pl-2 transition-all duration-300">New Arrivals</Link>
+                <Link to="/category/rings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#332B27] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#3A0508] hover:pl-2 transition-all duration-300">Rings</Link>
+                <Link to="/category/necklaces" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#332B27] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#3A0508] hover:pl-2 transition-all duration-300">Necklaces</Link>
+                <Link to="/category/earrings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#332B27] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#3A0508] hover:pl-2 transition-all duration-300">Earrings</Link>
+                <Link to="/category/bracelets" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#332B27] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#3A0508] hover:pl-2 transition-all duration-300">Bracelets</Link>
+                <Link to="/products?sort=-rating" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#332B27] tracking-widest uppercase font-medium border-b border-[#FAF6EE] hover:text-[#3A0508] hover:pl-2 transition-all duration-300">Bestsellers</Link>
                 
-                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#746760] hover:text-[#560817] tracking-widest uppercase font-medium flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
+                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#756B62] hover:text-[#3A0508] tracking-widest uppercase font-medium flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
                 {!isAuthenticated ? (
-                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#746760] hover:text-[#560817] tracking-widest uppercase font-medium flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
+                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#756B62] hover:text-[#3A0508] tracking-widest uppercase font-medium flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
                 ) : (
-                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#746760] hover:text-[#560817] tracking-widest uppercase font-medium flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
+                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#756B62] hover:text-[#3A0508] tracking-widest uppercase font-medium flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
                 )}
               </nav>
             </motion.aside>

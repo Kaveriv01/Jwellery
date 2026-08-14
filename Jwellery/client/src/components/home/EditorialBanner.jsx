@@ -16,7 +16,7 @@ export default function EditorialBanner() {
           alt="Everyday Luxury"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-[#220306]/20" />
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
@@ -25,14 +25,14 @@ export default function EditorialBanner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[#F8F4EC]/85 backdrop-blur-md p-10 md:p-14 max-w-xl mx-auto border border-[#FAF6EE] shadow-[0_15px_35px_rgba(86,8,23,0.02)] rounded-[4px]"
+          className="bg-[#F7F3EA]/90 backdrop-blur-md p-10 md:p-14 max-w-xl mx-auto border border-[#FAF6EE] shadow-[0_15px_35px_rgba(58,5,8,0.02)] rounded-[4px]"
         >
-          <span className="text-[#B08A45] text-[10px] lg:text-[11px] tracking-[0.20em] font-medium uppercase mb-4 block">
+          <span className="text-[#B59A68] text-[10px] lg:text-[11px] tracking-[0.20em] font-medium uppercase mb-4 block">
             EVERYDAY LUXURY
           </span>
           
-          <h2 className="text-[#560817] text-[22px] md:text-[25px] lg:text-[28px] leading-tight font-normal mb-[18px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Pieces designed to be <em className="italic text-[#B08A45]">worn</em>, layered, and <em className="italic text-[#B08A45]">loved</em>.
+          <h2 className="text-[#3A0508] text-[22px] md:text-[25px] lg:text-[28px] leading-tight font-normal mb-[18px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Pieces designed to be <em className="italic text-[#B59A68]">worn</em>, layered, and <em className="italic text-[#B59A68]">loved</em>.
           </h2>
 
           <motion.div
@@ -42,7 +42,7 @@ export default function EditorialBanner() {
           >
             <Link
               to="/products"
-              className="inline-block bg-[#560817] text-white px-8 py-3.5 text-[11px] lg:text-[12px] font-medium tracking-[0.12em] uppercase transition-all duration-[250ms] ease-out hover:-translate-y-[2px] hover:bg-[#3D0610] text-center rounded-[2px] border-b-2 border-transparent hover:border-[#B08A45] shadow-md shadow-black/10"
+              className="inline-block bg-[#3A0508] text-[#F7F3EA] px-8 py-3.5 text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-[250ms] ease-out hover:-translate-y-[2px] hover:bg-[#220306] text-center rounded-[2px] border-b-2 border-transparent hover:border-[#B59A68] shadow-md shadow-black/10"
             >
               Discover The Collection
             </Link>

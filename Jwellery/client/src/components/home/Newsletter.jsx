@@ -25,26 +25,15 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#0C0203]">
+    <section className="relative overflow-hidden bg-[#220306]">
       {/* Background texture */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1E0509] via-[#0C0203] to-[#120003]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#3A0508] via-[#220306] to-[#120003]" />
 
       {/* Subtle pink/red glow */}
       <div className="absolute top-0 left-1/3 w-80 h-80 rounded-full opacity-[0.05]"
-           style={{ background: 'radial-gradient(circle, #560817 0%, transparent 70%)' }} />
+           style={{ background: 'radial-gradient(circle, #3A0508 0%, transparent 70%)' }} />
       <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full opacity-[0.05]"
-           style={{ background: 'radial-gradient(circle, #560817 0%, transparent 70%)' }} />
-
-      {/* Floating dots */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-[#B08A45]/15"
-          style={{ left: `${12 + i * 15}%`, top: `${20 + (i % 3) * 25}%` }}
-          animate={shouldReduceMotion ? {} : { y: [-8, 8, -8], opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 4 + i, repeat: Infinity, ease: 'easeInOut', delay: i * 0.5 }}
-        />
-      ))}
+           style={{ background: 'radial-gradient(circle, #3A0508 0%, transparent 70%)' }} />
 
       <div className="relative container-luxury py-24 sm:py-28">
         <div className="max-w-2xl mx-auto text-center">
@@ -54,9 +43,9 @@ export default function Newsletter() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 border border-[#B08A45]/30 rounded-[2px] px-4 py-1.5 mb-7 bg-[#560817]/40"
+            className="inline-flex items-center gap-2 border border-[#B59A68]/30 rounded-[2px] px-4 py-1.5 mb-7 bg-[#3A0508]/40"
           >
-            <Gift size={12} className="text-[#B08A45]" />
+            <Gift size={12} className="text-[#B59A68]" />
             <span className="text-[#FAF8F3] text-[10px] lg:text-[11px] tracking-[0.20em] uppercase font-medium">Exclusive Members Only</span>
           </motion.div>
 
@@ -70,7 +59,7 @@ export default function Newsletter() {
             className="text-[#FAF8F3] font-normal leading-tight mb-4 text-[23px] sm:text-[27px] lg:text-[32px]"
           >
             Join the TARINI<br />
-            <em className="italic text-[#B08A45]">Inner Circle</em>
+            <em className="italic text-[#B59A68]">Inner Circle</em>
           </motion.h2>
 
           {/* Subtle Divider */}
@@ -80,7 +69,7 @@ export default function Newsletter() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.7, delay: shouldReduceMotion ? 0 : 0.12, ease: [0.22, 1, 0.36, 1] }}
             style={{ originX: 0.5 }}
-            className="w-12 h-[1px] bg-[#B08A45] mx-auto my-6" 
+            className="w-12 h-[1px] bg-[#B59A68] mx-auto my-6" 
           />
 
           <motion.p
@@ -103,8 +92,8 @@ export default function Newsletter() {
           >
             {NEWSLETTER_PERKS.map((perk) => (
               <div key={perk} className="flex items-center gap-1.5">
-                <div className="w-4 h-4 rounded-full bg-[#560817]/40 flex items-center justify-center flex-shrink-0">
-                  <Check size={9} className="text-[#B08A45]" />
+                <div className="w-4 h-4 rounded-full bg-[#3A0508]/40 flex items-center justify-center flex-shrink-0">
+                  <Check size={9} className="text-[#B59A68]" />
                 </div>
                 <span className="text-[#FAF8F3]/60 text-[11px] font-light tracking-wide">{perk}</span>
               </div>
@@ -126,14 +115,14 @@ export default function Newsletter() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address"
               required
-              className="flex-1 bg-white/5 border border-[#B08A45]/30 hover:border-[#B08A45]/50 text-white placeholder-[#FAF8F3]/40 rounded-[2px] px-5 py-3 text-sm outline-none focus:border-[#B08A45] transition-all duration-300"
+              className="flex-1 bg-white/5 border border-[#B59A68]/30 hover:border-[#B59A68]/50 text-white placeholder-[#FAF8F3]/40 rounded-[2px] px-5 py-3 text-sm outline-none focus:border-[#B59A68] transition-all duration-300"
             />
             <motion.button
               whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
               transition={{ duration: 0.12 }}
               type="submit"
               disabled={loading || done}
-              className="bg-[#560817] hover:bg-[#3D0610] text-white rounded-[2px] flex items-center justify-center gap-2 px-8 py-3.5 font-medium text-[11px] lg:text-[12px] uppercase tracking-[0.12em] whitespace-nowrap transition-all duration-[250ms] ease-out shadow-md border-b-2 border-transparent hover:border-[#B08A45] hover:-translate-y-[2px] disabled:opacity-60 cursor-pointer"
+              className="bg-[#F7F3EA] hover:bg-[#FFFFFF] text-[#3A0508] hover:text-[#220306] rounded-[2px] flex items-center justify-center gap-2 px-8 py-3.5 font-medium text-[10px] lg:text-[11px] uppercase tracking-[0.12em] whitespace-nowrap transition-all duration-[250ms] ease-out shadow-md border-b-2 border-transparent hover:border-[#B59A68] hover:-translate-y-[2px] disabled:opacity-60 cursor-pointer"
             >
               {loading ? (
                 <span className="flex items-center gap-2">

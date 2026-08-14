@@ -36,7 +36,7 @@ export default function HeroBanner() {
           className="w-full h-full object-cover object-center"
         />
         {/* Subtle overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/45 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#220306]/35 via-black/30 to-[#220306]/75" />
       </div>
 
       {/* Content */}
@@ -47,17 +47,17 @@ export default function HeroBanner() {
           className="flex flex-col items-center"
         >
           {/* Eyebrow */}
-          <motion.span variants={eyebrowVariants} className="text-[#C8A866] text-[11px] tracking-[0.20em] uppercase font-medium mb-6 block">
+          <motion.span variants={eyebrowVariants} className="text-[#B59A68] text-[10px] lg:text-[11px] tracking-[0.20em] uppercase font-medium mb-6 block">
             TIMELESS JEWELLERY, MADE FOR YOU
           </motion.span>
           
           {/* Main Heading */}
-          <motion.h1 variants={headingVariants} className="text-[#F8F4EC] text-[30px] sm:text-[38px] lg:text-[48px] leading-[1.08] font-normal mb-6 drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <motion.h1 variants={headingVariants} className="text-[#F7F3EA] text-[30px] sm:text-[38px] lg:text-[52px] leading-[1.12] font-normal mb-6 drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Jewellery That Becomes<br />Part of Your Story
           </motion.h1>
           
           {/* Supporting Text */}
-          <motion.p variants={descVariants} className="text-white/90 text-[13px] lg:text-[14px] max-w-xl mx-auto font-light mb-12 drop-shadow-sm leading-relaxed tracking-[0.03em]">
+          <motion.p variants={descVariants} className="text-[#FAF8F3]/90 text-[13px] lg:text-[14px] max-w-xl mx-auto font-light mb-12 drop-shadow-sm leading-relaxed tracking-[0.03em]">
             Discover elegant pieces designed to celebrate every version of you.
           </motion.p>
  
@@ -70,7 +70,7 @@ export default function HeroBanner() {
             >
               <Link
                 to="/products?sort=-createdAt"
-                className="w-full sm:w-auto block bg-[#560817] text-white px-10 py-4 text-[11px] lg:text-[12px] font-medium tracking-[0.12em] uppercase transition-all duration-[250ms] ease-out hover:-translate-y-[2px] hover:bg-[#3D0610] text-center rounded-[2px] border-b-2 border-transparent hover:border-[#B08A45] shadow-md shadow-black/10"
+                className="w-full sm:w-auto block bg-[#3A0508] text-[#F7F3EA] px-10 py-4 text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-[250ms] ease-out hover:-translate-y-[2px] hover:bg-[#220306] text-center rounded-[2px] border-b-2 border-transparent hover:border-[#B59A68] shadow-md shadow-black/10"
               >
                 Shop New Arrivals
               </Link>
@@ -83,7 +83,7 @@ export default function HeroBanner() {
             >
               <Link
                 to="/products"
-                className="w-full sm:w-auto block bg-transparent border border-white text-white px-10 py-4 text-[11px] lg:text-[12px] font-medium tracking-[0.12em] uppercase transition-all duration-[250ms] ease-out hover:-translate-y-[2px] hover:bg-white hover:text-[#560817] text-center rounded-[2px] shadow-sm"
+                className="w-full sm:w-auto block bg-transparent border border-white/80 text-white px-10 py-4 text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-[250ms] ease-out hover:-translate-y-[2px] hover:bg-[#F7F3EA] hover:text-[#3A0508] text-center rounded-[2px] shadow-sm"
               >
                 Explore All
               </Link>

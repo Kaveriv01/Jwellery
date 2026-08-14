@@ -33,7 +33,7 @@ function SectionHeading({ title, dark = false }) {
     >
       <motion.h2 
         variants={headingReveal}
-        className={`text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide mb-[16px] ${dark ? 'text-[#FAF8F3]' : 'text-[#560817]'}`} 
+        className={`text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide mb-[16px] ${dark ? 'text-[#FAF8F3]' : 'text-[#3A0508]'}`} 
         style={{ fontFamily: "'Cormorant Garamond', serif" }}
       >
         {title}
@@ -41,7 +41,7 @@ function SectionHeading({ title, dark = false }) {
       <motion.div 
         variants={dividerReveal}
         style={{ originX: 0.5 }}
-        className={`w-12 h-[1px] mb-4 ${dark ? 'bg-[#FAF8F3]/30' : 'bg-[#B08A45]'}`} 
+        className={`w-12 h-[1px] mb-4 ${dark ? 'bg-[#FAF8F3]/30' : 'bg-[#B59A68]'}`} 
       />
     </motion.div>
   );
@@ -93,7 +93,7 @@ function ProductCarousel({ products }) {
       <button 
         onClick={() => scroll('left')}
         disabled={!canScrollLeft}
-        className={`absolute left-0 top-[40%] -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(86,8,23,0.04)] flex items-center justify-center text-[#560817] transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#B08A45]' : 'opacity-0 pointer-events-none'}`}
+        className={`absolute left-0 top-[40%] -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(58,5,8,0.04)] flex items-center justify-center text-[#3A0508] transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#B59A68]' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronLeft size={24} strokeWidth={1} />
       </button>
@@ -101,7 +101,7 @@ function ProductCarousel({ products }) {
       <button 
         onClick={() => scroll('right')}
         disabled={!canScrollRight}
-        className={`absolute right-0 top-[40%] -translate-y-1/2 translate-x-1/2 md:translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(86,8,23,0.04)] flex items-center justify-center text-[#560817] transition-all duration-300 z-10 ${canScrollRight ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#B08A45]' : 'opacity-0 pointer-events-none'}`}
+        className={`absolute right-0 top-[40%] -translate-y-1/2 translate-x-1/2 md:translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(58,5,8,0.04)] flex items-center justify-center text-[#3A0508] transition-all duration-300 z-10 ${canScrollRight ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#B59A68]' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronRight size={24} strokeWidth={1} />
       </button>
@@ -171,7 +171,7 @@ function ProductSection({ title, products = [], viewAllLink, dark = false, bg = 
           <div className="text-center mt-12">
             <Link
               to={viewAllLink}
-              className="inline-block border-b border-[#560817] pb-1 text-[#560817] hover:text-[#B08A45] hover:border-[#B08A45] text-[11px] lg:text-[12px] font-medium tracking-[0.12em] uppercase transition-all duration-300"
+              className="inline-block border-b border-[#3A0508] pb-1 text-[#3A0508] hover:text-[#B59A68] hover:border-[#B59A68] text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-300"
             >
               View All
             </Link>
@@ -270,7 +270,7 @@ export function NewArrivals({ products }) {
         <div className="flex flex-col items-center justify-center text-center mb-16">
           <motion.h2 
             variants={headingReveal}
-            className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide mb-[16px] text-[#560817]" 
+            className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide mb-[16px] text-[#3A0508]" 
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             New Arrivals
@@ -278,7 +278,7 @@ export function NewArrivals({ products }) {
           <motion.div 
             variants={dividerReveal}
             style={{ originX: 0.5 }}
-            className="w-12 h-[1px] mb-8 bg-[#B08A45]" 
+            className="w-12 h-[1px] mb-8 bg-[#B59A68]" 
           />
           <motion.div 
             initial={{ opacity: 0 }} 
@@ -288,7 +288,7 @@ export function NewArrivals({ products }) {
           >
             <Link
               to="/products?isNewArrival=true"
-              className="text-[11px] font-medium tracking-[0.12em] uppercase pb-1 border-b transition-colors duration-300 text-[#181516] border-[#181516] hover:text-[#560817] hover:border-[#560817]"
+              className="text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase pb-1 border-b transition-colors duration-300 text-[#332B27] border-[#332B27] hover:text-[#3A0508] hover:border-[#3A0508]"
             >
               EXPLORE COLLECTION
             </Link>

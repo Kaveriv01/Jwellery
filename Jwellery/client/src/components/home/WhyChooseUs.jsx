@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section className="bg-[#F8F4EC] py-10 lg:py-12 border-b border-[#FAF6EE] overflow-hidden">
+    <section className="bg-[#FBF8F2] py-14 lg:py-18 border-b border-[#FAF6EE] overflow-hidden">
       <div className="container-luxury">
         <motion.div 
           className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12"
@@ -53,18 +53,13 @@ export default function WhyChooseUs() {
           {values.map((val, idx) => (
             <motion.div key={idx} variants={itemVariants} className="group relative flex flex-col items-center justify-center text-center px-4 cursor-default">
               
-              {/* Subtle Gold Shimmer Effect (Hidden by default, slides across on hover) */}
-              <div className="absolute inset-0 overflow-hidden rounded-md pointer-events-none">
-                <div className={`absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#B08A45]/5 to-transparent skew-x-[20deg] ${shouldReduceMotion ? '' : 'group-hover:animate-[shimmer_2s_infinite]'}`} />
-              </div>
-
-              <div className={`text-[#181516] mb-4 transition-colors duration-500 ease-out transform ${shouldReduceMotion ? '' : 'group-hover:-translate-y-1'} group-hover:text-[#B08A45]`}>
+              <div className="text-[#B59A68] mb-4 transition-colors duration-300 ease-out">
                 {val.icon}
               </div>
-              <h3 className="text-[11px] lg:text-xs font-medium tracking-[0.12em] uppercase text-[#181516] mb-1.5 transition-colors duration-500 group-hover:text-[#B08A45]">
+              <h3 className="text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase text-[#332B27] mb-1.5 transition-colors duration-300 group-hover:text-[#3A0508]">
                 {val.title}
               </h3>
-              <p className="text-[10px] sm:text-[11px] text-[#746760] font-light tracking-wide">
+              <p className="text-[9px] lg:text-[10px] text-[#756B62] font-light tracking-wide">
                 {val.description}
               </p>
               
