@@ -26,6 +26,7 @@ const ProductCard = memo(function ProductCard({ product }) {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     if (isOutOfStock) return;
     addToCart({ productId: _id, quantity: 1 });
   };
@@ -96,6 +97,17 @@ const ProductCard = memo(function ProductCard({ product }) {
         >
           <Heart size={14} className={`transition-colors duration-300 ${wishlisted ? 'fill-[#B59A68] text-[#B59A68] drop-shadow-[0_0_4px_rgba(181,154,104,0.3)]' : 'text-[#3A0508]/70 hover:text-[#B59A68]'}`} />
         </motion.div>
+      </button>
+
+      {/* Add to Cart Button (Quick Add) */}
+      <button
+        onClick={handleAddToCart}
+        disabled={isAddingToCart || isOutOfStock}
+        type="button"
+        className={`absolute top-14 right-4 w-8 h-8 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center transition-all duration-[450ms] z-30 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 cursor-pointer ${shouldReduceMotion ? '' : 'hover:scale-[1.08] hover:shadow-[0_4px_12px_rgba(86,8,23,0.05)]'} disabled:opacity-50`}
+        aria-label="Add to cart"
+      >
+        <ShoppingBag size={14} className="text-[#3A0508]/70 hover:text-[#B59A68] transition-colors duration-300" />
       </button>
 
       {/* Badges */}

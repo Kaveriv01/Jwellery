@@ -4,6 +4,7 @@ import { wishlistService } from '../services/cartService';
 import { useAuth } from './AuthContext';
 import { toast } from 'sonner';
 import { getErrorMessage } from '../lib/utils';
+import { openCartDrawer } from '../components/cart/CartDrawer';
 
 const WishlistContext = createContext(null);
 
@@ -70,6 +71,7 @@ export const WishlistProvider = ({ children }) => {
       invalidateWishlist();
       queryClient.invalidateQueries({ queryKey: ['cart'] });
       toast.success('Moved to cart!');
+      openCartDrawer();
     },
     onError: (error) => toast.error(getErrorMessage(error)),
   });

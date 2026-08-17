@@ -4,6 +4,7 @@ import { cartService } from '../services/cartService';
 import { useAuth } from './AuthContext';
 import { toast } from 'sonner';
 import { getErrorMessage } from '../lib/utils';
+import { openCartDrawer } from '../components/cart/CartDrawer';
 
 const CartContext = createContext(null);
 
@@ -28,6 +29,7 @@ export const CartProvider = ({ children }) => {
     onSuccess: (_, variables) => {
       invalidateCart();
       toast.success('Added to cart!');
+      openCartDrawer();
     },
     onError: (error) => toast.error(getErrorMessage(error)),
   });
