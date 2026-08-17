@@ -44,10 +44,15 @@ export default function ProductsPage() {
 
   let categoryId = categoryIdFromUrl;
   let categoryName = '';
-  let categorySlug = '';
+  let categorySlug = slug || ''; // Use slug from URL immediately
+  
+  if (slug) {
+    // Capitalize slug as fallback name while loading
+    categoryName = slug.charAt(0).toUpperCase() + slug.slice(1);
+  }
   
   if (slug && categories.length > 0) {
-    const matchedCategory = categories.find((c) => c.slug === slug);
+    const matchedCategory = categories.find((c) => c.slug.toLowerCase() === slug.toLowerCase());
     if (matchedCategory) {
       categoryId = matchedCategory._id;
       categoryName = matchedCategory.name;
@@ -62,12 +67,16 @@ export default function ProductsPage() {
   }
 
   // Determine if we should show a banner and what image to use
-  const getBannerImage = (slug) => {
-    switch (slug) {
-      case 'necklaces': return '/images/categories/necklaces-banner.jpg';
-      case 'earrings': return '/images/categories/earrings-banner.jpg';
-      case 'rings': return '/images/categories/rings-banner.jpg';
-      case 'bracelets': return '/images/categories/bracelets-banner.jpg';
+  const getBannerImage = (s) => {
+    if (!s) return null;
+    const normalized = s.toLowerCase();
+    switch (normalized) {
+      case 'necklaces': return '/images/home/cat-necklaces-new.png';
+      case 'earrings':  return '/images/home/cat-earrings-new.png';
+      case 'rings':     return '/images/home/cat-rings-new.png';
+      case 'bracelets': return '/images/home/cat-bracelets-new.png';
+      case 'stackables':return '/images/home/cat-stackables-new.png';
+      case 'gifts':     return '/images/home/cat-gifts-new.png';
       default: return null;
     }
   };
