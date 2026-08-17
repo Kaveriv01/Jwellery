@@ -35,12 +35,15 @@ export default function ShopByCategory() {
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="text-[#C7A56A] text-[11px] tracking-[0.3em] font-medium uppercase mb-3 block">
+          <span
+            style={{ fontFamily: "'Manrope', sans-serif" }}
+            className="text-[#C7A56A] text-[11px] tracking-[0.18em] font-[600] uppercase mb-3 block"
+          >
             OUR COLLECTIONS
           </span>
           <h2
-            className="text-[#111] text-[28px] lg:text-[36px] font-normal"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-[#111] text-[28px] lg:text-[38px] font-[500] tracking-[-0.01em]"
           >
             Shop By Category
           </h2>
@@ -71,10 +74,16 @@ export default function ShopByCategory() {
 
                 {/* Text */}
                 <div className="absolute inset-x-0 bottom-0 p-4 text-center flex flex-col items-center justify-end">
-                  <h3 className="text-white text-[12px] lg:text-[13px] font-medium tracking-[0.12em] mb-1 uppercase group-hover:-translate-y-1 transition-transform duration-400">
+                  <h3
+                    style={{ fontFamily: "'Manrope', sans-serif" }}
+                    className="text-white text-[11px] lg:text-[13px] font-[600] tracking-[0.06em] mb-1 uppercase group-hover:-translate-y-1 transition-transform duration-400"
+                  >
                     {cat.name}
                   </h3>
-                  <span className="text-[#C7A56A] text-[9px] uppercase tracking-widest font-medium opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-400">
+                  <span
+                    style={{ fontFamily: "'Manrope', sans-serif" }}
+                    className="text-[#C7A56A] text-[9px] uppercase tracking-[0.10em] font-[600] opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-400"
+                  >
                     Shop Now
                   </span>
                 </div>

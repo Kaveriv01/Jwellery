@@ -64,20 +64,25 @@ export default function Navbar() {
   };
 
   const NavLink = ({ to, children }) => (
-    <Link to={to} className="relative group text-[11px] lg:text-[12px] text-[#111111] tracking-[0.08em] uppercase font-semibold py-2">
-      <span className="relative z-10 transition-colors duration-[300ms] ease-out group-hover:text-[#666]">{children}</span>
-      <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-[#111111] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-[300ms] origin-center ease-out"></span>
+    <Link to={to} className="relative group py-2">
+      <span
+        style={{ fontFamily: "'Manrope', sans-serif" }}
+        className="relative z-10 text-[11px] lg:text-[12px] text-[#111] tracking-[0.06em] uppercase font-[600] transition-colors duration-[280ms] ease-out group-hover:text-[#666]"
+      >
+        {children}
+      </span>
+      <span className="absolute left-0 right-0 bottom-0 h-[1.5px] bg-[#111] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-[280ms] origin-center ease-out" />
     </Link>
   );
 
   return (
     <>
       {/* ── Top Bar ─────────────────────────────────────── */}
-      <div className="bg-[#111111] text-white text-[10px] tracking-widest uppercase font-medium py-2.5 hidden md:block">
+      <div className="bg-[#111] text-white py-2.5 hidden md:block" style={{ fontFamily: "'Manrope', sans-serif" }}>
         <div className="container-luxury flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Truck size={14} />
-            <span>FREE SHIPPING ON ORDERS OVER $75</span>
+            <Truck size={13} />
+            <span className="text-[10px] tracking-[0.08em] uppercase font-[500]">FREE SHIPPING ON ORDERS OVER ₹2000</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#D4AF37]">10% OFF YOUR FIRST ORDER | CODE: SHINE10</span>
@@ -107,10 +112,16 @@ export default function Navbar() {
 
             {/* LEFT: Logo */}
             <Link to="/" className="flex flex-col items-center justify-center lg:items-start flex-shrink-0 group lg:pr-10 lg:mr-4">
-              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-2xl lg:text-3xl text-[#111] tracking-[0.2em] leading-none font-normal group-hover:opacity-85 transition-opacity duration-500">
+              <span
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                className="text-[26px] lg:text-[30px] text-[#111] tracking-[0.18em] leading-none font-[500] group-hover:opacity-80 transition-opacity duration-500"
+              >
                 TARINI
               </span>
-              <span className="text-[9px] lg:text-[10px] text-[#666] tracking-[0.4em] uppercase leading-none mt-2 font-medium group-hover:opacity-80 transition-opacity">
+              <span
+                style={{ fontFamily: "'Manrope', sans-serif" }}
+                className="text-[8px] lg:text-[9px] text-[#777] tracking-[0.28em] uppercase leading-none mt-2 font-[600] group-hover:opacity-70 transition-opacity"
+              >
                 JEWELLERS
               </span>
             </Link>

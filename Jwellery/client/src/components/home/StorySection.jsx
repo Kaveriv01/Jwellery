@@ -5,12 +5,12 @@ export default function StorySection() {
   const shouldReduceMotion = useReducedMotion();
 
   const fadeUp = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
   };
   const stagger = {
     hidden: {},
-    show: { transition: { staggerChildren: shouldReduceMotion ? 0 : 0.12 } }
+    show: { transition: { staggerChildren: shouldReduceMotion ? 0 : 0.1 } }
   };
 
   return (
@@ -18,9 +18,9 @@ export default function StorySection() {
       <div className="container-luxury max-w-[1320px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
-          {/* Left: craftsmanship image — unique, not hero */}
+          {/* Left: craftsmanship image */}
           <motion.div
-            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -24 }}
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -22 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -32,8 +32,6 @@ export default function StorySection() {
               className="w-full h-full object-cover object-center"
               loading="lazy"
             />
-            {/* Subtle warm overlay */}
-            <div className="absolute inset-0 bg-[#C7A56A]/5 pointer-events-none" />
           </motion.div>
 
           {/* Right: text */}
@@ -44,35 +42,49 @@ export default function StorySection() {
             viewport={{ once: true, amount: 0.2 }}
             className="flex flex-col justify-center order-2 px-0 lg:px-4"
           >
+            {/* Label — Manrope */}
             <motion.span
               variants={fadeUp}
-              className="text-[#C7A56A] text-[11px] tracking-[0.3em] font-medium uppercase mb-5 block"
+              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="text-[#C7A56A] text-[10px] lg:text-[11px] tracking-[0.18em] font-[600] uppercase mb-5 block"
             >
               DISCOVER TARINI
             </motion.span>
 
+            {/* Heading — Cormorant Garamond */}
             <motion.h2
               variants={fadeUp}
-              className="text-[#111] text-[36px] lg:text-[50px] leading-[1.1] font-normal mb-6"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              className="text-[#111] text-[40px] lg:text-[52px] leading-[1.05] font-[500] mb-6 tracking-[-0.01em]"
             >
               Our Story
             </motion.h2>
 
             <motion.div variants={fadeUp} className="w-10 h-[1px] bg-[#C7A56A] mb-7" />
 
-            <motion.p variants={fadeUp} className="text-[#555] text-[15px] leading-relaxed mb-4 font-normal">
+            {/* Body — Manrope */}
+            <motion.p
+              variants={fadeUp}
+              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="text-[#555] text-[14px] leading-[1.82] mb-3 font-[400]"
+            >
               Founded with a passion for timeless elegance, Tarini Jewellers is dedicated to bringing you pieces that celebrate life's most precious moments.
             </motion.p>
 
-            <motion.p variants={fadeUp} className="text-[#555] text-[15px] leading-relaxed mb-10 font-normal">
+            <motion.p
+              variants={fadeUp}
+              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="text-[#555] text-[14px] leading-[1.82] mb-10 font-[400]"
+            >
               Every creation is a testament to our commitment to craftsmanship, heritage, and beauty — inspired by the rich traditions of Indian jewellery making.
             </motion.p>
 
+            {/* Button — Manrope */}
             <motion.div variants={fadeUp}>
               <Link
                 to="/about"
-                className="group inline-flex items-center gap-3 border border-[#111] text-[#111] px-8 py-3.5 text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-[#111] hover:text-white transition-all duration-300 rounded-sm"
+                style={{ fontFamily: "'Manrope', sans-serif" }}
+                className="group inline-flex items-center gap-3 border border-[#111] text-[#111] px-8 py-3.5 text-[11px] uppercase tracking-[0.08em] font-[600] hover:bg-[#111] hover:text-white transition-all duration-300 rounded-sm"
               >
                 EXPLORE OUR STORY
               </Link>

@@ -10,7 +10,8 @@ function FooterLink({ to, children }) {
   return (
     <Link
       to={to}
-      className="footer-link-animated relative inline-block text-[12px] lg:text-[13px] text-gray-400 hover:text-white transition-colors duration-[250ms]"
+      style={{ fontFamily: "'Manrope', sans-serif" }}
+      className="footer-link-animated relative inline-block text-[13px] text-gray-400 font-[400] hover:text-white transition-colors duration-[250ms]"
     >
       {children}
     </Link>
@@ -45,21 +46,35 @@ export default function Footer() {
           {/* Brand Column */}
           <motion.div variants={colReveal} className="lg:col-span-2 md:pr-10">
             <Link to="/" className="inline-block mb-6">
-              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-3xl tracking-[0.2em] font-normal text-white">
+              <span
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                className="text-[28px] lg:text-[32px] tracking-[0.18em] font-[500] text-white leading-none block"
+              >
                 TARINI
               </span>
-              <p className="text-[10px] text-gray-400 tracking-[0.30em] uppercase mt-1.5 font-medium">
+              <p
+                style={{ fontFamily: "'Manrope', sans-serif" }}
+                className="text-[8px] text-gray-400 tracking-[0.28em] uppercase mt-2 font-[600]"
+              >
                 JEWELLERS
               </p>
             </Link>
-            <p className="text-[14px] lg:text-[15px] text-gray-400 font-normal max-w-sm mb-8 leading-relaxed">
+            <p
+              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="text-[13px] text-gray-400 font-[400] max-w-sm mb-8 leading-[1.75]"
+            >
               Jewellery for every chapter of your story. Designed with elegance and crafted for everyday luxury.
             </p>
           </motion.div>
 
           {/* Shop Links */}
           <motion.div variants={colReveal}>
-            <h4 className="text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.1em] text-white mb-6">Shop</h4>
+            <h4
+              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="text-[10px] lg:text-[11px] font-[600] uppercase tracking-[0.14em] text-white mb-6"
+            >
+              Shop
+            </h4>
             <ul className="space-y-4">
               <li className="group"><FooterLink to="/category/rings">Rings</FooterLink></li>
               <li className="group"><FooterLink to="/category/necklaces">Necklaces</FooterLink></li>
@@ -72,7 +87,12 @@ export default function Footer() {
 
           {/* Help Links */}
           <motion.div variants={colReveal}>
-            <h4 className="text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.1em] text-white mb-6">Help</h4>
+            <h4
+              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="text-[10px] lg:text-[11px] font-[600] uppercase tracking-[0.14em] text-white mb-6"
+            >
+              Help
+            </h4>
             <ul className="space-y-4">
               <li className="group"><FooterLink to="/contact">Contact Us</FooterLink></li>
               <li className="group"><FooterLink to="/shipping">Shipping</FooterLink></li>
@@ -84,7 +104,12 @@ export default function Footer() {
 
           {/* About Links + Social */}
           <motion.div variants={colReveal}>
-            <h4 className="text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.1em] text-white mb-6">About</h4>
+            <h4
+              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="text-[10px] lg:text-[11px] font-[600] uppercase tracking-[0.14em] text-white mb-6"
+            >
+              About
+            </h4>
             <ul className="space-y-4">
               <li className="group"><FooterLink to="/about">Our Story</FooterLink></li>
               <li className="group"><FooterLink to="/about">Our Materials</FooterLink></li>
