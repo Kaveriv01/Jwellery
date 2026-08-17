@@ -45,14 +45,14 @@ export default function Footer() {
           <motion.div variants={colReveal} className="lg:col-span-2 md:pr-10">
             <Link to="/" className="inline-block mb-6">
               <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-3xl tracking-[0.2em] font-normal text-white">
-                LUMIÈRE
+                TARINI
               </span>
               <p className="text-[10px] text-gray-400 tracking-[0.30em] uppercase mt-1.5 font-medium">
-                JEWELRY
+                JEWELLERS
               </p>
             </Link>
             <p className="text-[14px] lg:text-[15px] text-gray-400 font-normal max-w-sm mb-8 leading-relaxed">
-              Jewelry for every chapter of your story. Designed with elegance and crafted for everyday luxury.
+              Jewellery for every chapter of your story. Designed with elegance and crafted for everyday luxury.
             </p>
           </motion.div>
 
@@ -116,7 +116,7 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left"
         >
           <p className="text-[10px] lg:text-[11px] tracking-[0.1em] uppercase text-gray-500 font-medium">
-            © {new Date().getFullYear()} LUMIÈRE JEWELRY. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} TARINI JEWELLERS. ALL RIGHTS RESERVED.
           </p>
           <div className="flex gap-6 text-[10px] lg:text-[11px] tracking-[0.1em] uppercase text-gray-500 font-medium">
             <Link to="/privacy" className="hover:text-white transition-colors duration-[250ms]">Privacy Policy</Link>

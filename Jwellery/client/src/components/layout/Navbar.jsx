@@ -108,10 +108,10 @@ export default function Navbar() {
             {/* LEFT: Logo */}
             <Link to="/" className="flex flex-col items-center justify-center lg:items-start flex-shrink-0 group lg:pr-10 lg:mr-4">
               <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-2xl lg:text-3xl text-[#111] tracking-[0.2em] leading-none font-normal group-hover:opacity-85 transition-opacity duration-500">
-                LUMIÈRE
+                TARINI
               </span>
               <span className="text-[9px] lg:text-[10px] text-[#666] tracking-[0.4em] uppercase leading-none mt-2 font-medium group-hover:opacity-80 transition-opacity">
-                JEWELRY
+                JEWELLERS
               </span>
             </Link>
 
@@ -184,7 +184,7 @@ export default function Navbar() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 lg:hidden" onClick={() => setMenuOpen(false)} />
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
-                <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-xl text-[#111] tracking-widest font-normal">LUMIÈRE</span>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-xl text-[#111] tracking-widest font-normal">TARINI</span>
                 <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
               <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-white">

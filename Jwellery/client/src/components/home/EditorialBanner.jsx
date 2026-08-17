@@ -13,7 +13,7 @@ export default function EditorialBanner() {
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
           src="/images/home/hero.jpg"
-          alt="The Lumière Experience"
+          alt="The Tarini Experience"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/40" />
@@ -28,7 +28,7 @@ export default function EditorialBanner() {
           className="flex flex-col items-center"
         >
           <span className="text-white text-[12px] tracking-[0.25em] font-medium uppercase mb-6 block drop-shadow-md">
-            THE LUMIÈRE EXPERIENCE
+            THE TARINI EXPERIENCE
           </span>
           
           <h2 className="text-white text-[36px] sm:text-[42px] lg:text-[54px] leading-tight font-normal mb-10 drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>

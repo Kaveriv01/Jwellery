@@ -20,7 +20,7 @@ export default function StorySection() {
             >
               <img
                 src="/images/home/hero.jpg"
-                alt="Discover Lumière"
+                alt="Discover Tarini"
                 className="w-full h-full object-cover object-center"
               />
             </motion.div>
@@ -35,7 +35,7 @@ export default function StorySection() {
             className="flex flex-col justify-center order-2 px-4 lg:px-0 lg:max-w-md"
           >
             <span className="text-[#111] text-[12px] tracking-[0.25em] font-medium uppercase mb-4 block">
-              DISCOVER LUMIÈRE
+              DISCOVER TARINI
             </span>
             
             <h2 className="text-[#111] text-[36px] lg:text-[48px] leading-[1.1] font-normal mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -43,7 +43,7 @@ export default function StorySection() {
             </h2>
             
             <p className="text-gray-600 text-[15px] leading-relaxed mb-10 font-normal">
-              Founded with a passion for timeless elegance, Lumière Jewelry is dedicated to bringing you pieces that celebrate life's most precious moments. Every creation is a testament to our commitment to craftsmanship and beauty.
+              Founded with a passion for timeless elegance, Tarini Jewellers is dedicated to bringing you pieces that celebrate life's most precious moments. Every creation is a testament to our commitment to craftsmanship and beauty.
             </p>
  
             <div>

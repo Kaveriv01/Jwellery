@@ -21,10 +21,10 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>LUMIÈRE JEWELRY | Fine Jewelry Crafted with Precision</title>
-        <meta name="description" content="Discover Lumière Jewelry — fine jewelry crafted with precision, passion, and the finest materials." />
-        <meta property="og:title" content="Lumière Jewelry | Fine Jewelry" />
-        <meta property="og:description" content="Discover Lumière Jewelry — fine jewelry crafted with precision, passion, and the finest materials." />
+        <title>TARINI JEWELLERS | Fine Jewellery Crafted with Precision</title>
+        <meta name="description" content="Discover Tarini Jewellers — fine jewellery crafted with precision, passion, and the finest materials." />
+        <meta property="og:title" content="Tarini Jewellers | Fine Jewellery" />
+        <meta property="og:description" content="Discover Tarini Jewellers — fine jewellery crafted with precision, passion, and the finest materials." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -38,13 +38,13 @@ export default function HomePage() {
         {/* 3. Shop by Category */}
         <ShopByCategory />
 
-        {/* 4. The Lumière Experience */}
+        {/* 4. The Tarini Experience */}
         <EditorialBanner />
 
         {/* 5. New Arrivals */}
         {newArrivals.length > 0 && <NewArrivals products={newArrivals} />}
 
-        {/* 6. Discover Lumière */}
+        {/* 6. Discover Tarini */}
         <StorySection />
 
         {/* 7. Bottom Banners (Sale & Club) */}

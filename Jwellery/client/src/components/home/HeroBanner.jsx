@@ -30,7 +30,7 @@ export default function HeroBanner() {
           animate={{ scale: 1 }}
           transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
           src="/images/home/hero.jpg"
-          alt="Lumière Jewelry Collection"
+          alt="Tarini Jewellers Collection"
           className="w-full h-full object-cover object-top lg:object-center"
           style={{ maskImage: 'linear-gradient(to right, transparent, black 40%)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 40%)' }}
         />
@@ -59,7 +59,7 @@ export default function HeroBanner() {
           
           {/* Supporting Text */}
           <motion.p variants={descVariants} className="text-[#333] text-[14px] lg:text-[16px] max-w-md font-medium mb-10 leading-relaxed">
-            Fine jewelry crafted with precision, passion, and the finest materials.
+            Fine jewellery crafted with precision, passion, and the finest materials.
           </motion.p>
  
           {/* CTAs */}
