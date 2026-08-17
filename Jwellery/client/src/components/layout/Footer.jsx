@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FiInstagram, FiFacebook, FiTwitter, FiArrowRight } from 'react-icons/fi';
+import { FaPinterestP } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import { motion, useReducedMotion } from 'framer-motion';
 import { productService } from '../../services/productService';
@@ -93,13 +94,16 @@ export default function Footer() {
             <h4 className="text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.1em] text-white mb-4 mt-10">Follow</h4>
             <div className="flex gap-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <FaPinterestP size={18} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
                 <FiInstagram size={18} />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
                 <FiFacebook size={18} />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                <FiTwitter size={18} />
+                <span className="font-bold text-[16px] leading-none">X</span>
               </a>
             </div>
           </motion.div>

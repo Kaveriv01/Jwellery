@@ -34,14 +34,14 @@ export default function BottomBanners() {
           {/* Summer Sale Banner */}
           <motion.div variants={itemVariants} className="relative h-[300px] lg:h-[400px] w-full group overflow-hidden bg-[#EAE6DF]">
             <img 
-              src="/images/home/banner-sale.jpg" 
+              src="/images/home/summer-sale-new.png" 
               alt="Summer Sale" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
             />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-500" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
               <h3 className="text-white text-[24px] lg:text-[32px] font-bold tracking-[0.05em] uppercase mb-3">
-                Summer Sale
+                SUMMER SALE
               </h3>
               <p className="text-white/90 text-[14px] lg:text-[15px] font-normal mb-8 max-w-[280px]">
                 Up to 50% off on selected items.
@@ -50,7 +50,7 @@ export default function BottomBanners() {
                 to="/sale" 
                 className="bg-white text-[#111] px-8 py-3 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#111] hover:text-white"
               >
-                Shop Sale
+                SHOP SALE
               </Link>
             </div>
           </motion.div>
@@ -58,14 +58,14 @@ export default function BottomBanners() {
           {/* Join the Club Banner */}
           <motion.div variants={itemVariants} className="relative h-[300px] lg:h-[400px] w-full group overflow-hidden bg-[#111]">
             <img 
-              src="/images/home/banner-club.jpg" 
+              src="/images/home/join-club-new.png" 
               alt="Join the Club" 
               className="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-700 ease-out group-hover:scale-105" 
             />
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-500" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
               <h3 className="text-white text-[24px] lg:text-[32px] font-bold tracking-[0.05em] uppercase mb-3">
-                Join The Club
+                JOIN THE CLUB
               </h3>
               <p className="text-white/90 text-[14px] lg:text-[15px] font-normal mb-8 max-w-[320px]">
                 Get exclusive access to new drops and private sales.
@@ -74,7 +74,7 @@ export default function BottomBanners() {
                 to="/register" 
                 className="bg-transparent border border-white text-white px-8 py-3 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-white hover:text-[#111]"
               >
-                Join Now
+                JOIN NOW
               </Link>
             </div>
           </motion.div>

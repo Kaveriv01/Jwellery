@@ -19,7 +19,7 @@ export default function StorySection() {
               className="w-full h-full overflow-hidden"
             >
               <img
-                src="/images/home/hero.jpg"
+                src="/images/home/our-story-new.png"
                 alt="Discover Tarini"
                 className="w-full h-full object-cover object-center"
               />

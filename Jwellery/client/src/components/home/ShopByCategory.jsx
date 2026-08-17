@@ -2,36 +2,12 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const CATEGORIES = [
-  {
-    name: 'NECKLACES',
-    slug: 'necklaces',
-    image: '/images/home/cat-necklaces.jpg'
-  },
-  {
-    name: 'EARRINGS',
-    slug: 'earrings',
-    image: '/images/home/cat-earrings.jpg'
-  },
-  {
-    name: 'RINGS',
-    slug: 'rings',
-    image: '/images/home/cat-rings.jpg'
-  },
-  {
-    name: 'BRACELETS',
-    slug: 'bracelets',
-    image: '/images/home/cat-bracelets.jpg'
-  },
-  {
-    name: 'STACKABLES',
-    slug: 'stackables',
-    image: '/images/home/cat-stackables.jpg'
-  },
-  {
-    name: 'GIFTS',
-    slug: 'gifts',
-    image: '/images/home/cat-gifts.jpg'
-  }
+  { id: 'necklaces', name: 'Necklaces', image: '/images/home/cat-necklaces-new.png' },
+  { id: 'earrings', name: 'Earrings', image: '/images/home/cat-earrings-new.png' },
+  { id: 'rings', name: 'Rings', image: '/images/home/cat-rings-new.png' },
+  { id: 'bracelets', name: 'Bracelets', image: '/images/home/cat-bracelets-new.png' },
+  { id: 'stackables', name: 'Stackables', image: '/images/home/cat-stackables-new.png' },
+  { id: 'gifts', name: 'Gifts', image: '/images/home/cat-gifts-new.png' }
 ];
 
 export default function ShopByCategory() {
@@ -76,15 +52,15 @@ export default function ShopByCategory() {
           viewport={{ once: true, amount: 0.15 }}
         >
           {CATEGORIES.map((cat) => (
-            <motion.div key={cat.slug} variants={itemVariants} className="h-full">
+            <motion.div key={cat.id} variants={itemVariants} className="h-full">
               <Link 
-                to={`/category/${cat.slug}`} 
-                className="group block relative w-full aspect-square overflow-hidden bg-gray-200"
+                to={`/category/${cat.id}`} 
+                className="group block relative w-full aspect-square overflow-hidden bg-[#F7F5F1]"
               >
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   loading="lazy"
                 />
                 

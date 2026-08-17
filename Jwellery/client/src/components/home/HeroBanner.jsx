@@ -29,10 +29,9 @@ export default function HeroBanner() {
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
-          src="/images/home/hero.jpg"
+          src="/images/home/hero-new.png"
           alt="Tarini Jewellers Collection"
           className="w-full h-full object-cover object-top lg:object-center"
-          style={{ maskImage: 'linear-gradient(to right, transparent, black 40%)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 40%)' }}
         />
       </div>
 
@@ -47,15 +46,15 @@ export default function HeroBanner() {
           className="flex flex-col items-start max-w-xl"
         >
           {/* Eyebrow */}
-          <motion.span variants={eyebrowVariants} className="text-[#111] text-[10px] lg:text-[11px] tracking-[0.15em] uppercase font-bold mb-6 block">
+          <motion.span variants={eyebrowVariants} className="text-[#111] text-[11px] lg:text-[12px] tracking-[0.25em] font-bold uppercase mb-5 block">
             NEW COLLECTION
           </motion.span>
           
-          {/* Main Heading */}
-          <motion.h1 variants={headingVariants} className="text-[#111] text-[42px] sm:text-[54px] lg:text-[64px] leading-[1.05] font-normal mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          {/* Main Headline */}
+          <h2 className="text-[#111] text-[40px] sm:text-[50px] lg:text-[64px] leading-[1.05] font-normal mb-6 tracking-wide drop-shadow-sm" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Timeless Beauty.<br />
-            <span className="italic">Made to Shine.</span>
-          </motion.h1>
+            Made to Shine.
+          </h2>
           
           {/* Supporting Text */}
           <motion.p variants={descVariants} className="text-[#333] text-[14px] lg:text-[16px] max-w-md font-medium mb-10 leading-relaxed">
@@ -63,18 +62,15 @@ export default function HeroBanner() {
           </motion.p>
  
           {/* CTAs */}
-          <motion.div variants={ctaVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <Link
-              to="/products?sort=-createdAt"
-              className="w-full sm:w-auto block bg-[#111] text-white px-8 py-3.5 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#333] text-center rounded-sm"
-            >
-              Shop New In
+          <motion.div variants={btnVariants} className="flex flex-wrap items-center gap-5">
+            <Link to="/products" className="group relative inline-flex items-center justify-center bg-[#111] text-white px-8 py-3.5 text-[11px] lg:text-[12px] uppercase tracking-[0.15em] font-medium overflow-hidden rounded-[2px] hover:bg-[#333] transition-colors duration-300">
+              <span className="relative z-10 flex items-center gap-2">
+                SHOP NEW IN
+              </span>
             </Link>
-            <Link
-              to="/collections"
-              className="w-full sm:w-auto block bg-transparent border border-[#111] text-[#111] px-8 py-3.5 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#111] hover:text-white text-center rounded-sm"
-            >
-              Explore Collection
+            
+            <Link to="/collections" className="group inline-flex items-center gap-2 text-[#111] text-[11px] lg:text-[12px] uppercase tracking-[0.15em] font-bold hover:text-[#555] transition-colors duration-300">
+              <span className="relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#111] after:scale-x-100 group-hover:after:scale-x-0 after:transition-transform after:duration-300 after:origin-right">EXPLORE COLLECTION</span>
             </Link>
           </motion.div>
 

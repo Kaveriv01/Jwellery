@@ -12,7 +12,7 @@ export default function EditorialBanner() {
           whileInView={{ scale: 1 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-          src="/images/home/hero.jpg"
+          src="/images/home/experience-banner-new.png"
           alt="The Tarini Experience"
           className="w-full h-full object-cover object-center"
         />
