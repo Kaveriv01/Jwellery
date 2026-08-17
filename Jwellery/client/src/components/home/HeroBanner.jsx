@@ -22,86 +22,70 @@ export default function HeroBanner() {
   };
 
   return (
-    <section className="relative w-full h-[85vh] lg:h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-[#D3BFA9]">
-      {/* Background Image with Ken Burns Effect */}
-      <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0 overflow-hidden hidden lg:block mask-image-linear-to-l">
+    <section className="relative w-full h-[85vh] lg:h-[80vh] min-h-[500px] flex items-center bg-[#EAE6DF] overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute top-0 right-0 w-full lg:w-2/3 h-full z-0 overflow-hidden">
         <motion.img
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
-          src="https://images.unsplash.com/photo-1599643478524-fb66f70d00f8?auto=format&fit=crop&q=80&w=2000"
-          alt="Premium Luxury Jewellery"
-          className="w-full h-full object-cover object-top origin-top"
-          style={{ maskImage: 'linear-gradient(to right, transparent, black 30%)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 30%)' }}
+          src="/images/home/hero.jpg"
+          alt="Lumière Jewelry Collection"
+          className="w-full h-full object-cover object-top lg:object-center"
+          style={{ maskImage: 'linear-gradient(to right, transparent, black 40%)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 40%)' }}
         />
       </div>
 
-      <div className="absolute top-0 right-0 w-full h-full z-0 overflow-hidden lg:hidden block">
-        <motion.img
-          initial={{ scale: 1.05 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
-          src="https://images.unsplash.com/photo-1599643478524-fb66f70d00f8?auto=format&fit=crop&q=80&w=2000"
-          alt="Premium Luxury Jewellery"
-          className="w-full h-full object-cover object-top opacity-30"
-        />
-      </div>
+      {/* Mobile overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#EAE6DF] via-[#EAE6DF]/90 to-transparent lg:hidden z-0" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-start justify-center px-6 lg:px-20 max-w-7xl mx-auto w-full h-full">
+      <div className="container-luxury relative z-10 w-full">
         <motion.div
           initial="hidden"
           animate="show"
-          className="flex flex-col items-start max-w-2xl"
+          className="flex flex-col items-start max-w-xl"
         >
           {/* Eyebrow */}
-          <motion.span variants={eyebrowVariants} className="text-[#5b4e3e] text-[11px] lg:text-[13px] tracking-[0.25em] uppercase font-semibold mb-6 block">
-            UNFADING BEAUTY
+          <motion.span variants={eyebrowVariants} className="text-[#111] text-[10px] lg:text-[11px] tracking-[0.15em] uppercase font-bold mb-6 block">
+            NEW COLLECTION
           </motion.span>
           
           {/* Main Heading */}
-          <motion.h1 variants={headingVariants} className="text-[#3A332B] text-[40px] sm:text-[48px] lg:text-[64px] leading-[1.1] font-normal mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Crafted To Shine, Designed<br />To Empower – One Chain<br />At A Time
+          <motion.h1 variants={headingVariants} className="text-[#111] text-[42px] sm:text-[54px] lg:text-[64px] leading-[1.05] font-normal mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Timeless Beauty.<br />
+            <span className="italic">Made to Shine.</span>
           </motion.h1>
           
           {/* Supporting Text */}
-          <motion.p variants={descVariants} className="text-[#5b4e3e] text-[14px] lg:text-[15px] max-w-lg font-medium mb-12 leading-relaxed tracking-[0.02em]">
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Aliquam erat volutpat. Fusce tincidunt lorem at nisl lacinia, at sollicitudin quam feugiat.
+          <motion.p variants={descVariants} className="text-[#333] text-[14px] lg:text-[16px] max-w-md font-medium mb-10 leading-relaxed">
+            Fine jewelry crafted with precision, passion, and the finest materials.
           </motion.p>
  
           {/* CTAs */}
-          <motion.div variants={ctaVariants} className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
-            <motion.div
-              whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
-              transition={{ duration: 0.12 }}
-              className="w-full sm:w-auto"
+          <motion.div variants={ctaVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <Link
+              to="/products?sort=-createdAt"
+              className="w-full sm:w-auto block bg-[#111] text-white px-8 py-3.5 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#333] text-center rounded-sm"
             >
-              <Link
-                to="/products"
-                className="w-full sm:w-auto block bg-[#4A4A4A] text-white px-12 py-4 text-[12px] font-medium tracking-[0.1em] uppercase transition-all duration-[250ms] ease-out hover:bg-[#2A2A2A] text-center"
-              >
-                Know More
-              </Link>
-            </motion.div>
+              Shop New In
+            </Link>
+            <Link
+              to="/collections"
+              className="w-full sm:w-auto block bg-transparent border border-[#111] text-[#111] px-8 py-3.5 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#111] hover:text-white text-center rounded-sm"
+            >
+              Explore Collection
+            </Link>
+          </motion.div>
+
+          {/* Dots */}
+          <motion.div variants={ctaVariants} className="flex items-center gap-2 mt-16">
+            <div className="w-2 h-2 rounded-full bg-[#111]" />
+            <div className="w-2 h-2 rounded-full bg-[#ccc]" />
+            <div className="w-2 h-2 rounded-full bg-[#ccc]" />
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Slider Controls Placeholder */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-        <div className="w-2 h-2 rounded-full bg-[#3A332B]" />
-        <div className="w-2 h-2 rounded-full bg-white/50" />
-        <div className="w-2 h-2 rounded-full bg-white/50" />
-        <div className="w-2 h-2 rounded-full bg-white/50" />
-      </div>
-
-      {/* Arrows Placeholder */}
-      <button className="absolute left-4 lg:left-10 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/30 backdrop-blur-sm flex items-center justify-center text-[#3A332B] hover:bg-white/50 transition-colors z-20">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-      <button className="absolute right-4 lg:right-10 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/30 backdrop-blur-sm flex items-center justify-center text-[#3A332B] hover:bg-white/50 transition-colors z-20">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
     </section>
   );
 }

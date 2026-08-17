@@ -3,12 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import HeroBanner from '../components/home/HeroBanner';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import ShopByCategory from '../components/home/ShopByCategory';
-import { BestSellers, NewArrivals } from '../components/home/FeaturedCollection';
+import { NewArrivals } from '../components/home/FeaturedCollection';
 import EditorialBanner from '../components/home/EditorialBanner';
-import OccasionSection from '../components/home/OccasionSection';
 import StorySection from '../components/home/StorySection';
-import InstagramGallery from '../components/home/InstagramGallery';
-import Newsletter from '../components/home/Newsletter';
+import BottomBanners from '../components/home/BottomBanners';
 import { productService } from '../services/productService';
 
 export default function HomePage() {
@@ -18,48 +16,39 @@ export default function HomePage() {
     staleTime: 5 * 60_000,
   });
 
-  const { bestSellers = [], newArrivals = [] } = featuredData || {};
+  const { newArrivals = [] } = featuredData || {};
 
   return (
     <>
       <Helmet>
-        <title>Tarini Jewellers | Timeless Jewellery for Every Story</title>
-        <meta name="description" content="Discover Tarini Jewellers — handcrafted luxury jewellery inspired by Indian heritage. Shop rings, necklaces, earrings, bracelets." />
-        <meta property="og:title" content="Tarini Jewellers | Timeless Jewellery for Every Story" />
-        <meta property="og:description" content="Elegant. Timeless. Luxury. Discover Tarini Jewellers — where Indian heritage meets modern fashion." />
+        <title>LUMIÈRE JEWELRY | Fine Jewelry Crafted with Precision</title>
+        <meta name="description" content="Discover Lumière Jewelry — fine jewelry crafted with precision, passion, and the finest materials." />
+        <meta property="og:title" content="Lumière Jewelry | Fine Jewelry" />
+        <meta property="og:description" content="Discover Lumière Jewelry — fine jewelry crafted with precision, passion, and the finest materials." />
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <div className="overflow-x-hidden bg-[#FAF8F3]">
+      <div className="overflow-x-hidden bg-white">
         {/* 1. Hero Banner */}
         <HeroBanner />
 
-        {/* 2. Trust / Value Bar */}
+        {/* 2. Feature Bar */}
         <WhyChooseUs />
 
         {/* 3. Shop by Category */}
         <ShopByCategory />
 
-        {/* 4. Best Sellers */}
-        {bestSellers.length > 0 && <BestSellers products={bestSellers} />}
-
-        {/* 5. Editorial Story Banner */}
+        {/* 4. The Lumière Experience */}
         <EditorialBanner />
 
-        {/* 6. New Arrivals */}
+        {/* 5. New Arrivals */}
         {newArrivals.length > 0 && <NewArrivals products={newArrivals} />}
 
-        {/* 7. Brand Story */}
+        {/* 6. Discover Lumière */}
         <StorySection />
 
-        {/* 8. Why Tarini (Trust Section) */}
-        <OccasionSection />
-
-        {/* 9. Instagram Gallery */}
-        <InstagramGallery />
-
-        {/* 10. Newsletter */}
-        <Newsletter />
+        {/* 7. Bottom Banners (Sale & Club) */}
+        <BottomBanners />
       </div>
     </>
   );

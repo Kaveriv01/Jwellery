@@ -5,48 +5,44 @@ export default function EditorialBanner() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative w-full h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <motion.img
-          initial={{ scale: shouldReduceMotion ? 1 : 1.015 }}
+          initial={{ scale: shouldReduceMotion ? 1 : 1.05 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
-          src="https://images.unsplash.com/photo-1603974372039-adc49044b6bd?w=1600&q=90"
-          alt="Everyday Luxury"
+          src="/images/home/hero.jpg"
+          alt="The Lumière Experience"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[#220306]/20" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
+      <div className="relative z-10 text-center px-4 w-full flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[#F7F3EA]/90 backdrop-blur-md p-10 md:p-14 max-w-xl mx-auto border border-[#FAF6EE] shadow-[0_15px_35px_rgba(58,5,8,0.02)] rounded-[4px]"
+          className="flex flex-col items-center"
         >
-          <span className="text-[#B59A68] text-[10px] lg:text-[11px] tracking-[0.20em] font-medium uppercase mb-4 block">
-            EVERYDAY LUXURY
+          <span className="text-white text-[12px] tracking-[0.25em] font-medium uppercase mb-6 block drop-shadow-md">
+            THE LUMIÈRE EXPERIENCE
           </span>
           
-          <h2 className="text-[#3A0508] text-[22px] md:text-[25px] lg:text-[28px] leading-tight font-normal mb-[18px]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Pieces designed to be <em className="italic text-[#B59A68]">worn</em>, layered, and <em className="italic text-[#B59A68]">loved</em>.
+          <h2 className="text-white text-[36px] sm:text-[42px] lg:text-[54px] leading-tight font-normal mb-10 drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Experience The Magic
           </h2>
 
-          <motion.div
-            whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+          <motion.button
+            whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
             transition={{ duration: 0.12 }}
-            className="inline-block"
+            className="w-16 h-16 rounded-full border border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors duration-300"
+            aria-label="Play Video"
           >
-            <Link
-              to="/products"
-              className="inline-block bg-[#3A0508] text-[#F7F3EA] px-8 py-3.5 text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-[250ms] ease-out hover:-translate-y-[2px] hover:bg-[#220306] text-center rounded-[2px] border-b-2 border-transparent hover:border-[#B59A68] shadow-md shadow-black/10"
-            >
-              Discover The Collection
-            </Link>
-          </motion.div>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" className="ml-1"><path d="M8 5v14l11-7z" /></svg>
+          </motion.button>
         </motion.div>
       </div>
     </section>

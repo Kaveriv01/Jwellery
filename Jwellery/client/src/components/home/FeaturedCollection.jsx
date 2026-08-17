@@ -249,56 +249,23 @@ export function NewArrivals({ products }) {
     }
   };
 
-  const dividerReveal = {
-    hidden: { scaleX: 0 },
-    visible: { 
-      scaleX: 1, 
-      transition: { duration: 0.6, delay: shouldReduceMotion ? 0 : 0.12, ease: [0.22, 1, 0.36, 1] } 
-    }
-  };
-
   return (
     <motion.section 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={sectionReveal}
-      className="relative py-20 lg:py-28 overflow-hidden" 
-      style={{ background: 'linear-gradient(180deg, #F8F4EC 0%, #FAF6EE 100%)' }}
+      className="relative py-16 lg:py-20 overflow-hidden bg-white" 
     >
-      {/* Subtle Background Micro-Animation */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{ background: 'radial-gradient(circle at 50% 20%, rgba(200, 168, 102, 0.06), transparent 45%)' }}
-      />
-      
-      <div className="container-luxury relative z-10">
-        <div className="flex flex-col items-center justify-center text-center mb-16">
+      <div className="container-luxury max-w-[1400px] relative z-10">
+        <div className="flex flex-col items-center justify-center text-center mb-12">
           <motion.h2 
             variants={headingReveal}
-            className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide mb-[16px] text-[#3A0508]" 
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-[20px] lg:text-[24px] font-bold tracking-[0.05em] uppercase mb-[16px] text-[#111]" 
+            style={{ fontFamily: 'inherit' }}
           >
             New Arrivals
           </motion.h2>
-          <motion.div 
-            variants={dividerReveal}
-            style={{ originX: 0.5 }}
-            className="w-12 h-[1px] mb-8 bg-[#B59A68]" 
-          />
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            whileInView={{ opacity: 1 }} 
-            viewport={{ once: true, amount: 0.15 }} 
-            transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.35 }}
-          >
-            <Link
-              to="/products?isNewArrival=true"
-              className="text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase pb-1 border-b transition-colors duration-300 text-[#332B27] border-[#332B27] hover:text-[#3A0508] hover:border-[#3A0508]"
-            >
-              EXPLORE COLLECTION
-            </Link>
-          </motion.div>
         </div>
 
         <motion.div
@@ -306,7 +273,7 @@ export function NewArrivals({ products }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
         >
           {products.slice(0, 4).map((product) => (
             <motion.div key={product._id} variants={cardItem} className="h-full">
@@ -314,6 +281,15 @@ export function NewArrivals({ products }) {
             </motion.div>
           ))}
         </motion.div>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            to="/products?isNewArrival=true"
+            className="inline-block bg-[#111] text-white px-10 py-3.5 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#333]"
+          >
+            Shop New In
+          </Link>
+        </div>
       </div>
     </motion.section>
   );
