@@ -81,35 +81,6 @@ const ProductCard = memo(function ProductCard({ product }) {
         </div>
       </Link>
 
-      {/* Wishlist Button */}
-      <button
-        onClick={handleWishlistToggle}
-        disabled={isToggling}
-        type="button"
-        className={`absolute top-4 right-4 w-8 h-8 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center transition-all duration-[450ms] z-30 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 cursor-pointer ${shouldReduceMotion ? '' : 'hover:scale-[1.08] hover:shadow-[0_4px_12px_rgba(86,8,23,0.05)]'}`}
-        aria-label="Toggle wishlist"
-      >
-        <motion.div
-          initial={false}
-          animate={{ scale: (wishlisted && !shouldReduceMotion) ? [1, 1.1, 1] : 1 }}
-          transition={{ duration: 0.25 }}
-          className="pointer-events-none"
-        >
-          <Heart size={14} className={`transition-colors duration-300 ${wishlisted ? 'fill-[#B59A68] text-[#B59A68] drop-shadow-[0_0_4px_rgba(181,154,104,0.3)]' : 'text-[#3A0508]/70 hover:text-[#B59A68]'}`} />
-        </motion.div>
-      </button>
-
-      {/* Add to Cart Button (Quick Add) */}
-      <button
-        onClick={handleAddToCart}
-        disabled={isAddingToCart || isOutOfStock}
-        type="button"
-        className={`absolute top-14 right-4 w-8 h-8 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center transition-all duration-[450ms] z-30 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 cursor-pointer ${shouldReduceMotion ? '' : 'hover:scale-[1.08] hover:shadow-[0_4px_12px_rgba(86,8,23,0.05)]'} disabled:opacity-50`}
-        aria-label="Add to cart"
-      >
-        <ShoppingBag size={14} className="text-[#3A0508]/70 hover:text-[#B59A68] transition-colors duration-300" />
-      </button>
-
       {/* Badges */}
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }} className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 pointer-events-none">
         {isOutOfStock && <span className="bg-[#332B27] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Sold Out</span>}
@@ -127,6 +98,24 @@ const ProductCard = memo(function ProductCard({ product }) {
         <div className="mt-auto flex items-center justify-center gap-2">
           <span className="text-[13px] lg:text-[14px] font-medium text-[#3A0508]">{formatPrice(effectivePrice)}</span>
           {discountPrice && <span className="text-[11px] lg:text-[12px] text-[#756B62] line-through">{formatPrice(price)}</span>}
+        </div>
+        
+        {/* Action Buttons below price */}
+        <div className="mt-3 flex gap-2 w-full pt-2 border-t border-[#FAF6EE]">
+          <button
+            onClick={handleWishlistToggle}
+            disabled={isToggling}
+            className="w-10 h-10 border border-[#FAF6EE] rounded-[2px] flex items-center justify-center text-[#756B62] hover:text-[#3A0508] hover:bg-[#FAF6EE] transition-colors"
+          >
+            <Heart size={16} className={wishlisted ? 'fill-[#B59A68] text-[#B59A68]' : ''} />
+          </button>
+          <button
+            onClick={handleAddToCart}
+            disabled={isAddingToCart || isOutOfStock}
+            className="flex-1 bg-[#3A0508] text-[#F7F3EA] text-[10px] font-medium uppercase tracking-[0.12em] py-2 hover:bg-[#220306] rounded-[2px] transition-colors disabled:opacity-60"
+          >
+            {isOutOfStock ? 'Sold Out' : 'Add to Cart'}
+          </button>
         </div>
       </div>
     </motion.div>
