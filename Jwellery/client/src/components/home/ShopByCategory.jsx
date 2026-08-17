@@ -1,61 +1,64 @@
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 
+// Each category uses a completely different, unique image
 const CATEGORIES = [
-  { id: 'necklaces', name: 'Necklaces', image: '/images/home/cat-necklaces-new.png' },
-  { id: 'earrings', name: 'Earrings', image: '/images/home/cat-earrings-new.png' },
-  { id: 'rings', name: 'Rings', image: '/images/home/cat-rings-new.png' },
-  { id: 'bracelets', name: 'Bracelets', image: '/images/home/cat-bracelets-new.png' },
+  { id: 'necklaces',  name: 'Necklaces',  image: '/images/home/cat-necklaces-new.png'  },
+  { id: 'earrings',   name: 'Earrings',   image: '/images/home/cat-earrings-new.png'   },
+  { id: 'rings',      name: 'Rings',      image: '/images/home/cat-rings-new.png'      },
+  { id: 'bracelets',  name: 'Bracelets',  image: '/images/home/cat-bracelets-new.png'  },
   { id: 'stackables', name: 'Stackables', image: '/images/home/cat-stackables-new.png' },
-  { id: 'gifts', name: 'Gifts', image: '/images/home/cat-gifts-new.png' }
+  { id: 'gifts',      name: 'Gifts',      image: '/images/home/cat-gifts-new.png'      },
 ];
 
 export default function ShopByCategory() {
   const shouldReduceMotion = useReducedMotion();
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: shouldReduceMotion ? 0 : 0.1 }
-    }
+    hidden: {},
+    show: { transition: { staggerChildren: shouldReduceMotion ? 0 : 0.08 } }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
-    }
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } }
   };
 
   return (
-    <div className="py-16 lg:py-20 bg-[#F9F9F9] overflow-hidden">
+    <section className="py-16 lg:py-20 bg-white overflow-hidden">
       <div className="container-luxury max-w-[1400px]">
-        <motion.div 
+        {/* Section heading */}
+        <motion.div
           className="text-center mb-10"
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.h2 className="text-[16px] lg:text-[18px] text-[#111] font-bold tracking-[0.05em] uppercase" style={{ fontFamily: 'inherit' }}>
+          <span className="text-[#C7A56A] text-[11px] tracking-[0.3em] font-medium uppercase mb-3 block">
+            OUR COLLECTIONS
+          </span>
+          <h2
+            className="text-[#111] text-[28px] lg:text-[36px] font-normal"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
             Shop By Category
-          </motion.h2>
+          </h2>
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4"
+        {/* 6-column grid */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {CATEGORIES.map((cat) => (
             <motion.div key={cat.id} variants={itemVariants} className="h-full">
-              <Link 
-                to={`/category/${cat.id}`} 
-                className="group block relative w-full aspect-square overflow-hidden bg-[#F7F5F1]"
+              <Link
+                to={`/category/${cat.id}`}
+                className="group block relative w-full aspect-square overflow-hidden bg-[#EEE9E0] rounded-sm"
               >
                 <img
                   src={cat.image}
@@ -63,16 +66,15 @@ export default function ShopByCategory() {
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   loading="lazy"
                 />
-                
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Text content */}
-                <div className="absolute inset-x-0 bottom-0 p-4 lg:p-6 text-center flex flex-col items-center justify-end">
-                  <h3 className="text-white text-[12px] lg:text-[14px] font-bold tracking-[0.1em] mb-1 group-hover:-translate-y-1 transition-transform duration-500 uppercase">
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Text */}
+                <div className="absolute inset-x-0 bottom-0 p-4 text-center flex flex-col items-center justify-end">
+                  <h3 className="text-white text-[12px] lg:text-[13px] font-medium tracking-[0.12em] mb-1 uppercase group-hover:-translate-y-1 transition-transform duration-400">
                     {cat.name}
                   </h3>
-                  <span className="text-white/80 text-[10px] uppercase tracking-widest font-medium opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500">
+                  <span className="text-[#C7A56A] text-[9px] uppercase tracking-widest font-medium opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-400">
                     Shop Now
                   </span>
                 </div>
@@ -81,6 +83,6 @@ export default function ShopByCategory() {
           ))}
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
