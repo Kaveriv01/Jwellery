@@ -44,17 +44,34 @@ export default function ProductsPage() {
 
   let categoryId = categoryIdFromUrl;
   let categoryName = '';
+  let categorySlug = '';
   
   if (slug && categories.length > 0) {
     const matchedCategory = categories.find((c) => c.slug === slug);
     if (matchedCategory) {
       categoryId = matchedCategory._id;
       categoryName = matchedCategory.name;
+      categorySlug = matchedCategory.slug;
     }
   } else if (!slug && categoryId && categories.length > 0) {
     const matchedCategory = categories.find((c) => c._id === categoryId);
-    if (matchedCategory) categoryName = matchedCategory.name;
+    if (matchedCategory) {
+      categoryName = matchedCategory.name;
+      categorySlug = matchedCategory.slug;
+    }
   }
+
+  // Determine if we should show a banner and what image to use
+  const getBannerImage = (slug) => {
+    switch (slug) {
+      case 'necklaces': return '/images/categories/necklaces-banner.jpg';
+      case 'earrings': return '/images/categories/earrings-banner.jpg';
+      case 'rings': return '/images/categories/rings-banner.jpg';
+      case 'bracelets': return '/images/categories/bracelets-banner.jpg';
+      default: return null;
+    }
+  };
+  const bannerImage = getBannerImage(categorySlug);
 
   const params = { page, limit: ITEMS_PER_PAGE, sortBy };
   if (search) params.search = search;
@@ -118,15 +135,38 @@ export default function ProductsPage() {
         <meta name="description" content="Browse our complete jewelry collection — rings, necklaces, earrings, bracelets, and more." />
       </Helmet>
 
+      {/* Category Banner (if applicable) */}
+      {bannerImage && (
+        <div className="relative w-full h-[240px] md:h-[320px] lg:h-[400px] overflow-hidden bg-[#111]">
+          <img 
+            src={bannerImage} 
+            alt={categoryName} 
+            className="w-full h-full object-cover opacity-70"
+          />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+            <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-[#C7A56A] text-[10px] tracking-[0.2em] uppercase font-[600] mb-3">
+              TARINI COLLECTION
+            </span>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-white text-[42px] sm:text-[52px] lg:text-[64px] font-[500] tracking-[-0.01em] leading-[1.1]">
+              {categoryName}
+            </h1>
+          </div>
+        </div>
+      )}
+
       <div className="container-luxury py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide text-[#3A0508]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              {categoryName ? categoryName : (search ? `Results for "${search}"` : 'All Jewelry')}
-            </h1>
+            {!bannerImage && (
+              <h1 className="text-[23px] sm:text-[27px] lg:text-[32px] font-[500] tracking-wide text-[#333]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                {categoryName ? categoryName : (search ? `Results for "${search}"` : 'All Jewelry')}
+              </h1>
+            )}
             {pagination.total !== undefined && (
-              <p className="text-[13px] text-[#756B62] mt-1">{pagination.total} products</p>
+              <p className="text-[13px] text-[#756B62] mt-1" style={{ fontFamily: "'Manrope', sans-serif" }}>
+                {pagination.total} products
+              </p>
             )}
           </div>
           <div className="flex items-center gap-3">
