@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from '../product/ProductCard';
 
-function SectionHeading({ title, dark = false }) {
+function SectionHeading({ title, subtitle, dark = false }) {
   const shouldReduceMotion = useReducedMotion();
 
   const headingReveal = {
@@ -16,33 +16,31 @@ function SectionHeading({ title, dark = false }) {
     }
   };
 
-  const dividerReveal = {
-    hidden: { scaleX: 0 },
-    visible: { 
-      scaleX: 1, 
-      transition: { duration: 0.6, delay: shouldReduceMotion ? 0 : 0.12, ease: [0.22, 1, 0.36, 1] } 
-    }
-  };
-
   return (
     <motion.div 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
-      className="flex flex-col items-center justify-center text-center mb-12"
+      className="flex flex-col items-center justify-center text-center mb-16"
     >
+      {subtitle && (
+        <motion.span className={`text-[11px] tracking-[0.25em] uppercase mb-3 block font-semibold ${dark ? 'text-[#FAF8F3]/80' : 'text-[#B59A68]'}`}>
+          {subtitle}
+        </motion.span>
+      )}
+      
+      {/* Decorative element from design */}
+      <div className={`w-4 h-4 mx-auto mb-2 opacity-50 ${dark ? 'text-white' : 'text-[#B59A68]'}`}>
+         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+      </div>
+
       <motion.h2 
         variants={headingReveal}
-        className={`text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide mb-[16px] ${dark ? 'text-[#FAF8F3]' : 'text-[#3A0508]'}`} 
+        className={`text-[32px] sm:text-[38px] lg:text-[46px] font-normal tracking-wide mb-[16px] ${dark ? 'text-[#FAF8F3]' : 'text-[#4A4A4A]'}`} 
         style={{ fontFamily: "'Cormorant Garamond', serif" }}
       >
         {title}
       </motion.h2>
-      <motion.div 
-        variants={dividerReveal}
-        style={{ originX: 0.5 }}
-        className={`w-12 h-[1px] mb-4 ${dark ? 'bg-[#FAF8F3]/30' : 'bg-[#B59A68]'}`} 
-      />
     </motion.div>
   );
 }
@@ -109,7 +107,7 @@ function ProductCarousel({ products }) {
   );
 }
 
-function ProductSection({ title, products = [], viewAllLink, dark = false, bg = '', useCarousel = false }) {
+function ProductSection({ title, subtitle, products = [], viewAllLink, dark = false, bg = '', useCarousel = false }) {
   const shouldReduceMotion = useReducedMotion();
 
   const sectionReveal = {
@@ -140,7 +138,7 @@ function ProductSection({ title, products = [], viewAllLink, dark = false, bg = 
       className={`py-20 lg:py-28 overflow-hidden ${bg}`}
     >
       <div className="container-luxury relative">
-        <SectionHeading title={title} dark={dark} />
+        <SectionHeading title={title} subtitle={subtitle} dark={dark} />
 
         {useCarousel ? (
           <motion.div
@@ -206,13 +204,21 @@ export function TrendingCollection({ products }) {
 
 export function BestSellers({ products }) {
   return (
-    <ProductSection
-      title="Our Bestsellers"
-      products={products}
-      viewAllLink="/products?isBestSeller=true"
-      bg="bg-white border-t border-[#FAF6EE]"
-      useCarousel={true}
-    />
+    <div className="relative">
+      {/* Decorative large diamond background element */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-5 pointer-events-none z-0">
+        <svg width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="#4A4A4A" strokeWidth="0.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+      </div>
+      
+      <ProductSection
+        title="Best Seller"
+        subtitle="BEST SELLER PRODUCT THIS WEEK!"
+        products={products}
+        viewAllLink="/products?isBestSeller=true"
+        bg="bg-[#FAFAF8] relative z-10"
+        useCarousel={true}
+      />
+    </div>
   );
 }
 
