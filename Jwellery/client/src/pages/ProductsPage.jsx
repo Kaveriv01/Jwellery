@@ -71,14 +71,20 @@ export default function ProductsPage() {
     if (!s) return null;
     const normalized = s.toLowerCase();
     switch (normalized) {
-      case 'necklaces': return '/images/categories/necklaces-banner.jpg';
-      case 'earrings':  return '/images/categories/earrings-banner.jpg';
-      case 'rings':     return '/images/categories/rings-banner.jpg';
-      case 'bracelets': return '/images/categories/bracelets-banner.jpg';
+      case 'necklaces': 
+        return {
+          desktop: '/images/jewelry/necklaces/necklace-banner.webp',
+          mobile: '/images/jewelry/necklaces/necklace-banner-mobile.webp'
+        };
+      case 'earrings':  return { desktop: '/images/home/cat-earrings-new.png' };
+      case 'rings':     return { desktop: '/images/home/cat-rings-new.png' };
+      case 'bracelets': return { desktop: '/images/home/cat-bracelets-new.png' };
+      case 'stackables':return { desktop: '/images/home/cat-stackables-new.png' };
+      case 'gifts':     return { desktop: '/images/home/cat-gifts-new.png' };
       default: return null;
     }
   };
-  const bannerImage = getBannerImage(categorySlug);
+  const bannerData = getBannerImage(categorySlug);
 
   const params = { page, limit: ITEMS_PER_PAGE, sortBy };
   if (search) params.search = search;
@@ -165,27 +171,36 @@ export default function ProductsPage() {
         </h1>
 
         {/* Constrained Category Banner */}
-        {bannerImage && (
+        {bannerData && (
           <div className="relative w-full h-[180px] md:h-[260px] lg:h-[320px] mb-12 overflow-hidden bg-[#EAE8E2]">
-            <img 
-              src={bannerImage} 
-              alt={categoryName} 
-              className="w-full h-full object-cover object-center"
-            />
+            <picture>
+              {bannerData.mobile && (
+                <source media="(max-width: 768px)" srcSet={bannerData.mobile} />
+              )}
+              <img 
+                src={bannerData.desktop} 
+                alt={categoryName} 
+                className="w-full h-full object-cover object-[center_top] md:object-center"
+              />
+            </picture>
+            
             {/* Optional overlay text matching mockup */}
-            <div className="absolute inset-y-0 right-0 w-1/2 flex flex-col justify-center px-8 md:px-16 text-right">
-              <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-white text-[12px] md:text-[14px] font-[500] tracking-wider mb-1 drop-shadow-md">
+            <div className="absolute inset-y-0 right-0 w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 text-right z-10 pointer-events-none">
+              <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-[#111] md:text-white text-[12px] md:text-[14px] font-[500] tracking-wider mb-1 drop-shadow-sm md:drop-shadow-md">
                 The right time for life
               </span>
-              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-white text-[42px] md:text-[64px] font-[500] leading-none mb-6 drop-shadow-md">
+              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[#111] md:text-white text-[38px] sm:text-[42px] md:text-[64px] font-[500] leading-none mb-6 drop-shadow-sm md:drop-shadow-md">
                 Jewelry
               </span>
-              <div className="flex justify-end">
-                <span style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2">
-                  See Collection
-                </span>
+              <div className="flex justify-end pointer-events-auto">
+                <button style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2 hover:bg-[#333] transition-colors">
+                  SEE COLLECTION
+                </button>
               </div>
             </div>
+            
+            {/* Mobile gradient overlay for text readability if needed */}
+            <div className="absolute inset-0 bg-gradient-to-l from-white/60 to-transparent md:bg-none pointer-events-none" />
           </div>
         )}
 
