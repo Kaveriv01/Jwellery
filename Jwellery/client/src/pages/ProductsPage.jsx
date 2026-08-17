@@ -67,24 +67,31 @@ export default function ProductsPage() {
   }
 
   // Determine if we should show a banner and what image to use
-  const getBannerImage = (s) => {
+  const getBannerData = (s) => {
     if (!s) return null;
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklaces': 
         return {
-          desktop: '/images/jewelry/necklaces/necklace-banner.webp',
-          mobile: '/images/jewelry/necklaces/necklace-banner-mobile.webp'
+          type: 'lookbook',
+          images: [
+            '/images/jewelry/necklaces/necklace-banner.webp',
+            '/images/jewelry/necklaces/necklace-03.webp',
+            '/images/jewelry/necklaces/necklace-05.webp',
+            '/images/jewelry/necklaces/necklace-08.webp'
+          ],
+          title: 'Necklaces Collection',
+          subtitle: 'Elegance in every link'
         };
-      case 'earrings':  return { desktop: '/images/home/cat-earrings-new.png' };
-      case 'rings':     return { desktop: '/images/home/cat-rings-new.png' };
-      case 'bracelets': return { desktop: '/images/home/cat-bracelets-new.png' };
-      case 'stackables':return { desktop: '/images/home/cat-stackables-new.png' };
-      case 'gifts':     return { desktop: '/images/home/cat-gifts-new.png' };
+      case 'earrings':  return { type: 'single', desktop: '/images/home/cat-earrings-new.png' };
+      case 'rings':     return { type: 'single', desktop: '/images/home/cat-rings-new.png' };
+      case 'bracelets': return { type: 'single', desktop: '/images/home/cat-bracelets-new.png' };
+      case 'stackables':return { type: 'single', desktop: '/images/home/cat-stackables-new.png' };
+      case 'gifts':     return { type: 'single', desktop: '/images/home/cat-gifts-new.png' };
       default: return null;
     }
   };
-  const bannerData = getBannerImage(categorySlug);
+  const bannerData = getBannerData(categorySlug);
 
   const params = { page, limit: ITEMS_PER_PAGE, sortBy };
   if (search) params.search = search;
@@ -171,7 +178,28 @@ export default function ProductsPage() {
         </h1>
 
         {/* Constrained Category Banner */}
-        {bannerData && (
+        {bannerData && bannerData.type === 'lookbook' ? (
+          <div className="mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+               {bannerData.images.map((img, idx) => (
+                 <div key={idx} className={`relative overflow-hidden bg-[#EAE8E2] ${idx === 0 ? 'col-span-2 row-span-2 md:col-span-2 h-[300px] md:h-[516px]' : 'h-[146px] md:h-[250px]'}`}>
+                    <img src={img} alt="Lookbook" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                 </div>
+               ))}
+            </div>
+            <div className="text-center mt-10 mb-6">
+               <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-[#756B62] text-[12px] md:text-[14px] font-[500] tracking-wider mb-3 block uppercase">
+                 {bannerData.subtitle}
+               </span>
+               <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[32px] md:text-[42px] font-[500] leading-none mb-6 text-[#111]">
+                 {bannerData.title}
+               </h2>
+               <button onClick={() => window.scrollBy({top: 800, behavior: 'smooth'})} style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 hover:bg-[#B59A68] transition-colors">
+                 SHOP THE COLLECTION
+               </button>
+            </div>
+          </div>
+        ) : bannerData ? (
           <div className="relative w-full h-[180px] md:h-[260px] lg:h-[320px] mb-12 overflow-hidden bg-[#EAE8E2]">
             <picture>
               {bannerData.mobile && (
@@ -193,7 +221,7 @@ export default function ProductsPage() {
                 Jewelry
               </span>
               <div className="flex justify-end pointer-events-auto">
-                <button style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2 hover:bg-[#333] transition-colors">
+                <button onClick={() => window.scrollBy({top: 400, behavior: 'smooth'})} style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2 hover:bg-[#333] transition-colors">
                   SEE COLLECTION
                 </button>
               </div>
@@ -202,7 +230,7 @@ export default function ProductsPage() {
             {/* Mobile gradient overlay for text readability if needed */}
             <div className="absolute inset-0 bg-gradient-to-l from-white/60 to-transparent md:bg-none pointer-events-none" />
           </div>
-        )}
+        ) : null}
 
         {/* Active filters */}
         {hasFilters && (
