@@ -71,12 +71,10 @@ export default function ProductsPage() {
     if (!s) return null;
     const normalized = s.toLowerCase();
     switch (normalized) {
-      case 'necklaces': return '/images/home/cat-necklaces-new.png';
-      case 'earrings':  return '/images/home/cat-earrings-new.png';
-      case 'rings':     return '/images/home/cat-rings-new.png';
-      case 'bracelets': return '/images/home/cat-bracelets-new.png';
-      case 'stackables':return '/images/home/cat-stackables-new.png';
-      case 'gifts':     return '/images/home/cat-gifts-new.png';
+      case 'necklaces': return '/images/categories/necklaces-banner.jpg';
+      case 'earrings':  return '/images/categories/earrings-banner.jpg';
+      case 'rings':     return '/images/categories/rings-banner.jpg';
+      case 'bracelets': return '/images/categories/bracelets-banner.jpg';
       default: return null;
     }
   };
@@ -144,80 +142,62 @@ export default function ProductsPage() {
         <meta name="description" content="Browse our complete jewelry collection — rings, necklaces, earrings, bracelets, and more." />
       </Helmet>
 
-      {/* Category Banner (if applicable) */}
-      {bannerImage && (
-        <div className="relative w-full h-[240px] md:h-[320px] lg:h-[400px] overflow-hidden bg-[#111]">
-          <img 
-            src={bannerImage} 
-            alt={categoryName} 
-            className="w-full h-full object-cover opacity-70"
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-            <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-[#C7A56A] text-[10px] tracking-[0.2em] uppercase font-[600] mb-3">
-              TARINI COLLECTION
-            </span>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-white text-[42px] sm:text-[52px] lg:text-[64px] font-[500] tracking-[-0.01em] leading-[1.1]">
-              {categoryName}
-            </h1>
+      <div className="bg-[#FAF6EE] py-3 mb-6">
+        <div className="container-luxury">
+          <div className="flex items-center text-[10px] uppercase tracking-[0.15em] text-[#756B62]" style={{ fontFamily: "'Manrope', sans-serif" }}>
+            <Link to="/" className="hover:text-[#111] transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link to="/products" className="hover:text-[#111] transition-colors">Collections</Link>
+            {categoryName && (
+              <>
+                <span className="mx-2">/</span>
+                <span className="text-[#111]">{categoryName}</span>
+              </>
+            )}
           </div>
         </div>
-      )}
+      </div>
 
-      <div className="container-luxury py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            {!bannerImage && (
-              <h1 className="text-[23px] sm:text-[27px] lg:text-[32px] font-[500] tracking-wide text-[#333]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                {categoryName ? categoryName : (search ? `Results for "${search}"` : 'All Jewelry')}
-              </h1>
-            )}
-            {pagination.total !== undefined && (
-              <p className="text-[13px] text-[#756B62] mt-1" style={{ fontFamily: "'Manrope', sans-serif" }}>
-                {pagination.total} products
-              </p>
-            )}
-          </div>
-          <div className="flex items-center gap-3">
-            {/* Sort */}
-            <select
-              value={sortBy}
-              onChange={(e) => updateParam('sortBy', e.target.value)}
-              className="input-gold w-auto text-[13px] cursor-pointer rounded-[2px]"
-            >
-              {SORT_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>{opt.label}</option>
-              ))}
-            </select>
-            {/* View toggle */}
-            <div className="hidden sm:flex border border-[#FAF6EE] rounded-[2px] overflow-hidden">
-              <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-[#3A0508] text-[#F7F3EA]' : 'text-[#756B62] hover:bg-[#FAF6EE]'}`}>
-                <Grid3X3 size={15} />
-              </button>
-              <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-[#3A0508] text-[#F7F3EA]' : 'text-[#756B62] hover:bg-[#FAF6EE]'}`}>
-                <List size={15} />
-              </button>
+      <div className="container-luxury pb-12">
+        {/* Page Title */}
+        <h1 className="text-[28px] lg:text-[34px] font-[500] tracking-wide text-[#111] uppercase mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          {categoryName ? categoryName : (search ? `Search: ${search}` : 'New Jewelry')}
+        </h1>
+
+        {/* Constrained Category Banner */}
+        {bannerImage && (
+          <div className="relative w-full h-[180px] md:h-[260px] lg:h-[320px] mb-12 overflow-hidden bg-[#EAE8E2]">
+            <img 
+              src={bannerImage} 
+              alt={categoryName} 
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Optional overlay text matching mockup */}
+            <div className="absolute inset-y-0 right-0 w-1/2 flex flex-col justify-center px-8 md:px-16 text-right">
+              <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-white text-[12px] md:text-[14px] font-[500] tracking-wider mb-1 drop-shadow-md">
+                The right time for life
+              </span>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-white text-[42px] md:text-[64px] font-[500] leading-none mb-6 drop-shadow-md">
+                Jewelry
+              </span>
+              <div className="flex justify-end">
+                <span style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2">
+                  See Collection
+                </span>
+              </div>
             </div>
-            {/* Mobile filter */}
-            <button onClick={() => setFilterOpen(true)} className="lg:hidden flex items-center gap-2 btn-outline-gold py-2 px-3 text-[11px] uppercase tracking-wider rounded-[2px]">
-              <Filter size={14} /> Filters
-            </button>
           </div>
-        </div>
+        )}
 
         {/* Active filters */}
         {hasFilters && (
-          <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className="text-xs text-gray-500">Active filters:</span>
+          <div className="flex flex-wrap items-center gap-2 mb-6">
+            <span className="text-[11px] uppercase tracking-wider text-[#756B62] mr-2">Active filters:</span>
             {categoryId && <FilterChip label={`Category: ${categoryName || 'Unknown'}`} onRemove={() => updateParam('category', '')} />}
             {material && <FilterChip label={`Material: ${material}`} onRemove={() => updateParam('material', '')} />}
             {gender && <FilterChip label={`Gender: ${gender}`} onRemove={() => updateParam('gender', '')} />}
             {(minPrice || maxPrice) && <FilterChip label={`₹${minPrice || 0} – ₹${maxPrice || '∞'}`} onRemove={() => { updateParam('minPrice', ''); updateParam('maxPrice', ''); }} />}
-            {isFeatured && <FilterChip label="Featured" onRemove={() => updateParam('isFeatured', '')} />}
-            {isTrending && <FilterChip label="Trending" onRemove={() => updateParam('isTrending', '')} />}
-            {isBestSeller && <FilterChip label="Best Seller" onRemove={() => updateParam('isBestSeller', '')} />}
-            {isNewArrival && <FilterChip label="New Arrival" onRemove={() => updateParam('isNewArrival', '')} />}
-            <button onClick={clearAllFilters} className="text-xs text-red-400 hover:text-red-600 underline">Clear all</button>
+            <button onClick={clearAllFilters} className="text-[11px] uppercase tracking-wider text-[#B59A68] hover:text-[#111] underline ml-2">Clear all</button>
           </div>
         )}
 
@@ -236,8 +216,43 @@ export default function ProductsPage() {
             />
           </aside>
 
-          {/* Products Grid */}
+          {/* Products Grid Area */}
           <div className="flex-1 min-w-0">
+            {/* Grid Header (Sort & View) */}
+            <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#EAE8E2]">
+              <div className="flex items-center gap-3 lg:hidden">
+                <button onClick={() => setFilterOpen(true)} className="flex items-center gap-2 bg-[#FAF6EE] py-2 px-4 text-[10px] uppercase tracking-wider font-[600]">
+                  <Filter size={14} /> Filters
+                </button>
+              </div>
+              <div className="hidden lg:block">
+                {/* Mobile only elements space */}
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-[#777] uppercase tracking-wider hidden sm:block">Sort by:</span>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => updateParam('sortBy', e.target.value)}
+                    className="border-none bg-transparent text-[12px] font-[500] cursor-pointer focus:ring-0 text-[#111]"
+                  >
+                    {SORT_OPTIONS.map((opt) => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="hidden sm:flex items-center gap-2">
+                  <button onClick={() => setViewMode('grid')} className={`p-1.5 rounded-sm transition-colors ${viewMode === 'grid' ? 'bg-[#111] text-white' : 'text-[#777] hover:bg-[#FAF6EE]'}`}>
+                    <Grid3X3 size={15} />
+                  </button>
+                  <button onClick={() => setViewMode('list')} className={`p-1.5 rounded-sm transition-colors ${viewMode === 'list' ? 'bg-[#111] text-white' : 'text-[#777] hover:bg-[#FAF6EE]'}`}>
+                    <List size={15} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
             {isLoading || isFetching ? (
               <div className={`grid gap-4 ${viewMode === 'grid' ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1'}`}>
                 {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
@@ -363,12 +378,12 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
 function FilterGroup({ title, children }) {
   const [open, setOpen] = useState(true);
   return (
-    <div className="border-b border-[#FAF6EE] pb-5">
-      <button onClick={() => setOpen(!open)} className="flex items-center justify-between w-full text-left mb-3">
-        <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27]">{title}</span>
-        <ChevronDown size={13} className={`text-[#756B62]/60 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+    <div className="pb-6 mb-6">
+      <button onClick={() => setOpen(!open)} className="flex items-center justify-between w-full text-left mb-4 pb-2 border-b border-[#EAE8E2]">
+        <span className="text-[12px] font-[600] uppercase tracking-[0.1em] text-[#111]" style={{ fontFamily: "'Manrope', sans-serif" }}>{title}</span>
+        <ChevronDown size={14} className={`text-[#777] transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
-      {open && <div className="space-y-2">{children}</div>}
+      {open && <div className="space-y-2.5">{children}</div>}
     </div>
   );
 }
