@@ -25,7 +25,7 @@ export default function AboutPage() {
             <p className="text-[#756B62] text-[15px] font-light leading-relaxed mb-4">Tarini Jewellers was founded with a singular vision — to make luxury jewelry accessible while preserving the highest standards of craftsmanship.</p>
             <p className="text-[#756B62] text-[15px] font-light leading-relaxed">Every piece in our collection is handcrafted by master artisans, using ethically sourced materials and BIS-certified gold and silver.</p>
           </div>
-          <img src="/images/home/our-story-new.png" alt="About Tarini Jewellers" className="rounded-[2px] w-full aspect-square object-cover border border-[#FAF6EE]" />
+          <img src="/images/home/our-story-new.png?v=2" alt="About Tarini Jewellers" className="rounded-[2px] w-full aspect-square object-cover border border-[#FAF6EE]" />
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center py-12 border-t border-b border-[#FAF6EE]">

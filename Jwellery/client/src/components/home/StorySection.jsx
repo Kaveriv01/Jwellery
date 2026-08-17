@@ -27,7 +27,7 @@ export default function StorySection() {
             className="relative w-full aspect-[4/5] overflow-hidden order-1"
           >
             <img
-              src="/images/home/our-story-new.png"
+              src="/images/home/our-story-new.png?v=2"
               alt="Tarini Jewellers craftsmanship"
               className="w-full h-full object-cover object-center"
               loading="lazy"

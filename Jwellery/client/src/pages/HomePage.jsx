@@ -1,54 +1,43 @@
-import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import HeroBanner from '../components/home/HeroBanner';
-import WhyChooseUs from '../components/home/WhyChooseUs';
+import FeaturesBar from '../components/home/FeaturesBar';
 import ShopByCategory from '../components/home/ShopByCategory';
-import { NewArrivals } from '../components/home/FeaturedCollection';
+import MidBanner from '../components/home/MidBanner';
 import EditorialBanner from '../components/home/EditorialBanner';
-import StorySection from '../components/home/StorySection';
-import BottomBanners from '../components/home/BottomBanners';
-import { productService } from '../services/productService';
+import WhyChooseUsBoxes from '../components/home/WhyChooseUsBoxes';
+import InstagramGallery from '../components/home/InstagramGallery';
+import Newsletter from '../components/home/Newsletter';
+import RecentlyViewed from '../components/home/RecentlyViewed';
 
 export default function HomePage() {
-  const { data: featuredData } = useQuery({
-    queryKey: ['featured-products'],
-    queryFn: () => productService.getFeatured({ limit: 8 }).then((r) => r.data),
-    staleTime: 5 * 60_000,
-  });
-
-  const { newArrivals = [] } = featuredData || {};
-
   return (
     <>
       <Helmet>
         <title>TARINI JEWELLERS | Fine Jewellery Crafted with Precision</title>
-        <meta name="description" content="Discover Tarini Jewellers — fine jewellery crafted with precision, passion, and the finest materials." />
-        <meta property="og:title" content="Tarini Jewellers | Fine Jewellery" />
-        <meta property="og:description" content="Discover Tarini Jewellers — fine jewellery crafted with precision, passion, and the finest materials." />
-        <meta property="og:type" content="website" />
       </Helmet>
 
-      <div className="overflow-x-hidden bg-white">
-        {/* 1. Hero Banner */}
+      <div className="overflow-x-hidden bg-[#FDFBF7]">
         <HeroBanner />
+        <FeaturesBar />
+        
+        <div className="py-16">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-normal text-[#5C1D24]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Shop by Category</h2>
+          </div>
+          <ShopByCategory />
+        </div>
 
-        {/* 2. Feature Bar */}
-        <WhyChooseUs />
-
-        {/* 3. Shop by Category */}
-        <ShopByCategory />
-
-        {/* 4. The Tarini Experience */}
+        <MidBanner />
+        
         <EditorialBanner />
-
-        {/* 5. New Arrivals */}
-        {newArrivals.length > 0 && <NewArrivals products={newArrivals} />}
-
-        {/* 6. Discover Tarini */}
-        <StorySection />
-
-        {/* 7. Bottom Banners (Sale & Club) */}
-        <BottomBanners />
+        
+        <WhyChooseUsBoxes />
+        
+        <InstagramGallery />
+        
+        <Newsletter />
+        
+        <RecentlyViewed />
       </div>
     </>
   );

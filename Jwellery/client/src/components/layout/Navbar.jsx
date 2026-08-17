@@ -78,7 +78,7 @@ export default function Navbar() {
   return (
     <>
       {/* ── Top Bar ─────────────────────────────────────── */}
-      <div className="bg-[#111] text-white py-2.5 hidden md:block" style={{ fontFamily: "'Manrope', sans-serif" }}>
+      <div className="bg-[#5C1D24] text-white py-2.5 hidden md:block" style={{ fontFamily: "'Manrope', sans-serif" }}>
         <div className="container-luxury flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Truck size={13} />
@@ -114,7 +114,7 @@ export default function Navbar() {
             <Link to="/" className="flex flex-col items-center justify-center lg:items-start flex-shrink-0 group lg:pr-10 lg:mr-4">
               <span
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                className="text-[26px] lg:text-[30px] text-[#111] tracking-[0.18em] leading-none font-[500] group-hover:opacity-80 transition-opacity duration-500"
+                className="text-[26px] lg:text-[30px] text-[#5C1D24] tracking-[0.18em] leading-none font-[500] group-hover:opacity-80 transition-opacity duration-500"
               >
                 TARINI
               </span>
@@ -139,12 +139,12 @@ export default function Navbar() {
 
             {/* RIGHT: Actions */}
             <div className="flex items-center gap-5 sm:gap-6">
-              <button onClick={() => setSearchOpen(true)} className="group text-[#111] hover:text-[#666] transition-all duration-300" aria-label="Search">
+              <button onClick={() => setSearchOpen(true)} className="group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300" aria-label="Search">
                 <Search size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
               </button>
 
               <div className="relative hidden lg:block">
-                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#111] hover:text-[#666] transition-all duration-300" aria-label="Account">
+                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300" aria-label="Account">
                   <User size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
                 </button>
                 <AnimatePresence>
@@ -174,14 +174,14 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link to="/wishlist" className="relative group text-[#111] hover:text-[#666] transition-all duration-300 hidden sm:block" aria-label="Wishlist">
+              <Link to="/wishlist" className="relative group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300 hidden sm:block" aria-label="Wishlist">
                 <Heart size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
-                {wishlistCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#111] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{wishlistCount}</span>}
+                {wishlistCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#5C1D24] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{wishlistCount}</span>}
               </Link>
 
-              <button onClick={() => openCartDrawer()} className="relative group text-[#111] hover:text-[#666] transition-all duration-300" aria-label="Cart">
+              <button onClick={() => openCartDrawer()} className="relative group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300" aria-label="Cart">
                 <ShoppingBag size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
-                {totalItems > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#111] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{totalItems}</span>}
+                {totalItems > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#5C1D24] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{totalItems}</span>}
               </button>
             </div>
           </div>
