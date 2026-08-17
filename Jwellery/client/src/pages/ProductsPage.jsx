@@ -76,6 +76,7 @@ export default function ProductsPage() {
           type: 'lookbook',
           images: [
             '/images/jewelry/necklaces/necklace-banner.webp',
+            '/images/jewelry/necklaces/necklace-01.webp',
             '/images/jewelry/necklaces/necklace-03.webp',
             '/images/jewelry/necklaces/necklace-05.webp',
             '/images/jewelry/necklaces/necklace-08.webp'
