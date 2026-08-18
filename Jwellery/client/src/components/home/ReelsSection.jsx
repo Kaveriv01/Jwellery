@@ -16,7 +16,7 @@ export default function ReelsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${jewelleryMedia.reels.length === 3 ? 'lg:grid-cols-3 max-w-5xl mx-auto' : 'lg:grid-cols-4'} gap-4 md:gap-6`}>
           {jewelleryMedia.reels.slice(0, 4).map((reel, idx) => (
             <div key={reel.id} style={{ perspective: '1200px' }} className="w-full">
               <motion.div
