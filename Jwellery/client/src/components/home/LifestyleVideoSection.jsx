@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { jewelleryMedia } from '../../../config/mediaConfig';
+import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function LifestyleVideoSection() {
   return (
