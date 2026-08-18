@@ -25,7 +25,7 @@ export default function ProductDetailPage() {
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [selectedVariant, setSelectedVariant] = useState({});
+  const [selectedVariant, setSelectedVariant] = useState({ size: '', color: '' });
   const [zoomed, setZoomed] = useState(false);
   const [pincode, setPincode] = useState('');
   
@@ -74,7 +74,30 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (isOutOfStock) return;
+    if (uniqueSizes.length > 0 && !selectedVariant.size) {
+      toast.error('Please select a size');
+      return;
+    }
+    if (uniqueColors.length > 0 && !selectedVariant.color) {
+      toast.error('Please select a color/finish');
+      return;
+    }
     addToCart({ productId: _id, quantity, variant: selectedVariant });
+    toast.success('Added to your bag');
+  };
+
+  const handleBuyNow = () => {
+    if (isOutOfStock) return;
+    if (uniqueSizes.length > 0 && !selectedVariant.size) {
+      toast.error('Please select a size');
+      return;
+    }
+    if (uniqueColors.length > 0 && !selectedVariant.color) {
+      toast.error('Please select a color/finish');
+      return;
+    }
+    addToCart({ productId: _id, quantity, variant: selectedVariant });
+    navigate('/checkout');
   };
 
   const checkPincode = () => {
@@ -189,17 +212,97 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            {/* CTA Button */}
-            <motion.button
-              onClick={handleAddToCart}
-              disabled={isOutOfStock || isAddingToCart}
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              className="w-full bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center gap-2 transition-all duration-[250ms] border-b-2 border-transparent hover:border-[#B59A68] rounded-[2px] disabled:opacity-60"
-            >
-              <ShoppingBag size={15} />
-              {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'ADD TO CART'}
-            </motion.button>
+            {/* Selectors */}
+            <div className="space-y-5 pt-2">
+              {uniqueSizes.length > 0 && (
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <label className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27]">Select Size</label>
+                    <span className="text-[10px] uppercase text-[#756B62] underline cursor-pointer">Size Guide</span>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    {uniqueSizes.map(size => (
+                      <button
+                        key={size}
+                        onClick={() => setSelectedVariant({ ...selectedVariant, size })}
+                        className={`w-12 h-12 flex items-center justify-center text-[12px] font-medium rounded-[2px] border transition-all ${
+                          selectedVariant.size === size 
+                            ? 'border-[#3A0508] bg-[#3A0508] text-white' 
+                            : 'border-[#FAF6EE] bg-white text-[#332B27] hover:border-[#B59A68]'
+                        }`}
+                      >
+                        {size}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {uniqueColors.length > 0 && (
+                <div>
+                  <label className="block text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27] mb-3">Select Finish</label>
+                  <div className="flex flex-wrap gap-3">
+                    {uniqueColors.map(color => (
+                      <button
+                        key={color}
+                        onClick={() => setSelectedVariant({ ...selectedVariant, color })}
+                        className={`px-6 py-3 flex items-center justify-center text-[12px] font-medium rounded-[2px] border transition-all ${
+                          selectedVariant.color === color 
+                            ? 'border-[#3A0508] bg-[#3A0508] text-white' 
+                            : 'border-[#FAF6EE] bg-white text-[#332B27] hover:border-[#B59A68]'
+                        }`}
+                      >
+                        {color}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Quantity */}
+              <div>
+                <label className="block text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27] mb-3">Quantity</label>
+                <div className="inline-flex items-center border border-[#FAF6EE] rounded-[2px] bg-white">
+                  <button 
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="w-10 h-10 flex items-center justify-center text-[#756B62] hover:text-[#3A0508] transition-colors"
+                  >
+                    <Minus size={14} />
+                  </button>
+                  <span className="w-10 text-center text-[13px] font-medium text-[#332B27]">{quantity}</span>
+                  <button 
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="w-10 h-10 flex items-center justify-center text-[#756B62] hover:text-[#3A0508] transition-colors"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex gap-4 mt-6">
+              <motion.button
+                onClick={handleAddToCart}
+                disabled={isOutOfStock || isAddingToCart}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="flex-1 bg-white border border-[#3A0508] text-[#3A0508] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center gap-2 transition-all duration-[250ms] hover:bg-[#FAF6EE] rounded-[2px] disabled:opacity-60"
+              >
+                <ShoppingBag size={15} />
+                {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'Add to Bag'}
+              </motion.button>
+              
+              <motion.button
+                onClick={handleBuyNow}
+                disabled={isOutOfStock}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="flex-1 bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center transition-all duration-[250ms] border border-[#3A0508] hover:border-[#220306] rounded-[2px] disabled:opacity-60"
+              >
+                Buy Now
+              </motion.button>
+            </div>
 
             {/* Accordions */}
             <div className="border-t border-gray-200 mt-8 pt-4 space-y-2">
