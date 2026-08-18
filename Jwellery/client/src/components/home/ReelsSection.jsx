@@ -18,30 +18,33 @@ export default function ReelsSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {jewelleryMedia.reels.slice(0, 4).map((reel, idx) => (
-            <motion.div
-              key={reel.id}
-              initial={{ opacity: 0, rotateY: 90, scale: 0.8 }}
-              whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.8, delay: idx * 0.15, type: 'spring', bounce: 0.3 }}
-              className="relative w-full max-w-[240px] mx-auto aspect-[3/4] bg-black rounded-[8px] shadow-lg overflow-hidden group cursor-pointer"
-            >
-              <video
-                src={reel.videoUrl}
-                poster={reel.poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40">
-                  <Play size={20} className="text-white ml-1" fill="white" />
+            <div key={reel.id} style={{ perspective: '1200px' }} className="w-full">
+              <motion.div
+                initial={{ opacity: 0, rotateY: 90 }}
+                whileInView={{ opacity: 1, rotateY: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 1, delay: idx * 0.2, type: 'spring', bounce: 0.3 }}
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                className="relative w-full aspect-[4/5] bg-black rounded-xl shadow-2xl overflow-hidden group cursor-pointer"
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                <video
+                  src={reel.videoUrl}
+                  poster={reel.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-z-12">
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/50 shadow-lg hover:scale-110 transition-transform">
+                    <Play size={24} className="text-white ml-1" fill="white" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
