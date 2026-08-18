@@ -27,6 +27,22 @@ const INSTAGRAM_POSTS = [
     type: 'image', 
     url: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&q=80&w=800' 
   },
+  {
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1573408301145-b98c41e8c1b2?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    type: 'image',
+    url: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&q=80&w=800'
+  }
 ];
 
 export default function InstagramGallery() {
