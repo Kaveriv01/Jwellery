@@ -33,7 +33,7 @@ export default function HeroBanner() {
           style={{ fontFamily: "'Cormorant Garamond', serif" }}
         >
           Jewellery that becomes<br />part of your story
-        </motion.p>
+        </motion.h1>
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
