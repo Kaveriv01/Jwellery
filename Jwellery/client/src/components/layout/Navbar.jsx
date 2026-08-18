@@ -77,23 +77,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Top Bar ─────────────────────────────────────── */}
-      <div className="bg-[#5C1D24] text-white py-2.5 hidden md:block" style={{ fontFamily: "'Manrope', sans-serif" }}>
-        <div className="container-luxury flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Truck size={13} />
-            <span className="text-[10px] tracking-[0.08em] uppercase font-[500]">FREE SHIPPING ON ORDERS OVER ₹2000</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#D4AF37]">10% OFF YOUR FIRST ORDER | CODE: SHINE10</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <Link to="/faq" className="hover:text-[#D4AF37] transition-colors">HELP & FAQ</Link>
-            <Link to="/track-order" className="hover:text-[#D4AF37] transition-colors">TRACK ORDER</Link>
-          </div>
-        </div>
-      </div>
-
       {/* ── Main Navbar ─────────────────────────────────────── */}
       <header
         className={`sticky top-0 z-40 transition-all duration-[300ms] ease-out border-b ${
