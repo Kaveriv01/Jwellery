@@ -7,11 +7,13 @@ import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { formatPrice, getDiscountPercent, getProductImage } from '../../lib/utils';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = memo(function ProductCard({ product }) {
   const { isAuthenticated } = useAuth();
   const { addToCart, isAddingToCart } = useCart();
   const { isWishlisted, toggleWishlist, isToggling } = useWishlist();
+  const navigate = useNavigate();
 
   const {
     _id, name, slug, images = [], price, discountPrice,
@@ -28,7 +30,15 @@ const ProductCard = memo(function ProductCard({ product }) {
     e.preventDefault();
     e.stopPropagation();
     if (isOutOfStock) return;
+
+    if (product.variants && product.variants.length > 0) {
+      toast('Please select an option first');
+      navigate(`/products/${slug}`);
+      return;
+    }
+
     addToCart({ productId: _id, quantity: 1 });
+    toast.success('Added to your bag');
   };
 
   const handleWishlistToggle = (e) => {

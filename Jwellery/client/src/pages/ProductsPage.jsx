@@ -57,6 +57,9 @@ export default function ProductsPage() {
       categoryId = matchedCategory._id;
       categoryName = matchedCategory.name;
       categorySlug = matchedCategory.slug;
+    } else {
+      // Slug provided but not found, ensure we don't fetch all products
+      categoryId = '000000000000000000000000'; // Fake valid MongoID
     }
   } else if (!slug && categoryId && categories.length > 0) {
     const matchedCategory = categories.find((c) => c._id === categoryId);
@@ -306,8 +309,16 @@ export default function ProductsPage() {
             ) : products.length === 0 ? (
               <div className="text-center py-20">
                 <p className="font-serif text-3xl text-gray-300 mb-3">No jewelry found</p>
-                <p className="text-gray-500 mb-5">Try adjusting your filters.</p>
-                <button onClick={clearAllFilters} className="btn-gold rounded-lg">Clear Filters</button>
+                {hasFilters ? (
+                  <>
+                    <p className="text-gray-500 mb-5">Try adjusting your filters to find what you're looking for.</p>
+                    <button onClick={clearAllFilters} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2 hover:bg-[#B59A68] transition-colors rounded-[2px]">
+                      Clear Filters
+                    </button>
+                  </>
+                ) : (
+                  <p className="text-gray-500 mb-5">There are currently no products available in this collection.</p>
+                )}
               </div>
             ) : (
               <div className={`grid gap-4 ${viewMode === 'grid' ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1'}`}>
