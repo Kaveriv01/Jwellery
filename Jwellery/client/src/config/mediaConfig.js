@@ -25,6 +25,11 @@ export const jewelleryMedia = {
       poster: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=800",
     },
     {
+      id: "reel-3",
+      videoUrl: "/pinterest_video_2.mp4",
+      poster: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=800",
+    },
+    {
       id: "reel-4",
       videoUrl: "/pinterest_video.mp4",
       poster: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800",

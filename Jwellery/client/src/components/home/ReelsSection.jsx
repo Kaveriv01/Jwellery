@@ -37,7 +37,14 @@ export default function ReelsSection() {
                   playsInline
                   className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                
+                <div className="absolute bottom-5 w-full text-center z-10 pointer-events-none transition-transform duration-500 group-hover:-translate-y-2">
+                  <span className="text-white/90 text-[11px] tracking-[0.25em] font-medium uppercase drop-shadow-md" style={{ fontFamily: "'Manrope', sans-serif" }}>
+                    Tarini
+                  </span>
+                </div>
+
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-z-12">
                   <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/50 shadow-lg hover:scale-110 transition-transform">
                     <Play size={24} className="text-white ml-1" fill="white" />
