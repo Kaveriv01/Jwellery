@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
 const INSTAGRAM_IMAGES = [
-  '/images/home/cat-necklaces.jpg',
-  '/images/home/cat-earrings.jpg',
-  '/images/home/cat-bracelets.jpg',
-  '/images/home/cat-rings.jpg',
-  '/images/home/hero-new.png',
-  '/images/home/experience-banner.jpg',
+  'https://images.unsplash.com/photo-1599643478514-4a4e0f152ec0?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1605100804763-247f67b8548e?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=800',
+  'https://images.unsplash.com/photo-1573408301145-b98c41e8c1b2?auto=format&fit=crop&q=80&w=800',
 ];
 
 export default function InstagramGallery() {
