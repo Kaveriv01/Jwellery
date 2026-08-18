@@ -26,7 +26,7 @@ export const jewelleryMedia = {
     },
     {
       id: "reel-3",
-      videoUrl: "/279397_large.mp4",
+      videoUrl: "/stock-footage-the-bride-wears-a-pendant-around-her-neck-preparing-for-the-wedding.webm",
       poster: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=800",
     },
     {

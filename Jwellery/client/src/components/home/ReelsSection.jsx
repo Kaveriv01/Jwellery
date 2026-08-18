@@ -20,11 +20,11 @@ export default function ReelsSection() {
           {jewelleryMedia.reels.slice(0, 4).map((reel, idx) => (
             <motion.div
               key={reel.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, rotateY: 90, scale: 0.8 }}
+              whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="relative w-full aspect-[9/16] bg-black rounded-[4px] overflow-hidden group cursor-pointer"
+              transition={{ duration: 0.8, delay: idx * 0.15, type: 'spring', bounce: 0.3 }}
+              className="relative w-full max-w-[240px] mx-auto aspect-[3/4] bg-black rounded-[8px] shadow-lg overflow-hidden group cursor-pointer"
             >
               <video
                 src={reel.videoUrl}
