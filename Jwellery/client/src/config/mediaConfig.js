@@ -31,7 +31,7 @@ export const jewelleryMedia = {
     },
     {
       id: "reel-4",
-      videoUrl: "/obkpo6sffg.mp4",
+      videoUrl: "/pinterest_video.mp4",
       poster: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800",
     }
   ],
