@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Heart, ShoppingBag, Share2, Star, Shield, Truck, RotateCcw,
-  ChevronLeft, ChevronRight, ZoomIn, Package, Plus, Minus, Check, MapPin, ChevronDown
+  ChevronLeft, ChevronRight, ZoomIn, Package, Plus, Minus, Check, MapPin, ChevronDown, Play
 } from 'lucide-react';
 import { productService } from '../services/productService';
 import { reviewService } from '../services/otherServices';
@@ -63,7 +63,14 @@ export default function ProductDetailPage() {
     _id, name, description, shortDescription, price, discountPrice,
     images = [], variants = [], stock, material, purity, weight, stone,
     gender, occasion, ratings = 0, numReviews = 0, sku, category,
+    videoUrl, videoPoster
   } = product;
+
+  // Build media gallery supporting video injection
+  const mediaItems = images.map(img => ({ type: 'image', url: img.url }));
+  if (videoUrl) {
+    mediaItems.splice(Math.min(2, mediaItems.length), 0, { type: 'video', url: videoUrl, poster: videoPoster });
+  }
 
   const discountPercent = getDiscountPercent(price, discountPrice);
   const effectivePrice = discountPrice || price;
@@ -129,14 +136,33 @@ export default function ProductDetailPage() {
           {/* ── Images ───────────────────────────────────────────────────── */}
           <div className="space-y-4">
             <div className="relative aspect-square bg-[#FAF6EE] flex items-center justify-center group overflow-hidden border border-[#FAF6EE] rounded-[2px]">
-              <motion.img
-                key={selectedImage}
-                src={images[selectedImage]?.url || '/placeholder.jpg'}
-                alt={`${name} - image ${selectedImage + 1}`}
-                className="w-full h-full object-contain p-10 mix-blend-multiply"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              />
+              <AnimatePresence mode="wait">
+                {mediaItems[selectedImage]?.type === 'video' ? (
+                  <motion.video
+                    key={selectedImage}
+                    src={mediaItems[selectedImage].url}
+                    poster={mediaItems[selectedImage].poster}
+                    controls
+                    autoPlay
+                    muted
+                    className="w-full h-full object-cover"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  />
+                ) : (
+                  <motion.img
+                    key={selectedImage}
+                    src={mediaItems[selectedImage]?.url || '/placeholder.jpg'}
+                    alt={`${name} - media ${selectedImage + 1}`}
+                    className="w-full h-full object-contain p-10 mix-blend-multiply"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  />
+                )}
+              </AnimatePresence>
+              
               {discountPercent > 0 && (
                 <span className="absolute top-4 left-4 bg-[#3A0508] text-[#F7F3EA] text-[9px] font-medium px-2.5 py-1 uppercase tracking-widest rounded-[2px]">
                   {discountPercent}% OFF
@@ -146,24 +172,38 @@ export default function ProductDetailPage() {
               {/* Heart Icon Overlay */}
               <button
                 onClick={() => toggleWishlist({ productId: _id })}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-[#FAF6EE] flex items-center justify-center text-[#3A0508]/70 hover:text-[#B59A68] transition-colors shadow-sm"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-[#FAF6EE] flex items-center justify-center text-[#3A0508]/70 hover:text-[#B59A68] transition-colors shadow-sm z-10"
               >
                 <Heart size={18} className={wishlisted ? 'fill-[#B59A68] text-[#B59A68]' : ''} />
               </button>
-
-              {/* Dots Navigation */}
-              {images.length > 1 && (
-                <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
-                  {images.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setSelectedImage(i)}
-                      className={`w-2 h-2 rounded-full transition-all ${selectedImage === i ? 'bg-[#3A0508] w-4' : 'bg-gray-300'}`}
-                    />
-                  ))}
-                </div>
-              )}
             </div>
+
+            {/* Thumbnails */}
+            {mediaItems.length > 1 && (
+              <div className="flex gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar">
+                {mediaItems.map((media, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedImage(i)}
+                    className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden ${selectedImage === i ? 'border-[#3A0508]' : 'border-transparent opacity-70 hover:opacity-100'}`}
+                  >
+                    {media.type === 'video' ? (
+                      <>
+                        <img src={media.poster || '/placeholder.jpg'} className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+                          <div className="w-6 h-6 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center border border-white/50 mb-1">
+                            <Play size={10} fill="white" className="text-white ml-0.5" />
+                          </div>
+                          <span className="text-[8px] text-white font-medium tracking-widest">VIDEO</span>
+                        </div>
+                      </>
+                    ) : (
+                      <img src={media.url} className="w-full h-full object-cover" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* ── Info ─────────────────────────────────────────────────────── */}

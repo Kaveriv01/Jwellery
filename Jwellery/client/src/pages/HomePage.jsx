@@ -8,6 +8,8 @@ import WhyChooseUsBoxes from '../components/home/WhyChooseUsBoxes';
 import InstagramGallery from '../components/home/InstagramGallery';
 import Newsletter from '../components/home/Newsletter';
 import RecentlyViewed from '../components/home/RecentlyViewed';
+import LifestyleVideoSection from '../components/home/LifestyleVideoSection';
+import ReelsSection from '../components/home/ReelsSection';
 
 export default function HomePage() {
   return (
@@ -27,11 +29,15 @@ export default function HomePage() {
           <ShopByCategory />
         </div>
 
+        <LifestyleVideoSection />
+
         <MidBanner />
         
         <EditorialBanner />
         
         <WhyChooseUsBoxes />
+        
+        <ReelsSection />
         
         <InstagramGallery />
         

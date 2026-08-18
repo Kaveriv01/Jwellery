@@ -8,6 +8,7 @@ import ProductCard from '../components/product/ProductCard';
 import { productService } from '../services/productService';
 import { categoryService } from '../services/otherServices';
 import { SORT_OPTIONS, MATERIAL_OPTIONS, GENDER_OPTIONS, PRICE_RANGES } from '../constants';
+import { jewelleryMedia } from '../config/mediaConfig';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -96,6 +97,7 @@ export default function ProductsPage() {
     }
   };
   const bannerData = getBannerData(categorySlug);
+  const videoBanner = categorySlug ? jewelleryMedia.collectionBanners[categorySlug.toLowerCase()] : null;
 
   const params = { page, limit: ITEMS_PER_PAGE, sortBy };
   if (search) params.search = search;
@@ -182,7 +184,28 @@ export default function ProductsPage() {
         </h1>
 
         {/* Constrained Category Banner */}
-        {bannerData && bannerData.type === 'lookbook' ? (
+        {videoBanner ? (
+          <div className="mb-12 relative w-full h-[300px] md:h-[500px] overflow-hidden bg-[#EAE8E2] flex items-center justify-center">
+            <video
+              src={videoBanner.videoUrl}
+              poster={videoBanner.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="relative z-10 text-center px-4 max-w-2xl">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#FAF6EE] font-normal mb-4 drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                {categoryName || 'Collection'}
+              </h2>
+              <p className="text-[#FAF6EE] text-xs tracking-[0.2em] uppercase font-medium drop-shadow-sm">
+                Explore our finest pieces
+              </p>
+            </div>
+          </div>
+        ) : bannerData && bannerData.type === 'lookbook' ? (
           <div className="mb-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
                {bannerData.images.map((img, idx) => (

@@ -2,15 +2,30 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Heart, Sparkles } from 'lucide-react';
 
+import { jewelleryMedia } from '../../../config/mediaConfig';
+
 export default function HeroBanner() {
   return (
     <section className="relative w-full h-[90vh] min-h-[600px] flex flex-col items-center justify-between py-16 overflow-hidden">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0 bg-[#D4C3B3]">
-        <img
-          src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=80"
-          alt="Woman wearing elegant necklace"
-          className="w-full h-full object-cover object-center"
+        <video
+          src={jewelleryMedia.hero.videoDesktop}
+          poster={jewelleryMedia.hero.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover object-center hidden md:block"
+        />
+        <video
+          src={jewelleryMedia.hero.videoMobile}
+          poster={jewelleryMedia.hero.poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover object-center md:hidden"
         />
         <div className="absolute inset-0 bg-black/20" /> {/* Darker overlay for text readability */}
       </div>

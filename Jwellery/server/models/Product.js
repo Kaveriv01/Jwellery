@@ -66,6 +66,8 @@ const productSchema = new mongoose.Schema(
       ref: 'Category',
     },
     images: [imageSchema],
+    videoUrl: { type: String, trim: true, default: '' },
+    videoPoster: { type: String, trim: true, default: '' },
     variants: [variantSchema],
     // ── Stock & Inventory ─────────────────────────────────────────────────────
     stock: {
