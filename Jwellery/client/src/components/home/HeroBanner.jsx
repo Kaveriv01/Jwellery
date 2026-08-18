@@ -8,7 +8,7 @@ export default function HeroBanner() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0 bg-[#D4C3B3]">
         <img
-          src="https://images.unsplash.com/photo-1599643478514-4a4e0f152ec0?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=80"
           alt="Woman wearing elegant necklace"
           className="w-full h-full object-cover object-center"
         />
