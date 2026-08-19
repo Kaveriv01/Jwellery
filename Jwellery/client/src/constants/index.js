@@ -93,7 +93,7 @@ export const DELIVERY_OPTIONS = [
 
 export const PAYMENT_METHODS = [
   { value: 'razorpay', label: 'Razorpay', description: 'Cards, UPI, Net Banking, Wallets' },
-  { value: 'stripe', label: 'International Card', description: 'Visa, Mastercard, Amex' },
+  { value: 'stripe', label: 'Montserratnational Card', description: 'Visa, Mastercard, Amex' },
   { value: 'cod', label: 'Cash on Delivery', description: 'Pay when your order arrives' },
 ];
 

@@ -32,9 +32,9 @@ export default function BottomBanners() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 group-hover:from-black/85 transition-all duration-500" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-              {/* Label — Manrope */}
+              {/* Label — Montserrat */}
               <span
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="text-[#C7A56A] text-[10px] tracking-[0.20em] font-[600] uppercase mb-3 block"
               >
                 LIMITED TIME
@@ -46,17 +46,17 @@ export default function BottomBanners() {
               >
                 Summer Sale
               </h3>
-              {/* Body — Manrope */}
+              {/* Body — Montserrat */}
               <p
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="text-white/80 text-[13px] font-[400] mb-8 max-w-[260px] leading-[1.7]"
               >
                 Up to 50% off on selected items.
               </p>
-              {/* Button — Manrope */}
+              {/* Button — Montserrat */}
               <Link
                 to="/products"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="bg-white text-[#111] px-8 py-3 text-[11px] font-[600] tracking-[0.08em] uppercase transition-all duration-300 hover:bg-[#C7A56A] hover:text-white rounded-sm"
               >
                 SHOP SALE
@@ -82,9 +82,9 @@ export default function BottomBanners() {
             </div>
             <div className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-all duration-500" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-              {/* Label — Manrope */}
+              {/* Label — Montserrat */}
               <span
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="text-[#C7A56A] text-[10px] tracking-[0.20em] font-[600] uppercase mb-3 block"
               >
                 MEMBERS ONLY
@@ -96,17 +96,17 @@ export default function BottomBanners() {
               >
                 Join The Club
               </h3>
-              {/* Body — Manrope */}
+              {/* Body — Montserrat */}
               <p
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="text-white/70 text-[13px] font-[400] mb-8 max-w-[280px] leading-[1.7]"
               >
                 Get exclusive access to new drops and private sales.
               </p>
-              {/* Button — Manrope */}
+              {/* Button — Montserrat */}
               <Link
                 to="/register"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="bg-transparent border border-[#C7A56A] text-[#C7A56A] px-8 py-3 text-[11px] font-[600] tracking-[0.08em] uppercase transition-all duration-300 hover:bg-[#C7A56A] hover:text-black rounded-sm"
               >
                 JOIN NOW

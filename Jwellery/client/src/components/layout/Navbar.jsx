@@ -66,7 +66,7 @@ export default function Navbar() {
   const NavLink = ({ to, children }) => (
     <Link to={to} className="relative group py-2">
       <span
-        style={{ fontFamily: "'Manrope', sans-serif" }}
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
         className="relative z-10 text-[11px] lg:text-[12px] text-[#111] tracking-[0.06em] uppercase font-[600] transition-colors duration-[280ms] ease-out group-hover:text-[#666]"
       >
         {children}
@@ -102,7 +102,7 @@ export default function Navbar() {
                 TARINI
               </span>
               <span
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="text-[8px] lg:text-[9px] text-[#777] tracking-[0.28em] uppercase leading-none mt-2 font-[600] group-hover:opacity-70 transition-opacity"
               >
                 JEWELLERS

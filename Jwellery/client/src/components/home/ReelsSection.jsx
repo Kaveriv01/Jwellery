@@ -41,7 +41,7 @@ export default function ReelsSection() {
                 
                 {/* Opaque box to cover watermarks */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-[#F8F4EC] px-4 py-1.5 rounded-[2px] z-20 pointer-events-none shadow-lg border border-[#EAE8E2]">
-                  <span className="text-[#3A0508] text-[10px] tracking-[0.25em] font-bold uppercase" style={{ fontFamily: "'Manrope', sans-serif" }}>
+                  <span className="text-[#3A0508] text-[10px] tracking-[0.25em] font-bold uppercase" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                     Tarini
                   </span>
                 </div>

@@ -163,7 +163,7 @@ export default function ProductsPage() {
 
       <div className="bg-[#FAF6EE] py-3 mb-6">
         <div className="container-luxury">
-          <div className="flex items-center text-[10px] uppercase tracking-[0.15em] text-[#756B62]" style={{ fontFamily: "'Manrope', sans-serif" }}>
+          <div className="flex items-center text-[10px] uppercase tracking-[0.15em] text-[#756B62]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             <Link to="/" className="hover:text-[#111] transition-colors">Home</Link>
             <span className="mx-2">/</span>
             <Link to="/products" className="hover:text-[#111] transition-colors">Collections</Link>
@@ -215,13 +215,13 @@ export default function ProductsPage() {
                ))}
             </div>
             <div className="text-center mt-10 mb-6">
-               <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-[#756B62] text-[12px] md:text-[14px] font-[500] tracking-wider mb-3 block uppercase">
+               <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-[#756B62] text-[12px] md:text-[14px] font-[500] tracking-wider mb-3 block uppercase">
                  {bannerData.subtitle}
                </span>
                <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[32px] md:text-[42px] font-[500] leading-none mb-6 text-[#111]">
                  {bannerData.title}
                </h2>
-               <button onClick={() => window.scrollBy({top: 800, behavior: 'smooth'})} style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 hover:bg-[#B59A68] transition-colors">
+               <button onClick={() => window.scrollBy({top: 800, behavior: 'smooth'})} style={{ fontFamily: "'Montserrat', sans-serif" }} className="bg-[#111] text-white text-[11px] tracking-[0.1em] uppercase px-8 py-3.5 hover:bg-[#B59A68] transition-colors">
                  SHOP THE COLLECTION
                </button>
             </div>
@@ -241,14 +241,14 @@ export default function ProductsPage() {
             
             {/* Optional overlay text matching mockup */}
             <div className="absolute inset-y-0 right-0 w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 text-right z-10 pointer-events-none">
-              <span style={{ fontFamily: "'Manrope', sans-serif" }} className="text-[#111] md:text-white text-[12px] md:text-[14px] font-[500] tracking-wider mb-1 drop-shadow-sm md:drop-shadow-md">
+              <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-[#111] md:text-white text-[12px] md:text-[14px] font-[500] tracking-wider mb-1 drop-shadow-sm md:drop-shadow-md">
                 The right time for life
               </span>
               <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[#111] md:text-white text-[38px] sm:text-[42px] md:text-[64px] font-[500] leading-none mb-6 drop-shadow-sm md:drop-shadow-md">
                 Jewelry
               </span>
               <div className="flex justify-end pointer-events-auto">
-                <button onClick={() => window.scrollBy({top: 400, behavior: 'smooth'})} style={{ fontFamily: "'Manrope', sans-serif" }} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2 hover:bg-[#333] transition-colors">
+                <button onClick={() => window.scrollBy({top: 400, behavior: 'smooth'})} style={{ fontFamily: "'Montserrat', sans-serif" }} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2 hover:bg-[#333] transition-colors">
                   SEE COLLECTION
                 </button>
               </div>
@@ -458,7 +458,7 @@ function FilterGroup({ title, children }) {
   return (
     <div className="pb-6 mb-6">
       <button onClick={() => setOpen(!open)} className="flex items-center justify-between w-full text-left mb-4 pb-2 border-b border-[#EAE8E2]">
-        <span className="text-[12px] font-[600] uppercase tracking-[0.1em] text-[#111]" style={{ fontFamily: "'Manrope', sans-serif" }}>{title}</span>
+        <span className="text-[12px] font-[600] uppercase tracking-[0.1em] text-[#111]" style={{ fontFamily: "'Montserrat', sans-serif" }}>{title}</span>
         <ChevronDown size={14} className={`text-[#777] transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && <div className="space-y-2.5">{children}</div>}

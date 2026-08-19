@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -6,10 +6,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* ── Two-font luxury system: Cormorant Garamond (display) + Manrope (UI) ── */
+  /* ── Two-font luxury system: Cormorant Garamond (display) + Montserrat (UI) ── */
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-serif:   'Cormorant Garamond', Georgia, serif;
-  --font-sans:    'Manrope', system-ui, sans-serif;
+  --font-sans:    'Montserrat', system-ui, sans-serif;
 
   /* TARINI JEWELLERS Color Palette */
   --color-ivory:        #F7F5F1;
@@ -72,7 +72,7 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Headings: default to Manrope; use .font-display for editorial serif */
+/* Headings: default to Montserrat; use .font-display for editorial serif */
 h1, h2, h3, h4, h5, h6,
 .heading {
   font-family: var(--font-sans);

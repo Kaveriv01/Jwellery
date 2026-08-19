@@ -6,7 +6,7 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// ── Request Interceptor ────────────────────────────────────────────────────────
+// ── Request Montserratceptor ────────────────────────────────────────────────────────
 api.interceptors.request.use(
   (config) => {
     // Access token can optionally be stored in memory for SSR-safe access
@@ -30,7 +30,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ── Response Interceptor (auto refresh on 401) ────────────────────────────────
+// ── Response Montserratceptor (auto refresh on 401) ────────────────────────────────
 let isRefreshing = false;
 let failedQueue = [];
 

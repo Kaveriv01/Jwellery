@@ -35,28 +35,34 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-[#FAF6EE] text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-normal leading-tight mb-8"
+            className="text-[#FAF6EE] text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-normal leading-tight mb-6"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            Timeless,<br />Beautifully You.
+            Timeless Elegance
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-10 font-medium"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
+            className="text-[#FAF6EE] text-sm md:text-[15px] font-normal mb-8 max-w-md mx-auto"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Simple. Elegant. Unforgettable.
+            Discover jewellery designed to celebrate your everyday moments.
           </motion.p>
           
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <Heart size={20} strokeWidth={1} className="text-[#FAF6EE]" />
+            <Link
+              to="/collections"
+              className="inline-block px-10 py-3 bg-[#FAF6EE] text-[#2D0B12] text-xs tracking-[0.2em] uppercase font-semibold hover:bg-white hover:scale-105 transition-all duration-300"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Shop Now
+            </Link>
           </motion.div>
         </div>
 
@@ -67,7 +73,7 @@ export default function HeroBanner() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-6 leading-relaxed font-medium"
-          style={{ fontFamily: "'Manrope', sans-serif" }}
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
           For the moments<br />that matter most.
         </motion.p>

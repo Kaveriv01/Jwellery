@@ -42,10 +42,10 @@ export default function StorySection() {
             viewport={{ once: true, amount: 0.2 }}
             className="flex flex-col justify-center order-2 px-0 lg:px-4"
           >
-            {/* Label — Manrope */}
+            {/* Label — Montserrat */}
             <motion.span
               variants={fadeUp}
-              style={{ fontFamily: "'Manrope', sans-serif" }}
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
               className="text-[#C7A56A] text-[10px] lg:text-[11px] tracking-[0.18em] font-[600] uppercase mb-5 block"
             >
               DISCOVER TARINI
@@ -62,10 +62,10 @@ export default function StorySection() {
 
             <motion.div variants={fadeUp} className="w-10 h-[1px] bg-[#C7A56A] mb-7" />
 
-            {/* Body — Manrope */}
+            {/* Body — Montserrat */}
             <motion.p
               variants={fadeUp}
-              style={{ fontFamily: "'Manrope', sans-serif" }}
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
               className="text-[#555] text-[14px] leading-[1.82] mb-3 font-[400]"
             >
               Founded with a passion for timeless elegance, Tarini Jewellers is dedicated to bringing you pieces that celebrate life's most precious moments.
@@ -73,17 +73,17 @@ export default function StorySection() {
 
             <motion.p
               variants={fadeUp}
-              style={{ fontFamily: "'Manrope', sans-serif" }}
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
               className="text-[#555] text-[14px] leading-[1.82] mb-10 font-[400]"
             >
               Every creation is a testament to our commitment to craftsmanship, heritage, and beauty — inspired by the rich traditions of Indian jewellery making.
             </motion.p>
 
-            {/* Button — Manrope */}
+            {/* Button — Montserrat */}
             <motion.div variants={fadeUp}>
               <Link
                 to="/about"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="group inline-flex items-center gap-3 border border-[#111] text-[#111] px-8 py-3.5 text-[11px] uppercase tracking-[0.08em] font-[600] hover:bg-[#111] hover:text-white transition-all duration-300 rounded-sm"
               >
                 EXPLORE OUR STORY

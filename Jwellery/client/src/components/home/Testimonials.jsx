@@ -53,7 +53,7 @@ export default function Testimonials() {
           centeredSlides={false}
           slidesPerView={1}
           spaceBetween={16}
-          autoplay={{ delay: 4500, disableOnInteraction: false }}
+          autoplay={{ delay: 4500, disableOnMontserrataction: false }}
           pagination={{ clickable: true }}
           breakpoints={{
             640:  { slidesPerView: 2, spaceBetween: 16 },
