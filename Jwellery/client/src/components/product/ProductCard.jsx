@@ -101,13 +101,13 @@ const ProductCard = memo(function ProductCard({ product }) {
 
       <div className="pt-4 pb-2 text-center flex flex-col flex-1 bg-transparent px-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
         <Link to={`/products/${slug}`} className="block mb-1.5">
-          <h3 className={`text-[12px] lg:text-[13px] text-[#24191A] font-medium leading-relaxed tracking-wide transition-all duration-[400ms] line-clamp-1 translate-y-0 hover:text-[#4A0712] ${shouldReduceMotion ? '' : 'lg:group-hover:-translate-y-[2px]'}`}>
+          <h3 className={`text-[14px] lg:text-[16px] text-[#24191A] font-[500] leading-relaxed tracking-wide transition-all duration-[400ms] line-clamp-1 translate-y-0 hover:text-[#4A0712] ${shouldReduceMotion ? '' : 'lg:group-hover:-translate-y-[2px]'}`}>
             {name}
           </h3>
         </Link>
         <div className="mt-auto flex items-center justify-center gap-2">
-          <span className="text-[12px] lg:text-[13px] font-semibold text-[#4A0712]">{formatPrice(effectivePrice)}</span>
-          {discountPrice && <span className="text-[11px] lg:text-[12px] text-[#756869] font-light line-through">{formatPrice(price)}</span>}
+          <span className="text-[14px] lg:text-[16px] font-[600] text-[#4A0712]">{formatPrice(effectivePrice)}</span>
+          {discountPrice && <span className="text-[12px] lg:text-[13px] text-[#756869] font-[600] line-through">{formatPrice(price)}</span>}
         </div>
         
         {/* Action Buttons below price */}
@@ -122,7 +122,7 @@ const ProductCard = memo(function ProductCard({ product }) {
           <button
             onClick={handleAddToCart}
             disabled={isAddingToCart || isOutOfStock}
-            className="flex-1 bg-[#35050D] text-[#F8F4EE] text-[11px] font-medium uppercase tracking-[0.12em] py-2 hover:bg-[#4A0712] rounded-[2px] transition-all duration-300 disabled:opacity-60 hover:scale-[1.02] ease-out"
+            className="flex-1 bg-[#35050D] text-[#F8F4EE] text-[12px] lg:text-[14px] font-[600] uppercase tracking-[0.08em] py-2 hover:bg-[#4A0712] rounded-[2px] transition-all duration-300 disabled:opacity-60 hover:scale-[1.02] ease-out"
           >
             {isOutOfStock ? 'Sold Out' : 'Add to Cart'}
           </button>

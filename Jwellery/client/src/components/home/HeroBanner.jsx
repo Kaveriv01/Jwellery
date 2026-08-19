@@ -42,7 +42,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[32px] sm:text-[38px] md:text-[44px] lg:text-[64px] font-normal leading-tight mb-4 tracking-wide"
+            className="text-[#FAF6EE] text-[36px] md:text-[44px] lg:text-[64px] font-[500] leading-tight mb-4 tracking-wide"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Timeless Elegance
@@ -52,7 +52,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-sm md:text-base font-light tracking-wide mb-10 max-w-lg mx-auto"
+            className="text-[#FAF6EE] text-[14px] md:text-[16px] font-[400] tracking-wide mb-10 max-w-lg mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Discover jewellery designed to celebrate your everyday moments.
@@ -65,7 +65,7 @@ export default function HeroBanner() {
           >
             <Link
               to="/collections"
-              className="inline-block px-10 py-3.5 bg-[#FAF6EE] text-[#35050D] text-[12px] tracking-[0.2em] uppercase font-medium hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02]"
+              className="inline-block px-10 py-3.5 bg-[#FAF6EE] text-[#35050D] text-[12px] md:text-[14px] font-[600] tracking-[0.08em] uppercase hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Shop Now

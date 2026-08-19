@@ -36,7 +36,7 @@ function SectionHeading({ title, subtitle, dark = false }) {
 
       <motion.h2 
         variants={headingReveal}
-        className={`text-[36px] sm:text-[40px] lg:text-[44px] font-normal tracking-wide mb-[16px] ${dark ? 'text-[#F8F4EE]' : 'text-[#35050D]'}`} 
+        className={`text-[30px] md:text-[38px] lg:text-[48px] font-[500] leading-[1.15] tracking-wide mb-[16px] ${dark ? 'text-[#F8F4EE]' : 'text-[#35050D]'}`} 
         style={{ fontFamily: "'Cormorant Garamond', serif" }}
       >
         {title}
@@ -169,7 +169,7 @@ function ProductSection({ title, subtitle, products = [], viewAllLink, dark = fa
           <div className="text-center mt-12">
             <Link
               to={viewAllLink}
-              className="inline-block border-b border-[#35050D] pb-1 text-[#35050D] hover:text-[#4A0712] hover:border-[#4A0712] text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-[300ms] ease-out hover:-translate-y-px"
+              className="inline-block border-b border-[#35050D] pb-1 text-[#35050D] hover:text-[#4A0712] hover:border-[#4A0712] text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase transition-all duration-[300ms] ease-out hover:-translate-y-px"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               View All
@@ -262,7 +262,7 @@ export function NewArrivals({ products }) {
         <div className="flex flex-col items-center justify-center text-center mb-12">
           <motion.h2 
             variants={headingReveal}
-            className="text-[32px] sm:text-[38px] lg:text-[40px] font-normal tracking-wide mb-[16px] text-[#35050D]" 
+            className="text-[30px] md:text-[38px] lg:text-[48px] font-[500] leading-[1.15] tracking-wide mb-[16px] text-[#35050D]" 
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             New Arrivals
@@ -286,7 +286,7 @@ export function NewArrivals({ products }) {
         <div className="mt-12 flex justify-center">
           <Link
             to="/products?isNewArrival=true"
-            className="inline-block bg-[#35050D] text-[#F8F4EE] px-10 py-3.5 text-[11px] font-medium tracking-[0.15em] uppercase transition-all duration-[300ms] ease-out hover:bg-[#4A0712] hover:scale-[1.02] shadow-sm rounded-[2px]"
+            className="inline-block bg-[#35050D] text-[#F8F4EE] px-10 py-3.5 text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase transition-all duration-[300ms] ease-out hover:bg-[#4A0712] hover:scale-[1.02] shadow-sm rounded-[2px]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Shop New In

@@ -67,7 +67,7 @@ export default function Navbar() {
     <Link to={to} className="relative group py-2">
       <span
         style={{ fontFamily: "'Montserrat', sans-serif" }}
-        className="relative z-10 text-[11px] lg:text-[12px] text-[#111] tracking-[0.06em] uppercase font-[600] transition-colors duration-[280ms] ease-out group-hover:text-[#666]"
+        className="relative z-10 text-[12px] lg:text-[13px] text-[#35050D] tracking-[0.08em] uppercase font-[600] transition-colors duration-[280ms] ease-out group-hover:text-[#C7A56A]"
       >
         {children}
       </span>
@@ -97,7 +97,7 @@ export default function Navbar() {
             <Link to="/" className="flex flex-col items-center justify-center lg:items-start flex-shrink-0 group lg:pr-10 lg:mr-4">
               <span
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                className="text-[26px] lg:text-[30px] text-[#5C1D24] tracking-[0.18em] leading-none font-[500] group-hover:opacity-80 transition-opacity duration-500"
+                className="text-[26px] lg:text-[30px] text-[#35050D] tracking-[0.18em] leading-none font-[500] group-hover:opacity-80 transition-opacity duration-500"
               >
                 TARINI
               </span>
@@ -178,23 +178,23 @@ export default function Navbar() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 lg:hidden" onClick={() => setMenuOpen(false)} />
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
-                <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-xl text-[#111] tracking-widest font-normal">TARINI</span>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-2xl text-[#35050D] tracking-[0.15em] font-[500]">TARINI</span>
                 <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
               <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-white">
-                <Link to="/products?isNewArrival=true" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">New In</Link>
-                <Link to="/category/necklaces" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Necklaces</Link>
-                <Link to="/category/earrings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Earrings</Link>
-                <Link to="/category/rings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Rings</Link>
-                <Link to="/category/bracelets" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Bracelets</Link>
-                <Link to="/collections" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Collections</Link>
-                <Link to="/sale" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-red-600 tracking-widest uppercase font-medium border-b border-gray-100 hover:text-red-500 hover:pl-2 transition-all duration-300">Sale</Link>
+                <Link to="/products?isNewArrival=true" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">New In</Link>
+                <Link to="/category/necklaces" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Necklaces</Link>
+                <Link to="/category/earrings" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Earrings</Link>
+                <Link to="/category/rings" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Rings</Link>
+                <Link to="/category/bracelets" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Bracelets</Link>
+                <Link to="/collections" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Collections</Link>
+                <Link to="/sale" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-red-600 tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-red-500 hover:pl-2 transition-all duration-300">Sale</Link>
                 
-                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-gray-500 hover:text-[#111] tracking-widest uppercase font-medium flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
+                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#756B62] hover:text-[#35050D] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
                 {!isAuthenticated ? (
-                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-gray-500 hover:text-[#111] tracking-widest uppercase font-medium flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
+                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#756B62] hover:text-[#35050D] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
                 ) : (
-                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-gray-500 hover:text-[#111] tracking-widest uppercase font-medium flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
+                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#756B62] hover:text-[#35050D] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
                 )}
               </nav>
             </motion.aside>
