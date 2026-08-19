@@ -39,12 +39,6 @@ export default function ReelsSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 
-                {/* Opaque box to cover watermarks */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-[#F8F4EC] px-4 py-1.5 rounded-[2px] z-20 pointer-events-none shadow-lg border border-[#EAE8E2]">
-                  <span className="text-[#3A0508] text-[10px] tracking-[0.25em] font-bold uppercase" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                    Tarini
-                  </span>
-                </div>
 
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-z-12">
                   <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/50 shadow-lg hover:scale-110 transition-transform">
