@@ -28,8 +28,8 @@ export default function EditorialBanner() {
           >
             <div className="aspect-[4/5] bg-white overflow-hidden rounded-[2px] relative group">
               <img
-                src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800"
-                alt="Tarini Jewellery"
+                src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800"
+                alt="Diamond Bracelet"
                 className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03] ease-out"
               />
             </div>

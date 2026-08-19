@@ -71,7 +71,21 @@ export default function ProductsPage() {
   }
 
   // Determine if we should show a banner and what image to use
-  const getBannerData = (s) => {
+  const getBannerData = (s, isNew) => {
+    if (isNew === 'true') {
+      return {
+        type: 'lookbook',
+        images: [
+          'https://images.unsplash.com/photo-1599643478524-fb66f70a0066?q=80&w=2000&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=800&auto=format&fit=crop'
+        ],
+        title: 'New In Collection',
+        subtitle: 'Discover our latest pieces'
+      };
+    }
     if (!s) return null;
     const normalized = s.toLowerCase();
     switch (normalized) {
@@ -96,7 +110,7 @@ export default function ProductsPage() {
       default: return null;
     }
   };
-  const bannerData = getBannerData(categorySlug);
+  const bannerData = getBannerData(categorySlug, isNewArrival);
   const videoBanner = categorySlug ? jewelleryMedia.collectionBanners[categorySlug.toLowerCase()] : null;
 
   const params = { page, limit: ITEMS_PER_PAGE, sortBy };
@@ -167,12 +181,17 @@ export default function ProductsPage() {
             <Link to="/" className="hover:text-[#111] transition-colors">Home</Link>
             <span className="mx-2">/</span>
             <Link to="/products" className="hover:text-[#111] transition-colors">Collections</Link>
-            {categoryName && (
+            {categoryName ? (
               <>
                 <span className="mx-2">/</span>
                 <span className="text-[#111]">{categoryName}</span>
               </>
-            )}
+            ) : isNewArrival === 'true' ? (
+              <>
+                <span className="mx-2">/</span>
+                <span className="text-[#111]">New In</span>
+              </>
+            ) : null}
           </div>
         </div>
       </div>
@@ -180,7 +199,7 @@ export default function ProductsPage() {
       <div className="container-luxury pb-12">
         {/* Page Title */}
         <h1 className="text-[28px] lg:text-[34px] font-[500] tracking-wide text-[#111] uppercase mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-          {categoryName ? categoryName : (search ? `Search: ${search}` : 'New Jewelry')}
+          {categoryName ? categoryName : (search ? `Search: ${search}` : (isNewArrival === 'true' ? 'New In' : 'All Jewelry'))}
         </h1>
 
         {/* Constrained Category Banner */}

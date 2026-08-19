@@ -38,7 +38,7 @@ const ProductCard = memo(function ProductCard({ product }) {
     }
 
     addToCart({ productId: _id, quantity: 1 });
-    toast.success('Added to your bag');
+    toast.success('Added to your cart');
   };
 
   const handleWishlistToggle = (e) => {
@@ -124,7 +124,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             disabled={isAddingToCart || isOutOfStock}
             className="flex-1 bg-[#35050D] text-[#F8F4EE] text-[11px] font-medium uppercase tracking-[0.12em] py-2 hover:bg-[#4A0712] rounded-[2px] transition-all duration-300 disabled:opacity-60 hover:scale-[1.02] ease-out"
           >
-            {isOutOfStock ? 'Sold Out' : 'Add to Bag'}
+            {isOutOfStock ? 'Sold Out' : 'Add to Cart'}
           </button>
         </div>
       </div>

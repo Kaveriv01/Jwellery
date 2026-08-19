@@ -111,7 +111,7 @@ export default function Navbar() {
 
             {/* CENTER: Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-              <NavLink to="/products?sort=-createdAt">New In</NavLink>
+              <NavLink to="/products?isNewArrival=true">New In</NavLink>
               <NavLink to="/category/necklaces">Necklaces</NavLink>
               <NavLink to="/category/earrings">Earrings</NavLink>
               <NavLink to="/category/rings">Rings</NavLink>
@@ -182,7 +182,7 @@ export default function Navbar() {
                 <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
               <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-white">
-                <Link to="/products?sort=-createdAt" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">New In</Link>
+                <Link to="/products?isNewArrival=true" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">New In</Link>
                 <Link to="/category/necklaces" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Necklaces</Link>
                 <Link to="/category/earrings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Earrings</Link>
                 <Link to="/category/rings" onClick={() => setMenuOpen(false)} className="py-4 text-sm text-[#111] tracking-widest uppercase font-medium border-b border-gray-100 hover:text-[#666] hover:pl-2 transition-all duration-300">Rings</Link>
