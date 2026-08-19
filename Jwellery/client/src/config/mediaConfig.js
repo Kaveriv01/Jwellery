@@ -21,7 +21,7 @@ export const jewelleryMedia = {
     },
     {
       id: "reel-2",
-      videoUrl: "/obkpo6sffg.mp4",
+      videoUrl: "/From Klickpin.com- 213991419789912984-pin-id-213991419789912984.mp4",
       poster: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=800",
     },
     {
