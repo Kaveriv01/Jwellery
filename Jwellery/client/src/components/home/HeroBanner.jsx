@@ -35,7 +35,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-[#FAF6EE] text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-normal leading-tight mb-6"
+            className="text-[#FAF6EE] text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-normal leading-tight mb-4 tracking-wide"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Timeless Elegance
@@ -45,7 +45,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[#FAF6EE] text-sm md:text-[15px] font-normal mb-8 max-w-md mx-auto"
+            className="text-[#FAF6EE] text-xs md:text-sm font-light tracking-wide mb-8 max-w-md mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Discover jewellery designed to celebrate your everyday moments.
@@ -58,7 +58,7 @@ export default function HeroBanner() {
           >
             <Link
               to="/collections"
-              className="inline-block px-10 py-3 bg-[#FAF6EE] text-[#2D0B12] text-xs tracking-[0.2em] uppercase font-semibold hover:bg-white hover:scale-105 transition-all duration-300"
+              className="inline-block px-8 py-2.5 bg-[#FAF6EE] text-[#2D0B12] text-[11px] tracking-[0.2em] uppercase font-medium hover:bg-white hover:scale-105 transition-all duration-300"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Shop Now
