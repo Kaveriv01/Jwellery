@@ -16,7 +16,7 @@ export const jewelleryMedia = {
     // Vertical videos for the "Follow Our Style" section
     {
       id: "reel-1",
-      videoUrl: "/279397_large.mp4",
+      videoUrl: "/i_want_to_make_this_same_video.mp4",
       poster: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=800",
     },
     {

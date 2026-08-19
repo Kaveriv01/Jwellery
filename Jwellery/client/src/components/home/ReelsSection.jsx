@@ -35,13 +35,12 @@ export default function ReelsSection() {
                   muted
                   loop
                   playsInline
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
+                  className="w-full h-full object-cover transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 
 
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-z-12">
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/50 shadow-lg hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center border border-white/50 shadow-lg hover:scale-110 transition-transform">
                     <Play size={24} className="text-white ml-1" fill="white" />
                   </div>
                 </div>
