@@ -55,18 +55,18 @@ const ProductCard = memo(function ProductCard({ product }) {
 
   return (
     <motion.div
-      className={`group relative flex flex-col h-full bg-white border border-[#FAF6EE] hover:border-[#B59A68]/30 transition-all duration-[450ms] ease-out rounded-[2px] p-2.5 ${shouldReduceMotion ? '' : 'lg:hover:-translate-y-[3px] lg:hover:shadow-[0_8px_20px_rgba(58,5,8,0.02)]'}`}
+      className={`group relative flex flex-col h-full bg-white border border-[#F8F4EE] hover:border-[#EAE6DF] transition-all duration-[400ms] ease-out rounded-[2px] p-3 ${shouldReduceMotion ? '' : 'lg:hover:shadow-sm'}`}
     >
       <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#F8F4EC] rounded-[2px]" style={{ aspectRatio: '4/5' }}>
         {/* Main image */}
         <motion.img
           src={mainImage}
           alt={name}
-          initial={{ opacity: 0.7, scale: shouldReduceMotion ? 1 : 1.02 }}
+          initial={{ opacity: 0.8, scale: shouldReduceMotion ? 1 : 1.02 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className={`w-full h-full object-cover transition-all duration-[450ms] ease-out group-hover:opacity-0 lg:group-hover:brightness-95 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.02]'}`}
+          className={`w-full h-full object-contain transition-all duration-[400ms] ease-out group-hover:opacity-0 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.03]'}`}
           onError={(e) => { e.target.src = '/placeholder.jpg'; }}
         />
 
@@ -75,56 +75,56 @@ const ProductCard = memo(function ProductCard({ product }) {
           <img
             src={hoverImage}
             alt={name}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-[450ms] ease-out opacity-0 lg:group-hover:brightness-95 group-hover:opacity-100 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.02]'}`}
+            className={`absolute inset-0 w-full h-full object-contain transition-all duration-[400ms] ease-out opacity-0 group-hover:opacity-100 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.03]'}`}
             onError={(e) => { e.target.src = '/placeholder.jpg'; }}
           />
         )}
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-[#F8F4EC]/10 transition-opacity duration-[450ms] ease-out opacity-0 lg:group-hover:opacity-100 hidden lg:block" />
+        <div className="absolute inset-0 bg-[#F8F4EE]/10 transition-opacity duration-[400ms] ease-out opacity-0 lg:group-hover:opacity-100 hidden lg:block" />
 
         {/* View Product (Hover) */}
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center transform transition-all duration-[450ms] ease-out translate-y-[10px] opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 hidden lg:flex">
-          <span className="text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#F7F3EA] bg-[#3A0508]/90 backdrop-blur-sm px-6 py-2.5 shadow-sm rounded-[2px] transition-all duration-300 hover:bg-[#220306] border-b-2 border-transparent hover:border-[#B59A68]">
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center transform transition-all duration-[400ms] ease-out translate-y-[10px] opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 hidden lg:flex">
+          <span className="text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#F8F4EE] bg-[#35050D] px-6 py-2.5 shadow-sm rounded-[2px] transition-all duration-300 hover:bg-[#4A0712] border border-[#35050D]">
             View Details &rarr;
           </span>
         </div>
       </Link>
 
       {/* Badges */}
-      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }} className="absolute top-4 left-4 flex flex-col gap-1.5 z-10 pointer-events-none">
-        {isOutOfStock && <span className="bg-[#332B27] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Sold Out</span>}
-        {!isOutOfStock && isNewArrival && <span className="bg-[#3A0508] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">New</span>}
-        {!isOutOfStock && isBestSeller && <span className="bg-[#3A0508] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Bestseller</span>}
-        {!isOutOfStock && !isNewArrival && !isBestSeller && stock > 0 && stock <= 5 && <span className="bg-[#3A0508] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Limited</span>}
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }} className="absolute top-5 left-5 flex flex-col gap-1.5 z-10 pointer-events-none">
+        {isOutOfStock && <span className="bg-[#24191A] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Sold Out</span>}
+        {!isOutOfStock && isNewArrival && <span className="bg-[#4A0712] text-[#F8F4EE] text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">New</span>}
+        {!isOutOfStock && isBestSeller && <span className="bg-[#4A0712] text-[#F8F4EE] text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Bestseller</span>}
+        {!isOutOfStock && !isNewArrival && !isBestSeller && stock > 0 && stock <= 5 && <span className="bg-[#4A0712] text-[#F8F4EE] text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-0.5 rounded-[2px] shadow-sm">Limited</span>}
       </motion.div>
 
-      <div className="pt-4 pb-2 text-center flex flex-col flex-1 bg-transparent">
-        <Link to={`/products/${slug}`} className="block mb-2">
-          <h3 className={`text-[12px] lg:text-[13px] text-[#332B27] font-medium leading-relaxed tracking-wide transition-all duration-[450ms] line-clamp-1 translate-y-0 hover:text-[#3A0508] ${shouldReduceMotion ? '' : 'lg:group-hover:-translate-y-[2px]'}`}>
+      <div className="pt-4 pb-2 text-center flex flex-col flex-1 bg-transparent px-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+        <Link to={`/products/${slug}`} className="block mb-1.5">
+          <h3 className={`text-[12px] lg:text-[13px] text-[#24191A] font-medium leading-relaxed tracking-wide transition-all duration-[400ms] line-clamp-1 translate-y-0 hover:text-[#4A0712] ${shouldReduceMotion ? '' : 'lg:group-hover:-translate-y-[2px]'}`}>
             {name}
           </h3>
         </Link>
         <div className="mt-auto flex items-center justify-center gap-2">
-          <span className="text-[13px] lg:text-[14px] font-medium text-[#3A0508]">{formatPrice(effectivePrice)}</span>
-          {discountPrice && <span className="text-[11px] lg:text-[12px] text-[#756B62] line-through">{formatPrice(price)}</span>}
+          <span className="text-[12px] lg:text-[13px] font-semibold text-[#4A0712]">{formatPrice(effectivePrice)}</span>
+          {discountPrice && <span className="text-[11px] lg:text-[12px] text-[#756869] font-light line-through">{formatPrice(price)}</span>}
         </div>
         
         {/* Action Buttons below price */}
-        <div className="mt-3 flex gap-2 w-full pt-2 border-t border-[#FAF6EE]">
+        <div className="mt-4 flex gap-2 w-full pt-3 border-t border-[#F8F4EE]">
           <button
             onClick={handleWishlistToggle}
             disabled={isToggling}
-            className="w-10 h-10 border border-[#FAF6EE] rounded-[2px] flex items-center justify-center text-[#756B62] hover:text-[#3A0508] hover:bg-[#FAF6EE] transition-colors"
+            className="w-10 h-10 border border-[#F8F4EE] rounded-[2px] flex items-center justify-center text-[#756869] hover:text-[#4A0712] hover:bg-[#F8F4EE] transition-colors"
           >
-            <Heart size={16} className={wishlisted ? 'fill-[#B59A68] text-[#B59A68]' : ''} />
+            <Heart size={16} className={wishlisted ? 'fill-[#4A0712] text-[#4A0712]' : ''} />
           </button>
           <button
             onClick={handleAddToCart}
             disabled={isAddingToCart || isOutOfStock}
-            className="flex-1 bg-[#3A0508] text-[#F7F3EA] text-[10px] font-medium uppercase tracking-[0.12em] py-2 hover:bg-[#220306] rounded-[2px] transition-colors disabled:opacity-60"
+            className="flex-1 bg-[#35050D] text-[#F8F4EE] text-[11px] font-medium uppercase tracking-[0.12em] py-2 hover:bg-[#4A0712] rounded-[2px] transition-all duration-300 disabled:opacity-60 hover:scale-[1.02] ease-out"
           >
-            {isOutOfStock ? 'Sold Out' : 'Add to Cart'}
+            {isOutOfStock ? 'Sold Out' : 'Add to Bag'}
           </button>
         </div>
       </div>

@@ -7,13 +7,20 @@ import { jewelleryMedia } from '../../config/mediaConfig';
 export default function HeroBanner() {
   return (
     <section className="relative w-full h-[80vh] md:h-[85vh] lg:h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-[#2D0B12]">
-      {/* Background Image determining height */}
-      <img
+      <motion.img
+        initial={{ opacity: 0, scale: 1.03 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
         src="/7f6da4e9-866a-4b32-b1da-bdfd58aaac91.jfif"
         alt="Tarini Jewellers Collection"
-        className="absolute inset-0 w-full h-full object-cover object-center scale-105"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
-      <div className="absolute inset-0 bg-black/30 z-0" /> {/* Darker overlay for text readability */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0 bg-black/40 z-0" 
+      />
 
       {/* Overlay Content Wrapper */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-12 md:py-20">
@@ -34,8 +41,8 @@ export default function HeroBanner() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-[#FAF6EE] text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-normal leading-tight mb-4 tracking-wide"
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-[#FAF6EE] text-[32px] sm:text-[38px] md:text-[44px] lg:text-[64px] font-normal leading-tight mb-4 tracking-wide"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Timeless Elegance
@@ -44,21 +51,21 @@ export default function HeroBanner() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[#FAF6EE] text-xs md:text-sm font-light tracking-wide mb-8 max-w-md mx-auto"
+            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
+            className="text-[#FAF6EE] text-sm md:text-base font-light tracking-wide mb-10 max-w-lg mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Discover jewellery designed to celebrate your everyday moments.
           </motion.p>
           
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
           >
             <Link
               to="/collections"
-              className="inline-block px-8 py-2.5 bg-[#FAF6EE] text-[#2D0B12] text-[11px] tracking-[0.2em] uppercase font-medium hover:bg-white hover:scale-105 transition-all duration-300"
+              className="inline-block px-10 py-3.5 bg-[#FAF6EE] text-[#35050D] text-[12px] tracking-[0.2em] uppercase font-medium hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Shop Now

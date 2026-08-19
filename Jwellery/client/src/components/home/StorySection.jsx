@@ -14,9 +14,9 @@ export default function StorySection() {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-[#F7F5F1]">
+    <section className="py-20 lg:py-28 bg-white border-t border-[#EAE6DF]">
       <div className="container-luxury max-w-[1320px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Left: craftsmanship image */}
           <motion.div
@@ -24,13 +24,14 @@ export default function StorySection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full aspect-[4/5] overflow-hidden order-1"
+            className="relative w-full aspect-[4/5] overflow-hidden order-1 rounded-[2px]"
           >
             <img
-              src="/images/home/our-story-new.png?v=2"
+              src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1200"
               alt="Tarini Jewellers craftsmanship"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-center transition-transform duration-[700ms] hover:scale-[1.02] ease-out"
               loading="lazy"
+              onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1200'; }}
             />
           </motion.div>
 
@@ -40,13 +41,13 @@ export default function StorySection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="flex flex-col justify-center order-2 px-0 lg:px-4"
+            className="flex flex-col justify-center order-2 px-4 lg:px-12"
           >
             {/* Label — Montserrat */}
             <motion.span
               variants={fadeUp}
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-[#C7A56A] text-[10px] lg:text-[11px] tracking-[0.18em] font-[600] uppercase mb-5 block"
+              className="text-[#C9A96E] text-[10px] lg:text-[11px] tracking-[0.2em] font-medium uppercase mb-6 block"
             >
               DISCOVER TARINI
             </motion.span>
@@ -55,18 +56,18 @@ export default function StorySection() {
             <motion.h2
               variants={fadeUp}
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              className="text-[#111] text-[40px] lg:text-[52px] leading-[1.05] font-[500] mb-6 tracking-[-0.01em]"
+              className="text-[#35050D] text-[40px] lg:text-[48px] leading-[1.1] font-normal mb-8 tracking-wide"
             >
               Our Story
             </motion.h2>
 
-            <motion.div variants={fadeUp} className="w-10 h-[1px] bg-[#C7A56A] mb-7" />
+            <motion.div variants={fadeUp} className="w-12 h-[1px] bg-[#C9A96E] mb-8" />
 
             {/* Body — Montserrat */}
             <motion.p
               variants={fadeUp}
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-[#555] text-[14px] leading-[1.82] mb-3 font-[400]"
+              className="text-[#756869] text-[13px] leading-[1.8] mb-4 font-light tracking-wide"
             >
               Founded with a passion for timeless elegance, Tarini Jewellers is dedicated to bringing you pieces that celebrate life's most precious moments.
             </motion.p>
@@ -74,7 +75,7 @@ export default function StorySection() {
             <motion.p
               variants={fadeUp}
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-[#555] text-[14px] leading-[1.82] mb-10 font-[400]"
+              className="text-[#756869] text-[13px] leading-[1.8] mb-12 font-light tracking-wide"
             >
               Every creation is a testament to our commitment to craftsmanship, heritage, and beauty — inspired by the rich traditions of Indian jewellery making.
             </motion.p>
@@ -84,7 +85,7 @@ export default function StorySection() {
               <Link
                 to="/about"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="group inline-flex items-center gap-3 border border-[#111] text-[#111] px-8 py-3.5 text-[11px] uppercase tracking-[0.08em] font-[600] hover:bg-[#111] hover:text-white transition-all duration-300 rounded-sm"
+                className="group inline-flex items-center justify-center border border-[#35050D] text-[#35050D] px-10 py-3.5 text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-[#35050D] hover:text-[#F8F4EE] transition-all duration-[300ms] ease-out rounded-[2px]"
               >
                 EXPLORE OUR STORY
               </Link>

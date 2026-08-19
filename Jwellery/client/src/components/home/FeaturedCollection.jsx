@@ -24,19 +24,19 @@ function SectionHeading({ title, subtitle, dark = false }) {
       className="flex flex-col items-center justify-center text-center mb-16"
     >
       {subtitle && (
-        <motion.span className={`text-[11px] tracking-[0.25em] uppercase mb-3 block font-semibold ${dark ? 'text-[#FAF8F3]/80' : 'text-[#B59A68]'}`}>
+        <motion.span className={`text-[10px] tracking-[0.15em] uppercase mb-3 block font-medium ${dark ? 'text-[#F8F4EE]/80' : 'text-[#756869]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
           {subtitle}
         </motion.span>
       )}
       
-      {/* Decorative element from design */}
-      <div className={`w-4 h-4 mx-auto mb-2 opacity-50 ${dark ? 'text-white' : 'text-[#B59A68]'}`}>
+      {/* Decorative element */}
+      <div className={`w-4 h-4 mx-auto mb-3 opacity-40 ${dark ? 'text-white' : 'text-[#C9A96E]'}`}>
          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
       </div>
 
       <motion.h2 
         variants={headingReveal}
-        className={`text-[32px] sm:text-[38px] lg:text-[46px] font-normal tracking-wide mb-[16px] ${dark ? 'text-[#FAF8F3]' : 'text-[#4A4A4A]'}`} 
+        className={`text-[36px] sm:text-[40px] lg:text-[44px] font-normal tracking-wide mb-[16px] ${dark ? 'text-[#F8F4EE]' : 'text-[#35050D]'}`} 
         style={{ fontFamily: "'Cormorant Garamond', serif" }}
       >
         {title}
@@ -91,7 +91,7 @@ function ProductCarousel({ products }) {
       <button 
         onClick={() => scroll('left')}
         disabled={!canScrollLeft}
-        className={`absolute left-0 top-[40%] -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(58,5,8,0.04)] flex items-center justify-center text-[#3A0508] transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#B59A68]' : 'opacity-0 pointer-events-none'}`}
+        className={`absolute left-0 top-[40%] -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(53,5,13,0.06)] flex items-center justify-center text-[#35050D] transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#4A0712]' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronLeft size={24} strokeWidth={1} />
       </button>
@@ -99,7 +99,7 @@ function ProductCarousel({ products }) {
       <button 
         onClick={() => scroll('right')}
         disabled={!canScrollRight}
-        className={`absolute right-0 top-[40%] -translate-y-1/2 translate-x-1/2 md:translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(58,5,8,0.04)] flex items-center justify-center text-[#3A0508] transition-all duration-300 z-10 ${canScrollRight ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#B59A68]' : 'opacity-0 pointer-events-none'}`}
+        className={`absolute right-0 top-[40%] -translate-y-1/2 translate-x-1/2 md:translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(53,5,13,0.06)] flex items-center justify-center text-[#35050D] transition-all duration-300 z-10 ${canScrollRight ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#4A0712]' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronRight size={24} strokeWidth={1} />
       </button>
@@ -169,7 +169,8 @@ function ProductSection({ title, subtitle, products = [], viewAllLink, dark = fa
           <div className="text-center mt-12">
             <Link
               to={viewAllLink}
-              className="inline-block border-b border-[#3A0508] pb-1 text-[#3A0508] hover:text-[#B59A68] hover:border-[#B59A68] text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-300"
+              className="inline-block border-b border-[#35050D] pb-1 text-[#35050D] hover:text-[#4A0712] hover:border-[#4A0712] text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase transition-all duration-[300ms] ease-out hover:-translate-y-px"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               View All
             </Link>
@@ -261,8 +262,8 @@ export function NewArrivals({ products }) {
         <div className="flex flex-col items-center justify-center text-center mb-12">
           <motion.h2 
             variants={headingReveal}
-            className="text-[20px] lg:text-[24px] font-bold tracking-[0.05em] uppercase mb-[16px] text-[#111]" 
-            style={{ fontFamily: 'inherit' }}
+            className="text-[32px] sm:text-[38px] lg:text-[40px] font-normal tracking-wide mb-[16px] text-[#35050D]" 
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             New Arrivals
           </motion.h2>
@@ -285,7 +286,8 @@ export function NewArrivals({ products }) {
         <div className="mt-12 flex justify-center">
           <Link
             to="/products?isNewArrival=true"
-            className="inline-block bg-[#111] text-white px-10 py-3.5 text-[11px] font-semibold tracking-[0.1em] uppercase transition-all duration-300 hover:bg-[#333]"
+            className="inline-block bg-[#35050D] text-[#F8F4EE] px-10 py-3.5 text-[11px] font-medium tracking-[0.15em] uppercase transition-all duration-[300ms] ease-out hover:bg-[#4A0712] hover:scale-[1.02] shadow-sm rounded-[2px]"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Shop New In
           </Link>

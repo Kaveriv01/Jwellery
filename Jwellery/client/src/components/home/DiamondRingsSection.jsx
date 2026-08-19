@@ -148,34 +148,35 @@ export default function DiamondRingsSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={sectionReveal}
-      className="py-12 sm:py-16 bg-white border-t border-[#FAF6EE] overflow-hidden"
+      className="py-16 sm:py-24 bg-white border-t border-[#F8F4EE] overflow-hidden"
     >
       <div className="container-luxury">
 
         {/* ── Header ─────────────────────────────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-4">
-            <div className="w-[2px] h-8 bg-[#560817]" />
+            <div className="w-[2px] h-8 bg-[#35050D]" />
             <div>
-              <h2 className="text-[22px] sm:text-[26px] lg:text-[30px] font-normal text-[#560817] leading-tight flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-[22px] sm:text-[26px] lg:text-[32px] font-normal text-[#35050D] leading-tight flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Diamond Rings
-                <Gem size={18} className="text-[#B08A45]" />
+                <Gem size={18} className="text-[#C9A96E]" />
               </h2>
-              <p className="text-[11px] text-[#746760] mt-0.5 font-light">
+              <p className="text-[11px] text-[#756869] mt-1 font-medium tracking-[0.1em] uppercase" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 GIA Certified · BIS Hallmarked · Free Engraving
-                {total > 0 && <span className="ml-1.5 text-[#560817] font-medium">({total} designs)</span>}
+                {total > 0 && <span className="ml-1.5 text-[#35050D] font-semibold">({total} designs)</span>}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
             {/* Sort Dropdown */}
-            <div className="flex items-center gap-2 bg-[#F8F4EC] border border-[#FAF6EE] rounded-[2px] px-3 py-1.5">
+            <div className="flex items-center gap-2 bg-[#F8F4EE] border border-[#EAE6DF] rounded-[2px] px-3 py-1.5">
               <SlidersHorizontal size={12} className="text-[#746760]" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-[11px] font-medium text-[#746760] bg-transparent outline-none cursor-pointer tracking-wider font-light"
+                className="text-[10px] font-medium text-[#756869] bg-transparent outline-none cursor-pointer tracking-[0.1em] uppercase"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 {SORT_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -190,7 +191,8 @@ export default function DiamondRingsSection() {
             >
               <Link
                 to="/products?stone=Diamond"
-                className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.12em] uppercase border border-[#560817] text-[#560817] hover:bg-[#560817] hover:text-white rounded-[2px] px-4 py-1.5 transition-all duration-[250ms] ease-out shadow-sm cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-medium tracking-[0.15em] uppercase border border-[#35050D] text-[#35050D] hover:bg-[#35050D] hover:text-white rounded-[2px] px-6 py-2 transition-all duration-[300ms] ease-out shadow-sm cursor-pointer hover:scale-[1.02]"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 View All <ArrowRight size={11} />
               </Link>
@@ -203,21 +205,21 @@ export default function DiamondRingsSection() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
-          className="relative overflow-hidden rounded-[2px] mb-8 border border-[#FAF6EE]"
-          style={{ height: '150px' }}
+          className="relative overflow-hidden rounded-[2px] mb-12 border border-[#F8F4EE]"
+          style={{ height: '180px' }}
         >
           <img
             src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1400&h=400&fit=crop&q=90"
             alt="Diamond Rings Collection"
             className="w-full h-full object-cover object-center scale-[1.02]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#24191A]/80 via-[#24191A]/40 to-transparent" />
           <div className="absolute inset-0 flex items-center px-8 sm:px-12">
             <div>
-              <p className="text-[#C8A866] text-[10px] lg:text-[11px] tracking-[0.20em] uppercase font-medium mb-1.5">
+              <p className="text-[#C9A96E] text-[10px] lg:text-[11px] tracking-[0.20em] uppercase font-medium mb-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 ✦ GIA Certified · Conflict-Free Diamonds
               </p>
-              <h3 className="text-white text-[20px] sm:text-[24px] font-normal leading-tight mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[#F8F4EE] text-[24px] sm:text-[32px] font-normal leading-tight mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Diamonds That Tell Your Story
               </h3>
               <motion.div
@@ -227,7 +229,8 @@ export default function DiamondRingsSection() {
               >
                 <Link
                   to="/products?stone=Diamond"
-                  className="inline-flex items-center gap-1.5 bg-[#560817] text-white text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase rounded-[2px] px-5 py-2.5 transition-all duration-[250ms] ease-out hover:bg-[#3D0610] hover:-translate-y-[2px] shadow-md border-b-2 border-transparent hover:border-[#B08A45] cursor-pointer"
+                  className="inline-flex items-center gap-1.5 bg-[#4A0712] text-[#F8F4EE] text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase rounded-[2px] px-6 py-3 transition-all duration-[300ms] ease-out hover:bg-[#35050D] shadow-md cursor-pointer hover:scale-[1.02]"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   Shop All Diamond Rings <ArrowRight size={11} />
                 </Link>
@@ -279,7 +282,7 @@ export default function DiamondRingsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ delay: shouldReduceMotion ? 0 : 0.2 }}
-          className="mt-12 pt-8 border-t border-[#FAF6EE] grid grid-cols-2 sm:grid-cols-4 gap-6 text-center"
+          className="mt-16 pt-10 border-t border-[#F8F4EE] grid grid-cols-2 sm:grid-cols-4 gap-6 text-center"
         >
           {[
             { label: 'GIA Certified', sub: 'Every Diamond' },
@@ -288,11 +291,11 @@ export default function DiamondRingsSection() {
             { label: 'Lifetime Warranty', sub: 'Quality Promise' },
           ].map(({ label, sub }) => (
             <div key={label} className="flex flex-col items-center gap-0.5">
-              <div className="w-8 h-8 rounded-full bg-[#F8F4EC] border border-[#FAF6EE] flex items-center justify-center mb-1">
-                <Gem size={14} className="text-[#B08A45]" />
+              <div className="w-10 h-10 rounded-full bg-[#F8F4EE] border border-[#EAE6DF] flex items-center justify-center mb-2 mx-auto">
+                <Gem size={16} className="text-[#C9A96E]" />
               </div>
-              <p className="text-[12px] font-medium text-[#181516] tracking-wide">{label}</p>
-              <p className="text-[11px] text-[#746760] font-light mt-0.5">{sub}</p>
+              <p className="text-[12px] font-medium text-[#24191A] tracking-wide" style={{ fontFamily: "'Montserrat', sans-serif" }}>{label}</p>
+              <p className="text-[10px] text-[#756869] font-light mt-1 tracking-[0.1em] uppercase" style={{ fontFamily: "'Montserrat', sans-serif" }}>{sub}</p>
             </div>
           ))}
         </motion.div>

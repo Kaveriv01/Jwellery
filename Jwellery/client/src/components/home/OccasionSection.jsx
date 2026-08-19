@@ -50,7 +50,7 @@ export default function OccasionSection() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={sectionReveal}
-      className="py-24 lg:py-32 bg-[#FAF6EE] border-t border-[#FAF6EE] overflow-hidden"
+      className="py-24 lg:py-32 bg-[#F8F4EE] border-t border-[#EAE6DF] overflow-hidden"
     >
       <div className="container-luxury">
         <div className="text-center mb-16 flex flex-col items-center">
@@ -59,13 +59,14 @@ export default function OccasionSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.5 }}
-            className="text-[#B59A68] text-[10px] lg:text-[11px] tracking-[0.20em] font-medium uppercase mb-4 block"
+            className="text-[#C9A96E] text-[10px] lg:text-[11px] tracking-[0.20em] font-medium uppercase mb-4 block"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             OUR PROMISE
           </motion.span>
           <motion.h2 
             variants={headingReveal}
-            className="text-[23px] sm:text-[27px] lg:text-[32px] text-[#3A0508] font-normal tracking-wide mb-[16px]" 
+            className="text-[28px] sm:text-[32px] lg:text-[40px] text-[#35050D] font-normal tracking-wide mb-[16px]" 
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Why Tarini
@@ -73,7 +74,7 @@ export default function OccasionSection() {
           <motion.div 
             variants={dividerReveal}
             style={{ originX: 0.5 }}
-            className="w-12 h-[1px] bg-[#B59A68]" 
+            className="w-12 h-[1px] bg-[#C9A96E]" 
           />
         </div>
  
@@ -85,13 +86,13 @@ export default function OccasionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ delay: shouldReduceMotion ? 0 : i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className={`bg-white p-10 border border-[#FAF6EE] rounded-[2px] text-center flex flex-col items-center justify-center transition-all duration-[350ms] ease-out hover:border-[#B59A68]/30 hover:shadow-[0_12px_28px_rgba(58,5,8,0.02)] ${shouldReduceMotion ? '' : 'lg:hover:-translate-y-[2px]'}`}
+              className={`bg-white p-10 border border-[#EAE6DF] rounded-[2px] text-center flex flex-col items-center justify-center transition-all duration-[400ms] ease-out hover:border-[#C9A96E]/40 hover:shadow-sm ${shouldReduceMotion ? '' : 'hover:scale-[1.02]'}`}
             >
-              <h3 className="text-[#3A0508] text-[16px] lg:text-[18px] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[#35050D] text-[18px] lg:text-[20px] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 {item.title}
               </h3>
-              <div className="w-6 h-[1px] bg-[#B59A68] my-3" />
-              <p className="text-[#756B62] text-[11px] lg:text-[12px] leading-relaxed font-light">
+              <div className="w-6 h-[1px] bg-[#C9A96E] my-4" />
+              <p className="text-[#756869] text-[11px] lg:text-[12px] leading-relaxed font-light" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 {item.description}
               </p>
             </motion.div>
