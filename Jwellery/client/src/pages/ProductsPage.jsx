@@ -73,9 +73,11 @@ export default function ProductsPage() {
   // Determine if we should show a banner and what image to use
   const getBannerData = (s, isNew) => {
     if (isNew === 'true') {
-      return null;
+      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1574914713835-2d7c5a0dbd34?auto=format&fit=crop&q=80&w=1600' };
     }
-    if (!s) return null;
+    if (!s) {
+      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
+    }
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklaces': return { type: 'single', desktop: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600' };
@@ -179,6 +181,81 @@ export default function ProductsPage() {
           {categoryName ? categoryName : (search ? `Search: ${search}` : (isNewArrival === 'true' ? 'New In' : 'All Jewelry'))}
         </h1>
 
+        {/* Constrained Category Banner */}
+        {videoBanner ? (
+          <div className="mb-12 relative w-full h-[300px] md:h-[500px] overflow-hidden bg-[#EAE8E2] flex items-center justify-center">
+            <video
+              src={videoBanner.videoUrl}
+              poster={videoBanner.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="relative z-10 text-center px-4 max-w-2xl">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#FAF6EE] font-normal mb-4 drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                {categoryName || 'Collection'}
+              </h2>
+              <p className="text-[#FAF6EE] text-xs tracking-[0.2em] uppercase font-medium drop-shadow-sm">
+                Explore our finest pieces
+              </p>
+            </div>
+          </div>
+        ) : bannerData && bannerData.type === 'lookbook' ? (
+          <div className="mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+               {bannerData.images.map((img, idx) => (
+                 <div key={idx} className={`relative overflow-hidden bg-[#EAE8E2] ${idx === 0 ? 'col-span-2 row-span-2 md:col-span-2 h-[300px] md:h-[516px]' : 'h-[146px] md:h-[250px]'}`}>
+                    <img src={img} alt="Lookbook" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                 </div>
+               ))}
+            </div>
+            <div className="text-center mt-10 mb-6">
+               <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-[#756B62] text-[12px] md:text-[14px] font-[500] tracking-wider mb-3 block uppercase">
+                 {bannerData.subtitle}
+               </span>
+               <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[36px] md:text-[48px] lg:text-[64px] font-[500] leading-none mb-6 text-[#111]">
+                 {bannerData.title}
+               </h2>
+               <button onClick={() => window.scrollBy({top: 800, behavior: 'smooth'})} style={{ fontFamily: "'Montserrat', sans-serif" }} className="bg-[#111] text-white text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase px-8 py-3.5 hover:bg-[#B59A68] transition-colors">
+                 SHOP THE COLLECTION
+               </button>
+            </div>
+          </div>
+        ) : bannerData ? (
+          <div className="relative w-full h-[180px] md:h-[260px] lg:h-[320px] mb-12 overflow-hidden bg-[#EAE8E2]">
+            <picture>
+              {bannerData.mobile && (
+                <source media="(max-width: 768px)" srcSet={bannerData.mobile} />
+              )}
+              <img 
+                src={bannerData.desktop} 
+                alt={categoryName} 
+                className="w-full h-full object-cover object-[center_top] md:object-center"
+              />
+            </picture>
+            
+            {/* Optional overlay text matching mockup */}
+            <div className="absolute inset-y-0 right-0 w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 text-right z-10 pointer-events-none">
+              <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-[#111] md:text-white text-[14px] md:text-[16px] font-[400] tracking-wider mb-1 drop-shadow-sm md:drop-shadow-md">
+                The right time for life
+              </span>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[#111] md:text-white text-[36px] md:text-[48px] lg:text-[64px] font-[500] leading-none mb-6 drop-shadow-sm md:drop-shadow-md">
+                Jewelry
+              </span>
+              <div className="flex justify-end pointer-events-auto">
+                <button onClick={() => window.scrollBy({top: 400, behavior: 'smooth'})} style={{ fontFamily: "'Montserrat', sans-serif" }} className="bg-[#111] text-white text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase px-6 py-2 hover:bg-[#333] transition-colors">
+                  SEE COLLECTION
+                </button>
+              </div>
+            </div>
+            
+            {/* Mobile gradient overlay for text readability if needed */}
+            <div className="absolute inset-0 bg-gradient-to-l from-white/60 to-transparent md:bg-none pointer-events-none" />
+          </div>
+        ) : null}
 
         {/* Active filters */}
         {hasFilters && (
