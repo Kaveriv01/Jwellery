@@ -1,7 +1,31 @@
 import api from './api';
 
+const withFallback = async (apiCall, fallbackData) => {
+  try {
+    const response = await apiCall();
+    if (!response || !response.data) throw new Error("No data");
+    if (response.data.categories && response.data.categories.length === 0) {
+      throw new Error("Empty array");
+    }
+    return response;
+  } catch (error) {
+    console.warn("API Error or Empty, falling back to dummy data");
+    return { data: fallbackData };
+  }
+};
+
+const dummyCategories = [
+  { _id: 'cat1', name: 'Necklaces', slug: 'necklaces', image: { url: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500' } },
+  { _id: 'cat2', name: 'Earrings', slug: 'earrings', image: { url: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=500' } },
+  { _id: 'cat3', name: 'Rings', slug: 'rings', image: { url: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=500' } },
+  { _id: 'cat4', name: 'Bracelets', slug: 'bracelets', image: { url: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=500' } },
+];
+
 export const categoryService = {
-  getAll: (params) => api.get('/categories', { params }),
+  getAll: (params) => withFallback(
+    () => api.get('/categories', { params }),
+    { categories: dummyCategories }
+  ),
   getBySlug: (slug) => api.get(`/categories/${slug}`),
   create: (data) => api.post('/categories', data, { headers: { 'Content-Type': 'multipart/form-data' } }),
   update: (id, data) => api.put(`/categories/${id}`, data, { headers: { 'Content-Type': 'multipart/form-data' } }),
