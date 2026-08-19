@@ -46,7 +46,7 @@ export default function OrdersPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   {order.items?.slice(0, 3).map((item) => (
-                    <img key={item._id} src={item.image || '/placeholder.jpg'} alt={item.name} className="w-10 h-10 rounded-lg object-cover border border-gray-100" />
+                    <img key={item._id} src={item.image || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={item.name} className="w-10 h-10 rounded-lg object-cover border border-gray-100" />
                   ))}
                   {order.items?.length > 3 && (
                     <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-xs font-medium text-gray-500">+{order.items.length - 3}</div>

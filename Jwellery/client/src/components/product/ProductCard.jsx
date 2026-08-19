@@ -69,7 +69,7 @@ const ProductCard = memo(function ProductCard({ product }) {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className={`w-full h-full object-contain transition-all duration-[400ms] ease-out group-hover:opacity-0 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.03]'}`}
-          onError={(e) => { e.target.src = '/placeholder.jpg'; }}
+          onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
         />
 
         {/* Hover image */}
@@ -78,7 +78,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             src={hoverImage}
             alt={name}
             className={`absolute inset-0 w-full h-full object-contain transition-all duration-[400ms] ease-out opacity-0 group-hover:opacity-100 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.03]'}`}
-            onError={(e) => { e.target.src = '/placeholder.jpg'; }}
+            onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
           />
         )}
 

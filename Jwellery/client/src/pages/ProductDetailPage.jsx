@@ -122,14 +122,14 @@ export default function ProductDetailPage() {
       <div className="container-luxury py-8 lg:py-12">
         {/* Breadcrumb */}
         <nav className="text-[10px] lg:text-[11px] text-[#756B62] mb-6 flex items-center gap-2 uppercase tracking-widest font-medium">
-          <span className="hover:text-[#3A0508] cursor-pointer" onClick={() => navigate('/')}>Home</span>
+          <span className="hover:text-[#35050D] cursor-pointer" onClick={() => navigate('/')}>Home</span>
           <ChevronRight size={10} className="text-[#756B62]/60" />
-          <span className="hover:text-[#3A0508] cursor-pointer" onClick={() => navigate('/products')}>All Jewelry</span>
+          <span className="hover:text-[#35050D] cursor-pointer" onClick={() => navigate('/products')}>All Jewelry</span>
           {category && (
-            <><ChevronRight size={10} className="text-[#756B62]/60" /><span className="hover:text-[#3A0508] cursor-pointer" onClick={() => navigate(`/category/${category.slug}`)}>{category.name}</span></>
+            <><ChevronRight size={10} className="text-[#756B62]/60" /><span className="hover:text-[#35050D] cursor-pointer" onClick={() => navigate(`/category/${category.slug}`)}>{category.name}</span></>
           )}
           <ChevronRight size={10} className="text-[#756B62]/60" />
-          <span className="text-[#3A0508] truncate max-w-[200px]">{name}</span>
+          <span className="text-[#35050D] truncate max-w-[200px]">{name}</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 xl:gap-16">
@@ -153,7 +153,7 @@ export default function ProductDetailPage() {
                 ) : (
                   <motion.img
                     key={selectedImage}
-                    src={mediaItems[selectedImage]?.url || '/placeholder.jpg'}
+                    src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                     alt={`${name} - media ${selectedImage + 1}`}
                     className="w-full h-full object-contain p-10 mix-blend-multiply"
                     initial={{ opacity: 0 }}
@@ -164,7 +164,7 @@ export default function ProductDetailPage() {
               </AnimatePresence>
               
               {discountPercent > 0 && (
-                <span className="absolute top-4 left-4 bg-[#3A0508] text-[#F7F3EA] text-[9px] font-medium px-2.5 py-1 uppercase tracking-widest rounded-[2px]">
+                <span className="absolute top-4 left-4 bg-[#35050D] text-[#F7F3EA] text-[9px] font-medium px-2.5 py-1 uppercase tracking-widest rounded-[2px]">
                   {discountPercent}% OFF
                 </span>
               )}
@@ -172,9 +172,9 @@ export default function ProductDetailPage() {
               {/* Heart Icon Overlay */}
               <button
                 onClick={() => toggleWishlist({ productId: _id })}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-[#FAF6EE] flex items-center justify-center text-[#3A0508]/70 hover:text-[#B59A68] transition-colors shadow-sm z-10"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-[#FAF6EE] flex items-center justify-center text-[#35050D]/70 hover:text-[#C7A56A] transition-colors shadow-sm z-10"
               >
-                <Heart size={18} className={wishlisted ? 'fill-[#B59A68] text-[#B59A68]' : ''} />
+                <Heart size={18} className={wishlisted ? 'fill-[#C7A56A] text-[#C7A56A]' : ''} />
               </button>
             </div>
 
@@ -185,11 +185,11 @@ export default function ProductDetailPage() {
                   <button
                     key={i}
                     onClick={() => setSelectedImage(i)}
-                    className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden ${selectedImage === i ? 'border-[#3A0508]' : 'border-transparent opacity-70 hover:opacity-100'}`}
+                    className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden ${selectedImage === i ? 'border-[#35050D]' : 'border-transparent opacity-70 hover:opacity-100'}`}
                   >
                     {media.type === 'video' ? (
                       <>
-                        <img src={media.poster || '/placeholder.jpg'} className="w-full h-full object-cover" />
+                        <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
                           <div className="w-6 h-6 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center border border-white/50 mb-1">
                             <Play size={10} fill="white" className="text-white ml-0.5" />
@@ -209,14 +209,14 @@ export default function ProductDetailPage() {
           {/* ── Info ─────────────────────────────────────────────────────── */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-[22px] md:text-[25px] lg:text-[28px] text-[#3A0508] font-normal leading-tight tracking-wide mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
+              <h1 className="text-[22px] md:text-[25px] lg:text-[28px] text-[#35050D] font-normal leading-tight tracking-wide mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
               
               <div className="flex items-center gap-3 mb-4">
                 {numReviews > 0 ? (
                   <div className="flex items-center gap-1 text-[13px] text-[#756B62]">
-                    <span className="flex items-center text-[#B59A68]"><Star size={13} fill="currentColor" /> <span className="ml-1 font-medium">{ratings.toFixed(1)}</span></span>
+                    <span className="flex items-center text-[#C7A56A]"><Star size={13} fill="currentColor" /> <span className="ml-1 font-medium">{ratings.toFixed(1)}</span></span>
                     <span className="mx-1">•</span>
-                    <span className="underline cursor-pointer hover:text-[#3A0508] transition-colors">Read {numReviews} Reviews</span>
+                    <span className="underline cursor-pointer hover:text-[#35050D] transition-colors">Read {numReviews} Reviews</span>
                   </div>
                 ) : (
                   <span className="text-[13px] text-[#756B62]/60">No reviews yet</span>
@@ -225,7 +225,7 @@ export default function ProductDetailPage() {
 
               {/* Price Block */}
               <div className="flex items-baseline gap-3">
-                <span className="text-[20px] lg:text-[24px] font-medium text-[#3A0508]">{formatPrice(effectivePrice)}</span>
+                <span className="text-[20px] lg:text-[24px] font-medium text-[#35050D]">{formatPrice(effectivePrice)}</span>
                 {discountPrice && (
                   <span className="text-[14px] lg:text-[16px] text-[#756B62] line-through">{formatPrice(price)}</span>
                 )}
@@ -246,7 +246,7 @@ export default function ProductDetailPage() {
                   onChange={(e) => setPincode(e.target.value)}
                   className="flex-1 px-4 py-3 text-[13px] text-[#332B27] outline-none bg-transparent"
                 />
-                <button onClick={checkPincode} className="px-6 text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#3A0508] hover:text-[#B59A68] border-l border-[#FAF6EE] transition-colors">
+                <button onClick={checkPincode} className="px-6 text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#35050D] hover:text-[#C7A56A] border-l border-[#FAF6EE] transition-colors">
                   Check
                 </button>
               </div>
@@ -267,8 +267,8 @@ export default function ProductDetailPage() {
                         onClick={() => setSelectedVariant({ ...selectedVariant, size })}
                         className={`w-12 h-12 flex items-center justify-center text-[12px] font-medium rounded-[2px] border transition-all ${
                           selectedVariant.size === size 
-                            ? 'border-[#3A0508] bg-[#3A0508] text-white' 
-                            : 'border-[#FAF6EE] bg-white text-[#332B27] hover:border-[#B59A68]'
+                            ? 'border-[#35050D] bg-[#35050D] text-white' 
+                            : 'border-[#FAF6EE] bg-white text-[#332B27] hover:border-[#C7A56A]'
                         }`}
                       >
                         {size}
@@ -288,8 +288,8 @@ export default function ProductDetailPage() {
                         onClick={() => setSelectedVariant({ ...selectedVariant, color })}
                         className={`px-6 py-3 flex items-center justify-center text-[12px] font-medium rounded-[2px] border transition-all ${
                           selectedVariant.color === color 
-                            ? 'border-[#3A0508] bg-[#3A0508] text-white' 
-                            : 'border-[#FAF6EE] bg-white text-[#332B27] hover:border-[#B59A68]'
+                            ? 'border-[#35050D] bg-[#35050D] text-white' 
+                            : 'border-[#FAF6EE] bg-white text-[#332B27] hover:border-[#C7A56A]'
                         }`}
                       >
                         {color}
@@ -305,14 +305,14 @@ export default function ProductDetailPage() {
                 <div className="inline-flex items-center border border-[#FAF6EE] rounded-[2px] bg-white">
                   <button 
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-10 h-10 flex items-center justify-center text-[#756B62] hover:text-[#3A0508] transition-colors"
+                    className="w-10 h-10 flex items-center justify-center text-[#756B62] hover:text-[#35050D] transition-colors"
                   >
                     <Minus size={14} />
                   </button>
                   <span className="w-10 text-center text-[13px] font-medium text-[#332B27]">{quantity}</span>
                   <button 
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-10 h-10 flex items-center justify-center text-[#756B62] hover:text-[#3A0508] transition-colors"
+                    className="w-10 h-10 flex items-center justify-center text-[#756B62] hover:text-[#35050D] transition-colors"
                   >
                     <Plus size={14} />
                   </button>
@@ -327,7 +327,7 @@ export default function ProductDetailPage() {
                 disabled={isOutOfStock || isAddingToCart}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="flex-1 bg-white border border-[#3A0508] text-[#3A0508] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center gap-2 transition-all duration-[250ms] hover:bg-[#FAF6EE] rounded-[2px] disabled:opacity-60"
+                className="flex-1 bg-white border border-[#35050D] text-[#35050D] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center gap-2 transition-all duration-[250ms] hover:bg-[#FAF6EE] rounded-[2px] disabled:opacity-60"
               >
                 <ShoppingBag size={15} />
                 {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'Add to Bag'}
@@ -338,7 +338,7 @@ export default function ProductDetailPage() {
                 disabled={isOutOfStock}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="flex-1 bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center transition-all duration-[250ms] border border-[#3A0508] hover:border-[#220306] rounded-[2px] disabled:opacity-60"
+                className="flex-1 bg-[#35050D] hover:bg-[#4A0712] text-[#F7F3EA] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center transition-all duration-[250ms] border border-[#35050D] hover:border-[#4A0712] rounded-[2px] disabled:opacity-60"
               >
                 Buy Now
               </motion.button>
@@ -378,15 +378,15 @@ export default function ProductDetailPage() {
             {/* Bottom Assurance */}
             <div className="grid grid-cols-3 gap-4 bg-[#FAF6EE]/50 p-5 border border-[#FAF6EE] rounded-[2px]">
               <div className="flex flex-col items-center gap-2 text-center">
-                <Truck size={22} strokeWidth={1} className="text-[#B59A68]" />
+                <Truck size={22} strokeWidth={1} className="text-[#C7A56A]" />
                 <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#332B27]">Free Shipping</span>
               </div>
               <div className="flex flex-col items-center gap-2 text-center">
-                <RotateCcw size={22} strokeWidth={1} className="text-[#B59A68]" />
+                <RotateCcw size={22} strokeWidth={1} className="text-[#C7A56A]" />
                 <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#332B27]">30 Day Returns</span>
               </div>
               <div className="flex flex-col items-center gap-2 text-center">
-                <Shield size={22} strokeWidth={1} className="text-[#B59A68]" />
+                <Shield size={22} strokeWidth={1} className="text-[#C7A56A]" />
                 <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#332B27]">Lifetime Exchange</span>
               </div>
             </div>
@@ -399,8 +399,8 @@ export default function ProductDetailPage() {
           <div className="mt-24 space-y-20">
             <div>
               <div className="flex items-center justify-between mb-8 border-b border-[#FAF6EE] pb-4">
-                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#3A0508]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Style It With</h2>
-                <Link to="/products" className="text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#756B62] hover:text-[#3A0508] border-b border-transparent hover:border-[#3A0508] pb-0.5 transition-all duration-300">View All</Link>
+                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#35050D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Style It With</h2>
+                <Link to="/products" className="text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#756B62] hover:text-[#35050D] border-b border-transparent hover:border-[#35050D] pb-0.5 transition-all duration-300">View All</Link>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
@@ -409,7 +409,7 @@ export default function ProductDetailPage() {
 
             <div>
               <div className="flex items-center justify-between mb-8 border-b border-[#FAF6EE] pb-4">
-                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#3A0508]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Your Look</h2>
+                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#35050D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Your Look</h2>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {relatedProducts.slice(0, 4).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
@@ -418,7 +418,7 @@ export default function ProductDetailPage() {
             
             <div>
               <div className="flex items-center justify-between mb-8 border-b border-[#FAF6EE] pb-4">
-                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#3A0508]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
+                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#35050D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
@@ -430,12 +430,12 @@ export default function ProductDetailPage() {
         {/* ── Customer Reviews ──────────────────────────────────────────── */}
         <div className="mt-24">
           <div className="text-center mb-10">
-            <h2 className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide text-[#3A0508] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Customer Reviews</h2>
+            <h2 className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide text-[#35050D] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Customer Reviews</h2>
             <div className="flex items-center justify-center gap-2">
-              <div className="flex text-[#B59A68]">
+              <div className="flex text-[#C7A56A]">
                 {[...Array(5)].map((_, i) => <Star key={i} size={15} fill={i < Math.round(ratings) ? "currentColor" : "none"} />)}
               </div>
-              <span className="text-[13px] font-medium text-[#3A0508]">{ratings.toFixed(1)} / 5</span>
+              <span className="text-[13px] font-medium text-[#35050D]">{ratings.toFixed(1)} / 5</span>
               <span className="text-[13px] text-[#756B62]/70">({numReviews} reviews)</span>
             </div>
           </div>
@@ -449,7 +449,7 @@ export default function ProductDetailPage() {
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[#FAF6EE] flex items-center justify-center text-[#3A0508] font-bold uppercase border border-[#FAF6EE] text-[13px]">
+                        <div className="w-10 h-10 rounded-full bg-[#FAF6EE] flex items-center justify-center text-[#35050D] font-bold uppercase border border-[#FAF6EE] text-[13px]">
                           {review.user?.name?.[0]}
                         </div>
                         <div>
@@ -457,7 +457,7 @@ export default function ProductDetailPage() {
                           <p className="text-[10px] text-[#756B62]/80 uppercase tracking-widest">{formatDate(review.createdAt)}</p>
                         </div>
                       </div>
-                      <div className="flex text-[#B59A68]">
+                      <div className="flex text-[#C7A56A]">
                         {[...Array(5)].map((_, i) => <Star key={i} size={11} fill={i < review.rating ? "currentColor" : "none"} />)}
                       </div>
                     </div>
@@ -465,7 +465,7 @@ export default function ProductDetailPage() {
                     <p className="text-[13px] text-[#756B62] font-light leading-relaxed mb-4">{review.comment}</p>
                   </div>
                   {review.isVerifiedPurchase && (
-                    <div className="flex items-center gap-1 text-[10px] text-[#B59A68] font-medium uppercase tracking-widest mt-2 pt-4 border-t border-[#FAF6EE]">
+                    <div className="flex items-center gap-1 text-[10px] text-[#C7A56A] font-medium uppercase tracking-widest mt-2 pt-4 border-t border-[#FAF6EE]">
                       <Check size={11} /> Verified Buyer
                     </div>
                   )}
@@ -478,45 +478,45 @@ export default function ProductDetailPage() {
       </div>
 
       {/* ── Pre Footer Banner ─────────────────────────────────────────── */}
-      <div className="w-full bg-[#220306] relative overflow-hidden mt-20 md:h-[400px] flex">
+      <div className="w-full bg-[#4A0712] relative overflow-hidden mt-20 md:h-[400px] flex">
         <div className="container-luxury flex flex-col md:flex-row items-stretch justify-between relative z-10 w-full px-0 md:px-8">
           
           {/* Left Side - Icons */}
           <div className="flex items-center justify-center gap-6 md:gap-12 flex-1 py-16 md:py-0 relative z-20">
             <div className="flex flex-col items-center gap-4 text-center">
-              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#B59A68] flex items-center justify-center text-[#B59A68] bg-[#220306] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
-                <div className="absolute inset-1 rounded-full border border-[#B59A68]/30"></div>
+              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#C7A56A] flex items-center justify-center text-[#C7A56A] bg-[#4A0712] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
+                <div className="absolute inset-1 rounded-full border border-[#C7A56A]/30"></div>
                 <Shield size={30} strokeWidth={1.2} />
               </div>
-              <span className="text-[#B59A68] text-[11px] font-medium tracking-[0.12em] uppercase">Anti-Tarnish</span>
+              <span className="text-[#C7A56A] text-[11px] font-medium tracking-[0.12em] uppercase">Anti-Tarnish</span>
             </div>
             
-            <div className="w-[1px] h-12 bg-[#B59A68]/30 hidden md:block"></div>
+            <div className="w-[1px] h-12 bg-[#C7A56A]/30 hidden md:block"></div>
 
             <div className="flex flex-col items-center gap-4 text-center">
-              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#B59A68] flex items-center justify-center text-[#B59A68] bg-[#220306] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
-                <div className="absolute inset-1 rounded-full border border-[#B59A68]/30"></div>
-                <span className="text-2xl font-semibold text-[#B59A68]">18<span className="text-sm font-medium">Kt</span></span>
+              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#C7A56A] flex items-center justify-center text-[#C7A56A] bg-[#4A0712] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
+                <div className="absolute inset-1 rounded-full border border-[#C7A56A]/30"></div>
+                <span className="text-2xl font-semibold text-[#C7A56A]">18<span className="text-sm font-medium">Kt</span></span>
               </div>
-              <span className="text-[#B59A68] text-[11px] font-medium tracking-[0.12em] uppercase">Thick Plating</span>
+              <span className="text-[#C7A56A] text-[11px] font-medium tracking-[0.12em] uppercase">Thick Plating</span>
             </div>
             
-            <div className="w-[1px] h-12 bg-[#B59A68]/30 hidden md:block"></div>
+            <div className="w-[1px] h-12 bg-[#C7A56A]/30 hidden md:block"></div>
 
             <div className="flex flex-col items-center gap-4 text-center">
-              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#B59A68] flex items-center justify-center text-[#B59A68] bg-[#220306] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
-                <div className="absolute inset-1 rounded-full border border-[#B59A68]/30"></div>
+              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#C7A56A] flex items-center justify-center text-[#C7A56A] bg-[#4A0712] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
+                <div className="absolute inset-1 rounded-full border border-[#C7A56A]/30"></div>
                 <Heart size={30} strokeWidth={1.2} />
               </div>
-              <span className="text-[#B59A68] text-[11px] font-medium tracking-[0.12em] uppercase">Skin Safe</span>
+              <span className="text-[#C7A56A] text-[11px] font-medium tracking-[0.12em] uppercase">Skin Safe</span>
             </div>
           </div>
 
           {/* Right Side - Image */}
           <div className="flex-1 relative hidden md:block">
             {/* Gradient Overlay for smooth blend */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#220306] via-[#220306]/70 to-transparent z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#220306] via-transparent to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#4A0712] via-[#4A0712]/70 to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#4A0712] via-transparent to-transparent z-10" />
             <img 
               src="https://i.pinimg.com/originals/b7/c5/40/b7c540989f6b4d372d6fc713d2f95fc7.jpg" 
               alt="Shraddha Kapoor" 

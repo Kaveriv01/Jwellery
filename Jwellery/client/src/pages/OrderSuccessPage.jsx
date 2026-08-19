@@ -62,7 +62,7 @@ export default function OrderSuccessPage() {
               <div className="space-y-3">
                 {order?.items?.map((item) => (
                   <div key={item._id} className="flex items-center gap-3">
-                    <img src={item.image || '/placeholder.jpg'} alt={item.name} className="w-12 h-12 rounded-[2px] object-contain p-1 bg-[#FAF6EE] border border-[#FAF6EE]" />
+                    <img src={item.image || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={item.name} className="w-12 h-12 rounded-[2px] object-contain p-1 bg-[#FAF6EE] border border-[#FAF6EE]" />
                     <div className="flex-1">
                       <p className="text-[13px] font-medium text-[#332B27]">{item.name}</p>
                       <div className="flex gap-2 items-center text-[11px] text-[#756B62]/80 mt-0.5">

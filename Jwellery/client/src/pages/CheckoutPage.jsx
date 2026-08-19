@@ -139,7 +139,7 @@ export default function CheckoutPage() {
             }
           },
           prefill: { name: selectedAddress.fullName, contact: selectedAddress.phone },
-          theme: { color: '#3A0508' },
+          theme: { color: '#35050D' },
           modal: {
             ondismiss: () => {
               toast.error('Payment cancelled.');
@@ -167,7 +167,7 @@ export default function CheckoutPage() {
     <>
       <Helmet><title>Checkout — Tarini Jewellers</title></Helmet>
       <div className="container-luxury py-12">
-        <h1 className="text-[26px] sm:text-[30px] text-[#3A0508] mb-8 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Checkout</h1>
+        <h1 className="text-[26px] sm:text-[30px] text-[#35050D] mb-8 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Checkout</h1>
 
         {/* Steps */}
         <div className="flex items-center justify-between mb-10 max-w-2xl">
@@ -175,10 +175,10 @@ export default function CheckoutPage() {
             const isCompleted = i < step || (i === 0 && selectedAddress);
             return (
               <div key={s} className="flex items-center gap-2">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all ${isCompleted ? 'bg-[#B59A68] text-[#F7F3EA]' : i === step ? 'bg-[#3A0508] text-[#F7F3EA]' : 'bg-[#FAF6EE] text-[#756B62]/60 border border-[#FAF6EE]'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all ${isCompleted ? 'bg-[#C7A56A] text-[#F7F3EA]' : i === step ? 'bg-[#35050D] text-[#F7F3EA]' : 'bg-[#FAF6EE] text-[#756B62]/60 border border-[#FAF6EE]'}`}>
                   {isCompleted ? <Check size={12} /> : i + 1}
                 </div>
-                <span className={`text-[12px] uppercase tracking-wider hidden sm:block ${i === step ? 'text-[#3A0508] font-medium' : 'text-[#756B62]/60 font-light'}`}>{s}</span>
+                <span className={`text-[12px] uppercase tracking-wider hidden sm:block ${i === step ? 'text-[#35050D] font-medium' : 'text-[#756B62]/60 font-light'}`}>{s}</span>
                 {i < STEPS.length - 1 && <ChevronRight size={14} className="text-[#FAF6EE] mx-1 sm:mx-3" />}
               </div>
             );
@@ -190,17 +190,17 @@ export default function CheckoutPage() {
             {/* Step 0: Address */}
             {step === 0 && (
               <div>
-                <h2 className="text-[18px] text-[#3A0508] mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}><MapPin size={16} className="text-[#B59A68]" /> Delivery Address</h2>
+                <h2 className="text-[18px] text-[#35050D] mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}><MapPin size={16} className="text-[#C7A56A]" /> Delivery Address</h2>
                 <div className="space-y-3 mb-4">
                   {isAuthenticated && addresses.map((addr) => (
-                    <label key={addr._id} className={`block border-2 rounded-[2px] p-4 cursor-pointer transition-all ${selectedAddress?._id === addr._id ? 'border-[#B59A68] bg-[#FAF6EE]/30' : 'border-[#FAF6EE] hover:border-[#B59A68]/40 bg-[#FAF6EE]/5'}`}>
+                    <label key={addr._id} className={`block border-2 rounded-[2px] p-4 cursor-pointer transition-all ${selectedAddress?._id === addr._id ? 'border-[#C7A56A] bg-[#FAF6EE]/30' : 'border-[#FAF6EE] hover:border-[#C7A56A]/40 bg-[#FAF6EE]/5'}`}>
                       <div className="flex items-start gap-3">
-                        <input type="radio" name="address" checked={selectedAddress?._id === addr._id} onChange={() => setSelectedAddress(addr)} className="accent-[#3A0508] mt-1" />
+                        <input type="radio" name="address" checked={selectedAddress?._id === addr._id} onChange={() => setSelectedAddress(addr)} className="accent-[#35050D] mt-1" />
                         <div>
                           <div className="flex items-center gap-2">
                             <p className="font-medium text-[#332B27] text-[13px]">{addr.fullName}</p>
                             <span className="text-[9px] uppercase bg-white border border-[#FAF6EE] text-[#756B62] px-2 py-0.5 rounded-[2px]">{addr.addressType}</span>
-                            {addr.isDefault && <span className="text-[9px] uppercase text-[#B59A68] bg-[#FAF6EE] px-2 py-0.5 rounded-[2px] font-medium">Default</span>}
+                            {addr.isDefault && <span className="text-[9px] uppercase text-[#C7A56A] bg-[#FAF6EE] px-2 py-0.5 rounded-[2px] font-medium">Default</span>}
                           </div>
                           <p className="text-[13px] text-[#756B62] mt-1 font-light leading-relaxed">{addr.addressLine1}, {addr.addressLine2 ? `${addr.addressLine2}, ` : ''}{addr.city}, {addr.state} - {addr.pincode}</p>
                           <p className="text-[11px] text-[#756B62]/70 mt-1">📞 {addr.phone}</p>
@@ -210,9 +210,9 @@ export default function CheckoutPage() {
                   ))}
                   
                   {!isAuthenticated && selectedAddress && (
-                    <label className="block border-2 rounded-[2px] p-4 cursor-pointer transition-all border-[#B59A68] bg-[#FAF6EE]/30">
+                    <label className="block border-2 rounded-[2px] p-4 cursor-pointer transition-all border-[#C7A56A] bg-[#FAF6EE]/30">
                       <div className="flex items-start gap-3">
-                        <input type="radio" readOnly checked className="accent-[#3A0508] mt-1" />
+                        <input type="radio" readOnly checked className="accent-[#35050D] mt-1" />
                         <div>
                           <div className="flex items-center gap-2">
                             <p className="font-medium text-[#332B27] text-[13px]">{selectedAddress.fullName}</p>
@@ -227,14 +227,14 @@ export default function CheckoutPage() {
                 </div>
 
                 {(!addingNew && (isAuthenticated || !selectedAddress)) && (
-                  <button onClick={() => setAddingNew(true)} className="flex items-center gap-2 text-[12px] uppercase tracking-wider font-semibold text-[#B59A68] hover:text-[#3A0508] transition-colors">
+                  <button onClick={() => setAddingNew(true)} className="flex items-center gap-2 text-[12px] uppercase tracking-wider font-semibold text-[#C7A56A] hover:text-[#35050D] transition-colors">
                     <Plus size={14} /> {isAuthenticated ? 'Add New Address' : 'Enter Shipping Details'}
                   </button>
                 )}
 
                 {addingNew && (
                   <form onSubmit={handleSubmit(handleSaveAddress)} className="border border-[#FAF6EE] bg-[#FAF6EE]/10 rounded-[2px] p-5 space-y-4 mt-4">
-                    <h3 className="font-normal text-[#3A0508] text-[15px] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{isAuthenticated ? 'New Address' : 'Shipping Details'}</h3>
+                    <h3 className="font-normal text-[#35050D] text-[15px] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{isAuthenticated ? 'New Address' : 'Shipping Details'}</h3>
                     
                     {!isAuthenticated && (
                       <div><label className="text-[11px] text-[#756B62] mb-1 block uppercase tracking-wide">Email Address *</label><input type="email" {...register('email')} className={`input-gold text-[13px] bg-transparent rounded-[2px] ${errors.email ? 'border-red-400' : ''}`} />{errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}</div>
@@ -264,13 +264,13 @@ export default function CheckoutPage() {
                       <div><label className="text-[11px] text-[#756B62] mb-1 block uppercase tracking-wide">Pincode *</label><input {...register('pincode')} className={`input-gold text-[13px] bg-transparent rounded-[2px] ${errors.pincode ? 'border-red-400' : ''}`} /></div>
                     </div>
                     <div className="flex gap-3 pt-2">
-                      <button type="submit" disabled={addAddressMutation.isPending} className="bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[10px] font-medium uppercase tracking-[0.12em] py-2 px-4 rounded-[2px] transition-colors">{addAddressMutation.isPending ? 'Saving...' : 'Save Address'}</button>
-                      <button type="button" onClick={() => setAddingNew(false)} className="text-[11px] uppercase tracking-wider text-[#756B62] hover:text-[#3A0508] transition-colors">Cancel</button>
+                      <button type="submit" disabled={addAddressMutation.isPending} className="bg-[#35050D] hover:bg-[#4A0712] text-[#F7F3EA] text-[10px] font-medium uppercase tracking-[0.12em] py-2 px-4 rounded-[2px] transition-colors">{addAddressMutation.isPending ? 'Saving...' : 'Save Address'}</button>
+                      <button type="button" onClick={() => setAddingNew(false)} className="text-[11px] uppercase tracking-wider text-[#756B62] hover:text-[#35050D] transition-colors">Cancel</button>
                     </div>
                   </form>
                 )}
 
-                <motion.button onClick={() => { if (!selectedAddress) { toast.error('Select an address.'); return; } setStep(1); }} disabled={!selectedAddress} className="bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 px-8 mt-6 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#B59A68] disabled:opacity-50">
+                <motion.button onClick={() => { if (!selectedAddress) { toast.error('Select an address.'); return; } setStep(1); }} disabled={!selectedAddress} className="bg-[#35050D] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 px-8 mt-6 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#C7A56A] disabled:opacity-50">
                   Continue to Delivery →
                 </motion.button>
               </div>
@@ -279,16 +279,16 @@ export default function CheckoutPage() {
             {/* Step 1: Delivery */}
             {step === 1 && (
               <div>
-                <h2 className="text-[18px] text-[#3A0508] mb-4 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Delivery Option</h2>
+                <h2 className="text-[18px] text-[#35050D] mb-4 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Delivery Option</h2>
                 <div className="space-y-3 mb-6">
                   {DELIVERY_OPTIONS.map((opt) => (
-                    <label key={opt.value} className={`block border-2 rounded-[2px] p-4 cursor-pointer transition-all ${delivery === opt.value ? 'border-[#B59A68] bg-[#FAF6EE]/30' : 'border-[#FAF6EE] hover:border-[#B59A68]/40 bg-[#FAF6EE]/5'}`}>
+                    <label key={opt.value} className={`block border-2 rounded-[2px] p-4 cursor-pointer transition-all ${delivery === opt.value ? 'border-[#C7A56A] bg-[#FAF6EE]/30' : 'border-[#FAF6EE] hover:border-[#C7A56A]/40 bg-[#FAF6EE]/5'}`}>
                       <div className="flex items-center gap-3">
-                        <input type="radio" name="delivery" value={opt.value} checked={delivery === opt.value} onChange={() => setDelivery(opt.value)} className="accent-[#3A0508]" />
+                        <input type="radio" name="delivery" value={opt.value} checked={delivery === opt.value} onChange={() => setDelivery(opt.value)} className="accent-[#35050D]" />
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
                             <p className="font-medium text-sm text-[#332B27]">{opt.label}</p>
-                            <p className="font-medium text-sm text-[#3A0508]">{opt.free && summary.subtotal >= 999 ? 'FREE' : `₹${opt.price}`}</p>
+                            <p className="font-medium text-sm text-[#35050D]">{opt.free && summary.subtotal >= 999 ? 'FREE' : `₹${opt.price}`}</p>
                           </div>
                           <p className="text-xs text-[#756B62] mt-0.5">{opt.days}</p>
                         </div>
@@ -297,8 +297,8 @@ export default function CheckoutPage() {
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <button onClick={() => setStep(0)} className="border border-[#FAF6EE] bg-white text-[#3A0508] hover:bg-[#FAF6EE] py-3.5 px-6 text-[11px] uppercase tracking-[0.12em] font-medium rounded-[2px] transition-colors">← Back</button>
-                  <button onClick={() => setStep(2)} className="bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 px-8 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#B59A68]">Continue to Payment →</button>
+                  <button onClick={() => setStep(0)} className="border border-[#FAF6EE] bg-white text-[#35050D] hover:bg-[#FAF6EE] py-3.5 px-6 text-[11px] uppercase tracking-[0.12em] font-medium rounded-[2px] transition-colors">← Back</button>
+                  <button onClick={() => setStep(2)} className="bg-[#35050D] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 px-8 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#C7A56A]">Continue to Payment →</button>
                 </div>
               </div>
             )}
@@ -306,12 +306,12 @@ export default function CheckoutPage() {
             {/* Step 2: Payment */}
             {step === 2 && (
               <div>
-                <h2 className="text-[18px] text-[#3A0508] mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}><CreditCard size={16} className="text-[#B59A68]" /> Payment Method</h2>
+                <h2 className="text-[18px] text-[#35050D] mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}><CreditCard size={16} className="text-[#C7A56A]" /> Payment Method</h2>
                 <div className="space-y-3 mb-6">
                   {PAYMENT_METHODS.map((method) => (
-                    <label key={method.value} className={`block border-2 rounded-[2px] p-4 cursor-pointer transition-all ${paymentMethod === method.value ? 'border-[#B59A68] bg-[#FAF6EE]/30' : 'border-[#FAF6EE] hover:border-[#B59A68]/40 bg-[#FAF6EE]/5'}`}>
+                    <label key={method.value} className={`block border-2 rounded-[2px] p-4 cursor-pointer transition-all ${paymentMethod === method.value ? 'border-[#C7A56A] bg-[#FAF6EE]/30' : 'border-[#FAF6EE] hover:border-[#C7A56A]/40 bg-[#FAF6EE]/5'}`}>
                       <div className="flex items-center gap-3">
-                        <input type="radio" name="payment" value={method.value} checked={paymentMethod === method.value} onChange={() => setPaymentMethod(method.value)} className="accent-[#3A0508]" />
+                        <input type="radio" name="payment" value={method.value} checked={paymentMethod === method.value} onChange={() => setPaymentMethod(method.value)} className="accent-[#35050D]" />
                         <div>
                           <p className="font-medium text-sm text-[#332B27]">{method.label}</p>
                           <p className="text-xs text-[#756B62] mt-0.5">{method.description}</p>
@@ -321,12 +321,12 @@ export default function CheckoutPage() {
                   ))}
                 </div>
                 <div className="flex items-center gap-2 text-xs text-[#756B62] mb-6">
-                  <Shield size={13} className="text-[#B59A68]" />
+                  <Shield size={13} className="text-[#C7A56A]" />
                   Your payment information is encrypted with 256-bit SSL.
                 </div>
                 <div className="flex gap-3">
-                  <button onClick={() => setStep(1)} className="border border-[#FAF6EE] bg-white text-[#3A0508] hover:bg-[#FAF6EE] py-3.5 px-6 text-[11px] uppercase tracking-[0.12em] font-medium rounded-[2px] transition-colors">← Back</button>
-                  <button onClick={() => setStep(3)} className="bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 px-8 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#B59A68]">Review Order →</button>
+                  <button onClick={() => setStep(1)} className="border border-[#FAF6EE] bg-white text-[#35050D] hover:bg-[#FAF6EE] py-3.5 px-6 text-[11px] uppercase tracking-[0.12em] font-medium rounded-[2px] transition-colors">← Back</button>
+                  <button onClick={() => setStep(3)} className="bg-[#35050D] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 px-8 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#C7A56A]">Review Order →</button>
                 </div>
               </div>
             )}
@@ -334,32 +334,32 @@ export default function CheckoutPage() {
             {/* Step 3: Review */}
             {step === 3 && (
               <div>
-                <h2 className="text-[18px] text-[#3A0508] mb-4 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Review Your Order</h2>
+                <h2 className="text-[18px] text-[#35050D] mb-4 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Review Your Order</h2>
                 {/* Items summary */}
                 <div className="space-y-3 mb-5">
                   {cart.items?.map((item) => (
                     <div key={item._id} className="flex gap-3 items-center">
                       <div className="w-12 h-12 rounded-[2px] bg-[#FAF6EE] border border-[#FAF6EE] p-1 flex items-center justify-center">
-                        <img src={item.product?.images?.[0]?.url || '/placeholder.jpg'} alt={item.product?.name} className="w-full h-full object-contain mix-blend-multiply" />
+                        <img src={item.product?.images?.[0]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={item.product?.name} className="w-full h-full object-contain mix-blend-multiply" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-[13px] font-medium text-[#332B27] truncate">{item.product?.name}</p>
                         <p className="text-[11px] text-[#756B62]">Qty: {item.quantity}</p>
                       </div>
-                      <p className="text-[13px] font-semibold text-[#3A0508]">{formatPrice((item.discountPrice || item.price) * item.quantity)}</p>
+                      <p className="text-[13px] font-semibold text-[#35050D]">{formatPrice((item.discountPrice || item.price) * item.quantity)}</p>
                     </div>
                   ))}
                 </div>
                 {selectedAddress && (
                   <div className="bg-[#FAF6EE]/30 border border-[#FAF6EE] rounded-[2px] p-4 mb-6 text-[13px] leading-relaxed">
-                    <p className="font-medium text-[#3A0508] mb-1">📦 Delivery to:</p>
+                    <p className="font-medium text-[#35050D] mb-1">📦 Delivery to:</p>
                     <p className="text-[#332B27]">{selectedAddress.fullName} | {selectedAddress.phone}</p>
                     <p className="text-[#756B62] font-light">{selectedAddress.addressLine1}, {selectedAddress.city}, {selectedAddress.state} - {selectedAddress.pincode}</p>
                   </div>
                 )}
                 <div className="flex gap-3">
-                  <button onClick={() => setStep(2)} className="border border-[#FAF6EE] bg-white text-[#3A0508] hover:bg-[#FAF6EE] py-3.5 px-6 text-[11px] uppercase tracking-[0.12em] font-medium rounded-[2px] transition-colors">← Back</button>
-                  <motion.button onClick={handlePlaceOrder} disabled={placingOrder} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="flex-1 bg-[#3A0508] hover:bg-[#220306] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#B59A68] disabled:opacity-60">
+                  <button onClick={() => setStep(2)} className="border border-[#FAF6EE] bg-white text-[#35050D] hover:bg-[#FAF6EE] py-3.5 px-6 text-[11px] uppercase tracking-[0.12em] font-medium rounded-[2px] transition-colors">← Back</button>
+                  <motion.button onClick={handlePlaceOrder} disabled={placingOrder} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="flex-1 bg-[#35050D] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 rounded-[2px] transition-all border-b-2 border-transparent hover:border-[#C7A56A] disabled:opacity-60">
                     {placingOrder ? 'Processing...' : paymentMethod === 'cod' ? '✓ Place Order (COD)' : '✓ Pay & Place Order'}
                   </motion.button>
                 </div>
@@ -370,14 +370,14 @@ export default function CheckoutPage() {
           {/* Order summary */}
           <div>
             <div className="bg-[#FAF6EE]/30 border border-[#FAF6EE] rounded-[2px] p-6 sticky top-24 space-y-4">
-              <h3 className="text-[18px] text-[#3A0508] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Order Summary</h3>
+              <h3 className="text-[18px] text-[#35050D] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Order Summary</h3>
               <div className="space-y-2 text-[13px]">
                 <div className="flex justify-between text-[#756B62]"><span>Subtotal</span><span className="font-medium text-[#332B27]">{formatPrice(summary.subtotal)}</span></div>
                 {summary.couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Coupon</span><span className="font-medium">-{formatPrice(summary.couponDiscount)}</span></div>}
                 <div className="flex justify-between text-[#756B62]"><span>Shipping</span><span className="font-medium text-[#332B27]">{deliveryCharge === 0 ? 'FREE' : formatPrice(deliveryCharge)}</span></div>
                 <div className="flex justify-between text-[#756B62]"><span>GST (3%)</span><span className="font-medium text-[#332B27]">{formatPrice(summary.gstAmount)}</span></div>
-                <div className="flex justify-between font-normal text-[#3A0508] text-base pt-3 border-t border-[#FAF6EE]">
-                  <span>Total</span><span className="font-medium text-[#3A0508]">{formatPrice(finalTotal)}</span>
+                <div className="flex justify-between font-normal text-[#35050D] text-base pt-3 border-t border-[#FAF6EE]">
+                  <span>Total</span><span className="font-medium text-[#35050D]">{formatPrice(finalTotal)}</span>
                 </div>
               </div>
             </div>

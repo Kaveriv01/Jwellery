@@ -72,7 +72,7 @@ export default function AdminOrderDetail() {
             <div className="space-y-3">
               {order.items?.map((item) => (
                 <div key={item._id} className="flex gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
-                  <img src={item.image || '/placeholder.jpg'} alt={item.name} className="w-16 h-16 rounded-xl object-cover border" />
+                  <img src={item.image || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={item.name} className="w-16 h-16 rounded-xl object-cover border" />
                   <div className="flex-1 min-w-0">
                     <p className="font-semibold text-gray-800 text-sm truncate">{item.name}</p>
                     {item.size && <p className="text-xs text-gray-400">Size: {item.size}</p>}

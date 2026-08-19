@@ -75,15 +75,15 @@ export default function CartDrawer() {
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-[#EFE8DC]">
               <div className="flex items-center gap-3">
-                <ShoppingBag size={20} className="text-[#C6A15B]" strokeWidth={1.5} />
-                <h2 className="font-light tracking-wide text-xl text-[#1E1E1E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Your Cart</h2>
+                <ShoppingBag size={20} className="text-[#C7A56A]" strokeWidth={1.5} />
+                <h2 className="font-light tracking-wide text-xl text-[#35050D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Your Cart</h2>
                 {summary.totalItems > 0 && (
-                  <span className="w-5 h-5 bg-[#C6A15B] rounded-full text-white text-[10px] flex items-center justify-center font-bold">
+                  <span className="w-5 h-5 bg-[#C7A56A] rounded-full text-white text-[10px] flex items-center justify-center font-bold">
                     {summary.totalItems}
                   </span>
                 )}
               </div>
-              <button onClick={() => setOpen(false)} className="p-1.5 hover:rotate-90 transition-all duration-300 text-[#1E1E1E] hover:text-[#C6A15B]">
+              <button onClick={() => setOpen(false)} className="p-1.5 hover:rotate-90 transition-all duration-300 text-[#35050D] hover:text-[#C7A56A]">
                 <X size={20} strokeWidth={1.5} />
               </button>
             </div>
@@ -99,7 +99,7 @@ export default function CartDrawer() {
               ) : cart.items?.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
                   <ShoppingBag size={48} strokeWidth={1} className="text-gray-300 mb-6" />
-                  <p className="font-medium text-[#1E1E1E] mb-2 tracking-wide">Your cart is empty</p>
+                  <p className="font-medium text-[#35050D] mb-2 tracking-wide">Your cart is empty</p>
                   <p className="text-xs text-[#6D6254] mb-8 tracking-wide">Add something beautiful!</p>
                   <Link to="/products" onClick={() => setOpen(false)} className="btn-gold rounded-sm px-8 py-3 text-xs tracking-widest uppercase shadow-md hover:shadow-lg transition-shadow">Shop Now</Link>
                 </div>
@@ -120,14 +120,14 @@ export default function CartDrawer() {
                   {summary.amountForFreeShipping > 0 && (
                     <motion.div variants={itemVariant} className="bg-white border border-[#EFE8DC] rounded-sm p-4 mt-6">
                       <p className="text-[11px] text-[#6D6254] mb-3 tracking-wide">
-                        Add <span className="font-semibold text-[#C6A15B]">{formatPrice(summary.amountForFreeShipping)}</span> more for FREE shipping!
+                        Add <span className="font-semibold text-[#C7A56A]">{formatPrice(summary.amountForFreeShipping)}</span> more for FREE shipping!
                       </p>
                       <div className="h-1 bg-[#FAF8F3] rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${Math.min(100, ((summary.subtotal - (summary.couponDiscount || 0)) / 999) * 100)}%` }}
                           transition={{ duration: 1, ease: "easeOut" }}
-                          className="h-full bg-[#C6A15B] rounded-full"
+                          className="h-full bg-[#C7A56A] rounded-full"
                         />
                       </div>
                     </motion.div>
@@ -158,12 +158,12 @@ export default function CartDrawer() {
                           placeholder="Coupon code"
                           value={couponInput}
                           onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
-                          className="flex-1 bg-white border border-[#EFE8DC] text-xs px-4 py-3 outline-none focus:border-[#C6A15B] transition-colors rounded-sm tracking-wide text-[#1E1E1E]"
+                          className="flex-1 bg-white border border-[#EFE8DC] text-xs px-4 py-3 outline-none focus:border-[#C7A56A] transition-colors rounded-sm tracking-wide text-[#35050D]"
                         />
                         <button
                           onClick={handleApplyCoupon}
                           disabled={couponLoading}
-                          className="bg-[#1E1E1E] text-white px-5 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-[#C6A15B] transition-colors disabled:opacity-50 rounded-sm"
+                          className="bg-[#35050D] text-white px-5 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-[#C7A56A] transition-colors disabled:opacity-50 rounded-sm"
                         >
                           {couponLoading ? '...' : 'Apply'}
                         </button>
@@ -198,12 +198,12 @@ export default function CartDrawer() {
                     <span>GST (3%)</span>
                     <span>{formatPrice(summary.gstAmount)}</span>
                   </div>
-                  <div className="flex justify-between font-semibold text-[#1E1E1E] text-lg pt-4 border-t border-[#EFE8DC]">
+                  <div className="flex justify-between font-semibold text-[#35050D] text-lg pt-4 border-t border-[#EFE8DC]">
                     <span>Total</span>
                     <motion.span 
                       key={summary.totalPrice} 
-                      initial={{ scale: 1.1, color: '#C6A15B' }} 
-                      animate={{ scale: 1, color: '#1E1E1E' }} 
+                      initial={{ scale: 1.1, color: '#C7A56A' }} 
+                      animate={{ scale: 1, color: '#35050D' }} 
                       transition={{ duration: 0.3 }}
                     >
                       {formatPrice(summary.totalPrice)}
@@ -213,7 +213,7 @@ export default function CartDrawer() {
                 <Link
                   to="/checkout"
                   onClick={() => setOpen(false)}
-                  className="w-full bg-[#1E1E1E] text-white py-4 text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-[#C6A15B] transition-colors rounded-sm shadow-md group relative overflow-hidden"
+                  className="w-full bg-[#35050D] text-white py-4 text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-[#C7A56A] transition-colors rounded-sm shadow-md group relative overflow-hidden"
                 >
                   <span className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[20deg]" />
                   Proceed to Checkout
@@ -222,7 +222,7 @@ export default function CartDrawer() {
                 <Link
                   to="/cart"
                   onClick={() => setOpen(false)}
-                  className="block text-center text-[10px] uppercase tracking-[0.2em] font-semibold text-[#6D6254] hover:text-[#C6A15B] transition-colors mt-4"
+                  className="block text-center text-[10px] uppercase tracking-[0.2em] font-semibold text-[#6D6254] hover:text-[#C7A56A] transition-colors mt-4"
                 >
                   View full cart
                 </Link>
@@ -257,7 +257,7 @@ function CartItem({ item, onUpdate, onRemove }) {
       </Link>
       <div className="flex-1 min-w-0 flex flex-col py-1">
         <Link to={`/products/${product.slug}`}>
-          <p className="text-xs font-medium text-[#1E1E1E] leading-snug line-clamp-2 hover:text-[#C6A15B] transition-colors">{product.name}</p>
+          <p className="text-xs font-medium text-[#35050D] leading-snug line-clamp-2 hover:text-[#C7A56A] transition-colors">{product.name}</p>
         </Link>
         <div className="mt-1 mb-auto">
           {variant?.size && <p className="text-[10px] text-[#6D6254] tracking-wide">Size: {variant.size}</p>}
@@ -269,7 +269,7 @@ function CartItem({ item, onUpdate, onRemove }) {
             <button
               onClick={() => quantity > 1 && onUpdate(quantity - 1)}
               disabled={quantity <= 1}
-              className="p-1.5 text-[#6D6254] hover:text-[#1E1E1E] disabled:opacity-30 transition-colors"
+              className="p-1.5 text-[#6D6254] hover:text-[#35050D] disabled:opacity-30 transition-colors"
             >
               <Minus size={12} strokeWidth={2} />
             </button>
@@ -277,20 +277,20 @@ function CartItem({ item, onUpdate, onRemove }) {
               key={quantity}
               initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
-              className="w-6 text-center text-xs font-medium text-[#1E1E1E]"
+              className="w-6 text-center text-xs font-medium text-[#35050D]"
             >
               {quantity}
             </motion.span>
             <button
               onClick={() => onUpdate(quantity + 1)}
-              className="p-1.5 text-[#6D6254] hover:text-[#1E1E1E] transition-colors"
+              className="p-1.5 text-[#6D6254] hover:text-[#35050D] transition-colors"
             >
               <Plus size={12} strokeWidth={2} />
             </button>
           </div>
           {/* Price + Remove */}
           <div className="flex items-center gap-3">
-            <span className="text-sm font-semibold text-[#1E1E1E]">{formatPrice(effectivePrice * quantity)}</span>
+            <span className="text-sm font-semibold text-[#35050D]">{formatPrice(effectivePrice * quantity)}</span>
             <button onClick={onRemove} className="text-gray-300 hover:text-red-500 hover:scale-110 transition-all duration-300" aria-label="Remove item">
               <Trash2 size={16} strokeWidth={1.5} />
             </button>

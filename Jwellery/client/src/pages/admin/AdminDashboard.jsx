@@ -173,7 +173,7 @@ export default function AdminDashboard() {
               {(topProductsData?.products || []).map((product, i) => (
                 <div key={product._id} className="flex items-center gap-3">
                   <span className="w-5 text-xs font-bold text-gray-400">{i + 1}.</span>
-                  <img src={product.images?.[0]?.url || '/placeholder.jpg'} alt={product.name} className="w-10 h-10 rounded-lg object-cover" />
+                  <img src={product.images?.[0]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={product.name} className="w-10 h-10 rounded-lg object-cover" />
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-medium text-gray-800 truncate">{product.name}</p>
                     <div className="flex items-center gap-1">

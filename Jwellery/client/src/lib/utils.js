@@ -21,10 +21,10 @@ export function getDiscountPercent(price, discountPrice) {
 
 export function getProductImage(images) {
   if (!images || !Array.isArray(images) || images.length === 0) {
-    return '/placeholder.jpg';
+    return 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500';
   }
   const defaultImage = images.find(img => img.isDefault);
-  return defaultImage?.url || images[0]?.url || '/placeholder.jpg';
+  return defaultImage?.url || images[0]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500';
 }
 
 export function formatDate(date) {

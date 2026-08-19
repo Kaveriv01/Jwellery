@@ -75,7 +75,7 @@ export default function OrderDetailPage() {
             <h2 className="font-semibold text-gray-800 flex items-center gap-2"><Package size={16} /> Items ({order.items?.length})</h2>
             {order.items?.map((item) => (
               <div key={item._id} className="flex gap-3 bg-white border border-gray-100 rounded-xl p-4">
-                <img src={item.image || '/placeholder.jpg'} alt={item.name} className="w-16 h-16 rounded-lg object-cover" />
+                <img src={item.image || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={item.name} className="w-16 h-16 rounded-lg object-cover" />
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-sm text-gray-800 truncate">{item.name}</p>
                   {item.size && <p className="text-xs text-gray-400">Size: {item.size}</p>}

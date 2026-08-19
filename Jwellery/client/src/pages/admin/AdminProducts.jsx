@@ -104,7 +104,7 @@ export default function AdminProducts() {
                     <tr key={p._id} className="hover:bg-gray-50/50 transition-colors">
                       <td className="py-4 px-6 flex items-center gap-3">
                         <img
-                          src={p.images?.[0]?.url || '/placeholder.jpg'}
+                          src={p.images?.[0]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                           alt={p.name}
                           className="w-10 h-10 object-cover rounded-lg border border-gray-100"
                         />

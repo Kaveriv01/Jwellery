@@ -220,7 +220,7 @@ export default function Navbar() {
                     {searchResults.map((product) => (
                       <Link key={product._id} to={`/products/${product.slug}`} onClick={() => { setSearchOpen(false); setSearchQuery(''); setSearchResults([]); }} className="group flex items-center gap-5 p-3 hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100 rounded-sm">
                         <div className="w-16 h-16 overflow-hidden rounded-sm">
-                          <img src={product.images?.[0]?.url || '/placeholder.jpg'} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                          <img src={product.images?.[0]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                         </div>
                         <div>
                           <p className="text-sm text-[#111] font-medium transition-colors">{product.name}</p>
