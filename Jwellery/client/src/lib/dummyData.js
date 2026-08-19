@@ -4,21 +4,21 @@ export const dummyProducts = [
     _id: "dummy_1", name: "Aurelia Diamond Pendant", slug: "aurelia-diamond-pendant",
     shortDescription: "A breathtaking diamond pendant set in 18k Rose Gold.",
     price: 45000, discountPrice: 38999, category: { _id: 'cat1', name: "Necklaces", slug: "necklaces" },
-    images: [{ url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600", isDefault: true }],
+    images: [{ url: "https://images.unsplash.com/photo-1633934542430-0905ccb5f050?auto=format&fit=crop&q=80&w=800", isDefault: true }],
     isNewArrival: true, isFeatured: true
   },
   {
     _id: "dummy_n2", name: "Royal Sapphire Choker", slug: "royal-sapphire-choker",
     shortDescription: "An exquisite bridal choker with deep blue sapphires.",
     price: 250000, category: { _id: 'cat1', name: "Necklaces", slug: "necklaces" },
-    images: [{ url: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=600", isDefault: true }],
+    images: [{ url: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&q=80&w=800", isDefault: true }],
     isNewArrival: true
   },
   {
     _id: "dummy_n3", name: "Classic Pearl Strands", slug: "classic-pearl-strands",
     shortDescription: "Timeless elegance for every occasion.",
     price: 32000, category: { _id: 'cat1', name: "Necklaces", slug: "necklaces" },
-    images: [{ url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=600", isDefault: true }]
+    images: [{ url: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&q=80&w=800", isDefault: true }]
   },
 
   // EARRINGS (cat2)
