@@ -22,10 +22,9 @@ const dummyCategories = [
 ];
 
 export const categoryService = {
-  getAll: (params) => withFallback(
-    () => api.get('/categories', { params }),
-    { categories: dummyCategories }
-  ),
+  getAll: async (params) => {
+    return { data: { categories: dummyCategories } };
+  },
   getBySlug: (slug) => api.get(`/categories/${slug}`),
   create: (data) => api.post('/categories', data, { headers: { 'Content-Type': 'multipart/form-data' } }),
   update: (id, data) => api.put(`/categories/${id}`, data, { headers: { 'Content-Type': 'multipart/form-data' } }),
