@@ -82,20 +82,20 @@ export default function ProductsPage() {
         return {
           type: 'lookbook',
           images: [
-            '/images/jewelry/necklaces/necklace-banner.webp',
-            '/images/jewelry/necklaces/necklace-01.webp',
-            '/images/jewelry/necklaces/necklace-03.webp',
-            '/images/jewelry/necklaces/necklace-05.webp',
-            '/images/jewelry/necklaces/necklace-08.webp'
+            'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1200',
+            'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600',
+            'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=600',
+            'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=600',
+            'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=600'
           ],
           title: 'Necklaces Collection',
           subtitle: 'Elegance in every link'
         };
-      case 'earrings':  return { type: 'single', desktop: '/images/home/cat-earrings-new.png' };
-      case 'rings':     return { type: 'single', desktop: '/images/home/cat-rings-new.png' };
-      case 'bracelets': return { type: 'single', desktop: '/images/home/cat-bracelets-new.png' };
-      case 'stackables':return { type: 'single', desktop: '/images/home/cat-stackables-new.png' };
-      case 'gifts':     return { type: 'single', desktop: '/images/home/cat-gifts-new.png' };
+      case 'earrings':  return { type: 'single', desktop: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=1600' };
+      case 'rings':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1600' };
+      case 'bracelets': return { type: 'single', desktop: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
+      case 'stackables':return { type: 'single', desktop: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1600' };
+      case 'gifts':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
       default: return null;
     }
   };
