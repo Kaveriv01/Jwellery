@@ -6,14 +6,14 @@ import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function HeroBanner() {
   return (
-    <section className="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#2D0B12]">
+    <section className="relative w-full h-[80vh] md:h-[85vh] lg:h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-[#2D0B12]">
       {/* Background Image determining height */}
       <img
         src="/7f6da4e9-866a-4b32-b1da-bdfd58aaac91.jfif"
         alt="Tarini Jewellers Collection"
-        className="w-full h-[80vh] md:h-auto object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-center scale-105"
       />
-      <div className="absolute inset-0 bg-black/20 z-0" /> {/* Darker overlay for text readability */}
+      <div className="absolute inset-0 bg-black/30 z-0" /> {/* Darker overlay for text readability */}
 
       {/* Overlay Content Wrapper */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-12 md:py-20">
