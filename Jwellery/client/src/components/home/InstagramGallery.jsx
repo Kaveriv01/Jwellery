@@ -31,31 +31,31 @@ export default function InstagramGallery() {
         </h2>
       </motion.div>
 
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2">
-          {INSTAGRAM_POSTS.map((post, idx) => (
-            <motion.a 
+      <div className="w-full overflow-hidden">
+        <motion.div 
+          className="flex flex-nowrap gap-1 sm:gap-2"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ ease: "linear", duration: 20, repeat: Infinity }}
+        >
+          {[...INSTAGRAM_POSTS, ...INSTAGRAM_POSTS, ...INSTAGRAM_POSTS, ...INSTAGRAM_POSTS].map((post, idx) => (
+            <a 
               href="https://instagram.com" 
               target="_blank" 
               rel="noreferrer"
               key={idx}
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
-              className="relative aspect-square overflow-hidden group block bg-white"
+              className="relative aspect-square w-[200px] sm:w-[280px] md:w-[320px] flex-shrink-0 overflow-hidden group block bg-[#F8F4EE]"
             >
               <img
                 src={post.url}
                 alt="Instagram post"
                 className="w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 bg-[#35050D]/0 group-hover:bg-[#35050D]/20 transition-colors duration-[400ms] flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#35050D]/0 group-hover:bg-[#35050D]/30 transition-colors duration-[400ms] flex items-center justify-center">
                 <InstagramIcon size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out translate-y-2 group-hover:translate-y-0" />
               </div>
-            </motion.a>
+            </a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
