@@ -9,23 +9,10 @@ export default function HeroBanner() {
     <section className="relative w-full h-[90vh] min-h-[600px] flex flex-col items-center justify-between py-16 overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0 bg-[#D4C3B3]">
-        <video
-          src={jewelleryMedia.hero.videoDesktop}
-          poster={jewelleryMedia.hero.poster}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover object-center hidden md:block"
-        />
-        <video
-          src={jewelleryMedia.hero.videoMobile}
-          poster={jewelleryMedia.hero.poster}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover object-center md:hidden"
+        <img
+          src="/7f6da4e9-866a-4b32-b1da-bdfd58aaac91.jfif"
+          alt="Tarini Jewellers Collection"
+          className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/20" /> {/* Darker overlay for text readability */}
       </div>
