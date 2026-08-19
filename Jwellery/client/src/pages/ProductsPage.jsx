@@ -72,11 +72,11 @@ export default function ProductsPage() {
 
   // Determine if we should show a banner and what image to use
   const getBannerData = (s, isNew) => {
-    if (isNew === 'true') {
-      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1574914713835-2d7c5a0dbd34?auto=format&fit=crop&q=80&w=1600' };
+    if (isNew === 'true' || window.location.pathname === '/sale') {
+      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=1600' };
     }
-    if (!s) {
-      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
+    if (!s || window.location.pathname === '/collections') {
+      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1573408301145-b98c4af05b8e?auto=format&fit=crop&q=80&w=1600' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
