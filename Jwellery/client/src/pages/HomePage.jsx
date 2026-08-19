@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import HeroBanner from '../components/home/HeroBanner';
 import FeaturesBar from '../components/home/FeaturesBar';
-import ShopByCategory from '../components/home/ShopByCategory';
+import CategoryCards from '../components/home/CategoryCards';
 import MidBanner from '../components/home/MidBanner';
 import EditorialBanner from '../components/home/EditorialBanner';
 import WhyChooseUsBoxes from '../components/home/WhyChooseUsBoxes';
@@ -22,7 +22,7 @@ export default function HomePage() {
         <HeroBanner />
         <FeaturesBar />
         
-        <ShopByCategory />
+        <CategoryCards />
 
         <LifestyleVideoSection />
 
