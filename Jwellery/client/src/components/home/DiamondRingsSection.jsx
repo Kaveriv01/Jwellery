@@ -34,7 +34,7 @@ const FALLBACK_RINGS = [
     ratings: 4.9, numReviews: 76, stock: 8,
     isFeatured: false, isBestSeller: false, isNewArrival: false, isTrending: true,
     images: [
-      { url: 'https://images.unsplash.com/photo-1573408301185-9519f94815b6?w=600&h=600&fit=crop&q=90', isDefault: true },
+      { url: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&h=600&fit=crop&q=90', isDefault: true },
       { url: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=600&fit=crop&q=90' },
     ]
   },
@@ -75,7 +75,7 @@ const FALLBACK_RINGS = [
     isFeatured: false, isBestSeller: false, isNewArrival: false, isTrending: true,
     images: [
       { url: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=600&fit=crop&q=90', isDefault: true },
-      { url: 'https://images.unsplash.com/photo-1573408301185-9519f94815b6?w=600&h=600&fit=crop&q=90' },
+      { url: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&h=600&fit=crop&q=90' },
     ]
   },
   {

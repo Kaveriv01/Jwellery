@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
 const CATEGORIES = [
-  { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800', desc: 'Discover Tarini\'s finest diamond rings.' },
-  { id: 'necklaces', name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800', desc: 'Explore the newest necklace collection.' },
-  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=800', desc: 'Handcrafted earrings for every occasion.' },
-  { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1573408301185-9519f94815b6?auto=format&fit=crop&q=80&w=800', desc: 'Elegant bracelets, perfect for gifting.' },
+  { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=90&w=1200', desc: 'Discover Tarini\'s finest diamond rings.' },
+  { id: 'necklaces', name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=90&w=1200', desc: 'Explore the newest necklace collection.' },
+  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=90&w=1200', desc: 'Handcrafted earrings for every occasion.' },
+  { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&q=90&w=1200', desc: 'Elegant bracelets, perfect for gifting.' },
 ];
 
 export default function ShopByCategory() {
