@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Instagram } from 'lucide-react';
+const InstagramIcon = ({ size, className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
 import { motion } from 'framer-motion';
 
 const INSTAGRAM_POSTS = [
@@ -45,7 +51,7 @@ export default function InstagramGallery() {
                 className="w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-[#35050D]/0 group-hover:bg-[#35050D]/20 transition-colors duration-[400ms] flex items-center justify-center">
-                <Instagram size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out translate-y-2 group-hover:translate-y-0" />
+                <InstagramIcon size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out translate-y-2 group-hover:translate-y-0" />
               </div>
             </motion.a>
           ))}
