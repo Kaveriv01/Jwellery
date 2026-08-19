@@ -8,6 +8,7 @@ import { useWishlist } from '../../context/WishlistContext';
 import { formatPrice, getDiscountPercent, getProductImage } from '../../lib/utils';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
+import { openCartDrawer } from '../cart/CartDrawer';
 
 const ProductCard = memo(function ProductCard({ product }) {
   const { isAuthenticated } = useAuth();
@@ -39,6 +40,7 @@ const ProductCard = memo(function ProductCard({ product }) {
 
     addToCart({ productId: _id, quantity: 1 });
     toast.success('Added to your cart');
+    openCartDrawer();
   };
 
   const handleWishlistToggle = (e) => {

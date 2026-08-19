@@ -1,32 +1,56 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const CATEGORIES = [
-  { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=90&w=1200', desc: 'Discover Tarini\'s finest diamond rings.' },
-  { id: 'necklaces', name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=90&w=1200', desc: 'Explore the newest necklace collection.' },
-  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=90&w=1200', desc: 'Handcrafted earrings for every occasion.' },
-  { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=90&w=1200', desc: 'Elegant bracelets, perfect for gifting.' },
+  { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=90&w=500' },
+  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=90&w=500' },
+  { id: 'necklaces', name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=90&w=500' },
+  { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=90&w=500' },
+  { id: 'pendants', name: 'Pendants', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=90&w=500' },
+  { id: 'sets', name: 'Gift Sets', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=90&w=500' },
 ];
 
 export default function ShopByCategory() {
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {CATEGORIES.map((cat) => (
-          <Link key={cat.id} to={`/category/${cat.id}`} className="group block">
-            <div className="overflow-hidden bg-[#F8F4EE] relative border border-[#EAE6DF] aspect-[4/5]">
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-[#35050D]/0 group-hover:bg-[#35050D]/5 transition-colors duration-[400ms]" />
-            </div>
-            <div className="bg-white p-6 shadow-sm border border-[#EAE6DF] -mt-8 relative z-10 mx-4 text-center transition-all duration-[400ms] ease-out">
-              <h3 className="text-[#35050D] font-normal text-2xl mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{cat.name}</h3>
-              <p className="text-[10px] text-[#756869] uppercase tracking-[0.15em] font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>Shop Collection</p>
-            </div>
-          </Link>
-        ))}
+    <div className="w-full bg-[#FDFBF7] py-6 mb-8 border-b border-[#EAE6DF]/50">
+      <div className="container-luxury max-w-[1400px]">
+        {/* Horizontal scroll container */}
+        <div 
+          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar justify-start md:justify-center gap-4 sm:gap-6 lg:gap-10 pb-4 pt-2 -mx-4 px-4 md:mx-0 md:px-0"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
+          
+          {CATEGORIES.map((cat, index) => (
+            <motion.div 
+              key={cat.id} 
+              className="snap-start shrink-0 flex flex-col items-center group"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+            >
+              <Link to={`/category/${cat.id}`} className="flex flex-col items-center">
+                {/* Circular Image Container with Gold Ring on Hover */}
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full p-[2px] mb-3 transition-all duration-300 group-hover:bg-gradient-to-tr group-hover:from-[#C7A56A] group-hover:to-[#E8D09E] bg-transparent">
+                  <div className="w-full h-full rounded-full overflow-hidden border-2 border-white bg-[#F8F4EE]">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-cover transition-transform duration-[500ms] ease-out group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+                {/* Text Label */}
+                <span 
+                  className="text-[11px] md:text-[12px] text-[#35050D] font-[600] tracking-[0.08em] uppercase transition-colors group-hover:text-[#C7A56A]"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  {cat.name}
+                </span>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

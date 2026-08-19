@@ -22,12 +22,7 @@ export default function HomePage() {
         <HeroBanner />
         <FeaturesBar />
         
-        <div className="py-16">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-normal text-[#5C1D24]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Shop by Category</h2>
-          </div>
-          <ShopByCategory />
-        </div>
+        <ShopByCategory />
 
         <LifestyleVideoSection />
 
