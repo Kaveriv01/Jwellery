@@ -73,18 +73,7 @@ export default function ProductsPage() {
   // Determine if we should show a banner and what image to use
   const getBannerData = (s, isNew) => {
     if (isNew === 'true') {
-      return {
-        type: 'lookbook',
-        images: [
-          'https://images.unsplash.com/photo-1599643478524-fb66f70a0066?q=80&w=2000&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=800&auto=format&fit=crop'
-        ],
-        title: 'New In Collection',
-        subtitle: 'Discover our latest pieces'
-      };
+      return null;
     }
     if (!s) return null;
     const normalized = s.toLowerCase();
