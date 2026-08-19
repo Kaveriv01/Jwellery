@@ -178,7 +178,15 @@ export default function ProductsPage() {
       <div className="container-luxury pb-12">
         {/* Page Title */}
         <h1 className="text-[28px] lg:text-[34px] font-[500] tracking-wide text-[#111] uppercase mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-          {categoryName ? categoryName : (search ? `Search: ${search}` : (isNewArrival === 'true' ? 'New In' : 'All Jewelry'))}
+          {categoryName ? categoryName : (
+            search ? `Search: ${search}` : (
+              isNewArrival === 'true' ? 'New In' : (
+                window.location.pathname === '/collections' ? 'Collections' : (
+                  window.location.pathname === '/sale' ? 'Sale' : 'All Jewelry'
+                )
+              )
+            )
+          )}
         </h1>
 
         {/* Constrained Category Banner */}
