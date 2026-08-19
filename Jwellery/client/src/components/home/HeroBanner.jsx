@@ -6,61 +6,62 @@ import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function HeroBanner() {
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] flex flex-col items-center justify-between py-16 overflow-hidden">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 bg-[#D4C3B3]">
-        <img
-          src="/7f6da4e9-866a-4b32-b1da-bdfd58aaac91.jfif"
-          alt="Tarini Jewellers Collection"
-          className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/20" /> {/* Darker overlay for text readability */}
-      </div>
+    <section className="relative w-full flex flex-col items-center justify-center overflow-hidden bg-[#2D0B12]">
+      {/* Background Image determining height */}
+      <img
+        src="/7f6da4e9-866a-4b32-b1da-bdfd58aaac91.jfif"
+        alt="Tarini Jewellers Collection"
+        className="w-full h-[80vh] md:h-auto object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-black/20 z-0" /> {/* Darker overlay for text readability */}
 
-      {/* Top Content */}
-      <div className="relative z-10 text-center px-4 max-w-3xl flex flex-col items-center mt-12 md:mt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex items-center gap-6 mb-8"
-        >
-           <div className="w-16 h-[1px] bg-[#FAF6EE]/80"></div>
-           <Sparkles size={16} strokeWidth={1.5} className="text-[#FAF6EE]" fill="#FAF6EE" />
-           <div className="w-16 h-[1px] bg-[#FAF6EE]/80"></div>
-        </motion.div>
+      {/* Overlay Content Wrapper */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-12 md:py-20">
         
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-[#FAF6EE] text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-normal leading-tight mb-8"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
-        >
-          Timeless,<br />Beautifully You.
-        </motion.h1>
+        {/* Top Content */}
+        <div className="text-center px-4 max-w-3xl flex flex-col items-center mt-4 md:mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-6 mb-8"
+          >
+             <div className="w-16 h-[1px] bg-[#FAF6EE]/80"></div>
+             <Sparkles size={16} strokeWidth={1.5} className="text-[#FAF6EE]" fill="#FAF6EE" />
+             <div className="w-16 h-[1px] bg-[#FAF6EE]/80"></div>
+          </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-[#FAF6EE] text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-normal leading-tight mb-8"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            Timeless,<br />Beautifully You.
+          </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-10 font-medium"
-          style={{ fontFamily: "'Manrope', sans-serif" }}
-        >
-          Simple. Elegant. Unforgettable.
-        </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <Heart size={20} strokeWidth={1} className="text-[#FAF6EE]" />
-        </motion.div>
-      </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.3em] uppercase mb-10 font-medium"
+            style={{ fontFamily: "'Manrope', sans-serif" }}
+          >
+            Simple. Elegant. Unforgettable.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Heart size={20} strokeWidth={1} className="text-[#FAF6EE]" />
+          </motion.div>
+        </div>
 
-      {/* Bottom Content */}
-      <div className="relative z-10 text-center px-4 flex flex-col items-center mb-8 md:mb-12">
+        {/* Bottom Content */}
+        <div className="text-center px-4 flex flex-col items-center mb-2 md:mb-6">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -100,6 +101,7 @@ export default function HeroBanner() {
             Diamonds
           </p>
         </motion.div>
+      </div>
       </div>
     </section>
   );
