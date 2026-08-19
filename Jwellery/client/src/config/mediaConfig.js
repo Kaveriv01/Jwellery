@@ -26,7 +26,7 @@ export const jewelleryMedia = {
     },
     {
       id: "reel-3",
-      videoUrl: "/pinterest_video_2.mp4",
+      videoUrl: "/iwant_just_Tarini_Name_at_last.mp4",
       poster: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=800",
     },
     {
