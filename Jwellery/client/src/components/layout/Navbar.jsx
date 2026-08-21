@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ShoppingBag, Heart, User, Menu, X, LogOut, Package, Settings, Truck } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, Menu, X, LogOut, Package, Settings } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -23,6 +23,7 @@ export default function Navbar() {
   const { totalItems } = useCart();
   const { wishlistCount } = useWishlist();
   const navigate = useNavigate();
+  const location = useLocation();
   const searchRef = useRef(null);
 
   useEffect(() => {
@@ -63,17 +64,39 @@ export default function Navbar() {
     navigate('/login');
   };
 
-  const NavLink = ({ to, children }) => (
-    <Link to={to} className="relative group py-2">
-      <span
-        style={{ fontFamily: "'Montserrat', sans-serif" }}
-        className="relative z-10 text-[12px] lg:text-[13px] text-[#35050D] tracking-[0.08em] uppercase font-[600] transition-colors duration-[280ms] ease-out group-hover:text-[#C7A56A]"
+  // Desktop Navigation Link with Active State
+  const DesktopNavLink = ({ to, children }) => {
+    const isActive = location.pathname + location.search === to || location.pathname === to;
+    return (
+      <Link to={to} className="relative group py-2">
+        <span
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className={`relative z-10 text-[12px] lg:text-[13px] tracking-[0.08em] uppercase font-[600] transition-colors duration-[280ms] ease-out ${
+            isActive ? 'text-[#C7A56A]' : 'text-[#35050D] group-hover:text-[#C7A56A]'
+          }`}
+        >
+          {children}
+        </span>
+        <span className={`absolute left-0 right-0 bottom-0 h-[1.5px] bg-[#C7A56A] transform ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'} transition-transform duration-[280ms] origin-center ease-out`} />
+      </Link>
+    );
+  };
+
+  // Mobile Navigation Link with Active State
+  const MobileNavLink = ({ to, children }) => {
+    const isActive = location.pathname + location.search === to || location.pathname === to;
+    return (
+      <Link 
+        to={to} 
+        onClick={() => setMenuOpen(false)} 
+        className={`py-4 text-[12px] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 transition-all duration-300 ${
+          isActive ? 'text-[#C7A56A] pl-2' : 'text-[#35050D] hover:text-[#C7A56A] hover:pl-2'
+        }`}
       >
         {children}
-      </span>
-      <span className="absolute left-0 right-0 bottom-0 h-[1.5px] bg-[#111] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-[280ms] origin-center ease-out" />
-    </Link>
-  );
+      </Link>
+    );
+  };
 
   return (
     <>
@@ -105,13 +128,13 @@ export default function Navbar() {
 
             {/* CENTER: Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
-              <NavLink to="/products?isNewArrival=true">New In</NavLink>
-              <NavLink to="/category/necklaces">Necklaces</NavLink>
-              <NavLink to="/category/earrings">Earrings</NavLink>
-              <NavLink to="/category/rings">Rings</NavLink>
-              <NavLink to="/category/bracelets">Bracelets</NavLink>
-              <NavLink to="/collections">Collections</NavLink>
-              <NavLink to="/sale">Sale</NavLink>
+              <DesktopNavLink to="/products?isNewArrival=true">New In</DesktopNavLink>
+              <DesktopNavLink to="/category/necklaces">Necklaces</DesktopNavLink>
+              <DesktopNavLink to="/category/earrings">Earrings</DesktopNavLink>
+              <DesktopNavLink to="/category/rings">Rings</DesktopNavLink>
+              <DesktopNavLink to="/category/bracelets">Bracelets</DesktopNavLink>
+              <DesktopNavLink to="/collections">Collections</DesktopNavLink>
+              <DesktopNavLink to="/sale">Sale</DesktopNavLink>
             </nav>
 
             {/* RIGHT: Actions */}
@@ -183,13 +206,13 @@ export default function Navbar() {
                 <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
               <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-white">
-                <Link to="/products?isNewArrival=true" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">New In</Link>
-                <Link to="/category/necklaces" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Necklaces</Link>
-                <Link to="/category/earrings" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Earrings</Link>
-                <Link to="/category/rings" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Rings</Link>
-                <Link to="/category/bracelets" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Bracelets</Link>
-                <Link to="/collections" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#35050D] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-[#C7A56A] hover:pl-2 transition-all duration-300">Collections</Link>
-                <Link to="/sale" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-red-600 tracking-[0.08em] uppercase font-[600] border-b border-gray-100 hover:text-red-500 hover:pl-2 transition-all duration-300">Sale</Link>
+                <MobileNavLink to="/products?isNewArrival=true">New In</MobileNavLink>
+                <MobileNavLink to="/category/necklaces">Necklaces</MobileNavLink>
+                <MobileNavLink to="/category/earrings">Earrings</MobileNavLink>
+                <MobileNavLink to="/category/rings">Rings</MobileNavLink>
+                <MobileNavLink to="/category/bracelets">Bracelets</MobileNavLink>
+                <MobileNavLink to="/collections">Collections</MobileNavLink>
+                <MobileNavLink to="/sale">Sale</MobileNavLink>
                 
                 <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#756B62] hover:text-[#35050D] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
                 {!isAuthenticated ? (
