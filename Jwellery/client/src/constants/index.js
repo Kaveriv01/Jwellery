@@ -30,7 +30,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Earrings',
     slug: 'earrings',
-    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&q=80',
+    image: '/images/earrings-banner.jpg',
     subcategories: [
       { label: 'Studs', slug: 'studs' },
       { label: 'Jhumkas', slug: 'jhumkas' },

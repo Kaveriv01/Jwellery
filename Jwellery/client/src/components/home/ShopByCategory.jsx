@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const CATEGORIES = [
   { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=90&w=500' },
-  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=90&w=500' },
+  { id: 'earrings', name: 'Earrings', image: '/images/earrings-banner.jpg' },
   { id: 'necklaces', name: 'Necklaces', image: '/images/necklace-banner.jpg' },
   { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=90&w=500' },
   { id: 'pendants', name: 'Pendants', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=90&w=500' },

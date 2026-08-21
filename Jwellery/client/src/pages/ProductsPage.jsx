@@ -156,7 +156,7 @@ export default function ProductsPage() {
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklaces': return { type: 'single', desktop: '/images/necklace-banner.jpg' };
-      case 'earrings':  return { type: 'single', desktop: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1600' };
+      case 'earrings':  return { type: 'single', desktop: '/images/earrings-banner.jpg' };
       case 'rings':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1600' };
       case 'bracelets': return { type: 'single', desktop: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
       case 'stackables':return { type: 'single', desktop: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=1600' };
