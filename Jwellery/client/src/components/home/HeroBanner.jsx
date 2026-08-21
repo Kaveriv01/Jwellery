@@ -1,81 +1,29 @@
-import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Heart, Sparkles } from 'lucide-react';
 
 import { jewelleryMedia } from '../../config/mediaConfig';
 
-const MobileVideoPlayer = ({ src }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const videoRef = useRef(null);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  return (
-    <motion.div 
-      className="relative w-1/2 h-full overflow-hidden cursor-pointer"
-      onClick={togglePlay}
-      whileTap={{ scale: 0.92 }}
-      animate={{ scale: isPlaying ? 1 : 1.05 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-    >
-      <video
-        ref={videoRef}
-        src={src}
-        className="w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-      {!isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 pointer-events-none">
-          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      )}
-    </motion.div>
-  );
-};
-
 export default function HeroBanner() {
   return (
     <section className="relative w-full h-[80vh] md:h-[85vh] lg:h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-[#2D0B12]">
-      {/* Desktop Background */}
       <motion.img
         initial={{ opacity: 0, scale: 1.03 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         src="/7f6da4e9-866a-4b32-b1da-bdfd58aaac91.jfif"
         alt="Tarini Jewellers Collection"
-        className="hidden md:block absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
-
-      {/* Mobile Background: 2 Videos */}
-      <div className="md:hidden absolute inset-0 w-full h-full flex z-0">
-        <MobileVideoPlayer src="/pinterest_video.mp4" />
-        <MobileVideoPlayer src="/pinterest_video_2.mp4" />
-      </div>
-
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute inset-0 bg-black/40 z-0 pointer-events-none" 
+        className="absolute inset-0 bg-black/40 z-0" 
       />
 
       {/* Overlay Content Wrapper */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-12 md:py-20 pointer-events-none">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-12 md:py-20">
         
         {/* Top Content */}
         <div className="text-center px-4 max-w-3xl flex flex-col items-center mt-4 md:mt-10">
@@ -94,7 +42,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[36px] md:text-[44px] lg:text-[64px] font-[500] leading-tight mb-4 tracking-wide pointer-events-auto"
+            className="text-[#FAF6EE] text-[36px] md:text-[44px] lg:text-[64px] font-[500] leading-tight mb-4 tracking-wide"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Timeless Elegance
@@ -104,7 +52,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[14px] md:text-[16px] font-[400] tracking-wide mb-10 max-w-lg mx-auto pointer-events-auto"
+            className="text-[#FAF6EE] text-[14px] md:text-[16px] font-[400] tracking-wide mb-10 max-w-lg mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Discover jewellery designed to celebrate your everyday moments.
@@ -114,7 +62,6 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-            className="pointer-events-auto"
           >
             <Link
               to="/collections"
@@ -127,47 +74,47 @@ export default function HeroBanner() {
         </div>
 
         {/* Bottom Content */}
-        <div className="text-center px-4 flex flex-col items-center mb-2 md:mb-6 pointer-events-none">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-6 leading-relaxed font-medium pointer-events-auto"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-          >
-            For the moments<br />that matter most.
-          </motion.p>
+        <div className="text-center px-4 flex flex-col items-center mb-2 md:mb-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-6 leading-relaxed font-medium"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          For the moments<br />that matter most.
+        </motion.p>
 
-          <motion.div
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ duration: 0.8, delay: 0.7 }}
-             className="flex items-center gap-6 mb-8"
-          >
-             <div className="w-10 h-[1px] bg-[#FAF6EE]/60"></div>
-             <Sparkles size={14} strokeWidth={1.5} className="text-[#FAF6EE]/80" fill="#FAF6EE" />
-             <div className="w-10 h-[1px] bg-[#FAF6EE]/60"></div>
-          </motion.div>
+        <motion.div
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 0.8, delay: 0.7 }}
+           className="flex items-center gap-6 mb-8"
+        >
+           <div className="w-10 h-[1px] bg-[#FAF6EE]/60"></div>
+           <Sparkles size={14} strokeWidth={1.5} className="text-[#FAF6EE]/80" fill="#FAF6EE" />
+           <div className="w-10 h-[1px] bg-[#FAF6EE]/60"></div>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col items-center pointer-events-auto"
-          >
-            <div className="relative w-8 h-8 flex items-center justify-center mb-4">
-              <div className="absolute w-6 h-6 border-[1.5px] border-[#FAF6EE] rounded-full top-2"></div>
-              <div className="absolute w-2 h-2 border-[1.5px] border-[#FAF6EE] rounded-full -top-1 bg-transparent"></div>
-            </div>
-            
-            <p className="text-[#FAF6EE] text-sm md:text-base tracking-[0.3em] uppercase font-medium">
-              Tarini Jewellers
-            </p>
-            <p className="text-[#FAF6EE]/80 text-[8px] md:text-[9px] tracking-[0.5em] uppercase mt-2">
-              Diamonds
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-col items-center"
+        >
+          <div className="relative w-8 h-8 flex items-center justify-center mb-4">
+            <div className="absolute w-6 h-6 border-[1.5px] border-[#FAF6EE] rounded-full top-2"></div>
+            <div className="absolute w-2 h-2 border-[1.5px] border-[#FAF6EE] rounded-full -top-1 bg-transparent"></div>
+          </div>
+          
+          <p className="text-[#FAF6EE] text-sm md:text-base tracking-[0.3em] uppercase font-medium">
+            Tarini Jewellers
+          </p>
+          <p className="text-[#FAF6EE]/80 text-[8px] md:text-[9px] tracking-[0.5em] uppercase mt-2">
+            Diamonds
+          </p>
+        </motion.div>
+      </div>
       </div>
     </section>
   );
