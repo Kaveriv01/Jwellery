@@ -1,9 +1,9 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useSearchParams, useParams, useNavigate, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Filter, Grid3X3, List, SlidersHorizontal, X, ChevronDown } from 'lucide-react';
+import { Filter, Grid3X3, List, SlidersHorizontal, X, ChevronDown, ShoppingBag, Play } from 'lucide-react';
 import ProductCard from '../components/product/ProductCard';
 import { productService } from '../services/productService';
 import { categoryService } from '../services/otherServices';
@@ -11,6 +11,54 @@ import { SORT_OPTIONS, MATERIAL_OPTIONS, GENDER_OPTIONS, PRICE_RANGES } from '..
 import { jewelleryMedia } from '../config/mediaConfig';
 
 const ITEMS_PER_PAGE = 12;
+
+const MobileVideoPlayer = ({ src }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  return (
+    <motion.div 
+      className="relative w-full aspect-[9/16] overflow-hidden cursor-pointer rounded-[10px] shadow-sm"
+      onClick={togglePlay}
+      whileTap={{ scale: 0.96 }}
+      animate={{ scale: isPlaying ? 1 : 1.02 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      {/* Top Right Shopping Bag Icon (Parcos style) */}
+      <div className="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+        <ShoppingBag size={12} className="text-white" />
+      </div>
+
+      <video
+        ref={videoRef}
+        src={src}
+        className="w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+      {!isPlaying && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30 pointer-events-none">
+          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+            <Play size={24} fill="currentColor" className="ml-1" />
+          </div>
+        </div>
+      )}
+    </motion.div>
+  );
+};
 
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -80,12 +128,13 @@ export default function ProductsPage() {
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
-      case 'necklaces': return { type: 'single', desktop: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1600' };
-      case 'earrings':  return { type: 'single', desktop: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=1600' };
+      case 'necklaces': return { type: 'single', desktop: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1600' };
+      case 'earrings':  return { type: 'single', desktop: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1600' };
       case 'rings':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1600' };
       case 'bracelets': return { type: 'single', desktop: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
-      case 'stackables':return { type: 'single', desktop: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1600' };
-      case 'gifts':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
+      case 'stackables':return { type: 'single', desktop: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=1600' };
+      case 'gifts':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&q=80&w=1600' };
+      case 'pendants':  return { type: 'single', desktop: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600' };
       default: return null;
     }
   };
@@ -191,24 +240,45 @@ export default function ProductsPage() {
 
         {/* Constrained Category Banner */}
         {videoBanner ? (
-          <div className="mb-12 relative w-full h-[300px] md:h-[500px] overflow-hidden bg-[#EAE8E2] flex items-center justify-center">
-            <video
-              src={videoBanner.videoUrl}
-              poster={videoBanner.poster}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20" />
-            <div className="relative z-10 text-center px-4 max-w-2xl">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#FAF6EE] font-normal mb-4 drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                {categoryName || 'Collection'}
-              </h2>
-              <p className="text-[#FAF6EE] text-xs tracking-[0.2em] uppercase font-medium drop-shadow-sm">
-                Explore our finest pieces
-              </p>
+          <div className="mb-12">
+            {/* Desktop single video banner */}
+            <div className="hidden md:flex relative w-full h-[500px] overflow-hidden bg-[#EAE8E2] items-center justify-center">
+              <video
+                src={videoBanner.videoUrl}
+                poster={videoBanner.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+              <div className="relative z-10 text-center px-4 max-w-2xl pointer-events-none">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#FAF6EE] font-normal mb-4 drop-shadow-md pointer-events-auto" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  {categoryName || 'Collection'}
+                </h2>
+                <p className="text-[#FAF6EE] text-xs tracking-[0.2em] uppercase font-medium drop-shadow-sm pointer-events-auto">
+                  Explore our finest pieces
+                </p>
+              </div>
+            </div>
+
+            {/* Mobile dual videos parallel form */}
+            <div className="md:hidden flex flex-col mb-6 px-3">
+              <div className="text-center py-6">
+                <h2 className="text-3xl text-[#111] font-normal mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  {categoryName || 'Collection'}
+                </h2>
+                <p className="text-[#756B62] text-[10px] tracking-[0.2em] uppercase font-medium">
+                  Explore our finest pieces
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-2 w-full">
+                <MobileVideoPlayer src={videoBanner.videoUrl} />
+                <MobileVideoPlayer src="/pinterest_video.mp4" />
+                <MobileVideoPlayer src="/pinterest_video_2.mp4" />
+                <MobileVideoPlayer src="/obkpo6sffg.mp4" />
+              </div>
             </div>
           </div>
         ) : bannerData && bannerData.type === 'lookbook' ? (

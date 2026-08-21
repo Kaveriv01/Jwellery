@@ -1,12 +1,10 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
 import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function ReelsSection() {
   return (
     <section className="py-20 bg-[#F8F4EC]">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 lg:px-8">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -17,48 +15,49 @@ export default function ReelsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl text-[#5C1D24] mb-3 font-normal uppercase tracking-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Follow Our Style
+            className="text-3xl lg:text-4xl text-[#5C1D24] mb-3 font-normal uppercase tracking-[0.15em]" 
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            The TARINI Experience
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#746760] text-sm tracking-wide font-light">
-            See how Tarini jewellery shines in real life.
+            className="text-[#746760] text-sm tracking-wide font-light max-w-lg mx-auto"
+          >
+            A glimpse into the craftsmanship, details and elegance behind TARINI.
           </motion.p>
         </motion.div>
 
-        <div className={`grid grid-cols-1 sm:grid-cols-2 ${jewelleryMedia.reels.length === 3 ? 'lg:grid-cols-3 max-w-5xl mx-auto' : 'lg:grid-cols-4'} gap-6`}>
+        {/* 
+          Responsive Rules applied:
+          - Mobile (default): 2 columns
+          - Tablet (md): 2 columns
+          - Desktop (lg - 1024px+): 4 columns
+        */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto">
           {jewelleryMedia.reels.slice(0, 4).map((reel, idx) => (
-            <div key={reel.id} style={{ perspective: '1200px' }} className="w-full">
-              <motion.div
-                initial={{ opacity: 0, scale: 1.03 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 1.2, delay: idx * 0.15, ease: "easeOut" }}
-                whileHover={{ scale: 1.02 }}
-                className="relative w-full aspect-[9/16] bg-[#FAF6EE] rounded-[2px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-[400ms] ease-out"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <video
-                  src={reel.videoUrl}
-                  poster={reel.poster}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover transition-all duration-700"
-                />
-                
-
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-z-12">
-                  <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center border border-white/50 shadow-lg hover:scale-110 transition-transform">
-                    <Play size={24} className="text-white ml-1" fill="white" />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              key={reel.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
+              className="relative w-full aspect-[4/5] md:aspect-[9/16] bg-[#FAF6EE] rounded-[12px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 ease-out"
+            >
+              <video
+                src={reel.videoUrl}
+                poster={reel.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+            </motion.div>
           ))}
         </div>
       </div>
