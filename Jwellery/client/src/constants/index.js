@@ -19,7 +19,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Necklaces',
     slug: 'necklaces',
-    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300&q=80',
+    image: '/images/necklace-banner.jpg',
     subcategories: [
       { label: 'Gold Chains', slug: 'gold-chains' },
       { label: 'Pendants', slug: 'pendants' },

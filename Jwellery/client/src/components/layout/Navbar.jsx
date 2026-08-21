@@ -72,12 +72,12 @@ export default function Navbar() {
         <span
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className={`relative z-10 text-[12px] lg:text-[13px] tracking-[0.08em] uppercase font-[600] transition-colors duration-[280ms] ease-out ${
-            isActive ? 'text-[#C7A56A]' : 'text-[#35050D] group-hover:text-[#C7A56A]'
+            isActive ? 'text-[#756B62]' : 'text-[#35050D] group-hover:text-[#C7A56A]'
           }`}
         >
           {children}
         </span>
-        <span className={`absolute left-0 right-0 bottom-0 h-[1.5px] bg-[#C7A56A] transform ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'} transition-transform duration-[280ms] origin-center ease-out`} />
+        <span className={`absolute left-0 right-0 bottom-0 h-[1.5px] transform ${isActive ? 'bg-[#756B62] scale-x-100' : 'bg-[#C7A56A] scale-x-0 group-hover:scale-x-100'} transition-transform duration-[280ms] origin-center ease-out`} />
       </Link>
     );
   };
@@ -90,7 +90,7 @@ export default function Navbar() {
         to={to} 
         onClick={() => setMenuOpen(false)} 
         className={`py-4 text-[12px] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 transition-all duration-300 ${
-          isActive ? 'text-[#C7A56A] pl-2' : 'text-[#35050D] hover:text-[#C7A56A] hover:pl-2'
+          isActive ? 'text-[#756B62] pl-2' : 'text-[#35050D] hover:text-[#C7A56A] hover:pl-2'
         }`}
       >
         {children}
