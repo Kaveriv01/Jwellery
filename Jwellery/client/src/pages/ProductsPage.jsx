@@ -2,7 +2,7 @@ import { useState, useCallback, useRef } from 'react';
 import { useSearchParams, useParams, useNavigate, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Filter, Grid3X3, List, SlidersHorizontal, X, ChevronDown, ShoppingBag, Play } from 'lucide-react';
 import ProductCard from '../components/product/ProductCard';
 import { productService } from '../services/productService';
@@ -13,50 +13,76 @@ import { jewelleryMedia } from '../config/mediaConfig';
 const ITEMS_PER_PAGE = 12;
 
 const MobileVideoPlayer = ({ src }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const videoRef = useRef(null);
 
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
   return (
-    <motion.div 
-      className="relative w-full aspect-[9/16] overflow-hidden cursor-pointer rounded-[10px] shadow-sm"
-      onClick={togglePlay}
-      whileTap={{ scale: 0.96 }}
-      animate={{ scale: isPlaying ? 1 : 1.02 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-    >
-      {/* Top Right Shopping Bag Icon (Parcos style) */}
-      <div className="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-        <ShoppingBag size={12} className="text-white" />
-      </div>
+    <>
+      <motion.div 
+        className="relative w-full aspect-[9/16] overflow-hidden cursor-pointer rounded-[10px] shadow-sm group"
+        onClick={() => setIsPreviewOpen(true)}
+        whileTap={{ scale: 0.96 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        {/* Top Right Shopping Bag Icon (Parcos style) */}
+        <div className="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-sm">
+          <ShoppingBag size={12} className="text-white" />
+        </div>
 
-      <video
-        ref={videoRef}
-        src={src}
-        className="w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-      {!isPlaying && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 pointer-events-none">
-          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
-            <Play size={24} fill="currentColor" className="ml-1" />
+        <video
+          ref={videoRef}
+          src={src}
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        
+        {/* Play Icon - No blur on the video! */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white shadow-lg">
+            <Play size={18} fill="currentColor" className="ml-0.5" />
           </div>
         </div>
-      )}
-    </motion.div>
+      </motion.div>
+
+      {/* Fullscreen Preview Modal */}
+      <AnimatePresence>
+        {isPreviewOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4"
+            onClick={() => setIsPreviewOpen(false)}
+          >
+            <button 
+              className="absolute top-4 right-4 text-white p-2 z-50 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-md"
+              onClick={() => setIsPreviewOpen(false)}
+            >
+              <X size={24} />
+            </button>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-[400px] aspect-[9/16] bg-black rounded-xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                src={src}
+                autoPlay
+                controls
+                playsInline
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

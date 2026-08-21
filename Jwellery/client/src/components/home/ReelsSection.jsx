@@ -1,7 +1,11 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Play, X } from 'lucide-react';
 import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function ReelsSection() {
+  const [previewVideo, setPreviewVideo] = useState(null);
+
   return (
     <section className="py-20 bg-[#F8F4EC]">
       <div className="container mx-auto px-4 lg:px-8">
@@ -45,7 +49,8 @@ export default function ReelsSection() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
               whileHover={{ scale: 1.02 }}
-              className="relative w-full aspect-[4/5] md:aspect-[9/16] bg-[#FAF6EE] rounded-[12px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 ease-out"
+              onClick={() => setPreviewVideo(reel.videoUrl)}
+              className="relative w-full aspect-[9/16] bg-[#FAF6EE] rounded-[12px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 ease-out"
             >
               <video
                 src={reel.videoUrl}
@@ -56,11 +61,53 @@ export default function ReelsSection() {
                 playsInline
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+              
+              {/* Subtle play icon on hover, NO background blur/dimming of the video itself */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="w-12 h-12 rounded-full bg-black/30 flex items-center justify-center shadow-lg backdrop-blur-sm">
+                  <Play size={20} className="text-white ml-1" fill="white" />
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Video Preview Modal */}
+      <AnimatePresence>
+        {previewVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4"
+            onClick={() => setPreviewVideo(null)}
+          >
+            <button 
+              className="absolute top-4 right-4 md:top-8 md:right-8 text-white p-2 z-50 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-md"
+              onClick={() => setPreviewVideo(null)}
+            >
+              <X size={28} />
+            </button>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-[400px] aspect-[9/16] bg-black rounded-xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                src={previewVideo}
+                autoPlay
+                controls
+                playsInline
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
