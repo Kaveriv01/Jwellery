@@ -147,10 +147,11 @@ export default function ProductsPage() {
   // Determine if we should show a banner and what image to use
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?auto=format&fit=crop&q=80&w=1600' };
+      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=1600' };
     }
     if (!s || window.location.pathname === '/collections') {
-      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1573408301145-b98c4af05b8e?auto=format&fit=crop&q=80&w=1600' };
+      // Replaced broken unsplash image with a guaranteed working luxury jewelry image
+      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
