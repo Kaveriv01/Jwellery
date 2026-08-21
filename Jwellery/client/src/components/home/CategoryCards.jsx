@@ -26,7 +26,7 @@ export default function CategoryCards() {
           {CATEGORIES.map((cat, index) => (
             <motion.div 
               key={cat.id} 
-              className="group relative overflow-hidden aspect-[4/5] md:aspect-auto md:h-[450px] lg:h-[500px]"
+              className="group relative overflow-hidden aspect-[9/16] md:aspect-auto md:h-[450px] lg:h-[500px]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
@@ -38,19 +38,25 @@ export default function CategoryCards() {
                   alt={cat.name}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
                 
-                <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8 text-center">
+                {/* Text positioned at the bottom, perfectly clear image with no gradient */}
+                <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8 text-center pointer-events-none">
                   <span 
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }} 
-                    className="text-white text-2xl md:text-4xl font-medium tracking-wide mb-2 md:mb-4 transition-transform duration-500 group-hover:-translate-y-2"
+                    style={{ 
+                      fontFamily: "'Cormorant Garamond', serif",
+                      textShadow: "0px 2px 4px rgba(0,0,0,0.4)" 
+                    }} 
+                    className="text-white text-2xl md:text-4xl font-medium tracking-wide mb-2 md:mb-4 transition-transform duration-500 group-hover:-translate-y-2 drop-shadow-lg"
                   >
                     {cat.name}
                   </span>
                   <div className="overflow-hidden hidden md:block">
                     <span 
-                      style={{ fontFamily: "'Montserrat', sans-serif" }}
-                      className="text-white text-[11px] font-semibold uppercase tracking-[0.15em] border-b border-white pb-1 inline-block transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-500 ease-out"
+                      style={{ 
+                        fontFamily: "'Montserrat', sans-serif",
+                        textShadow: "0px 1px 2px rgba(0,0,0,0.6)"
+                      }}
+                      className="text-white text-[11px] font-semibold uppercase tracking-[0.15em] border-b border-white pb-1 inline-block transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-500 ease-out drop-shadow-md"
                     >
                       Shop Now
                     </span>
