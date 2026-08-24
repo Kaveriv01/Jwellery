@@ -145,22 +145,22 @@ export default function ProductsPage() {
   // Narrow Hero Banner Data (Container-Width)
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { title: 'New Arrivals', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=1600' };
+      return { title: 'New Arrivals', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=2000' };
     }
     if (!s || window.location.pathname === '/collections') {
-      return { title: 'Collections', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
+      return { title: 'Collections', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=2000' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklace':
-      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600' };
+      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?auto=format&fit=crop&q=80&w=2000' };
       case 'earring':
-      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=1600' };
+      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?auto=format&fit=crop&q=80&w=2000' };
       case 'ring':
-      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=1600' };
+      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=2000' };
       case 'bracelet':
-      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1573408301145-b98c465448b1?auto=format&fit=crop&q=80&w=1600' };
-      default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
+      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1573408301145-b98c465448b1?auto=format&fit=crop&q=80&w=2000' };
+      default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=2000' };
     }
   };
   const bannerData = getBannerData(categorySlug, isNewArrival);
@@ -276,14 +276,14 @@ export default function ProductsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative w-full h-[140px] md:h-[200px] lg:h-[240px] overflow-hidden"
+            className="relative w-full h-[40vh] md:h-[50vh] lg:h-[55vh] min-h-[300px] overflow-hidden"
           >
             <img 
               src={bannerData.image} 
               alt={bannerData.title} 
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-[center_30%]"
             />
-            <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-black/30 pointer-events-none" />
             
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4">
               <h1 

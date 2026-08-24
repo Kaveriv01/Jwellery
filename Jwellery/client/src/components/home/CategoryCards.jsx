@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const CATEGORIES = [
-  { id: 'necklaces', name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=800' },
-  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=800' },
-  { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=800' },
-  { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1573408301145-b98c465448b1?auto=format&fit=crop&q=80&w=800' },
+  { id: 'necklaces', name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800' },
+  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=800' },
+  { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800' },
+  { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800' },
 ];
 
 export default function CategoryCards() {
