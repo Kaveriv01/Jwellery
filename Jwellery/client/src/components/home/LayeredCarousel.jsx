@@ -1,25 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CAROUSEL_ITEMS = [
   { id: 1, type: 'video', url: '/i_want_to_make_this_same_video.mp4', title: 'Jewellery In Motion' },
-  { id: 2, type: 'image', url: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=800', title: 'Diamond Rings' },
+  { id: 2, type: 'image', url: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1200', title: 'Diamond Rings' },
   { id: 3, type: 'video', url: '/From Klickpin.com- 213991419789912984-pin-id-213991419789912984.mp4', title: 'Craftsmanship' },
-  { id: 4, type: 'image', url: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=800', title: 'Bridal Collection' },
-  { id: 5, type: 'image', url: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800', title: 'Modern Classics' },
+  { id: 4, type: 'image', url: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1200', title: 'Bridal Collection' },
+  { id: 5, type: 'image', url: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=1200', title: 'Modern Classics' },
 ];
 
 export default function LayeredCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % CAROUSEL_ITEMS.length);
-  };
+  }, []);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? CAROUSEL_ITEMS.length - 1 : prev - 1));
+  }, []);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [isHovered, nextSlide]);
+
+  const handleDragEnd = (event, info) => {
+    const swipeThreshold = 50;
+    if (info.offset.x > swipeThreshold) {
+      prevSlide();
+    } else if (info.offset.x < -swipeThreshold) {
+      nextSlide();
+    }
   };
 
   const getCardStyles = (index) => {
@@ -52,28 +68,28 @@ export default function LayeredCarousel() {
       scale = 0.85;
       zIndex = 40;
       opacity = 0.9;
-      rotateY = 10;
+      rotateY = 0;
     } else if (isRight1) {
       x = '65%';
       scale = 0.85;
       zIndex = 40;
       opacity = 0.9;
-      rotateY = -10;
+      rotateY = 0;
     } else if (isLeft2) {
       x = '-110%';
       scale = 0.7;
       zIndex = 30;
       opacity = 0.6;
-      rotateY = 20;
+      rotateY = 0;
     } else if (isRight2) {
       x = '110%';
       scale = 0.7;
       zIndex = 30;
       opacity = 0.6;
-      rotateY = -20;
+      rotateY = 0;
     }
 
-    return { x, scale, zIndex, opacity, rotateY };
+    return { x, scale, zIndex, opacity, rotateY: 0 };
   };
 
   return (
@@ -131,7 +147,7 @@ export default function LayeredCarousel() {
               return (
                 <motion.div
                   key={item.id}
-                  className="absolute w-full h-full rounded-[16px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white cursor-pointer"
+                  className="absolute w-full h-full rounded-[16px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white cursor-pointer touch-none"
                   initial={false}
                   animate={{
                     x: styles.x,
@@ -142,6 +158,12 @@ export default function LayeredCarousel() {
                   }}
                   transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
                   onClick={() => setCurrentIndex(i)}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
                 >
                   {/* Render Image or Video */}
                   {item.type === 'video' ? (
