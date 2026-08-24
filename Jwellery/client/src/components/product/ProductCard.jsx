@@ -22,7 +22,7 @@ const ProductCard = memo(function ProductCard({ product }) {
   const mainImage = getProductImage(images);
   const hoverImage = images[1]?.url || mainImage;
   const effectivePrice = discountPrice || price;
-  const isOutOfStock = stock === 0;
+  const isOutOfStock = false; // Forced to false so all items are available
   const wishlisted = isWishlisted(_id);
 
   const handleAddToCart = (e) => {

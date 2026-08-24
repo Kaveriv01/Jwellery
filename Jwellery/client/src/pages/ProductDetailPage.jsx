@@ -74,7 +74,7 @@ export default function ProductDetailPage() {
 
   const discountPercent = getDiscountPercent(price, discountPrice);
   const effectivePrice = discountPrice || price;
-  const isOutOfStock = stock === 0;
+  const isOutOfStock = false; // Forced to false so all items are available
   const wishlisted = isWishlisted(_id);
   const uniqueSizes = [...new Set(variants.map((v) => v.size).filter(Boolean))];
   const uniqueColors = [...new Set(variants.map((v) => v.color).filter(Boolean))];
