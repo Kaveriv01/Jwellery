@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
@@ -31,6 +31,15 @@ export default function ProductDetailPage() {
   
   // Accordion states
   const [openAccordion, setOpenAccordion] = useState('details');
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowStickyBar(window.scrollY > 500);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const { data, isLoading } = useQuery({
     queryKey: ['product', slug],
@@ -210,6 +219,11 @@ export default function ProductDetailPage() {
           <div className="space-y-6">
             <div>
               <h1 className="text-[22px] md:text-[25px] lg:text-[28px] text-[#35050D] font-normal leading-tight tracking-wide mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
+              {shortDescription && (
+                <p className="text-[12px] md:text-[13px] text-[#756B62] leading-relaxed mb-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  {shortDescription}
+                </p>
+              )}
               
               <div className="flex items-center gap-3 mb-4">
                 {numReviews > 0 ? (
@@ -344,6 +358,14 @@ export default function ProductDetailPage() {
               </motion.button>
             </div>
 
+            <button 
+              onClick={() => toggleWishlist({ productId: _id })}
+              className="mt-4 flex items-center justify-center gap-2 w-full text-[11px] font-medium uppercase tracking-[0.12em] text-[#756B62] hover:text-[#35050D] transition-colors py-2 group"
+            >
+              <Heart size={14} className={`transition-transform group-hover:scale-110 ${wishlisted ? 'fill-[#35050D] text-[#35050D]' : ''}`} />
+              {wishlisted ? 'ADDED TO WISHLIST' : 'ADD TO WISHLIST'}
+            </button>
+
             {/* Accordions */}
             <div className="border-t border-gray-200 mt-8 pt-4 space-y-2">
               <AccordionItem 
@@ -391,6 +413,56 @@ export default function ProductDetailPage() {
               </div>
             </div>
             
+          </div>
+        </div>
+
+        {/* ── The Story Section ────────────────────────────────────────── */}
+        <div className="mt-32 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 1.04 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="aspect-[4/5] bg-[#FAF6EE] overflow-hidden rounded-[2px]"
+            >
+              <img src={mediaItems[1]?.url || mediaItems[0]?.url || 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e'} alt="Story" className="w-full h-full object-cover" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col justify-center"
+            >
+              <h2 className="text-[26px] md:text-[32px] text-[#35050D] mb-6 uppercase tracking-wider" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                The {name.split(' ')[0]} Story
+              </h2>
+              <p className="text-[14px] text-[#756B62] leading-relaxed max-w-md font-light" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                {description || `Inspired by the first light of dawn, this piece captures a quiet brilliance through sculpted gold and luminous elements. A delicate expression of light designed to transcend seasons.`}
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* ── Crafted For You Section ──────────────────────────────────── */}
+        <div className="my-24 border-y border-[#FAF6EE] py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#756B62]">Crafted For You</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+            <div className="text-center">
+              <span className="text-[10px] text-[#C7A56A] font-medium tracking-[0.2em] mb-3 block">01 — PRECISION</span>
+              <p className="text-[12px] text-[#756B62] font-light leading-relaxed">Every stone is carefully selected and precisely set to ensure maximum brilliance and lasting quality.</p>
+            </div>
+            <div className="text-center">
+              <span className="text-[10px] text-[#C7A56A] font-medium tracking-[0.2em] mb-3 block">02 — CRAFTSMANSHIP</span>
+              <p className="text-[12px] text-[#756B62] font-light leading-relaxed">Each piece is finished by skilled artisans, continuing centuries of fine jewellery traditions.</p>
+            </div>
+            <div className="text-center">
+              <span className="text-[10px] text-[#C7A56A] font-medium tracking-[0.2em] mb-3 block">03 — TIMELESSNESS</span>
+              <p className="text-[12px] text-[#756B62] font-light leading-relaxed">Designed with restraint and elegance to transcend passing seasons and occasions.</p>
+            </div>
           </div>
         </div>
 
@@ -525,6 +597,31 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* ── Sticky Mobile Purchase Bar ───────────────────────────────── */}
+      <AnimatePresence>
+        {showStickyBar && (
+          <motion.div
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            exit={{ y: 100 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#FAF6EE] p-4 px-6 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] z-[60] flex items-center justify-between lg:hidden"
+          >
+            <div className="flex flex-col truncate pr-4">
+              <span className="text-[14px] font-medium text-[#35050D] truncate" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</span>
+              <span className="text-[12px] text-[#756B62] font-medium">{formatPrice(effectivePrice)}</span>
+            </div>
+            <button
+              onClick={handleAddToCart}
+              disabled={isOutOfStock || isAddingToCart}
+              className="bg-[#35050D] text-[#F7F3EA] text-[10px] font-medium uppercase tracking-[0.12em] px-8 py-3 rounded-[2px] whitespace-nowrap active:scale-95 transition-transform"
+            >
+              {isOutOfStock ? 'Out of Stock' : 'Add to Bag'}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
