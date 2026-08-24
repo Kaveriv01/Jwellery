@@ -53,12 +53,13 @@ const ProductCard = memo(function ProductCard({ product }) {
   };
 
   const shouldReduceMotion = useReducedMotion();
+  const discountPercent = discountPrice ? Math.round(((price - discountPrice) / price) * 100) : 0;
 
   return (
     <motion.div
-      className={`group relative flex flex-col h-full bg-transparent transition-all duration-500 ease-out lg:hover:-translate-y-1`}
+      className={`group relative flex flex-col h-full bg-white transition-all duration-500 ease-out lg:hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] lg:hover:-translate-y-1 p-2 rounded-[4px] border border-transparent hover:border-gray-100`}
     >
-      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#FAF6EE] rounded-[2px]" style={{ aspectRatio: '4/5' }}>
+      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-white rounded-[2px]" style={{ aspectRatio: '1/1' }}>
         {/* Main image */}
         <motion.img
           src={mainImage}
@@ -81,11 +82,27 @@ const ProductCard = memo(function ProductCard({ product }) {
           />
         )}
 
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
-          {isOutOfStock && <span className="bg-[#111] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-1 shadow-sm rounded-[2px]">Sold Out</span>}
-          {!isOutOfStock && isNewArrival && <span className="bg-white/90 backdrop-blur-sm text-[#111] text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-1 shadow-sm rounded-[2px]">New</span>}
-          {!isOutOfStock && discountPrice && <span className="bg-[#111] text-white text-[9px] font-medium uppercase tracking-[0.12em] px-2 py-1 shadow-sm rounded-[2px]">Sale</span>}
+        {/* GIVA Style Badges (Ribbons) */}
+        <div className="absolute top-0 left-0 flex flex-col z-10 pointer-events-none items-start">
+          {/* Main Gold Ribbon */}
+          {(isNewArrival || isBestSeller) && (
+             <div className="bg-[#E6C687] text-[#111] text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider shadow-sm" style={{ clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0% 100%)' }}>
+               {isBestSeller ? 'BESTSELLER' : 'NEW ARRIVAL'}
+             </div>
+          )}
+          
+          {/* Secondary Badge (like 0% making charges / sale) */}
+          {discountPrice && (
+            <div className="text-[#D81B60] text-[10px] font-semibold bg-white/90 backdrop-blur-sm px-2 py-1 mt-1 ml-1 rounded-sm shadow-sm w-fit">
+              {discountPercent}% OFF
+            </div>
+          )}
+
+          {isOutOfStock && (
+            <div className="bg-[#111] text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider mt-1 ml-1 shadow-sm w-fit">
+              SOLD OUT
+            </div>
+          )}
         </div>
 
         {/* Floating Actions on Hover */}
@@ -96,7 +113,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             className="w-8 h-8 bg-white/90 backdrop-blur-sm shadow-sm flex items-center justify-center text-[#111] hover:text-[#B59A68] hover:bg-white transition-colors rounded-full"
             aria-label="Add to Wishlist"
           >
-            <Heart size={14} className={wishlisted ? 'fill-[#111] text-[#111]' : ''} />
+            <Heart size={15} className={wishlisted ? 'fill-[#111] text-[#111]' : ''} />
           </button>
         </div>
 
@@ -105,22 +122,22 @@ const ProductCard = memo(function ProductCard({ product }) {
           <button
             onClick={handleAddToCart}
             disabled={isAddingToCart || isOutOfStock}
-            className="w-full bg-[#111]/95 backdrop-blur-sm text-white text-[10px] lg:text-[11px] font-[600] uppercase tracking-[0.15em] py-3 lg:py-3.5 hover:bg-[#111] transition-all duration-300 disabled:opacity-60 rounded-[2px]"
+            className="w-full bg-[#111]/95 backdrop-blur-sm text-white text-[11px] font-[600] uppercase tracking-[0.1em] py-3 shadow-lg hover:bg-[#111] transition-all duration-300 disabled:opacity-60 rounded-[2px]"
           >
             {isOutOfStock ? 'Sold Out' : 'Add to Cart'}
           </button>
         </div>
       </Link>
 
-      <div className="pt-4 pb-2 flex flex-col flex-1 bg-transparent">
+      <div className="pt-4 pb-2 flex flex-col flex-1 bg-transparent px-1 text-center">
         <Link to={`/products/${slug}`} className="block mb-1">
-          <h3 className="text-[13px] lg:text-[15px] text-[#111] font-[400] leading-relaxed tracking-wide line-clamp-1 transition-colors hover:text-[#B59A68]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <h3 className="text-[13px] lg:text-[14px] text-gray-800 font-[400] leading-relaxed tracking-wide line-clamp-1 transition-colors hover:text-[#B59A68]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             {name}
           </h3>
         </Link>
-        <div className="mt-auto flex items-center gap-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          <span className="text-[13px] lg:text-[14px] font-[500] text-[#111]">{formatPrice(effectivePrice)}</span>
-          {discountPrice && <span className="text-[11px] lg:text-[12px] text-[#756B62] line-through">{formatPrice(price)}</span>}
+        <div className="mt-1 flex items-center justify-center gap-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <span className="text-[14px] lg:text-[15px] font-[600] text-[#111]">{formatPrice(effectivePrice)}</span>
+          {discountPrice && <span className="text-[12px] lg:text-[13px] text-gray-400 line-through font-medium">{formatPrice(price)}</span>}
         </div>
       </div>
     </motion.div>

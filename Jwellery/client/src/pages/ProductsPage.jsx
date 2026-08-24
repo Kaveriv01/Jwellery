@@ -1,20 +1,96 @@
-import { useState } from 'react';
-import { useSearchParams, useParams, useNavigate, Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { useSearchParams, useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Filter, X, ChevronDown } from 'lucide-react';
+import { ChevronDown, Check, Filter, X } from 'lucide-react';
 import ProductCard from '../components/product/ProductCard';
 import { productService } from '../services/productService';
 import { categoryService } from '../services/otherServices';
 import { SORT_OPTIONS, MATERIAL_OPTIONS, GENDER_OPTIONS, PRICE_RANGES } from '../constants';
-import { jewelleryMedia } from '../config/mediaConfig';
 
 const ITEMS_PER_PAGE = 12;
 
+// Reusable Dropdown for Horizontal Filters
+function HorizontalDropdown({ title, value, options }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const hasSelection = Array.isArray(value) ? value.length > 0 : !!value;
+  const activeLabel = options.find(o => o.checked)?.label;
+
+  return (
+    <div className="relative inline-block text-left" ref={dropdownRef}>
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`flex items-center gap-1.5 py-2 px-3 text-[13px] font-[500] rounded-[4px] transition-colors ${hasSelection || isOpen ? 'text-[#111] bg-gray-100' : 'text-gray-600 hover:bg-gray-50 hover:text-[#111]'}`}
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
+      >
+        {hasSelection ? (activeLabel || title) : title} 
+        <ChevronDown size={14} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 5 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 mt-2 bg-white border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.08)] min-w-[220px] z-50 py-2 rounded-[4px]"
+          >
+            <div className="max-h-[300px] overflow-y-auto scrollbar-thin">
+              {options.map((opt, i) => (
+                <label key={i} className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 cursor-pointer group">
+                  <div className="relative flex items-center justify-center w-4 h-4 border border-gray-300 rounded-[2px] group-hover:border-[#111] transition-colors">
+                    {opt.checked && (
+                      <div className="absolute inset-0 bg-[#111] flex items-center justify-center">
+                        <Check size={12} className="text-white" strokeWidth={3} />
+                      </div>
+                    )}
+                  </div>
+                  <input type="checkbox" checked={opt.checked} onChange={() => { opt.onChange(); setIsOpen(false); }} className="sr-only" />
+                  <span className={`text-[13px] font-[400] transition-colors ${opt.checked ? 'text-[#111] font-[500]' : 'text-gray-600 group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    {opt.label}
+                  </span>
+                </label>
+              ))}
+            </div>
+            {hasSelection && (
+              <div className="px-4 pt-3 pb-1 border-t border-gray-100 mt-2">
+                <button 
+                  onClick={() => {
+                     const selectedOpt = options.find(o => o.checked);
+                     if(selectedOpt) selectedOpt.onChange();
+                     setIsOpen(false);
+                  }} 
+                  className="text-[11px] uppercase tracking-wider text-gray-400 hover:text-[#111] font-semibold w-full text-left transition-colors"
+                >
+                  Clear Selection
+                </button>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filterOpen, setFilterOpen] = useState(false);
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -67,20 +143,20 @@ export default function ProductsPage() {
     }
   }
 
-  // Simplified Banner Logic for Full Width Hero
+  // Narrow Hero Banner Data
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { title: 'New Arrivals', subtitle: 'Discover the latest pieces.', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=2000' };
+      return { title: 'New Arrivals', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=2000' };
     }
     if (!s || window.location.pathname === '/collections') {
-      return { title: 'Collections', subtitle: 'Our finest curation.', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
+      return { title: 'Collections', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
-      case 'necklaces': return { title: 'Necklaces', subtitle: 'Timeless pieces, made to shine.', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=2000' };
-      case 'earrings':  return { title: 'Earrings', subtitle: 'Elegance in every detail.', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=2000' };
-      case 'rings':     return { title: 'Rings', subtitle: 'A symbol of forever.', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=2000' };
-      case 'bracelets': return { title: 'Bracelets', subtitle: 'Grace on your wrist.', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
+      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=2000' };
+      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=2000' };
+      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=2000' };
+      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
       default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
     }
   };
@@ -131,8 +207,6 @@ export default function ProductsPage() {
     setSearchParams({ page: '1', sortBy: 'newest' });
   };
 
-  const hasFilters = [categoryId, material, gender, minPrice, maxPrice, inStock, isFeatured, isTrending, isBestSeller, isNewArrival].some(Boolean);
-
   const goToPage = (newPage) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set('page', newPage.toString());
@@ -150,296 +224,250 @@ export default function ProductsPage() {
     )
   );
 
+  // Prepare Filter Options for Dropdowns
+  const categoryOptions = categories.map(c => ({
+    label: c.name,
+    checked: categoryId === c._id,
+    onChange: () => updateParam('category', categoryId === c._id ? '' : c._id)
+  }));
+
+  const priceOptions = PRICE_RANGES.map(range => ({
+    label: range.label,
+    checked: minPrice === String(range.min) && maxPrice === String(range.max),
+    onChange: () => {
+      const isChecked = minPrice === String(range.min) && maxPrice === String(range.max);
+      updateParam('minPrice', isChecked ? '' : String(range.min));
+      updateParam('maxPrice', isChecked ? '' : String(range.max));
+    }
+  }));
+
+  const materialOptions = MATERIAL_OPTIONS.map(mat => ({
+    label: mat,
+    checked: material === mat,
+    onChange: () => updateParam('material', material === mat ? '' : mat)
+  }));
+
+  const genderOptions = GENDER_OPTIONS.map(gen => ({
+    label: gen,
+    checked: gender === gen,
+    onChange: () => updateParam('gender', gender === gen ? '' : gen)
+  }));
+
+  const availabilityOptions = [{
+    label: 'In Stock Only',
+    checked: inStock === 'true',
+    onChange: () => updateParam('inStock', inStock === 'true' ? '' : 'true')
+  }];
+
   return (
-    <div className="bg-[#FAF6EE] min-h-screen">
+    <div className="bg-white min-h-screen">
       <Helmet>
         <title>{currentCategoryName} — Tarini Jewellers</title>
         <meta name="description" content="Browse our complete luxury jewelry collection." />
       </Helmet>
 
-      {/* FULL WIDTH HERO BANNER */}
+      {/* FULL WIDTH NARROW HERO BANNER (GIVA STYLE) */}
       {bannerData && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative w-full h-[240px] md:h-[320px] lg:h-[450px] overflow-hidden"
+          transition={{ duration: 0.8 }}
+          className="relative w-full h-[180px] md:h-[220px] lg:h-[260px] overflow-hidden"
         >
-          <motion.img 
-            initial={{ scale: 1.05 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
+          <img 
             src={bannerData.image} 
             alt={bannerData.title} 
             className="w-full h-full object-cover object-center"
           />
-          {/* Subtle dark gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-black/40 pointer-events-none" />
           
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4">
-            <motion.h1 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-white text-[36px] md:text-[52px] lg:text-[68px] tracking-wide mb-3 drop-shadow-md"
+            <h1 
+              className="text-white text-[42px] md:text-[56px] lg:text-[72px] tracking-wide mb-1 drop-shadow-md"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               {bannerData.title}
-            </motion.h1>
-            {bannerData.subtitle && (
-              <motion.p 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-white text-[12px] md:text-[14px] tracking-[0.2em] uppercase font-[400] drop-shadow-md"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                {bannerData.subtitle}
-              </motion.p>
-            )}
+            </h1>
           </div>
         </motion.div>
       )}
 
-      <div className="container-luxury py-10 lg:py-16">
-        {/* Active filters */}
-        {hasFilters && (
-          <div className="flex flex-wrap items-center gap-2 mb-8">
-            {categoryId && <FilterChip label={`Category: ${categoryName || 'Unknown'}`} onRemove={() => updateParam('category', '')} />}
-            {material && <FilterChip label={`Material: ${material}`} onRemove={() => updateParam('material', '')} />}
-            {gender && <FilterChip label={`Gender: ${gender}`} onRemove={() => updateParam('gender', '')} />}
-            {(minPrice || maxPrice) && <FilterChip label={`₹${minPrice || 0} – ₹${maxPrice || '∞'}`} onRemove={() => { updateParam('minPrice', ''); updateParam('maxPrice', ''); }} />}
-            <button onClick={clearAllFilters} className="text-[11px] uppercase tracking-wider text-[#111] hover:text-[#B59A68] underline ml-2 font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>Clear all</button>
+      {/* HORIZONTAL FILTER BAR */}
+      <div className="border-b border-gray-100 bg-white sticky top-[80px] lg:top-[96px] z-30">
+        <div className="container-luxury py-3 flex items-center justify-between gap-4">
+          
+          {/* Desktop Filters */}
+          <div className="hidden lg:flex flex-wrap items-center gap-2">
+             <span className="text-[12px] text-gray-500 font-medium uppercase tracking-wider mr-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>Filters:</span>
+             <HorizontalDropdown title="Category" value={categoryId} options={categoryOptions} />
+             <HorizontalDropdown title="Price" value={minPrice} options={priceOptions} />
+             <HorizontalDropdown title="Material" value={material} options={materialOptions} />
+             <HorizontalDropdown title="Gender" value={gender} options={genderOptions} />
+             <HorizontalDropdown title="Availability" value={inStock} options={availabilityOptions} />
           </div>
+
+          {/* Mobile Filter Trigger */}
+          <button onClick={() => setMobileFilterOpen(true)} className="flex lg:hidden items-center gap-2 text-[#111] py-2 px-3 text-[12px] font-[500] border border-gray-200 rounded-[4px] bg-white">
+            <Filter size={14} /> Filter & Sort
+          </button>
+
+          {/* Sort By Dropdown (Desktop) */}
+          <div className="hidden lg:flex items-center gap-3">
+             <span className="text-[12px] text-gray-500 font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>Sort by:</span>
+             <select
+                value={sortBy}
+                onChange={(e) => updateParam('sortBy', e.target.value)}
+                className="bg-transparent text-[13px] font-[500] cursor-pointer focus:ring-0 text-[#111] outline-none"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+             >
+                {SORT_OPTIONS.map((opt) => (
+                   <option key={opt.value} value={opt.value}>{opt.label}</option>
+                ))}
+             </select>
+          </div>
+        </div>
+      </div>
+
+      {/* PRODUCT GRID SECTION */}
+      <div className="container-luxury py-8 lg:py-12">
+        {/* Title row */}
+        <div className="mb-8">
+           <h2 className="text-[20px] md:text-[22px] lg:text-[24px] text-gray-800 font-[400]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+             {currentCategoryName} <span className="text-gray-400 text-[16px] md:text-[18px]">({pagination.totalItems || products.length} Designs)</span>
+           </h2>
+        </div>
+
+        {/* Grid Area */}
+        {isLoading || isFetching ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-x-6 md:gap-y-12">
+            {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
+              <div key={i} className="bg-gray-100 animate-pulse rounded-[4px] aspect-square" />
+            ))}
+          </div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-32">
+            <p className="font-serif text-3xl text-gray-400 mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>No jewelry found</p>
+            <button onClick={clearAllFilters} className="bg-[#111] text-white text-[11px] tracking-[0.15em] uppercase px-8 py-3 hover:bg-[#B59A68] transition-colors rounded-[2px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Clear Filters
+            </button>
+          </div>
+        ) : (
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 }
+              }
+            }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-x-6 md:gap-y-10"
+          >
+            {products.map((product) => (
+              <motion.div 
+                key={product._id}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </motion.div>
         )}
 
-        <div className="flex gap-12">
-          {/* Sidebar Filters (desktop) */}
-          <aside className="hidden lg:block w-56 flex-shrink-0 sticky top-28 self-start max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-thin pr-4">
-            <FilterSidebar
-              categories={categories}
-              selectedCategory={categoryId}
-              selectedMaterial={material}
-              selectedGender={gender}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              inStock={inStock}
-              onUpdate={updateParam}
-            />
-          </aside>
-
-          {/* Products Grid Area */}
-          <div className="flex-1 min-w-0">
-            {/* Grid Header */}
-            <div className="flex items-end justify-between pb-6 mb-8 border-b border-[#EAE6DF]">
-              <div className="flex items-center gap-4">
-                <button onClick={() => setFilterOpen(true)} className="flex lg:hidden items-center gap-2 bg-[#111] text-white py-2 px-4 text-[11px] uppercase tracking-[0.1em] font-[500] hover:bg-[#333] transition-colors rounded-[2px]">
-                  <Filter size={14} /> Filters
+        {/* Pagination */}
+        {pagination.totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-20">
+            <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-5 py-2.5 border border-gray-200 rounded-[4px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Prev
+            </button>
+            {[...Array(Math.min(pagination.totalPages, 7))].map((_, i) => {
+              const pageNum = i + 1;
+              return (
+                <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-10 h-10 rounded-[4px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#111] text-white border border-[#111]' : 'border border-gray-200 hover:border-[#111] text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  {pageNum}
                 </button>
-                <div className="hidden lg:block">
-                  <h2 className="text-[28px] font-[500] text-[#111] leading-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    {currentCategoryName}
-                  </h2>
-                  <p className="text-[11px] text-[#756B62] mt-3 font-[500] tracking-[0.15em] uppercase" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                    {pagination.totalItems || products.length} Products
-                  </p>
-                </div>
-              </div>
+              );
+            })}
+            <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-5 py-2.5 border border-gray-200 rounded-[4px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Next
+            </button>
+          </div>
+        )}
+      </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-[11px] text-[#756B62] uppercase tracking-[0.15em] hidden sm:block font-[500]" style={{ fontFamily: "'Montserrat', sans-serif" }}>Sort by</span>
+      {/* Mobile filter slide-in */}
+      <AnimatePresence>
+        {mobileFilterOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] lg:hidden" 
+            onClick={() => setMobileFilterOpen(false)}
+          >
+            <motion.div 
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'tween', ease: 'easeOut', duration: 0.3 }}
+              className="absolute left-0 bottom-0 w-full max-h-[85vh] bg-white rounded-t-xl overflow-hidden flex flex-col" 
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-white sticky top-0 z-10">
+                <h2 className="text-[18px] text-[#111] font-semibold" style={{ fontFamily: "'Montserrat', sans-serif" }}>Filter & Sort</h2>
+                <button onClick={() => setMobileFilterOpen(false)} className="text-gray-500 hover:text-black transition-colors"><X size={20} strokeWidth={2} /></button>
+              </div>
+              
+              <div className="overflow-y-auto p-5 space-y-6 pb-24">
+                {/* Mobile Sort */}
+                <div>
+                  <h3 className="text-[13px] font-[600] uppercase tracking-wider text-[#111] mb-3">Sort By</h3>
                   <select
                     value={sortBy}
                     onChange={(e) => updateParam('sortBy', e.target.value)}
-                    className="border-b border-[#EAE6DF] bg-transparent text-[11px] font-[600] uppercase tracking-[0.1em] cursor-pointer focus:ring-0 text-[#111] outline-none pb-1"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    className="w-full border border-gray-200 rounded-[4px] bg-transparent text-[14px] font-[500] py-3 px-3 outline-none focus:border-black"
                   >
                     {SORT_OPTIONS.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
                     ))}
                   </select>
                 </div>
-              </div>
-            </div>
 
-            {isLoading || isFetching ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-x-6 md:gap-y-12">
-                {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
-                  <div key={i} className="bg-[#EAE6DF]/50 animate-pulse rounded-[2px] aspect-[4/5]" />
-                ))}
-              </div>
-            ) : products.length === 0 ? (
-              <div className="text-center py-24">
-                <p className="font-serif text-3xl text-[#756B62] mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>No jewelry found</p>
-                {hasFilters ? (
-                  <button onClick={clearAllFilters} className="bg-[#111] text-white text-[11px] tracking-[0.15em] uppercase px-8 py-3 hover:bg-[#B59A68] transition-colors rounded-[2px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                    Clear Filters
-                  </button>
-                ) : (
-                  <p className="text-[#756B62] text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>There are currently no products available in this collection.</p>
-                )}
-              </div>
-            ) : (
-              <motion.div 
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: { staggerChildren: 0.1 }
-                  }
-                }}
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-x-6 md:gap-y-12"
-              >
-                {products.map((product) => (
-                  <motion.div 
-                    key={product._id}
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-                    }}
-                  >
-                    <ProductCard product={product} />
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
+                {/* Mobile Filters */}
+                <div>
+                  <h3 className="text-[13px] font-[600] uppercase tracking-wider text-[#111] mb-3">Category</h3>
+                  <div className="flex flex-col gap-2">
+                     {categoryOptions.map((opt, i) => (
+                        <label key={i} className="flex items-center gap-3 py-2 cursor-pointer">
+                           <input type="checkbox" checked={opt.checked} onChange={opt.onChange} className="w-4 h-4 accent-black" />
+                           <span className="text-[14px] text-gray-700">{opt.label}</span>
+                        </label>
+                     ))}
+                  </div>
+                </div>
 
-            {/* Pagination */}
-            {pagination.totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-20">
-                <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-5 py-2.5 border border-[#EAE6DF] rounded-[2px] text-[10px] uppercase tracking-[0.15em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  Prev
-                </button>
-                {[...Array(Math.min(pagination.totalPages, 7))].map((_, i) => {
-                  const pageNum = i + 1;
-                  return (
-                    <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-10 h-10 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#111] text-white border border-[#111]' : 'border border-[#EAE6DF] hover:border-[#111] text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                      {pageNum}
-                    </button>
-                  );
-                })}
-                <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-5 py-2.5 border border-[#EAE6DF] rounded-[2px] text-[10px] uppercase tracking-[0.15em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  Next
-                </button>
+                <div>
+                  <h3 className="text-[13px] font-[600] uppercase tracking-wider text-[#111] mb-3">Price</h3>
+                  <div className="flex flex-col gap-2">
+                     {priceOptions.map((opt, i) => (
+                        <label key={i} className="flex items-center gap-3 py-2 cursor-pointer">
+                           <input type="checkbox" checked={opt.checked} onChange={opt.onChange} className="w-4 h-4 accent-black" />
+                           <span className="text-[14px] text-gray-700">{opt.label}</span>
+                        </label>
+                     ))}
+                  </div>
+                </div>
               </div>
-            )}
-          </div>
-        </div>
-      </div>
 
-      {/* Mobile filter slide-in */}
-      <AnimatePresence>
-        {filterOpen && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 lg:hidden" 
-            onClick={() => setFilterOpen(false)}
-          >
-            <motion.div 
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ type: 'tween', ease: 'easeOut', duration: 0.3 }}
-              className="absolute left-0 top-0 h-full w-[85%] max-w-[340px] bg-[#FAF6EE] overflow-y-auto p-6 shadow-2xl" 
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#EAE6DF]">
-                <h2 className="text-[20px] text-[#111]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Filters</h2>
-                <button onClick={() => setFilterOpen(false)} className="text-[#111] hover:text-[#B59A68] transition-colors"><X size={20} strokeWidth={1.5} /></button>
+              <div className="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-gray-100 flex gap-3">
+                 <button onClick={clearAllFilters} className="flex-1 py-3 text-[13px] font-semibold text-gray-700 bg-gray-100 rounded-[4px]">Clear All</button>
+                 <button onClick={() => setMobileFilterOpen(false)} className="flex-1 py-3 text-[13px] font-semibold text-white bg-[#111] rounded-[4px]">Apply</button>
               </div>
-              <FilterSidebar categories={categories} selectedCategory={categoryId} selectedMaterial={material} selectedGender={gender} minPrice={minPrice} maxPrice={maxPrice} inStock={inStock} onUpdate={(k, v) => { updateParam(k, v); }} />
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-function FilterChip({ label, onRemove }) {
-  return (
-    <span className="flex items-center gap-2 bg-white border border-[#EAE6DF] text-[#111] text-[9px] font-[600] uppercase tracking-[0.1em] px-3 py-1.5 rounded-[2px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-      {label}
-      <button onClick={onRemove} className="hover:text-[#B59A68] transition-colors"><X size={12} /></button>
-    </span>
-  );
-}
-
-function FilterSidebar({ categories, selectedCategory, selectedMaterial, selectedGender, minPrice, maxPrice, inStock, onUpdate }) {
-  return (
-    <div className="space-y-1">
-      <FilterGroup title="Category">
-        {categories.slice(0, 10).map((cat) => (
-          <label key={cat._id} className="flex items-center gap-3 cursor-pointer group py-1.5">
-            <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-full">
-              {selectedCategory === cat._id && <div className="w-1.5 h-1.5 bg-[#111] rounded-full" />}
-            </div>
-            <input type="radio" name="category" checked={selectedCategory === cat._id} onChange={() => onUpdate('category', selectedCategory === cat._id ? '' : cat._id)} className="sr-only" />
-            <span className={`text-[12px] transition-colors font-[400] ${selectedCategory === cat._id ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>{cat.name}</span>
-          </label>
-        ))}
-      </FilterGroup>
-
-      <FilterGroup title="Price">
-        {PRICE_RANGES.map((range) => (
-          <label key={range.label} className="flex items-center gap-3 cursor-pointer group py-1.5">
-            <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-full">
-              {(minPrice === String(range.min) && maxPrice === String(range.max)) && <div className="w-1.5 h-1.5 bg-[#111] rounded-full" />}
-            </div>
-            <input type="radio" name="price" checked={minPrice === String(range.min) && maxPrice === String(range.max)} onChange={() => { onUpdate('minPrice', String(range.min)); onUpdate('maxPrice', String(range.max)); }} className="sr-only" />
-            <span className={`text-[12px] transition-colors font-[400] ${(minPrice === String(range.min) && maxPrice === String(range.max)) ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>{range.label}</span>
-          </label>
-        ))}
-      </FilterGroup>
-
-      <FilterGroup title="Material">
-        {MATERIAL_OPTIONS.map((mat) => (
-          <label key={mat} className="flex items-center gap-3 cursor-pointer group py-1.5">
-            <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-full">
-              {selectedMaterial === mat && <div className="w-1.5 h-1.5 bg-[#111] rounded-full" />}
-            </div>
-            <input type="radio" name="material" checked={selectedMaterial === mat} onChange={() => onUpdate('material', selectedMaterial === mat ? '' : mat)} className="sr-only" />
-            <span className={`text-[12px] transition-colors font-[400] ${selectedMaterial === mat ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>{mat}</span>
-          </label>
-        ))}
-      </FilterGroup>
-
-      <FilterGroup title="Availability">
-        <label className="flex items-center gap-3 cursor-pointer group py-1.5">
-          <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-[2px]">
-            {inStock === 'true' && <div className="w-1.5 h-1.5 bg-[#111]" />}
-          </div>
-          <input type="checkbox" checked={inStock === 'true'} onChange={(e) => onUpdate('inStock', e.target.checked ? 'true' : '')} className="sr-only" />
-          <span className={`text-[12px] transition-colors font-[400] ${inStock === 'true' ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>In Stock Only</span>
-        </label>
-      </FilterGroup>
-    </div>
-  );
-}
-
-function FilterGroup({ title, children }) {
-  const [open, setOpen] = useState(true);
-  return (
-    <div className="pb-5 mb-5 border-b border-[#EAE6DF] last:border-0">
-      <button onClick={() => setOpen(!open)} className="flex items-center justify-between w-full text-left mb-3 group">
-        <span className="text-[11px] font-[600] uppercase tracking-[0.15em] text-[#111]" style={{ fontFamily: "'Montserrat', sans-serif" }}>{title}</span>
-        <ChevronDown size={14} className={`text-[#111] transition-transform duration-300 ${open ? 'rotate-180' : ''} group-hover:text-[#B59A68]`} />
-      </button>
-      <AnimatePresence>
-        {open && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <div className="flex flex-col gap-1 pt-1">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
