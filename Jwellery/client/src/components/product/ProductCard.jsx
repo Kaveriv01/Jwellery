@@ -56,19 +56,15 @@ const ProductCard = memo(function ProductCard({ product }) {
   const discountPercent = discountPrice ? Math.round(((price - discountPrice) / price) * 100) : 0;
 
   return (
-    <motion.div
-      className={`group relative flex flex-col h-full bg-white transition-all duration-500 ease-out lg:hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] lg:hover:-translate-y-1 p-2 rounded-[4px] border border-transparent hover:border-gray-100`}
+    <div
+      className="group flex flex-col h-full bg-white transition-all duration-300 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-transparent hover:border-gray-100 p-2 sm:p-3"
     >
-      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-white rounded-[2px]" style={{ aspectRatio: '1/1' }}>
+      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-gray-50/50 mb-3 rounded-[2px]" style={{ aspectRatio: '1/1' }}>
         {/* Main image */}
-        <motion.img
+        <img
           src={mainImage}
           alt={name}
-          initial={{ opacity: 0.8 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className={`w-full h-full object-cover transition-all duration-500 ease-out group-hover:opacity-0 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.04]'}`}
+          className={`w-full h-full object-cover transition-all duration-500 ease-out group-hover:opacity-0 ${shouldReduceMotion ? '' : 'group-hover:scale-105'}`}
           onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
         />
 
@@ -77,70 +73,72 @@ const ProductCard = memo(function ProductCard({ product }) {
           <img
             src={hoverImage}
             alt={name}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 ${shouldReduceMotion ? '' : 'group-hover:scale-[1.04]'}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 ${shouldReduceMotion ? '' : 'group-hover:scale-105'}`}
             onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
           />
         )}
 
-        {/* GIVA Style Badges (Ribbons) */}
+        {/* GIVA Style Badges */}
         <div className="absolute top-0 left-0 flex flex-col z-10 pointer-events-none items-start">
           {/* Main Gold Ribbon */}
-          {(isNewArrival || isBestSeller) && (
-             <div className="bg-[#E6C687] text-[#111] text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider shadow-sm" style={{ clipPath: 'polygon(0 0, 100% 0, 90% 100%, 0% 100%)' }}>
-               {isBestSeller ? 'BESTSELLER' : 'NEW ARRIVAL'}
+          {(isNewArrival || isBestSeller || true) && (
+             <div className="bg-[#D4AF37] text-black text-[9px] sm:text-[10px] font-bold px-2 sm:px-3 py-1 uppercase tracking-wider relative shadow-sm">
+               {isBestSeller ? 'BESTSELLER' : (isNewArrival ? 'NEW ARRIVAL' : 'PURE GOLD')}
+               {/* Triangle Cutout Simulation */}
+               <div className="absolute top-0 -right-2 w-0 h-0 border-t-[10px] sm:border-t-[12px] border-t-transparent border-b-[10px] sm:border-b-[12px] border-b-transparent border-l-[6px] sm:border-l-[8px] border-l-[#D4AF37]" />
              </div>
           )}
           
-          {/* Secondary Badge (like 0% making charges / sale) */}
+          {/* Secondary Badge */}
           {discountPrice && (
-            <div className="text-[#D81B60] text-[10px] font-semibold bg-white/90 backdrop-blur-sm px-2 py-1 mt-1 ml-1 rounded-sm shadow-sm w-fit">
+            <div className="text-[#E8345E] text-[9px] sm:text-[10px] font-[600] bg-white/95 backdrop-blur-sm px-1.5 sm:px-2 py-0.5 mt-1.5 ml-1 w-fit rounded-[2px] shadow-sm">
               {discountPercent}% OFF
             </div>
           )}
-
           {isOutOfStock && (
-            <div className="bg-[#111] text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider mt-1 ml-1 shadow-sm w-fit">
+            <div className="bg-[#111] text-white text-[9px] sm:text-[10px] font-bold px-2 py-0.5 mt-1.5 ml-1 w-fit rounded-[2px] shadow-sm">
               SOLD OUT
             </div>
           )}
         </div>
+      </Link>
 
-        {/* Floating Actions on Hover */}
-        <div className="absolute top-3 right-3 flex flex-col gap-2 z-10 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300 lg:translate-x-2 group-hover:translate-x-0">
+      {/* Info Section (Left-aligned) */}
+      <div className="flex flex-col flex-1 bg-white relative">
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <span className="text-[14px] sm:text-[16px] font-[700] text-[#111]">{formatPrice(effectivePrice)}</span>
+            {discountPrice && <span className="text-[12px] sm:text-[13px] text-gray-400 line-through font-medium">{formatPrice(price)}</span>}
+          </div>
           <button
             onClick={handleWishlistToggle}
             disabled={isToggling}
-            className="w-8 h-8 bg-white/90 backdrop-blur-sm shadow-sm flex items-center justify-center text-[#111] hover:text-[#B59A68] hover:bg-white transition-colors rounded-full"
+            className="text-gray-400 hover:text-[#E8345E] transition-colors"
             aria-label="Add to Wishlist"
           >
-            <Heart size={15} className={wishlisted ? 'fill-[#111] text-[#111]' : ''} />
+            <Heart size={16} className={wishlisted ? 'fill-[#E8345E] text-[#E8345E]' : ''} />
           </button>
         </div>
 
-        {/* Quick Add Button on Hover */}
-        <div className="absolute bottom-4 left-4 right-4 flex justify-center lg:opacity-0 group-hover:opacity-100 transition-all duration-300 lg:translate-y-2 group-hover:translate-y-0">
-          <button
-            onClick={handleAddToCart}
-            disabled={isAddingToCart || isOutOfStock}
-            className="w-full bg-[#111]/95 backdrop-blur-sm text-white text-[11px] font-[600] uppercase tracking-[0.1em] py-3 shadow-lg hover:bg-[#111] transition-all duration-300 disabled:opacity-60 rounded-[2px]"
-          >
-            {isOutOfStock ? 'Sold Out' : 'Add to Cart'}
-          </button>
-        </div>
-      </Link>
-
-      <div className="pt-4 pb-2 flex flex-col flex-1 bg-transparent px-1 text-center">
-        <Link to={`/products/${slug}`} className="block mb-1">
-          <h3 className="text-[13px] lg:text-[14px] text-gray-800 font-[400] leading-relaxed tracking-wide line-clamp-1 transition-colors hover:text-[#B59A68]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+        <Link to={`/products/${slug}`} className="block mb-4 sm:mb-5">
+          <h3 className="text-[12px] sm:text-[14px] text-gray-700 font-[400] leading-snug line-clamp-2 hover:text-[#111] transition-colors" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             {name}
           </h3>
         </Link>
-        <div className="mt-1 flex items-center justify-center gap-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          <span className="text-[14px] lg:text-[15px] font-[600] text-[#111]">{formatPrice(effectivePrice)}</span>
-          {discountPrice && <span className="text-[12px] lg:text-[13px] text-gray-400 line-through font-medium">{formatPrice(price)}</span>}
+        
+        {/* Permanent Add to Cart Button */}
+        <div className="mt-auto pt-2 w-full">
+          <button
+            onClick={handleAddToCart}
+            disabled={isAddingToCart || isOutOfStock}
+            className="w-full bg-[#E8345E] text-white text-[12px] sm:text-[13px] font-[600] uppercase py-2 sm:py-2.5 rounded-[2px] hover:bg-[#D0264F] transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            {isOutOfStock ? 'Sold Out' : 'ADD TO CART'}
+          </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 });
 
