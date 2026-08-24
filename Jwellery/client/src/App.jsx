@@ -67,9 +67,9 @@ function SplashScreen({ onComplete }) {
       className="fixed inset-0 z-[99999] bg-[#1a1514] flex flex-col items-center justify-center overflow-hidden"
     >
       <motion.div
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
+        initial={{ opacity: 0, scale: 1 }}
+        animate={{ opacity: 1, scale: 1.1 }}
+        transition={{ duration: 5, ease: "linear" }}
         className="w-full h-full relative"
       >
         <img 
