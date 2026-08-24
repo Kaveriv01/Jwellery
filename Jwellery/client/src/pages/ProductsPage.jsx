@@ -148,19 +148,19 @@ export default function ProductsPage() {
       return { title: 'New Arrivals', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=1600' };
     }
     if (!s || window.location.pathname === '/collections') {
-      return { title: 'Collections', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
+      return { title: 'Collections', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklace':
-      case 'necklaces': return { title: 'Necklaces', image: '/images/necklace-banner.jpg' };
+      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600' };
       case 'earring':
-      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1600' };
+      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=1600' };
       case 'ring':
-      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1600' };
+      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=1600' };
       case 'bracelet':
-      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
-      default: return { title: categoryName || 'Jewelry', image: 'https://images.pexels.com/photos/19853612/pexels-photo-19853612.jpeg?auto=compress&cs=tinysrgb&w=2000' };
+      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1573408301145-b98c465448b1?auto=format&fit=crop&q=80&w=1600' };
+      default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1600' };
     }
   };
   const bannerData = getBannerData(categorySlug, isNewArrival);
