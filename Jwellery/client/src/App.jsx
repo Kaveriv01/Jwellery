@@ -75,7 +75,7 @@ function SplashScreen({ onComplete }) {
         <img 
           src="/images/splash-logo.jpg" 
           alt="Tarini Fine Jewellery" 
-          className="w-full h-full object-cover object-center md:object-contain md:p-8"
+          className="w-full h-full object-cover object-center"
         />
         
         {/* Subtle loading line */}
