@@ -1,4 +1,5 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Routes, Route } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import AdminLayout from './layouts/AdminLayout';
@@ -50,10 +51,74 @@ const AdminBanners      = lazy(() => import('./pages/admin/AdminBanners'));
 const AdminReviews      = lazy(() => import('./pages/admin/AdminReviews'));
 const AdminAnalytics    = lazy(() => import('./pages/admin/AdminAnalytics'));
 
-export default function App() {
+function SplashScreen({ onComplete }) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onComplete();
+    }, 5000); // 5 seconds
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
+    <motion.div 
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+      className="fixed inset-0 z-[99999] bg-[#FAF6EE] flex flex-col items-center justify-center overflow-hidden"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 2.5, ease: "easeOut" }}
+        className="flex flex-col items-center justify-center"
+      >
+        <h1 
+          className="text-[#35050D] text-4xl md:text-5xl lg:text-7xl tracking-[0.25em] uppercase font-light ml-4"
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        >
+          Tarini
+        </h1>
+        <motion.div 
+          initial={{ opacity: 0, y: -5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 2 }}
+          className="mt-6 flex items-center justify-center gap-4 w-64 md:w-80"
+        >
+          <div className="h-[1px] flex-1 bg-[#C7A56A]/40" />
+          <span className="text-[#C7A56A] text-[9px] md:text-[11px] tracking-[0.4em] uppercase font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>Jewellers</span>
+          <div className="h-[1px] flex-1 bg-[#C7A56A]/40" />
+        </motion.div>
+      </motion.div>
+
+      {/* Subtle loading line */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-24 w-40 h-[1px] bg-[#C7A56A]/20 overflow-hidden"
+      >
+        <motion.div 
+          initial={{ x: "-100%" }}
+          animate={{ x: "100%" }}
+          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+          className="w-1/2 h-full bg-[#C7A56A]"
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  return (
+    <>
+      <AnimatePresence>
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      </AnimatePresence>
+
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         {/* ── Customer Routes ──────────────────────────────────────── */}
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
@@ -108,5 +173,6 @@ export default function App() {
         </Route>
       </Routes>
     </Suspense>
+    </>
   );
 }
