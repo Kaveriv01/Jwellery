@@ -48,29 +48,29 @@ export default function LayeredCarousel() {
       zIndex = 50;
       opacity = 1;
     } else if (isLeft1) {
-      x = '-105%';
-      scale = 1;
+      x = '-65%';
+      scale = 0.85;
       zIndex = 40;
-      opacity = 1;
-      rotateY = 0;
+      opacity = 0.9;
+      rotateY = 10;
     } else if (isRight1) {
-      x = '105%';
-      scale = 1;
+      x = '65%';
+      scale = 0.85;
       zIndex = 40;
-      opacity = 1;
-      rotateY = 0;
+      opacity = 0.9;
+      rotateY = -10;
     } else if (isLeft2) {
-      x = '-210%';
-      scale = 1;
+      x = '-110%';
+      scale = 0.7;
       zIndex = 30;
-      opacity = 1;
-      rotateY = 0;
+      opacity = 0.6;
+      rotateY = 20;
     } else if (isRight2) {
-      x = '210%';
-      scale = 1;
+      x = '110%';
+      scale = 0.7;
       zIndex = 30;
-      opacity = 1;
-      rotateY = 0;
+      opacity = 0.6;
+      rotateY = -20;
     }
 
     return { x, scale, zIndex, opacity, rotateY };
