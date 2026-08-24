@@ -1,9 +1,9 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState } from 'react';
 import { useSearchParams, useParams, useNavigate, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Filter, Grid3X3, List, SlidersHorizontal, X, ChevronDown, ShoppingBag, Play } from 'lucide-react';
+import { Filter, X, ChevronDown } from 'lucide-react';
 import ProductCard from '../components/product/ProductCard';
 import { productService } from '../services/productService';
 import { categoryService } from '../services/otherServices';
@@ -12,83 +12,8 @@ import { jewelleryMedia } from '../config/mediaConfig';
 
 const ITEMS_PER_PAGE = 12;
 
-const MobileVideoPlayer = ({ src }) => {
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const videoRef = useRef(null);
-
-  return (
-    <>
-      <motion.div 
-        className="relative w-full aspect-[9/16] overflow-hidden cursor-pointer rounded-[10px] shadow-sm group"
-        onClick={() => setIsPreviewOpen(true)}
-        whileTap={{ scale: 0.96 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      >
-        {/* Top Right Shopping Bag Icon (Parcos style) */}
-        <div className="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center border border-white/30 shadow-sm">
-          <ShoppingBag size={12} className="text-white" />
-        </div>
-
-        <video
-          ref={videoRef}
-          src={src}
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        
-        {/* Play Icon - No blur on the video! */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center text-white shadow-lg">
-            <Play size={18} fill="currentColor" className="ml-0.5" />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Fullscreen Preview Modal */}
-      <AnimatePresence>
-        {isPreviewOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4"
-            onClick={() => setIsPreviewOpen(false)}
-          >
-            <button 
-              className="absolute top-4 right-4 text-white p-2 z-50 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-md"
-              onClick={() => setIsPreviewOpen(false)}
-            >
-              <X size={24} />
-            </button>
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-[400px] aspect-[9/16] bg-black rounded-xl overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <video
-                src={src}
-                autoPlay
-                controls
-                playsInline
-                className="w-full h-full object-contain"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
-
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [viewMode, setViewMode] = useState('grid');
   const [filterOpen, setFilterOpen] = useState(false);
 
   const { slug } = useParams();
@@ -119,10 +44,9 @@ export default function ProductsPage() {
 
   let categoryId = categoryIdFromUrl;
   let categoryName = '';
-  let categorySlug = slug || ''; // Use slug from URL immediately
+  let categorySlug = slug || ''; 
   
   if (slug) {
-    // Capitalize slug as fallback name while loading
     categoryName = slug.charAt(0).toUpperCase() + slug.slice(1);
   }
   
@@ -133,8 +57,7 @@ export default function ProductsPage() {
       categoryName = matchedCategory.name;
       categorySlug = matchedCategory.slug;
     } else {
-      // Slug provided but not found, ensure we don't fetch all products
-      categoryId = '000000000000000000000000'; // Fake valid MongoID
+      categoryId = '000000000000000000000000';
     }
   } else if (!slug && categoryId && categories.length > 0) {
     const matchedCategory = categories.find((c) => c._id === categoryId);
@@ -144,29 +67,24 @@ export default function ProductsPage() {
     }
   }
 
-  // Determine if we should show a banner and what image to use
+  // Simplified Banner Logic for Full Width Hero
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=1600' };
+      return { title: 'New Arrivals', subtitle: 'Discover the latest pieces.', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=2000' };
     }
     if (!s || window.location.pathname === '/collections') {
-      // Replaced broken unsplash image with a guaranteed working luxury jewelry image
-      return { type: 'single', desktop: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
+      return { title: 'Collections', subtitle: 'Our finest curation.', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
-      case 'necklaces': return { type: 'single', desktop: '/images/necklace-banner.jpg' };
-      case 'earrings':  return { type: 'single', desktop: '/images/earrings-banner.jpg' };
-      case 'rings':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1600' };
-      case 'bracelets': return { type: 'single', desktop: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
-      case 'stackables':return { type: 'single', desktop: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=1600' };
-      case 'gifts':     return { type: 'single', desktop: 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&q=80&w=1600' };
-      case 'pendants':  return { type: 'single', desktop: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600' };
-      default: return null;
+      case 'necklaces': return { title: 'Necklaces', subtitle: 'Timeless pieces, made to shine.', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=2000' };
+      case 'earrings':  return { title: 'Earrings', subtitle: 'Elegance in every detail.', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=2000' };
+      case 'rings':     return { title: 'Rings', subtitle: 'A symbol of forever.', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=2000' };
+      case 'bracelets': return { title: 'Bracelets', subtitle: 'Grace on your wrist.', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
+      default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=2000' };
     }
   };
   const bannerData = getBannerData(categorySlug, isNewArrival);
-  const videoBanner = categorySlug ? jewelleryMedia.collectionBanners[categorySlug.toLowerCase()] : null;
 
   const params = { page, limit: ITEMS_PER_PAGE, sortBy };
   if (search) params.search = search;
@@ -205,7 +123,7 @@ export default function ProductsPage() {
     const newParams = new URLSearchParams(searchParams);
     if (value) newParams.set(key, value);
     else newParams.delete(key);
-    newParams.set('page', '1'); // Reset page on filter change
+    newParams.set('page', '1');
     setSearchParams(newParams);
   };
 
@@ -215,7 +133,6 @@ export default function ProductsPage() {
 
   const hasFilters = [categoryId, material, gender, minPrice, maxPrice, inStock, isFeatured, isTrending, isBestSeller, isNewArrival].some(Boolean);
 
-  // Pagination
   const goToPage = (newPage) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set('page', newPage.toString());
@@ -223,160 +140,82 @@ export default function ProductsPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const currentCategoryName = categoryName ? categoryName : (
+    search ? `Search: ${search}` : (
+      isNewArrival === 'true' ? 'New In' : (
+        window.location.pathname === '/collections' ? 'Collections' : (
+          window.location.pathname === '/sale' ? 'Sale' : 'All Jewelry'
+        )
+      )
+    )
+  );
+
   return (
-    <>
+    <div className="bg-[#FAF6EE] min-h-screen">
       <Helmet>
-        <title>{categoryName ? `${categoryName} Jewelry` : (search ? `Search: ${search}` : 'All Products')} — Jwellery</title>
-        <meta name="description" content="Browse our complete jewelry collection — rings, necklaces, earrings, bracelets, and more." />
+        <title>{currentCategoryName} — Tarini Jewellers</title>
+        <meta name="description" content="Browse our complete luxury jewelry collection." />
       </Helmet>
 
-      <div className="bg-[#FAF6EE] py-3 mb-6">
-        <div className="container-luxury">
-          <div className="flex items-center text-[10px] uppercase tracking-[0.15em] text-[#756B62]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            <Link to="/" className="hover:text-[#111] transition-colors">Home</Link>
-            <span className="mx-2">/</span>
-            <Link to="/products" className="hover:text-[#111] transition-colors">Collections</Link>
-            {categoryName ? (
-              <>
-                <span className="mx-2">/</span>
-                <span className="text-[#111]">{categoryName}</span>
-              </>
-            ) : isNewArrival === 'true' ? (
-              <>
-                <span className="mx-2">/</span>
-                <span className="text-[#111]">New In</span>
-              </>
-            ) : null}
+      {/* FULL WIDTH HERO BANNER */}
+      {bannerData && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="relative w-full h-[240px] md:h-[320px] lg:h-[450px] overflow-hidden"
+        >
+          <motion.img 
+            initial={{ scale: 1.05 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+            src={bannerData.image} 
+            alt={bannerData.title} 
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Subtle dark gradient overlay for text readability */}
+          <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+          
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4">
+            <motion.h1 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-white text-[36px] md:text-[52px] lg:text-[68px] tracking-wide mb-3 drop-shadow-md"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              {bannerData.title}
+            </motion.h1>
+            {bannerData.subtitle && (
+              <motion.p 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-white text-[12px] md:text-[14px] tracking-[0.2em] uppercase font-[400] drop-shadow-md"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {bannerData.subtitle}
+              </motion.p>
+            )}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      )}
 
-      <div className="container-luxury pb-12">
-        {/* Page Title */}
-        <h1 className="text-[28px] lg:text-[34px] font-[500] tracking-wide text-[#111] uppercase mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-          {categoryName ? categoryName : (
-            search ? `Search: ${search}` : (
-              isNewArrival === 'true' ? 'New In' : (
-                window.location.pathname === '/collections' ? 'Collections' : (
-                  window.location.pathname === '/sale' ? 'Sale' : 'All Jewelry'
-                )
-              )
-            )
-          )}
-        </h1>
-
-        {/* Constrained Category Banner */}
-        {videoBanner ? (
-          <div className="mb-12">
-            {/* Desktop single video banner */}
-            <div className="hidden md:flex relative w-full h-[500px] overflow-hidden bg-[#EAE8E2] items-center justify-center">
-              <video
-                src={videoBanner.videoUrl}
-                poster={videoBanner.poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-              <div className="relative z-10 text-center px-4 max-w-2xl pointer-events-none">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl text-[#FAF6EE] font-normal mb-4 drop-shadow-md pointer-events-auto" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  {categoryName || 'Collection'}
-                </h2>
-                <p className="text-[#FAF6EE] text-xs tracking-[0.2em] uppercase font-medium drop-shadow-sm pointer-events-auto">
-                  Explore our finest pieces
-                </p>
-              </div>
-            </div>
-
-            {/* Mobile dual videos parallel form */}
-            <div className="md:hidden flex flex-col mb-6 px-3">
-              <div className="text-center py-6">
-                <h2 className="text-3xl text-[#111] font-normal mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  {categoryName || 'Collection'}
-                </h2>
-                <p className="text-[#756B62] text-[10px] tracking-[0.2em] uppercase font-medium">
-                  Explore our finest pieces
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-2 w-full">
-                <MobileVideoPlayer src={videoBanner.videoUrl} />
-                <MobileVideoPlayer src="/pinterest_video.mp4" />
-                <MobileVideoPlayer src="/pinterest_video_2.mp4" />
-                <MobileVideoPlayer src="/obkpo6sffg.mp4" />
-              </div>
-            </div>
-          </div>
-        ) : bannerData && bannerData.type === 'lookbook' ? (
-          <div className="mb-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
-               {bannerData.images.map((img, idx) => (
-                 <div key={idx} className={`relative overflow-hidden bg-[#EAE8E2] ${idx === 0 ? 'col-span-2 row-span-2 md:col-span-2 h-[300px] md:h-[516px]' : 'h-[146px] md:h-[250px]'}`}>
-                    <img src={img} alt="Lookbook" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                 </div>
-               ))}
-            </div>
-            <div className="text-center mt-10 mb-6">
-               <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-[#756B62] text-[12px] md:text-[14px] font-[500] tracking-wider mb-3 block uppercase">
-                 {bannerData.subtitle}
-               </span>
-               <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[36px] md:text-[48px] lg:text-[64px] font-[500] leading-none mb-6 text-[#111]">
-                 {bannerData.title}
-               </h2>
-               <button onClick={() => window.scrollBy({top: 800, behavior: 'smooth'})} style={{ fontFamily: "'Montserrat', sans-serif" }} className="bg-[#111] text-white text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase px-8 py-3.5 hover:bg-[#B59A68] transition-colors">
-                 SHOP THE COLLECTION
-               </button>
-            </div>
-          </div>
-        ) : bannerData ? (
-          <div className="relative w-full h-[180px] md:h-[260px] lg:h-[320px] mb-12 overflow-hidden bg-[#EAE8E2]">
-            <picture>
-              {bannerData.mobile && (
-                <source media="(max-width: 768px)" srcSet={bannerData.mobile} />
-              )}
-              <img 
-                src={bannerData.desktop} 
-                alt={categoryName} 
-                className="w-full h-full object-cover object-[center_top] md:object-center"
-              />
-            </picture>
-            
-            {/* Optional overlay text matching mockup */}
-            <div className="absolute inset-y-0 right-0 w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 text-right z-10 pointer-events-none">
-              <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-[#111] md:text-white text-[14px] md:text-[16px] font-[400] tracking-wider mb-1 drop-shadow-sm md:drop-shadow-md">
-                The right time for life
-              </span>
-              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[#111] md:text-white text-[36px] md:text-[48px] lg:text-[64px] font-[500] leading-none mb-6 drop-shadow-sm md:drop-shadow-md">
-                Jewelry
-              </span>
-              <div className="flex justify-end pointer-events-auto">
-                <button onClick={() => window.scrollBy({top: 400, behavior: 'smooth'})} style={{ fontFamily: "'Montserrat', sans-serif" }} className="bg-[#111] text-white text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase px-6 py-2 hover:bg-[#333] transition-colors">
-                  SEE COLLECTION
-                </button>
-              </div>
-            </div>
-            
-            {/* Mobile gradient overlay for text readability if needed */}
-            <div className="absolute inset-0 bg-gradient-to-l from-white/60 to-transparent md:bg-none pointer-events-none" />
-          </div>
-        ) : null}
-
+      <div className="container-luxury py-10 lg:py-16">
         {/* Active filters */}
         {hasFilters && (
-          <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="text-[11px] uppercase tracking-wider text-[#756B62] mr-2">Active filters:</span>
+          <div className="flex flex-wrap items-center gap-2 mb-8">
             {categoryId && <FilterChip label={`Category: ${categoryName || 'Unknown'}`} onRemove={() => updateParam('category', '')} />}
             {material && <FilterChip label={`Material: ${material}`} onRemove={() => updateParam('material', '')} />}
             {gender && <FilterChip label={`Gender: ${gender}`} onRemove={() => updateParam('gender', '')} />}
             {(minPrice || maxPrice) && <FilterChip label={`₹${minPrice || 0} – ₹${maxPrice || '∞'}`} onRemove={() => { updateParam('minPrice', ''); updateParam('maxPrice', ''); }} />}
-            <button onClick={clearAllFilters} className="text-[11px] uppercase tracking-wider text-[#B59A68] hover:text-[#111] underline ml-2">Clear all</button>
+            <button onClick={clearAllFilters} className="text-[11px] uppercase tracking-wider text-[#111] hover:text-[#B59A68] underline ml-2 font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>Clear all</button>
           </div>
         )}
 
-        <div className="flex gap-6">
+        <div className="flex gap-12">
           {/* Sidebar Filters (desktop) */}
-          <aside className="hidden lg:block w-64 flex-shrink-0 sticky top-24 self-start max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-thin">
+          <aside className="hidden lg:block w-56 flex-shrink-0 sticky top-28 self-start max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-thin pr-4">
             <FilterSidebar
               categories={categories}
               selectedCategory={categoryId}
@@ -391,84 +230,98 @@ export default function ProductsPage() {
 
           {/* Products Grid Area */}
           <div className="flex-1 min-w-0">
-            {/* Grid Header (Sort & View) */}
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#EAE8E2]">
-              <div className="flex items-center gap-3 lg:hidden">
-                <button onClick={() => setFilterOpen(true)} className="flex items-center gap-2 bg-[#FAF6EE] py-2 px-4 text-[10px] uppercase tracking-wider font-[600]">
+            {/* Grid Header */}
+            <div className="flex items-end justify-between pb-6 mb-8 border-b border-[#EAE6DF]">
+              <div className="flex items-center gap-4">
+                <button onClick={() => setFilterOpen(true)} className="flex lg:hidden items-center gap-2 bg-[#111] text-white py-2 px-4 text-[11px] uppercase tracking-[0.1em] font-[500] hover:bg-[#333] transition-colors rounded-[2px]">
                   <Filter size={14} /> Filters
                 </button>
-              </div>
-              <div className="hidden lg:block">
-                {/* Mobile only elements space */}
+                <div className="hidden lg:block">
+                  <h2 className="text-[28px] font-[500] text-[#111] leading-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    {currentCategoryName}
+                  </h2>
+                  <p className="text-[11px] text-[#756B62] mt-3 font-[500] tracking-[0.15em] uppercase" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    {pagination.totalItems || products.length} Products
+                  </p>
+                </div>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-[#777] uppercase tracking-wider hidden sm:block">Sort by:</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-[11px] text-[#756B62] uppercase tracking-[0.15em] hidden sm:block font-[500]" style={{ fontFamily: "'Montserrat', sans-serif" }}>Sort by</span>
                   <select
                     value={sortBy}
                     onChange={(e) => updateParam('sortBy', e.target.value)}
-                    className="border-none bg-transparent text-[12px] font-[500] cursor-pointer focus:ring-0 text-[#111]"
+                    className="border-b border-[#EAE6DF] bg-transparent text-[11px] font-[600] uppercase tracking-[0.1em] cursor-pointer focus:ring-0 text-[#111] outline-none pb-1"
+                    style={{ fontFamily: "'Montserrat', sans-serif" }}
                   >
                     {SORT_OPTIONS.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
                     ))}
                   </select>
                 </div>
-                <div className="hidden sm:flex items-center gap-2">
-                  <button onClick={() => setViewMode('grid')} className={`p-1.5 rounded-sm transition-colors ${viewMode === 'grid' ? 'bg-[#111] text-white' : 'text-[#777] hover:bg-[#FAF6EE]'}`}>
-                    <Grid3X3 size={15} />
-                  </button>
-                  <button onClick={() => setViewMode('list')} className={`p-1.5 rounded-sm transition-colors ${viewMode === 'list' ? 'bg-[#111] text-white' : 'text-[#777] hover:bg-[#FAF6EE]'}`}>
-                    <List size={15} />
-                  </button>
-                </div>
               </div>
             </div>
 
             {isLoading || isFetching ? (
-              <div className={`grid gap-4 ${viewMode === 'grid' ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1'}`}>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-x-6 md:gap-y-12">
                 {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
-                  <div key={i} className={`skeleton rounded-xl ${viewMode === 'grid' ? 'aspect-[4/5]' : 'h-28'}`} />
+                  <div key={i} className="bg-[#EAE6DF]/50 animate-pulse rounded-[2px] aspect-[4/5]" />
                 ))}
               </div>
             ) : products.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="font-serif text-3xl text-gray-300 mb-3">No jewelry found</p>
+              <div className="text-center py-24">
+                <p className="font-serif text-3xl text-[#756B62] mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>No jewelry found</p>
                 {hasFilters ? (
-                  <>
-                    <p className="text-gray-500 mb-5">Try adjusting your filters to find what you're looking for.</p>
-                    <button onClick={clearAllFilters} className="bg-[#111] text-white text-[10px] tracking-[0.1em] uppercase px-6 py-2 hover:bg-[#B59A68] transition-colors rounded-[2px]">
-                      Clear Filters
-                    </button>
-                  </>
+                  <button onClick={clearAllFilters} className="bg-[#111] text-white text-[11px] tracking-[0.15em] uppercase px-8 py-3 hover:bg-[#B59A68] transition-colors rounded-[2px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    Clear Filters
+                  </button>
                 ) : (
-                  <p className="text-gray-500 mb-5">There are currently no products available in this collection.</p>
+                  <p className="text-[#756B62] text-sm" style={{ fontFamily: "'Montserrat', sans-serif" }}>There are currently no products available in this collection.</p>
                 )}
               </div>
             ) : (
-              <div className={`grid gap-4 ${viewMode === 'grid' ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1'}`}>
+              <motion.div 
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.1 }
+                  }
+                }}
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-x-6 md:gap-y-12"
+              >
                 {products.map((product) => (
-                  <ProductCard key={product._id} product={product} viewMode={viewMode} />
+                  <motion.div 
+                    key={product._id}
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                    }}
+                  >
+                    <ProductCard product={product} />
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             )}
 
             {/* Pagination */}
             {pagination.totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-12">
-                <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-4 py-2 border border-[#FAF6EE] rounded-[2px] text-[12px] uppercase tracking-wider text-[#3A0508] hover:border-[#B59A68] disabled:opacity-40 transition-all duration-300">
-                  Previous
+              <div className="flex items-center justify-center gap-2 mt-20">
+                <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-5 py-2.5 border border-[#EAE6DF] rounded-[2px] text-[10px] uppercase tracking-[0.15em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  Prev
                 </button>
                 {[...Array(Math.min(pagination.totalPages, 7))].map((_, i) => {
                   const pageNum = i + 1;
                   return (
-                    <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-9 h-9 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#3A0508] text-[#F7F3EA]' : 'border border-[#FAF6EE] hover:border-[#B59A68] text-[#756B62] hover:text-[#3A0508]'}`}>
+                    <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-10 h-10 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#111] text-white border border-[#111]' : 'border border-[#EAE6DF] hover:border-[#111] text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
                       {pageNum}
                     </button>
                   );
                 })}
-                <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-4 py-2 border border-[#FAF6EE] rounded-[2px] text-[12px] uppercase tracking-wider text-[#3A0508] hover:border-[#B59A68] disabled:opacity-40 transition-all duration-300">
+                <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-5 py-2.5 border border-[#EAE6DF] rounded-[2px] text-[10px] uppercase tracking-[0.15em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                   Next
                 </button>
               </div>
@@ -477,79 +330,92 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* Mobile filter drawer */}
-      {filterOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 lg:hidden" onClick={() => setFilterOpen(false)}>
-          <div className="absolute right-0 top-0 h-full w-80 bg-white overflow-y-auto p-5" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="font-semibold text-gray-900">Filters</h2>
-              <button onClick={() => setFilterOpen(false)}><X size={20} className="text-gray-600" /></button>
-            </div>
-            <FilterSidebar categories={categories} selectedCategory={categoryId} selectedMaterial={material} selectedGender={gender} minPrice={minPrice} maxPrice={maxPrice} inStock={inStock} onUpdate={(k, v) => { updateParam(k, v); }} />
-          </div>
-        </div>
-      )}
-    </>
+      {/* Mobile filter slide-in */}
+      <AnimatePresence>
+        {filterOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 lg:hidden" 
+            onClick={() => setFilterOpen(false)}
+          >
+            <motion.div 
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'tween', ease: 'easeOut', duration: 0.3 }}
+              className="absolute left-0 top-0 h-full w-[85%] max-w-[340px] bg-[#FAF6EE] overflow-y-auto p-6 shadow-2xl" 
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#EAE6DF]">
+                <h2 className="text-[20px] text-[#111]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Filters</h2>
+                <button onClick={() => setFilterOpen(false)} className="text-[#111] hover:text-[#B59A68] transition-colors"><X size={20} strokeWidth={1.5} /></button>
+              </div>
+              <FilterSidebar categories={categories} selectedCategory={categoryId} selectedMaterial={material} selectedGender={gender} minPrice={minPrice} maxPrice={maxPrice} inStock={inStock} onUpdate={(k, v) => { updateParam(k, v); }} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 
 function FilterChip({ label, onRemove }) {
   return (
-    <span className="flex items-center gap-1.5 bg-[#FAF6EE] border border-[#B59A68]/30 text-[#3A0508] text-[11px] font-medium tracking-wide px-3 py-1 rounded-[2px]">
+    <span className="flex items-center gap-2 bg-white border border-[#EAE6DF] text-[#111] text-[9px] font-[600] uppercase tracking-[0.1em] px-3 py-1.5 rounded-[2px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
       {label}
-      <button onClick={onRemove} className="hover:text-[#B59A68] transition-colors"><X size={11} /></button>
+      <button onClick={onRemove} className="hover:text-[#B59A68] transition-colors"><X size={12} /></button>
     </span>
   );
 }
 
 function FilterSidebar({ categories, selectedCategory, selectedMaterial, selectedGender, minPrice, maxPrice, inStock, onUpdate }) {
   return (
-    <div className="space-y-6">
-      {/* Category */}
+    <div className="space-y-1">
       <FilterGroup title="Category">
         {categories.slice(0, 10).map((cat) => (
-          <label key={cat._id} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="category" checked={selectedCategory === cat._id} onChange={() => onUpdate('category', selectedCategory === cat._id ? '' : cat._id)} className="accent-[#3A0508]" />
-            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{cat.name}</span>
+          <label key={cat._id} className="flex items-center gap-3 cursor-pointer group py-1.5">
+            <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-full">
+              {selectedCategory === cat._id && <div className="w-1.5 h-1.5 bg-[#111] rounded-full" />}
+            </div>
+            <input type="radio" name="category" checked={selectedCategory === cat._id} onChange={() => onUpdate('category', selectedCategory === cat._id ? '' : cat._id)} className="sr-only" />
+            <span className={`text-[12px] transition-colors font-[400] ${selectedCategory === cat._id ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>{cat.name}</span>
           </label>
         ))}
       </FilterGroup>
 
-      {/* Price */}
-      <FilterGroup title="Price Range">
+      <FilterGroup title="Price">
         {PRICE_RANGES.map((range) => (
-          <label key={range.label} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="price" checked={minPrice === String(range.min) && maxPrice === String(range.max)} onChange={() => { onUpdate('minPrice', String(range.min)); onUpdate('maxPrice', String(range.max)); }} className="accent-[#3A0508]" />
-            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{range.label}</span>
+          <label key={range.label} className="flex items-center gap-3 cursor-pointer group py-1.5">
+            <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-full">
+              {(minPrice === String(range.min) && maxPrice === String(range.max)) && <div className="w-1.5 h-1.5 bg-[#111] rounded-full" />}
+            </div>
+            <input type="radio" name="price" checked={minPrice === String(range.min) && maxPrice === String(range.max)} onChange={() => { onUpdate('minPrice', String(range.min)); onUpdate('maxPrice', String(range.max)); }} className="sr-only" />
+            <span className={`text-[12px] transition-colors font-[400] ${(minPrice === String(range.min) && maxPrice === String(range.max)) ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>{range.label}</span>
           </label>
         ))}
       </FilterGroup>
 
-      {/* Material */}
       <FilterGroup title="Material">
         {MATERIAL_OPTIONS.map((mat) => (
-          <label key={mat} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="material" checked={selectedMaterial === mat} onChange={() => onUpdate('material', selectedMaterial === mat ? '' : mat)} className="accent-[#3A0508]" />
-            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{mat}</span>
+          <label key={mat} className="flex items-center gap-3 cursor-pointer group py-1.5">
+            <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-full">
+              {selectedMaterial === mat && <div className="w-1.5 h-1.5 bg-[#111] rounded-full" />}
+            </div>
+            <input type="radio" name="material" checked={selectedMaterial === mat} onChange={() => onUpdate('material', selectedMaterial === mat ? '' : mat)} className="sr-only" />
+            <span className={`text-[12px] transition-colors font-[400] ${selectedMaterial === mat ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>{mat}</span>
           </label>
         ))}
       </FilterGroup>
 
-      {/* Gender */}
-      <FilterGroup title="Gender">
-        {GENDER_OPTIONS.map((gen) => (
-          <label key={gen} className="flex items-center gap-2 cursor-pointer">
-            <input type="radio" name="gender" checked={selectedGender === gen} onChange={() => onUpdate('gender', selectedGender === gen ? '' : gen)} className="accent-[#3A0508]" />
-            <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">{gen}</span>
-          </label>
-        ))}
-      </FilterGroup>
-
-      {/* Availability */}
       <FilterGroup title="Availability">
-        <label className="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" checked={inStock === 'true'} onChange={(e) => onUpdate('inStock', e.target.checked ? 'true' : '')} className="accent-[#3A0508]" />
-          <span className="text-[13px] text-[#756B62] hover:text-[#3A0508] transition-colors font-light">In Stock Only</span>
+        <label className="flex items-center gap-3 cursor-pointer group py-1.5">
+          <div className="relative flex items-center justify-center w-3 h-3 border border-[#111] rounded-[2px]">
+            {inStock === 'true' && <div className="w-1.5 h-1.5 bg-[#111]" />}
+          </div>
+          <input type="checkbox" checked={inStock === 'true'} onChange={(e) => onUpdate('inStock', e.target.checked ? 'true' : '')} className="sr-only" />
+          <span className={`text-[12px] transition-colors font-[400] ${inStock === 'true' ? 'text-[#111] font-[500]' : 'text-[#756B62] group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>In Stock Only</span>
         </label>
       </FilterGroup>
     </div>
@@ -559,12 +425,24 @@ function FilterSidebar({ categories, selectedCategory, selectedMaterial, selecte
 function FilterGroup({ title, children }) {
   const [open, setOpen] = useState(true);
   return (
-    <div className="pb-6 mb-6">
-      <button onClick={() => setOpen(!open)} className="flex items-center justify-between w-full text-left mb-4 pb-2 border-b border-[#EAE8E2]">
-        <span className="text-[12px] font-[600] uppercase tracking-[0.1em] text-[#111]" style={{ fontFamily: "'Montserrat', sans-serif" }}>{title}</span>
-        <ChevronDown size={14} className={`text-[#777] transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+    <div className="pb-5 mb-5 border-b border-[#EAE6DF] last:border-0">
+      <button onClick={() => setOpen(!open)} className="flex items-center justify-between w-full text-left mb-3 group">
+        <span className="text-[11px] font-[600] uppercase tracking-[0.15em] text-[#111]" style={{ fontFamily: "'Montserrat', sans-serif" }}>{title}</span>
+        <ChevronDown size={14} className={`text-[#111] transition-transform duration-300 ${open ? 'rotate-180' : ''} group-hover:text-[#B59A68]`} />
       </button>
-      {open && <div className="space-y-2.5">{children}</div>}
+      <AnimatePresence>
+        {open && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="flex flex-col gap-1 pt-1">{children}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
