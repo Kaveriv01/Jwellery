@@ -145,7 +145,7 @@ export default function ProductsPage() {
   // Narrow Hero Banner Data (Container-Width)
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { title: 'New Arrivals', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=2000' };
+      return { title: 'New Arrivals', image: 'https://i.pinimg.com/originals/7f/2b/7f/7f2b7fd2561a71e9ac4d6a236bed8f70.png' };
     }
     if (!s || window.location.pathname === '/collections') {
       return { title: 'Collections', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=2000' };
@@ -153,13 +153,13 @@ export default function ProductsPage() {
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklace':
-      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?auto=format&fit=crop&q=80&w=2000' };
+      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1652766540048-de0a878a3266?auto=format&fit=crop&q=80&w=2000' };
       case 'earring':
-      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?auto=format&fit=crop&q=80&w=2000' };
+      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&q=80&w=2000' };
       case 'ring':
-      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=2000' };
+      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1769038933683-067e5215538d?auto=format&fit=crop&q=80&w=2000' };
       case 'bracelet':
-      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1573408301145-b98c465448b1?auto=format&fit=crop&q=80&w=2000' };
+      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1600143674013-a690b5d25104?auto=format&fit=crop&q=80&w=2000' };
       default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=2000' };
     }
   };
