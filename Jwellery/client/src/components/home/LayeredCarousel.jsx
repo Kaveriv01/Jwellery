@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 const CAROUSEL_ITEMS = [
   { id: 1, type: 'video', url: '/i_want_to_make_this_same_video.mp4', title: 'Jewellery In Motion' },
-  { id: 2, type: 'image', url: 'https://images.unsplash.com/photo-1588444650733-d0767b0dc22e?auto=format&fit=crop&q=80&w=1200', title: 'Diamond Rings' },
+  { id: 2, type: 'image', url: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=800', title: 'Diamond Rings' },
   { id: 3, type: 'video', url: '/From Klickpin.com- 213991419789912984-pin-id-213991419789912984.mp4', title: 'Craftsmanship' },
-  { id: 4, type: 'image', url: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=80&w=1200', title: 'Bridal Collection' },
-  { id: 5, type: 'image', url: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1200', title: 'Modern Classics' },
+  { id: 4, type: 'image', url: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=80&w=800', title: 'Bridal Collection' },
+  { id: 5, type: 'image', url: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800', title: 'Modern Classics' },
 ];
 
 export default function LayeredCarousel() {
