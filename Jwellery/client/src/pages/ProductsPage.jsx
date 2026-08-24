@@ -9,7 +9,7 @@ import { productService } from '../services/productService';
 import { categoryService } from '../services/otherServices';
 import { SORT_OPTIONS, MATERIAL_OPTIONS, GENDER_OPTIONS, PRICE_RANGES } from '../constants';
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 48;
 
 // Reusable Dropdown for Horizontal Filters
 function HorizontalDropdown({ title, value, options }) {
@@ -152,11 +152,15 @@ export default function ProductsPage() {
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
-      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600' };
+      case 'necklace':
+      case 'necklaces': return { title: 'Necklaces', image: '/images/necklace-banner.jpg' };
+      case 'earring':
       case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1600' };
+      case 'ring':
       case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1600' };
+      case 'bracelet':
       case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
-      default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1600' };
+      default: return { title: categoryName || 'Jewelry', image: 'https://images.pexels.com/photos/19853612/pexels-photo-19853612.jpeg?auto=compress&cs=tinysrgb&w=2000' };
     }
   };
   const bannerData = getBannerData(categorySlug, isNewArrival);
