@@ -265,14 +265,14 @@ export default function ProductsPage() {
         <meta name="description" content="Browse our complete luxury jewelry collection." />
       </Helmet>
 
-      {/* CONTAINER-WIDTH NARROW HERO BANNER (GIVA STYLE) */}
+      {/* FULL-WIDTH HERO BANNER */}
       {bannerData && (
-        <div className="container-luxury pt-4 pb-2">
+        <div className="w-full">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative w-full h-[140px] md:h-[200px] lg:h-[240px] overflow-hidden rounded-[4px]"
+            className="relative w-full h-[140px] md:h-[200px] lg:h-[240px] overflow-hidden"
           >
             <img 
               src={bannerData.image} 
