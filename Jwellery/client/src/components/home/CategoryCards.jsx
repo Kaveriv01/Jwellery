@@ -44,9 +44,9 @@ export default function CategoryCards() {
                   <span 
                     style={{ 
                       fontFamily: "'Cormorant Garamond', serif",
-                      textShadow: "0px 2px 4px rgba(0,0,0,0.4)" 
+                      textShadow: "0px 2px 5px rgba(0,0,0,0.6)" 
                     }} 
-                    className="text-white text-2xl md:text-4xl font-medium tracking-wide mb-2 md:mb-4 transition-transform duration-500 group-hover:-translate-y-2 drop-shadow-lg"
+                    className="text-white text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-2 md:mb-4 transition-transform duration-500 group-hover:-translate-y-2 drop-shadow-xl"
                   >
                     {cat.name}
                   </span>
