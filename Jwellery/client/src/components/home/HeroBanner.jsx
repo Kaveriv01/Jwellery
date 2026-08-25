@@ -11,7 +11,7 @@ export default function HeroBanner() {
         initial={{ opacity: 0, scale: 1.03 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        src="/images/home-banner.jpg"
+        src="/images/home-banner.png"
         alt="Tarini Jewellers Collection"
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
