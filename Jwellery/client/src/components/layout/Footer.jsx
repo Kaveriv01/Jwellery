@@ -104,16 +104,11 @@ export default function Footer() {
           {/* Top Brand Area */}
           <div className="text-center mb-20 flex flex-col items-center">
             <Link to="/" className="flex flex-col items-center justify-center group mb-8">
-              <svg viewBox="0 0 100 100" className="w-14 h-14 lg:w-16 lg:h-16 text-[#111] group-hover:text-[#C7A56A] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M 28 25 L 72 25" />
-                <path d="M 28 25 C 28 25, 23 35, 20 40" />
-                <path d="M 72 25 C 72 25, 77 35, 80 40" />
-                <path d="M 50 25 L 50 85" />
-                <path d="M 50 70 C 25 70, 25 45, 35 35" />
-                <path d="M 50 70 C 75 70, 75 45, 65 35" />
+              <svg viewBox="0 0 24 24" className="w-8 h-8 lg:w-10 lg:h-10 text-[#111] group-hover:text-[#C7A56A] transition-colors duration-300 mb-2" fill="currentColor">
+                <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
               </svg>
-              <span className="text-[36px] lg:text-[46px] font-medium tracking-[0.25em] text-[#111] group-hover:text-[#C7A56A] transition-colors leading-none mt-3 pl-[0.25em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                TARINI
+              <span className="text-[42px] lg:text-[56px] font-medium tracking-[0.1em] text-[#111] group-hover:text-[#C7A56A] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                तारिणी
               </span>
             </Link>
             <div className="flex justify-center gap-6 text-[#756B62]">
