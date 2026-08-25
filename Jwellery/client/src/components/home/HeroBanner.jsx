@@ -11,7 +11,7 @@ export default function HeroBanner() {
         initial={{ opacity: 0, scale: 1.03 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        src="https://images.unsplash.com/photo-1599643478524-fb5249080a29?q=80&w=2070&auto=format&fit=crop"
+        src="/images/home-banner.jpg"
         alt="Tarini Jewellers Collection"
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
@@ -23,10 +23,10 @@ export default function HeroBanner() {
       />
 
       {/* Overlay Content Wrapper */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-between py-12 md:py-20">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-12 md:gap-20 py-12 md:py-20">
         
         {/* Top Content */}
-        <div className="text-center px-4 max-w-3xl flex flex-col items-center mt-4 md:mt-10">
+        <div className="text-center px-4 max-w-3xl flex flex-col items-center mt-8 md:mt-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
