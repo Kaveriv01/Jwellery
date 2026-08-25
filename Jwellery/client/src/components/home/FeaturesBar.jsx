@@ -15,7 +15,7 @@ export default function FeaturesBar() {
           {features.map((feature, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center gap-3 p-4 group cursor-pointer hover:scale-105 transition-transform duration-300">
               <feature.icon size={32} className="text-[#6a1b24] group-hover:text-[#D4AF37] transition-colors duration-300" strokeWidth={1} />
-              <span className="text-[10px] md:text-[12px] font-[500] uppercase tracking-[0.2em] text-[#333] group-hover:text-[#6a1b24] transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              <span className="text-[10px] md:text-[12px] font-bold uppercase tracking-[0.2em] text-[#333] group-hover:text-[#6a1b24] transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 {feature.text}
               </span>
             </div>
