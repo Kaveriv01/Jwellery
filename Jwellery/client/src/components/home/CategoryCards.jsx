@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const CATEGORIES = [
   { id: 'necklaces', name: 'Necklaces', image: '/images/cat-necklace.png' },
   { id: 'earrings', name: 'Earrings', image: '/images/cat-earrings.png' },
-  { id: 'rings', name: 'Rings', image: '/images/cat-ring-hands.png' },
+  { id: 'rings', name: 'Rings', image: '/images/cat-rings-floral.png' },
   { id: 'bracelets', name: 'Bracelets', image: '/images/cat-bracelet.png' },
 ];
 
