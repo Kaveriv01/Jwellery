@@ -104,9 +104,9 @@ export default function Footer() {
           {/* Top Brand Area */}
           <div className="text-center mb-20 flex flex-col items-center">
             <Link to="/" className="flex items-center justify-center gap-5 group mb-8">
-              <div className="relative flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 rounded-full border-[1.5px] border-[#C7A56A]/50 group-hover:border-[#C7A56A] transition-colors duration-500 overflow-hidden">
-                <span className="text-[32px] lg:text-[40px] text-[#C7A56A] italic leading-none font-light mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  T
+              <div className="flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                <span className="text-[54px] lg:text-[64px] text-[#C7A56A] italic leading-none font-light pr-2" style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.05em' }}>
+                  TJ
                 </span>
               </div>
               <div className="flex flex-col items-start pt-1">

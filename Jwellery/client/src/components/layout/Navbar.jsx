@@ -118,9 +118,9 @@ export default function Navbar() {
 
             {/* LEFT: Logo */}
             <Link to="/" className="flex items-center gap-3 lg:gap-4 flex-shrink-0 group lg:pr-10 lg:mr-4">
-              <div className="relative flex items-center justify-center w-8 h-8 lg:w-11 lg:h-11 rounded-full border-[1.5px] border-[#C7A56A]/50 group-hover:border-[#C7A56A] transition-colors duration-500 overflow-hidden">
-                <span className="text-[22px] lg:text-[28px] text-[#C7A56A] italic leading-none font-light mt-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  T
+              <div className="flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                <span className="text-[32px] lg:text-[40px] text-[#C7A56A] italic leading-none font-light pr-1" style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.05em' }}>
+                  TJ
                 </span>
               </div>
               <div className="flex flex-col items-start pt-1">
@@ -203,9 +203,9 @@ export default function Navbar() {
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
                 <div className="flex items-center gap-3 cursor-pointer group">
-                  <div className="relative flex items-center justify-center w-8 h-8 rounded-full border-[1.5px] border-[#C7A56A]/50 group-hover:border-[#C7A56A] transition-colors duration-500 overflow-hidden">
-                    <span className="text-[22px] text-[#C7A56A] italic leading-none font-light mt-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                      T
+                  <div className="flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                    <span className="text-[32px] text-[#C7A56A] italic leading-none font-light pr-1" style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.05em' }}>
+                      TJ
                     </span>
                   </div>
                   <div className="flex flex-col items-start pt-1">
