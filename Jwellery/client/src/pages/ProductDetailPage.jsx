@@ -56,9 +56,9 @@ export default function ProductDetailPage() {
     return (
       <div className="container-luxury py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="skeleton aspect-square rounded-2xl" />
+          <div className="skeleton aspect-[4/5] rounded-[2px]" />
           <div className="space-y-4">
-            {[...Array(6)].map((_, i) => <div key={i} className={`skeleton h-${i === 0 ? 8 : 4} rounded`} />)}
+            {[...Array(6)].map((_, i) => <div key={i} className={`skeleton h-${i === 0 ? 8 : 4} rounded-[2px]`} />)}
           </div>
         </div>
       </div>
@@ -474,7 +474,7 @@ export default function ProductDetailPage() {
                 <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#35050D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Style It With</h2>
                 <Link to="/products" className="text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#756B62] hover:text-[#35050D] border-b border-transparent hover:border-[#35050D] pb-0.5 transition-all duration-300">View All</Link>
               </div>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
                 {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
               </div>
             </div>
@@ -483,7 +483,7 @@ export default function ProductDetailPage() {
               <div className="flex items-center justify-between mb-8 border-b border-[#FAF6EE] pb-4">
                 <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#35050D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Your Look</h2>
               </div>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
                 {relatedProducts.slice(0, 4).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
               </div>
             </div>
@@ -492,7 +492,7 @@ export default function ProductDetailPage() {
               <div className="flex items-center justify-between mb-8 border-b border-[#FAF6EE] pb-4">
                 <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#35050D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
               </div>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
                 {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
               </div>
             </div>

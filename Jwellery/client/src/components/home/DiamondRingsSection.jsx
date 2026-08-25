@@ -101,8 +101,8 @@ const SORT_OPTIONS = [
 // ── Skeleton card ─────────────────────────────────────────────────────────────
 function SkeletonCard() {
   return (
-    <div className="rounded-xl border border-gray-100 overflow-hidden animate-pulse">
-      <div className="aspect-square bg-gray-100" />
+    <div className="rounded-[2px] border border-gray-100 overflow-hidden animate-pulse">
+      <div className="aspect-[4/5] bg-gray-100" />
       <div className="p-3 space-y-2">
         <div className="h-3 bg-gray-100 rounded w-2/3" />
         <div className="h-3 bg-gray-100 rounded w-1/2" />
@@ -241,7 +241,7 @@ export default function DiamondRingsSection() {
 
         {/* ── Product Cards Grid ─────────────────────────────────────────────── */}
         {isLoading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {[...Array(8)].map((_, i) => <SkeletonCard key={i} />)}
           </div>
         ) : (
@@ -250,7 +250,7 @@ export default function DiamondRingsSection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.15 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
           >
             {rings.map((ring) => (
               <motion.div key={ring._id} variants={item}>

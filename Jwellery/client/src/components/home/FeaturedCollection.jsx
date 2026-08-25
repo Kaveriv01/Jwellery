@@ -274,7 +274,7 @@ export function NewArrivals({ products }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
         >
           {products.slice(0, 4).map((product) => (
             <motion.div key={product._id} variants={cardItem} className="h-full">
