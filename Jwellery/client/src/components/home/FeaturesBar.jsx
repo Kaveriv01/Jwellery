@@ -11,11 +11,13 @@ export default function FeaturesBar() {
   return (
     <div className="bg-[#FAF8F5] py-8 border-b border-[#EAE6DF]">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {features.map((feature, idx) => (
-            <div key={idx} className="flex flex-col items-center justify-center gap-2">
-              <feature.icon size={20} className="text-[#5C1D24] mb-1" strokeWidth={1.5} />
-              <span className="text-[11px] uppercase tracking-widest text-[#333]">{feature.text}</span>
+            <div key={idx} className="flex flex-col items-center justify-center gap-3 p-4 group cursor-pointer hover:scale-105 transition-transform duration-300">
+              <feature.icon size={32} className="text-[#6a1b24] group-hover:text-[#D4AF37] transition-colors duration-300" strokeWidth={1} />
+              <span className="text-[10px] md:text-[12px] font-[500] uppercase tracking-[0.2em] text-[#333] group-hover:text-[#6a1b24] transition-colors duration-300" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                {feature.text}
+              </span>
             </div>
           ))}
         </div>
