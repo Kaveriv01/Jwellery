@@ -145,22 +145,22 @@ export default function ProductsPage() {
   // Narrow Hero Banner Data (Container-Width)
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { title: 'New Arrivals', image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&w=2000&q=80' };
+      return { title: 'New Arrivals', image: '/images/banner-new.png' };
     }
     if (!s || window.location.pathname === '/collections') {
-      return { title: 'Collections', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2000&q=80' };
+      return { title: 'Collections', image: '/images/banner-collections.png' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklace':
-      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=2000&q=80' };
+      case 'necklaces': return { title: 'Necklaces', image: '/images/necklace-banner-floral.png' };
       case 'earring':
-      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=2000&q=80' };
+      case 'earrings':  return { title: 'Earrings', image: '/images/banner-earrings.png' };
       case 'ring':
-      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=2000&q=80' };
+      case 'rings':     return { title: 'Rings', image: '/images/rings-banner.png' };
       case 'bracelet':
-      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=2000&q=80' };
-      default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2000&q=80' };
+      case 'bracelets': return { title: 'Bracelets', image: '/images/banner-bracelets.png' };
+      default: return { title: categoryName || 'Jewelry', image: '/images/banner-collections.png' };
     }
   };
   const bannerData = getBannerData(categorySlug, isNewArrival);

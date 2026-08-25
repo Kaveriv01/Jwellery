@@ -8,7 +8,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Rings',
     slug: 'rings',
-    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80',
+    image: '/images/rings-banner.png',
     subcategories: [
       { label: 'Diamond Rings', slug: 'diamond-rings' },
       { label: 'Gold Rings', slug: 'gold-rings' },
@@ -19,7 +19,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Necklaces',
     slug: 'necklaces',
-    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/necklace-banner-floral.png',
     subcategories: [
       { label: 'Gold Chains', slug: 'gold-chains' },
       { label: 'Pendants', slug: 'pendants' },
@@ -30,7 +30,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Earrings',
     slug: 'earrings',
-    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80',
+    image: '/images/banner-earrings.png',
     subcategories: [
       { label: 'Studs', slug: 'studs' },
       { label: 'Jhumkas', slug: 'jhumkas' },
@@ -41,7 +41,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Bracelets',
     slug: 'bracelets',
-    image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=80',
+    image: '/images/banner-bracelets.png',
     subcategories: [
       { label: 'Bangles', slug: 'bangles' },
       { label: 'Tennis Bracelets', slug: 'tennis-bracelets' },
@@ -51,7 +51,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Collections',
     slug: 'collections',
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80',
+    image: '/images/banner-collections.png',
     subcategories: [
       { label: 'Bridal Collection', slug: 'wedding' },
       { label: 'Daily Wear', slug: 'daily-wear' },

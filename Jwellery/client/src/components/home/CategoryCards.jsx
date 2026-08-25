@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const CATEGORIES = [
-  { id: 'necklaces', name: 'Necklaces', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80' },
-  { id: 'earrings', name: 'Earrings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80' },
-  { id: 'rings', name: 'Rings', image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80' },
-  { id: 'bracelets', name: 'Bracelets', image: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=80' },
+  { id: 'necklaces', name: 'Necklaces', image: '/images/cat-necklace-floral.png' },
+  { id: 'earrings', name: 'Earrings', image: '/images/cat-earrings.png' },
+  { id: 'rings', name: 'Rings', image: '/images/cat-rings-floral.png' },
+  { id: 'bracelets', name: 'Bracelets', image: '/images/cat-bracelet.png' },
 ];
 
 export default function CategoryCards() {
