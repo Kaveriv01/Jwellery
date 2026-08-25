@@ -65,14 +65,14 @@ const ProductCard = memo(function ProductCard({ product }) {
           <img
             src={mainImage}
             alt={name}
-            className={`absolute w-full h-full object-contain transition-transform duration-700 ease-in-out ${hasHoverImage ? 'group-hover:-translate-x-full' : ''}`}
+            className={`absolute w-full h-full object-cover transition-transform duration-700 ease-in-out ${hasHoverImage ? 'group-hover:-translate-x-full' : ''}`}
             onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
           />
           {hasHoverImage && (
             <img
               src={hoverImage}
               alt={name}
-              className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 ease-in-out translate-x-full group-hover:translate-x-0"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out translate-x-full group-hover:translate-x-0"
               onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
             />
           )}

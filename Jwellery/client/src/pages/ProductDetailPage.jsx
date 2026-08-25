@@ -164,7 +164,7 @@ export default function ProductDetailPage() {
                     key={selectedImage}
                     src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                     alt={`${name} - media ${selectedImage + 1}`}
-                    className="w-full h-full object-contain p-10 mix-blend-multiply"
+                    className="w-full h-full object-cover mix-blend-multiply"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
