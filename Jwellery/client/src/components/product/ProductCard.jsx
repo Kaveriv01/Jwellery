@@ -58,21 +58,21 @@ const ProductCard = memo(function ProductCard({ product }) {
     <div className="group flex flex-col h-full bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-transparent p-3 rounded-md">
       
       {/* Image Container */}
-      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#f8f8f8] mb-4 rounded-sm" style={{ aspectRatio: '1/1' }}>
+      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#f8f8f8] mb-4 rounded-sm" style={{ aspectRatio: '4/5' }}>
         
-        {/* Images with Tanishq Slide Transition */}
-        <div className="relative w-full h-full flex">
+        {/* Images with Tanishq Crossfade & Zoom Transition */}
+        <div className="relative w-full h-full overflow-hidden">
           <img
             src={mainImage}
             alt={name}
-            className={`absolute w-full h-full object-cover transition-transform duration-700 ease-in-out ${hasHoverImage ? 'group-hover:-translate-x-full' : ''}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-105 ${hasHoverImage ? 'group-hover:opacity-0' : ''}`}
             onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
           />
           {hasHoverImage && (
             <img
               src={hoverImage}
               alt={name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out translate-x-full group-hover:translate-x-0"
+              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-1000 ease-out group-hover:opacity-100 group-hover:scale-105"
               onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
             />
           )}
