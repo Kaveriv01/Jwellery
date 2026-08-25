@@ -117,20 +117,19 @@ export default function Navbar() {
             </button>
 
             {/* LEFT: Logo */}
-            <Link to="/" className="flex items-center gap-3 lg:gap-4 flex-shrink-0 group lg:pr-10 lg:mr-4">
-              <div className="flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                <span className="text-[32px] lg:text-[40px] text-[#C7A56A] italic leading-none font-light pr-1" style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.05em' }}>
-                  TJ
-                </span>
-              </div>
-              <div className="flex flex-col items-start pt-1">
-                <span className="text-[22px] lg:text-[26px] font-normal tracking-[0.25em] text-[#35050D] group-hover:text-[#C7A56A] transition-colors leading-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  TARINI
-                </span>
-                <span className="text-[7px] lg:text-[9px] tracking-[0.4em] text-[#756B62] uppercase mt-1 font-medium leading-none" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  JEWELLERS
-                </span>
-              </div>
+            <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-10 lg:mr-4">
+              {/* Tanishq-style Custom SVG Monogram */}
+              <svg viewBox="0 0 100 100" className="w-8 h-8 lg:w-10 lg:h-10 text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M 28 25 L 72 25" />
+                <path d="M 28 25 C 28 25, 23 35, 20 40" />
+                <path d="M 72 25 C 72 25, 77 35, 80 40" />
+                <path d="M 50 25 L 50 85" />
+                <path d="M 50 70 C 25 70, 25 45, 35 35" />
+                <path d="M 50 70 C 75 70, 75 45, 65 35" />
+              </svg>
+              <span className="text-[18px] lg:text-[22px] font-medium tracking-[0.25em] text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors leading-none mt-1.5 pl-[0.25em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                TARINI
+              </span>
             </Link>
 
             {/* CENTER: Navigation Links */}
@@ -202,20 +201,18 @@ export default function Navbar() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 lg:hidden" onClick={() => setMenuOpen(false)} />
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
-                <div className="flex items-center gap-3 cursor-pointer group">
-                  <div className="flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                    <span className="text-[32px] text-[#C7A56A] italic leading-none font-light pr-1" style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.05em' }}>
-                      TJ
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-start pt-1">
-                    <span className="text-[20px] font-normal tracking-[0.25em] text-[#35050D] group-hover:text-[#C7A56A] transition-colors leading-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                      TARINI
-                    </span>
-                    <span className="text-[7px] tracking-[0.4em] text-[#756B62] uppercase mt-1 font-medium leading-none" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                      JEWELLERS
-                    </span>
-                  </div>
+                <div className="flex flex-col items-center justify-center cursor-pointer group mt-1">
+                  <svg viewBox="0 0 100 100" className="w-8 h-8 text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M 28 25 L 72 25" />
+                    <path d="M 28 25 C 28 25, 23 35, 20 40" />
+                    <path d="M 72 25 C 72 25, 77 35, 80 40" />
+                    <path d="M 50 25 L 50 85" />
+                    <path d="M 50 70 C 25 70, 25 45, 35 35" />
+                    <path d="M 50 70 C 75 70, 75 45, 65 35" />
+                  </svg>
+                  <span className="text-[18px] font-medium tracking-[0.25em] text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors leading-none mt-1.5 pl-[0.25em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    TARINI
+                  </span>
                 </div>
                 <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>

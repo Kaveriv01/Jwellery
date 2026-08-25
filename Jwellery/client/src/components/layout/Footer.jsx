@@ -103,23 +103,18 @@ export default function Footer() {
           
           {/* Top Brand Area */}
           <div className="text-center mb-20 flex flex-col items-center">
-            <Link to="/" className="flex items-center justify-center gap-5 group mb-8">
-              <div className="flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                <span className="text-[54px] lg:text-[64px] text-[#C7A56A] italic leading-none font-light pr-2" style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.05em' }}>
-                  TJ
-                </span>
-              </div>
-              <div className="flex flex-col items-start pt-1">
-                <span
-                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                  className="text-[42px] lg:text-[52px] tracking-[0.15em] font-[500] text-[#111111] block leading-none transition-opacity duration-500 group-hover:opacity-80"
-                >
-                  TARINI
-                </span>
-                <span className="text-[11px] lg:text-[12px] text-[#756B62] tracking-[0.30em] uppercase block font-[500] mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  JEWELLERS
-                </span>
-              </div>
+            <Link to="/" className="flex flex-col items-center justify-center group mb-8">
+              <svg viewBox="0 0 100 100" className="w-14 h-14 lg:w-16 lg:h-16 text-[#111] group-hover:text-[#C7A56A] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M 28 25 L 72 25" />
+                <path d="M 28 25 C 28 25, 23 35, 20 40" />
+                <path d="M 72 25 C 72 25, 77 35, 80 40" />
+                <path d="M 50 25 L 50 85" />
+                <path d="M 50 70 C 25 70, 25 45, 35 35" />
+                <path d="M 50 70 C 75 70, 75 45, 65 35" />
+              </svg>
+              <span className="text-[36px] lg:text-[46px] font-medium tracking-[0.25em] text-[#111] group-hover:text-[#C7A56A] transition-colors leading-none mt-3 pl-[0.25em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                TARINI
+              </span>
             </Link>
             <div className="flex justify-center gap-6 text-[#756B62]">
               <motion.a whileHover={{ scale: 1.15, color: '#111111' }} href="#" className="transition-colors duration-300 p-2"><FiInstagram size={20} strokeWidth={1.5} /></motion.a>
