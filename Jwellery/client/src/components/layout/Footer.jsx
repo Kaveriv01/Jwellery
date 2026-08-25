@@ -104,15 +104,7 @@ export default function Footer() {
           {/* Top Brand Area */}
           <div className="text-center mb-20 flex flex-col items-center">
             <Link to="/" className="inline-block mb-8 group">
-              <span
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                className="text-[42px] lg:text-[52px] tracking-wide font-[500] text-[#111111] block leading-none transition-opacity duration-500 group-hover:opacity-80"
-              >
-                तारिणी
-              </span>
-              <span className="text-[11px] lg:text-[12px] text-[#756B62] tracking-[0.30em] uppercase block font-[500] mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                JEWELLERS
-              </span>
+              <img src="/logo-cropped.png" alt="Tarini Jewellers" className="h-16 md:h-20 w-auto object-contain transition-opacity duration-500 group-hover:opacity-80 mx-auto" />
             </Link>
             <div className="flex justify-center gap-6 text-[#756B62]">
               <motion.a whileHover={{ scale: 1.15, color: '#111111' }} href="#" className="transition-colors duration-300 p-2"><FiInstagram size={20} strokeWidth={1.5} /></motion.a>
