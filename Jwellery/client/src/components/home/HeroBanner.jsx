@@ -11,7 +11,7 @@ export default function HeroBanner() {
         initial={{ opacity: 0, scale: 1.03 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        src="/7f6da4e9-866a-4b32-b1da-bdfd58aaac91.jfif"
+        src="https://images.unsplash.com/photo-1599643478524-fb5249080a29?q=80&w=2070&auto=format&fit=crop"
         alt="Tarini Jewellers Collection"
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
@@ -42,8 +42,8 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[36px] md:text-[44px] lg:text-[64px] font-[500] leading-tight mb-4 tracking-wide"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-[#FAF6EE] text-[28px] md:text-[36px] lg:text-[52px] font-[300] leading-tight mb-4 tracking-[0.2em] uppercase"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Timeless Elegance
           </motion.h1>
@@ -52,7 +52,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[14px] md:text-[16px] font-[400] tracking-wide mb-10 max-w-lg mx-auto"
+            className="text-[#FAF6EE] text-[12px] md:text-[14px] font-[300] tracking-[0.2em] uppercase mb-10 max-w-lg mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Discover jewellery designed to celebrate your everyday moments.
@@ -65,7 +65,7 @@ export default function HeroBanner() {
           >
             <Link
               to="/collections"
-              className="inline-block px-10 py-3.5 bg-[#FAF6EE] text-[#35050D] text-[12px] md:text-[14px] font-[600] tracking-[0.08em] uppercase hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02]"
+              className="inline-block px-10 py-3.5 bg-[#FAF6EE] text-[#35050D] text-[12px] md:text-[14px] font-[500] tracking-[0.2em] uppercase hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02]"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Shop Now
@@ -79,7 +79,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-6 leading-relaxed font-medium"
+          className="text-[#FAF6EE] text-[10px] sm:text-xs tracking-[0.2em] uppercase mb-6 leading-relaxed font-[400]"
           style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
           For the moments<br />that matter most.
@@ -107,10 +107,10 @@ export default function HeroBanner() {
             <div className="absolute w-2 h-2 border-[1.5px] border-[#FAF6EE] rounded-full -top-1 bg-transparent"></div>
           </div>
           
-          <p className="text-[#FAF6EE] text-sm md:text-base tracking-[0.3em] uppercase font-medium">
+          <p className="text-[#FAF6EE] text-sm md:text-base tracking-[0.2em] uppercase font-[400]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             Tarini Jewellers
           </p>
-          <p className="text-[#FAF6EE]/80 text-[8px] md:text-[9px] tracking-[0.5em] uppercase mt-2">
+          <p className="text-[#FAF6EE]/80 text-[8px] md:text-[9px] tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             Diamonds
           </p>
         </motion.div>
