@@ -145,22 +145,22 @@ export default function ProductsPage() {
   // Narrow Hero Banner Data (Container-Width)
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { title: 'New Arrivals', image: 'https://i.pinimg.com/originals/7f/2b/7f/7f2b7fd2561a71e9ac4d6a236bed8f70.png' };
+      return { title: 'New Arrivals', image: '/images/banner-new.png' };
     }
     if (!s || window.location.pathname === '/collections') {
-      return { title: 'Collections', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=2000' };
+      return { title: 'Collections', image: '/images/banner-collections.png' };
     }
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklace':
       case 'necklaces': return { title: 'Necklaces', image: '/images/necklace-banner-floral.png' };
       case 'earring':
-      case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&q=80&w=2000' };
+      case 'earrings':  return { title: 'Earrings', image: '/images/banner-earrings.png' };
       case 'ring':
       case 'rings':     return { title: 'Rings', image: '/images/rings-banner.png' };
       case 'bracelet':
-      case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1600143674013-a690b5d25104?auto=format&fit=crop&q=80&w=2000' };
-      default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=2000' };
+      case 'bracelets': return { title: 'Bracelets', image: '/images/banner-bracelets.png' };
+      default: return { title: categoryName || 'Jewelry', image: '/images/banner-collections.png' };
     }
   };
   const bannerData = getBannerData(categorySlug, isNewArrival);

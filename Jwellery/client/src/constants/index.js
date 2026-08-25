@@ -30,7 +30,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Earrings',
     slug: 'earrings',
-    image: '/images/earrings-banner.jpg',
+    image: '/images/banner-earrings.png',
     subcategories: [
       { label: 'Studs', slug: 'studs' },
       { label: 'Jhumkas', slug: 'jhumkas' },
@@ -41,7 +41,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Bracelets',
     slug: 'bracelets',
-    image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300&q=80',
+    image: '/images/banner-bracelets.png',
     subcategories: [
       { label: 'Bangles', slug: 'bangles' },
       { label: 'Tennis Bracelets', slug: 'tennis-bracelets' },
@@ -51,7 +51,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Collections',
     slug: 'collections',
-    image: 'https://images.unsplash.com/photo-1603974372039-adc49044b6bd?w=300&q=80',
+    image: '/images/banner-collections.png',
     subcategories: [
       { label: 'Bridal Collection', slug: 'wedding' },
       { label: 'Daily Wear', slug: 'daily-wear' },
