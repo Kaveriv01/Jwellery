@@ -6,22 +6,15 @@ import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function HeroBanner() {
   return (
-    <section className="relative w-full h-[75vh] md:h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-[#111]">
-      {/* Blurred background to fill empty space seamlessly */}
-      <img
-        src="/images/home-banner.png"
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50 scale-110"
-      />
-      
-      {/* Uncropped Full Image */}
+    <section className="relative w-full h-[80vh] md:h-[90vh] lg:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#111]">
+      {/* Edge-to-Edge Full Page Banner Image */}
       <motion.img
         initial={{ opacity: 0, scale: 1.02 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         src="/images/home-banner.png"
         alt="Tarini Jewellers Collection"
-        className="absolute inset-0 w-full h-full object-contain"
+        className="absolute inset-0 w-full h-full object-cover object-[center_top]"
       />
       
       {/* Gentle dark overlay for text readability */}
@@ -29,7 +22,7 @@ export default function HeroBanner() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute inset-0 bg-black/20 z-0" 
+        className="absolute inset-0 bg-black/30 z-0" 
       />
 
       {/* Overlay Content Wrapper */}
