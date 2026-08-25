@@ -6,29 +6,37 @@ import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function HeroBanner() {
   return (
-    <section className="relative w-full flex flex-col md:block bg-[#1a080a]">
+    <section className="relative w-full h-[75vh] md:h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-[#111]">
+      {/* Blurred background to fill empty space seamlessly */}
+      <img
+        src="/images/home-banner.png"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-50 scale-110"
+      />
+      
+      {/* Uncropped Full Image */}
       <motion.img
         initial={{ opacity: 0, scale: 1.02 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         src="/images/home-banner.png"
         alt="Tarini Jewellers Collection"
-        className="w-full h-auto block"
+        className="absolute inset-0 w-full h-full object-contain"
       />
       
-      {/* Dark overlay for desktop readability */}
+      {/* Gentle dark overlay for text readability */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="hidden md:block absolute inset-0 bg-black/30 z-0" 
+        className="absolute inset-0 bg-black/20 z-0" 
       />
 
-      {/* Overlay Content Wrapper: Static on Mobile, Absolute on Desktop */}
-      <div className="md:absolute md:inset-0 z-10 flex flex-col items-center justify-center gap-12 md:gap-20 py-12 md:py-20 px-4 bg-[#1a080a] md:bg-transparent">
+      {/* Overlay Content Wrapper */}
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-12 md:gap-20 py-12 md:py-20 px-4">
         
         {/* Top Content */}
-        <div className="text-center max-w-3xl flex flex-col items-center mt-2 md:mt-12">
+        <div className="text-center max-w-3xl flex flex-col items-center mt-6 md:mt-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,8 +52,8 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[24px] sm:text-[28px] md:text-[36px] lg:text-[52px] font-[300] leading-tight mb-4 tracking-[0.2em] uppercase"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            className="text-[#FAF6EE] text-[24px] sm:text-[28px] md:text-[40px] lg:text-[52px] font-[300] leading-tight mb-4 tracking-[0.2em] uppercase"
+            style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           >
             Timeless Elegance
           </motion.h1>
@@ -55,7 +63,7 @@ export default function HeroBanner() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
             className="text-[#FAF6EE] text-[10px] sm:text-[12px] md:text-[14px] font-[300] tracking-[0.2em] uppercase mb-8 md:mb-10 max-w-lg mx-auto"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}
           >
             Discover jewellery designed to celebrate your everyday moments.
           </motion.p>
@@ -67,7 +75,7 @@ export default function HeroBanner() {
           >
             <Link
               to="/collections"
-              className="inline-block px-8 py-3 md:px-10 md:py-3.5 bg-[#FAF6EE] text-[#1a080a] text-[10px] md:text-[14px] font-[500] tracking-[0.2em] uppercase hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02]"
+              className="inline-block px-8 py-3 md:px-10 md:py-3.5 bg-[#FAF6EE] text-[#111] text-[10px] md:text-[12px] font-[500] tracking-[0.2em] uppercase hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02] shadow-xl"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
               Shop Now
@@ -82,7 +90,7 @@ export default function HeroBanner() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-[#FAF6EE] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase mb-6 md:mb-8 leading-relaxed font-[400]"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}
           >
             For the moments<br />that matter most.
           </motion.p>
@@ -109,10 +117,10 @@ export default function HeroBanner() {
               <div className="absolute w-1.5 h-1.5 md:w-2 md:h-2 border-[1.5px] border-[#FAF6EE] rounded-full -top-1 bg-transparent"></div>
             </div>
             
-            <p className="text-[#FAF6EE] text-xs md:text-sm tracking-[0.2em] uppercase font-[400]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <p className="text-[#FAF6EE] text-xs md:text-sm tracking-[0.2em] uppercase font-[400]" style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>
               Tarini Jewellers
             </p>
-            <p className="text-[#FAF6EE]/80 text-[7px] md:text-[8px] tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <p className="text-[#FAF6EE]/80 text-[7px] md:text-[8px] tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>
               Diamonds
             </p>
           </motion.div>
