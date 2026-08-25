@@ -13,7 +13,7 @@ export default function HeroBanner() {
         transition={{ duration: 1.5, ease: "easeOut" }}
         src="/images/home-banner.png"
         alt="Tarini Jewellers Collection"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-top"
       />
       <motion.div 
         initial={{ opacity: 0 }}
