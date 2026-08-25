@@ -157,7 +157,7 @@ export default function ProductsPage() {
       case 'earring':
       case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&q=80&w=2000' };
       case 'ring':
-      case 'rings':     return { title: 'Rings', image: 'https://images.unsplash.com/photo-1769038933683-067e5215538d?auto=format&fit=crop&q=80&w=2000' };
+      case 'rings':     return { title: 'Rings', image: '/images/rings-banner.png' };
       case 'bracelet':
       case 'bracelets': return { title: 'Bracelets', image: 'https://images.unsplash.com/photo-1600143674013-a690b5d25104?auto=format&fit=crop&q=80&w=2000' };
       default: return { title: categoryName || 'Jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=2000' };
