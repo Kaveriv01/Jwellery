@@ -99,24 +99,16 @@ const ProductCard = memo(function ProductCard({ product }) {
           </button>
         </div>
         
-        {/* Hover Action Buttons (Slide Up Bottom-Right) */}
-        <div className="absolute bottom-3 right-3 z-10 flex flex-col sm:flex-row gap-2 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none group-hover:pointer-events-auto overflow-hidden">
-           
-           <button 
-             onClick={(e) => { e.preventDefault(); navigate(`/products/${slug}`); }}
-             className="hidden sm:flex items-center gap-1.5 bg-white text-[#630015] px-3 py-1.5 rounded-[4px] shadow-[0_4px_12px_rgba(0,0,0,0.15)] text-[11px] font-bold uppercase tracking-wider hover:bg-gray-50 transition-colors"
-             style={{ fontFamily: "'Montserrat', sans-serif" }}
-           >
-             <Search size={12} strokeWidth={2.5} /> Similar
-           </button>
-
+        {/* Hover Add to Bag Button (Slides up from bottom) */}
+        <div className="absolute bottom-0 left-0 w-full z-10 opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto">
            <button 
              onClick={handleAddToCart}
              disabled={isAddingToCart || isOutOfStock}
-             className="flex items-center gap-1.5 bg-[#630015] text-white px-3 py-1.5 rounded-[4px] shadow-[0_4px_12px_rgba(0,0,0,0.2)] text-[11px] font-bold uppercase tracking-wider hover:bg-[#82001c] transition-colors disabled:opacity-70"
+             className="w-full bg-[#35050D]/95 backdrop-blur-sm text-white py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-[#35050D] transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
              style={{ fontFamily: "'Montserrat', sans-serif" }}
            >
-             <ShoppingBag size={12} strokeWidth={2.5} /> {isOutOfStock ? 'Sold' : 'Add'}
+             <ShoppingBag size={14} />
+             {isOutOfStock ? 'Out Of Stock' : 'Add To Bag'}
            </button>
         </div>
 
