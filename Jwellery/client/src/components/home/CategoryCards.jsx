@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const CATEGORIES = [
-  { id: 'necklaces', name: 'Necklaces', image: '/images/cat-necklace.png' },
+  { id: 'necklaces', name: 'Necklaces', image: '/images/cat-necklace-floral.png' },
   { id: 'earrings', name: 'Earrings', image: '/images/cat-earrings.png' },
   { id: 'rings', name: 'Rings', image: '/images/cat-rings-floral.png' },
   { id: 'bracelets', name: 'Bracelets', image: '/images/cat-bracelet.png' },

@@ -153,7 +153,7 @@ export default function ProductsPage() {
     const normalized = s.toLowerCase();
     switch (normalized) {
       case 'necklace':
-      case 'necklaces': return { title: 'Necklaces', image: 'https://images.unsplash.com/photo-1652766540048-de0a878a3266?auto=format&fit=crop&q=80&w=2000' };
+      case 'necklaces': return { title: 'Necklaces', image: '/images/necklace-banner-floral.png' };
       case 'earring':
       case 'earrings':  return { title: 'Earrings', image: 'https://images.unsplash.com/photo-1475179593777-bd12fd56b85d?auto=format&fit=crop&q=80&w=2000' };
       case 'ring':
