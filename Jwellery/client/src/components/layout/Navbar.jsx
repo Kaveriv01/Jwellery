@@ -134,9 +134,14 @@ export default function Navbar() {
                 <path d="M 50 82 C 75 77, 85 52, 80 37 C 70 47, 60 57, 50 82 Z" fill="#8B2332" />
                 <path d="M 50 42 L 56 52 L 50 62 L 44 52 Z" fill="#FFF2CD" stroke="#AA771C" strokeWidth="1" />
               </svg>
-              <span className="text-[26px] lg:text-[32px] font-bold tracking-[0.1em] text-[#6a1b24] group-hover:text-[#8B2332] transition-all duration-300 leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif", textShadow: '0 2px 10px rgba(212,175,55,0.3)' }}>
-                तारिणी
-              </span>
+              <div className="flex flex-col items-center mt-1">
+                <span className="text-[24px] lg:text-[28px] font-normal tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-[#6a1b24] to-[#8B2332] group-hover:from-[#D4AF37] group-hover:to-[#AA771C] transition-all duration-700 leading-none" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  तारिणी
+                </span>
+                <span className="text-[6px] lg:text-[7px] tracking-[0.45em] text-[#756B62] uppercase mt-1.5 font-bold leading-none pl-[0.45em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  TARINI
+                </span>
+              </div>
             </Link>
 
             {/* CENTER: Navigation Links */}
@@ -224,9 +229,14 @@ export default function Navbar() {
                     <path d="M 50 82 C 75 77, 85 52, 80 37 C 70 47, 60 57, 50 82 Z" fill="#8B2332" />
                     <path d="M 50 42 L 56 52 L 50 62 L 44 52 Z" fill="#FFF2CD" stroke="#AA771C" strokeWidth="1" />
                   </svg>
-                  <span className="text-[24px] font-bold tracking-[0.1em] text-[#6a1b24] group-hover:text-[#8B2332] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif", textShadow: '0 2px 10px rgba(212,175,55,0.3)' }}>
-                    तारिणी
-                  </span>
+                  <div className="flex flex-col items-center mt-1">
+                    <span className="text-[22px] font-normal tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-[#6a1b24] to-[#8B2332] group-hover:from-[#D4AF37] group-hover:to-[#AA771C] transition-all duration-700 leading-none" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                      तारिणी
+                    </span>
+                    <span className="text-[6px] tracking-[0.45em] text-[#756B62] uppercase mt-1.5 font-bold leading-none pl-[0.45em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                      TARINI
+                    </span>
+                  </div>
                 </div>
                 <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>

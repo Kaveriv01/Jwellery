@@ -119,9 +119,14 @@ export default function Footer() {
                 <path d="M 50 82 C 75 77, 85 52, 80 37 C 70 47, 60 57, 50 82 Z" fill="#8B2332" />
                 <path d="M 50 42 L 56 52 L 50 62 L 44 52 Z" fill="#FFF2CD" stroke="#AA771C" strokeWidth="1" />
               </svg>
-              <span className="text-[46px] lg:text-[60px] font-bold tracking-[0.1em] text-[#111] group-hover:text-[#6a1b24] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif", textShadow: '0 2px 15px rgba(212,175,55,0.4)' }}>
-                तारिणी
-              </span>
+              <div className="flex flex-col items-center mt-2">
+                <span className="text-[42px] lg:text-[54px] font-normal tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-[#111] to-[#333] group-hover:from-[#D4AF37] group-hover:to-[#AA771C] transition-all duration-700 leading-none" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  तारिणी
+                </span>
+                <span className="text-[10px] lg:text-[12px] tracking-[0.45em] text-[#756B62] uppercase mt-2.5 font-bold leading-none pl-[0.45em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  TARINI
+                </span>
+              </div>
             </Link>
             <div className="flex justify-center gap-6 text-[#756B62]">
               <motion.a whileHover={{ scale: 1.15, color: '#111111' }} href="#" className="transition-colors duration-300 p-2"><FiInstagram size={20} strokeWidth={1.5} /></motion.a>
