@@ -55,7 +55,7 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[9px] sm:text-[12px] md:text-[14px] font-[300] tracking-[0.2em] uppercase mb-6 md:mb-10 max-w-lg mx-auto"
+            className="text-[#FAF6EE] text-[9px] sm:text-[12px] md:text-[14px] font-[300] tracking-[0.2em] uppercase mb-10 md:mb-14 max-w-lg mx-auto"
             style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}
           >
             Discover jewellery designed to celebrate your everyday moments.
