@@ -8,7 +8,7 @@ export const NAV_CATEGORIES = [
   {
     label: 'Rings',
     slug: 'rings',
-    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=300&q=80',
+    image: '/images/rings-banner.png',
     subcategories: [
       { label: 'Diamond Rings', slug: 'diamond-rings' },
       { label: 'Gold Rings', slug: 'gold-rings' },
