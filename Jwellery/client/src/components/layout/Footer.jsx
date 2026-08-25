@@ -103,11 +103,23 @@ export default function Footer() {
           
           {/* Top Brand Area */}
           <div className="text-center mb-20 flex flex-col items-center">
-            <Link to="/" className="flex flex-col items-center justify-center group mb-8">
-              <svg viewBox="0 0 24 24" className="w-8 h-8 lg:w-10 lg:h-10 text-[#111] group-hover:text-[#C7A56A] transition-colors duration-300 mb-2" fill="currentColor">
-                <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
+            <Link to="/" className="flex flex-col items-center justify-center group mb-10">
+              <svg viewBox="0 0 100 100" className="w-16 h-16 lg:w-20 lg:h-20 mb-3 drop-shadow-md transition-all duration-700 group-hover:scale-110" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="goldGradientFt" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#D4AF37" />
+                    <stop offset="50%" stopColor="#FFF2CD" />
+                    <stop offset="100%" stopColor="#AA771C" />
+                  </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" stroke="url(#goldGradientFt)" strokeWidth="2" strokeDasharray="6 6" className="group-hover:rotate-180 transition-transform duration-[3000ms] ease-in-out" style={{ transformOrigin: 'center' }} />
+                <circle cx="50" cy="50" r="38" stroke="#8B2332" strokeWidth="1" />
+                <path d="M 50 18 C 65 38, 70 58, 50 82 C 30 58, 35 38, 50 18 Z" fill="url(#goldGradientFt)" stroke="#8B2332" strokeWidth="1.5" />
+                <path d="M 50 82 C 25 77, 15 52, 20 37 C 30 47, 40 57, 50 82 Z" fill="#8B2332" />
+                <path d="M 50 82 C 75 77, 85 52, 80 37 C 70 47, 60 57, 50 82 Z" fill="#8B2332" />
+                <path d="M 50 42 L 56 52 L 50 62 L 44 52 Z" fill="#FFF2CD" stroke="#AA771C" strokeWidth="1" />
               </svg>
-              <span className="text-[42px] lg:text-[56px] font-medium tracking-[0.1em] text-[#111] group-hover:text-[#C7A56A] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <span className="text-[46px] lg:text-[60px] font-bold tracking-[0.1em] text-[#111] group-hover:text-[#6a1b24] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif", textShadow: '0 2px 15px rgba(212,175,55,0.4)' }}>
                 तारिणी
               </span>
             </Link>

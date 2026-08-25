@@ -118,11 +118,23 @@ export default function Navbar() {
 
             {/* LEFT: Logo */}
             <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-10 lg:mr-4">
-              {/* Luxury Star Motif */}
-              <svg viewBox="0 0 24 24" className="w-5 h-5 lg:w-7 lg:h-7 text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-300 mb-1" fill="currentColor">
-                <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
+              {/* Ornate Luxury Lotus Motif */}
+              <svg viewBox="0 0 100 100" className="w-11 h-11 lg:w-14 lg:h-14 mb-1 drop-shadow-sm transition-all duration-700 group-hover:scale-110" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#D4AF37" />
+                    <stop offset="50%" stopColor="#FFF2CD" />
+                    <stop offset="100%" stopColor="#AA771C" />
+                  </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" stroke="url(#goldGradient)" strokeWidth="2" strokeDasharray="6 6" className="group-hover:rotate-180 transition-transform duration-[3000ms] ease-in-out" style={{ transformOrigin: 'center' }} />
+                <circle cx="50" cy="50" r="38" stroke="#8B2332" strokeWidth="1" />
+                <path d="M 50 18 C 65 38, 70 58, 50 82 C 30 58, 35 38, 50 18 Z" fill="url(#goldGradient)" stroke="#8B2332" strokeWidth="1.5" />
+                <path d="M 50 82 C 25 77, 15 52, 20 37 C 30 47, 40 57, 50 82 Z" fill="#8B2332" />
+                <path d="M 50 82 C 75 77, 85 52, 80 37 C 70 47, 60 57, 50 82 Z" fill="#8B2332" />
+                <path d="M 50 42 L 56 52 L 50 62 L 44 52 Z" fill="#FFF2CD" stroke="#AA771C" strokeWidth="1" />
               </svg>
-              <span className="text-[24px] lg:text-[30px] font-medium tracking-[0.1em] text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <span className="text-[26px] lg:text-[32px] font-bold tracking-[0.1em] text-[#6a1b24] group-hover:text-[#8B2332] transition-all duration-300 leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif", textShadow: '0 2px 10px rgba(212,175,55,0.3)' }}>
                 तारिणी
               </span>
             </Link>
@@ -196,11 +208,23 @@ export default function Navbar() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 lg:hidden" onClick={() => setMenuOpen(false)} />
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
-                <div className="flex flex-col items-center justify-center cursor-pointer group mt-1">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-300 mb-1" fill="currentColor">
-                    <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
+                <div className="flex flex-col items-center justify-center cursor-pointer group mt-2">
+                  <svg viewBox="0 0 100 100" className="w-10 h-10 mb-1 drop-shadow-sm transition-all duration-700 group-hover:scale-110" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <defs>
+                      <linearGradient id="goldGradientMb" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#D4AF37" />
+                        <stop offset="50%" stopColor="#FFF2CD" />
+                        <stop offset="100%" stopColor="#AA771C" />
+                      </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" stroke="url(#goldGradientMb)" strokeWidth="2" strokeDasharray="6 6" className="group-hover:rotate-180 transition-transform duration-[3000ms] ease-in-out" style={{ transformOrigin: 'center' }} />
+                    <circle cx="50" cy="50" r="38" stroke="#8B2332" strokeWidth="1" />
+                    <path d="M 50 18 C 65 38, 70 58, 50 82 C 30 58, 35 38, 50 18 Z" fill="url(#goldGradientMb)" stroke="#8B2332" strokeWidth="1.5" />
+                    <path d="M 50 82 C 25 77, 15 52, 20 37 C 30 47, 40 57, 50 82 Z" fill="#8B2332" />
+                    <path d="M 50 82 C 75 77, 85 52, 80 37 C 70 47, 60 57, 50 82 Z" fill="#8B2332" />
+                    <path d="M 50 42 L 56 52 L 50 62 L 44 52 Z" fill="#FFF2CD" stroke="#AA771C" strokeWidth="1" />
                   </svg>
-                  <span className="text-[24px] font-medium tracking-[0.1em] text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <span className="text-[24px] font-bold tracking-[0.1em] text-[#6a1b24] group-hover:text-[#8B2332] transition-colors leading-none mt-1 pl-[0.1em]" style={{ fontFamily: "'Cormorant Garamond', serif", textShadow: '0 2px 10px rgba(212,175,55,0.3)' }}>
                     तारिणी
                   </span>
                 </div>
