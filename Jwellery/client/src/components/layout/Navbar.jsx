@@ -117,14 +117,8 @@ export default function Navbar() {
             </button>
 
             {/* LEFT: Logo */}
-            <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-10 lg:mr-4">
-              <div className="w-2 h-2 lg:w-2.5 lg:h-2.5 border-[1.5px] border-[#3a2e2b] rotate-45 group-hover:border-[#C7A56A] transition-colors duration-300 mb-1.5"></div>
-              <span className="text-[22px] lg:text-[26px] font-normal tracking-[0.25em] text-[#3a2e2b] group-hover:text-[#C7A56A] transition-colors leading-none pl-[0.25em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                TARINI
-              </span>
-              <span className="text-[8px] lg:text-[9px] tracking-[0.35em] text-[#756B62] uppercase mt-1.5 font-medium leading-none pl-[0.35em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                JEWELLERS
-              </span>
+            <Link to="/" className="flex items-center justify-center lg:items-start flex-shrink-0 group lg:pr-10 lg:mr-4">
+              <img src="/logo-cropped.png" alt="Tarini Jewellers" className="h-10 lg:h-14 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80" />
             </Link>
 
             {/* CENTER: Navigation Links */}
@@ -196,14 +190,8 @@ export default function Navbar() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 lg:hidden" onClick={() => setMenuOpen(false)} />
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
-                <div className="flex flex-col items-center justify-center group cursor-pointer pt-2">
-                  <div className="w-2.5 h-2.5 border-[1.5px] border-[#3a2e2b] rotate-45 group-hover:border-[#C7A56A] transition-colors duration-300 mb-1.5"></div>
-                  <span className="text-[22px] font-normal tracking-[0.25em] text-[#3a2e2b] group-hover:text-[#C7A56A] transition-colors leading-none pl-[0.25em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    TARINI
-                  </span>
-                  <span className="text-[8px] tracking-[0.35em] text-[#756B62] uppercase mt-1.5 font-medium leading-none pl-[0.35em]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                    JEWELLERS
-                  </span>
+                <div className="flex items-start">
+                  <img src="/logo-cropped.png" alt="Tarini Jewellers" className="h-10 w-auto object-contain" />
                 </div>
                 <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
