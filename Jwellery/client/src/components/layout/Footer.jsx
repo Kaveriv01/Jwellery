@@ -103,8 +103,23 @@ export default function Footer() {
           
           {/* Top Brand Area */}
           <div className="text-center mb-20 flex flex-col items-center">
-            <Link to="/" className="inline-block mb-8 group">
-              <img src="/logo-cropped.png" alt="Tarini Jewellers" className="h-16 md:h-20 w-auto object-contain transition-opacity duration-500 group-hover:opacity-80 mx-auto" />
+            <Link to="/" className="flex items-center justify-center gap-5 group mb-8">
+              <div className="relative flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 rounded-full border-[1.5px] border-[#C7A56A]/50 group-hover:border-[#C7A56A] transition-colors duration-500 overflow-hidden">
+                <span className="text-[32px] lg:text-[40px] text-[#C7A56A] italic leading-none font-light mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  T
+                </span>
+              </div>
+              <div className="flex flex-col items-start pt-1">
+                <span
+                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  className="text-[42px] lg:text-[52px] tracking-[0.15em] font-[500] text-[#111111] block leading-none transition-opacity duration-500 group-hover:opacity-80"
+                >
+                  TARINI
+                </span>
+                <span className="text-[11px] lg:text-[12px] text-[#756B62] tracking-[0.30em] uppercase block font-[500] mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  JEWELLERS
+                </span>
+              </div>
             </Link>
             <div className="flex justify-center gap-6 text-[#756B62]">
               <motion.a whileHover={{ scale: 1.15, color: '#111111' }} href="#" className="transition-colors duration-300 p-2"><FiInstagram size={20} strokeWidth={1.5} /></motion.a>
