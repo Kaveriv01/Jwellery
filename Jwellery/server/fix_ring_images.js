@@ -3,16 +3,20 @@ require('dotenv').config();
 
 const updates = [
   {
-    name: 'Emerald Cut Diamond Ring',
+    name: 'Celeste Solitaire Ring',
+    url: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&fit=crop&q=90'
+  },
+  {
+    name: 'Minimalist Infinity Band',
+    url: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?w=800&fit=crop&q=90'
+  },
+  {
+    name: 'Vintage Emerald Cut Ring',
     url: 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=800&fit=crop&q=90'
   },
   {
-    name: 'Halo Diamond Engagement Ring',
+    name: 'Rose Gold Pave Ring',
     url: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&fit=crop&q=90'
-  },
-  {
-    name: 'Classic Gold Band',
-    url: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?w=800&fit=crop&q=90'
   }
 ];
 
