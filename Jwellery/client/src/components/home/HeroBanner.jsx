@@ -26,7 +26,7 @@ export default function HeroBanner() {
       />
 
       {/* Overlay Content Wrapper: Bottom-aligned on mobile, Centered on desktop */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-end md:justify-center gap-6 md:gap-20 pb-8 pt-20 md:py-20 px-4">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-end md:justify-center gap-6 md:gap-20 pb-24 md:pb-20 pt-20 md:py-20 px-4">
         
         {/* Top Content */}
         <div className="text-center max-w-3xl flex flex-col items-center mt-auto md:mt-12">
