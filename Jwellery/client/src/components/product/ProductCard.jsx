@@ -65,14 +65,14 @@ const ProductCard = memo(function ProductCard({ product }) {
           <img
             src={mainImage}
             alt={name}
-            className={`absolute w-full h-full object-cover transition-transform duration-700 ease-in-out ${hasHoverImage ? 'group-hover:-translate-x-full' : ''}`}
+            className={`absolute w-full h-full object-contain transition-transform duration-700 ease-in-out ${hasHoverImage ? 'group-hover:-translate-x-full' : ''}`}
             onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
           />
           {hasHoverImage && (
             <img
               src={hoverImage}
               alt={name}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out translate-x-full group-hover:translate-x-0"
+              className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 ease-in-out translate-x-full group-hover:translate-x-0"
               onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
             />
           )}
@@ -125,7 +125,7 @@ const ProductCard = memo(function ProductCard({ product }) {
       {/* Info Section (Tanishq Typography) */}
       <div className="flex flex-col flex-1 px-1">
         <Link to={`/products/${slug}`} className="block mb-1.5">
-          <h3 className="text-[14px] sm:text-[16px] text-gray-800 font-[600] leading-snug line-clamp-2 hover:text-[#8b5a2b] transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h3 className="text-[14px] sm:text-[16px] text-gray-800 font-[600] leading-snug hover:text-[#8b5a2b] transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {name}
           </h3>
         </Link>
