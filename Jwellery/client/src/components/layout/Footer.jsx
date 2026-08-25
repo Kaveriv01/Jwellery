@@ -106,9 +106,9 @@ export default function Footer() {
             <Link to="/" className="inline-block mb-8 group">
               <span
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                className="text-[42px] lg:text-[52px] tracking-[0.15em] font-[500] text-[#111111] block leading-none transition-opacity duration-500 group-hover:opacity-80"
+                className="text-[42px] lg:text-[52px] tracking-wide font-[500] text-[#111111] block leading-none transition-opacity duration-500 group-hover:opacity-80"
               >
-                TARINI
+                तारिणी
               </span>
               <span className="text-[11px] lg:text-[12px] text-[#756B62] tracking-[0.30em] uppercase block font-[500] mt-3" style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 JEWELLERS

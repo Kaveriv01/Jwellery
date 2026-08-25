@@ -21,7 +21,7 @@ export default function TariniLoader({ onComplete }) {
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onComplete]);
 
-  const letters = 'TARINI'.split('');
+  const letters = ['ता', 'रि', 'णी'];
 
   return (
     <AnimatePresence>
@@ -73,7 +73,7 @@ export default function TariniLoader({ onComplete }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + i * 0.1, duration: 0.5, ease: 'easeOut' }}
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              className="text-5xl font-light tracking-[0.3em] text-shimmer-gold"
+              className="text-5xl font-light tracking-wide text-shimmer-gold"
             >
               {letter}
             </motion.span>
