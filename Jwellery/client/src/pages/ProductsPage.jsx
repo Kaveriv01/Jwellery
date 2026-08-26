@@ -285,13 +285,16 @@ export default function ProductsPage() {
             />
             <div className="absolute inset-0 bg-black/30 pointer-events-none" />
             
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4 mt-8">
               <h1 
-                className="text-white text-[32px] md:text-[48px] lg:text-[60px] tracking-wide mb-1 drop-shadow-md"
+                className="text-white text-[32px] md:text-[48px] lg:text-[60px] tracking-wide mb-1 drop-shadow-md leading-none"
                 style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
                 {bannerData.title}
               </h1>
+              <p className="text-[#C5A059] text-[11px] md:text-[13px] uppercase tracking-[0.3em] font-bold drop-shadow-lg mt-3" style={{ fontFamily: "var(--font-sans)" }}>
+                Tarini Fine Jewellery
+              </p>
             </div>
           </motion.div>
         </div>
