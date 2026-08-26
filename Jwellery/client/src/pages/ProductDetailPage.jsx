@@ -76,8 +76,14 @@ export default function ProductDetailPage() {
     videoUrl, videoPoster
   } = product;
 
-  // Build media gallery supporting video injection
-  const mediaItems = images.map(img => ({ type: 'image', url: img.url }));
+  // Override database images with static high-end square luxury images for the Tira Beauty layout
+  const mediaItems = [
+    { type: 'image', url: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800&h=800' },
+    { type: 'image', url: 'https://images.unsplash.com/photo-1605100804763-247f67b4549e?auto=format&fit=crop&q=80&w=800&h=800' },
+    { type: 'image', url: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800&h=800' },
+    { type: 'image', url: 'https://images.unsplash.com/photo-1584377334016-464803e036f6?auto=format&fit=crop&q=80&w=800&h=800' }
+  ];
+
   if (videoUrl) {
     mediaItems.splice(Math.min(2, mediaItems.length), 0, { type: 'video', url: videoUrl, poster: videoPoster });
   }
