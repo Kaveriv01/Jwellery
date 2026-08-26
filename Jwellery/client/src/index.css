@@ -938,3 +938,4 @@ h1, h2, h3, h4, h5, h6,
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+html, body { overflow-x: hidden !important; width: 100%; max-width: 100vw; }
