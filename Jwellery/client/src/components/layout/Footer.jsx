@@ -22,7 +22,7 @@ export default function Footer() {
       {/* ── TRUST & BENEFITS STRIP ────────────────────────────────────────── */}
       <div className="border-t border-[#EAE6DF]">
         <div className="container-luxury py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-6 text-center">
             
             <div className="flex flex-col items-center">
               <Shield size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
