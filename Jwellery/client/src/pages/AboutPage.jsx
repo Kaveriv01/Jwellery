@@ -41,11 +41,11 @@ export default function AboutPage() {
       <section ref={heroRef} className="relative w-full h-[85vh] lg:h-[100vh] overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full">
           <img 
-            src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=85&w=2000" 
+            src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=85&w=2000" 
             alt="Tarini Jewellers Hero" 
-            className="w-full h-full object-cover object-[center_20%]"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/40" />
         </motion.div>
         
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4 pt-20">
