@@ -138,12 +138,12 @@ export default function AboutPage() {
               { num: "04", title: "The Future", desc: "Building a jewellery experience where tradition meets contemporary luxury." }
             ].map((step, idx) => (
               <FadeUp key={idx} delay={idx * 0.15} className="relative group">
-                <div className="text-[40px] md:text-[60px] lg:text-[80px] text-[#F8F5EF] font-medium leading-none mb-6 group-hover:text-[#EAE6DF] transition-colors duration-500" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <div className="text-[50px] md:text-[70px] lg:text-[90px] text-[#C5A059] font-bold leading-none mb-4 lg:mb-6 group-hover:text-[#22181C] transition-colors duration-500 drop-shadow-sm" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {step.num}
                 </div>
                 <div className="w-12 h-[2px] bg-[#C5A059] mb-4 lg:mb-6 transform origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                <h3 className="text-[18px] md:text-[22px] lg:text-[26px] font-medium mb-3 lg:mb-4 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
-                <p className="text-[13px] md:text-[15px] lg:text-[16px] text-[#22181C]/70 leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>{step.desc}</p>
+                <h3 className="text-[18px] md:text-[22px] lg:text-[26px] font-bold mb-3 lg:mb-4 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
+                <p className="text-[13px] md:text-[15px] lg:text-[16px] text-[#22181C]/90 font-medium leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>{step.desc}</p>
               </FadeUp>
             ))}
           </div>
