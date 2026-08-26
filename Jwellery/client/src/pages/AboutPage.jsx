@@ -46,9 +46,9 @@ export default function AboutPage() {
             muted 
             playsInline 
             className="w-full h-full object-cover"
-            poster="https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            poster="/images/home-banner.png"
           >
-            <source src="https://videos.pexels.com/video-files/6969566/6969566-hd_1920_1080_25fps.mp4" type="video/mp4" />
+            <source src="/pinterest_video.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/60" />
         </motion.div>
