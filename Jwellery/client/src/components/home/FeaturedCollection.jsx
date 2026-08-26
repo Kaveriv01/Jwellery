@@ -223,77 +223,103 @@ export function BestSellers({ products }) {
   );
 }
 
-export function NewArrivals({ products }) {
+export function NewArrivals() {
   const shouldReduceMotion = useReducedMotion();
 
-  const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: shouldReduceMotion ? 0 : 0.12, delayChildren: 0.2 } },
-  };
-
-  const cardItem = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 15 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-  };
-
   const sectionReveal = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+    hidden: { opacity: 0, scale: 0.98 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } }
   };
 
-  const headingReveal = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 10 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } 
-    }
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
   return (
-    <motion.section 
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      variants={sectionReveal}
-      className="relative py-16 lg:py-20 overflow-hidden bg-white" 
-    >
-      <div className="container-luxury max-w-[1400px] relative z-10">
-        <div className="flex flex-col items-center justify-center text-center mb-12">
-          <motion.h2 
-            variants={headingReveal}
-            className="text-[30px] md:text-[38px] lg:text-[48px] font-[500] leading-[1.15] tracking-wide mb-[16px] text-[#22181C]" 
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            New Arrivals
-          </motion.h2>
-        </div>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
+    <section className="bg-[#FDFBF7] py-20 lg:py-32 overflow-hidden">
+      <div className="w-full max-w-[1800px] mx-auto px-4 md:px-8 flex flex-col items-center">
+        
+        {/* Main Hero Image */}
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={sectionReveal}
+          className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[21/9] relative overflow-hidden group mb-12 lg:mb-16"
         >
-          {products.slice(0, 4).map((product) => (
-            <motion.div key={product._id} variants={cardItem} className="h-full">
-              <ProductCard product={product} />
-            </motion.div>
-          ))}
+          <img src="/images/editorial/main.png" alt="New In Tarini" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
         </motion.div>
 
-        <div className="mt-12 flex justify-center">
+        {/* Title Section */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          className="text-center mb-20 md:mb-32 max-w-2xl px-4"
+        >
+          <span className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#C5A059] font-bold mb-4 block" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+            New Arrivals
+          </span>
+          <h2 className="text-[36px] md:text-[52px] lg:text-[64px] text-[#22181C] font-[500] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            The Latest From Tarini
+          </h2>
+          <p className="text-[#22181C]/80 text-[14px] md:text-[16px] font-light leading-relaxed mb-8" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+            Discover our newest jewellery pieces, thoughtfully designed to bring a refined touch to every occasion.
+          </p>
           <Link
             to="/products?isNewArrival=true"
-            className="inline-block bg-[#22181C] text-[#FDFBF7] px-10 py-3.5 text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase transition-all duration-[300ms] ease-out hover:bg-[#4A0712] hover:scale-[1.02] shadow-sm rounded-[2px]"
+            className="inline-block bg-[#22181C] text-white px-10 py-3.5 text-[11px] md:text-[12px] font-bold tracking-[0.2em] uppercase hover:bg-[#C5A059] transition-colors duration-300"
             style={{ fontFamily: "'Nunito Sans', sans-serif" }}
           >
-            Shop New In
+            Explore New In
           </Link>
+        </motion.div>
+
+        {/* Editorial Stack */}
+        <div className="w-full flex flex-col gap-16 md:gap-24 lg:gap-32 pb-10">
+          
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
+               <img src="/images/editorial/rings.png" alt="Luxury Rings" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            </div>
+            <div className="mt-6 md:mt-8 text-center">
+               <h3 className="text-[24px] md:text-[32px] text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signature Rings</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#22181C] pb-1 text-[#22181C] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
+               <img src="/images/editorial/necklace.png" alt="Luxury Necklaces" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            </div>
+            <div className="mt-6 md:mt-8 text-center">
+               <h3 className="text-[24px] md:text-[32px] text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Statement Necklaces</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#22181C] pb-1 text-[#22181C] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
+               <img src="/images/editorial/earrings.png" alt="Luxury Earrings" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            </div>
+            <div className="mt-6 md:mt-8 text-center">
+               <h3 className="text-[24px] md:text-[32px] text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Elegant Earrings</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#22181C] pb-1 text-[#22181C] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
+               <img src="/images/editorial/bracelet.png" alt="Luxury Bracelets" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            </div>
+            <div className="mt-6 md:mt-8 text-center">
+               <h3 className="text-[24px] md:text-[32px] text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Fine Bracelets</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#22181C] pb-1 text-[#22181C] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+            </div>
+          </motion.div>
+
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 
