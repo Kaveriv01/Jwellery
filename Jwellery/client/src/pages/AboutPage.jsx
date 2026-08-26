@@ -99,7 +99,7 @@ export default function AboutPage() {
             <FadeUp>
               <div className="aspect-[3/4] overflow-hidden w-full max-w-md mx-auto lg:max-w-none">
                 <img 
-                  src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=85&w=1000" 
+                  src="https://images.unsplash.com/photo-1574542278457-41abdfa5b172?auto=format&fit=crop&q=85&w=1000" 
                   alt="Jewellery That Tells Your Story" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" 
                 />
@@ -155,7 +155,7 @@ export default function AboutPage() {
       <section ref={craftRef} className="relative w-full h-[75vh] md:h-[90vh] overflow-hidden flex items-center justify-center">
         <motion.div style={{ scale: craftScale }} className="absolute inset-0 w-full h-full">
           <img 
-            src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=85&w=2000" 
+            src="https://images.unsplash.com/photo-1563236306-03f0b2fbe0be?auto=format&fit=crop&q=85&w=2000" 
             alt="Jewellery Craftsmanship" 
             className="w-full h-full object-cover"
           />
@@ -188,7 +188,7 @@ export default function AboutPage() {
           
           <FadeUp delay={0.2} className="w-full lg:w-[45%] lg:absolute lg:right-0 lg:bottom-0 z-0 mt-8 lg:mt-0 hidden lg:block">
             <div className="aspect-[4/5] overflow-hidden w-full">
-              <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=85&w=1000" alt="Modern Luxury Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=85&w=1000" alt="Modern Luxury Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
             </div>
           </FadeUp>
           
@@ -212,7 +212,7 @@ export default function AboutPage() {
       {/* 6. THE TARINI WOMAN */}
       <section className="relative w-full py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          <img src="https://images.unsplash.com/photo-1588665977931-155e9eb5c425?auto=format&fit=crop&q=85&w=2000" alt="The Tarini Woman" className="w-full h-full object-cover object-top" />
+          <img src="https://images.unsplash.com/photo-1582274528604-eb5a666e6616?auto=format&fit=crop&q=85&w=2000" alt="The Tarini Woman" className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0 bg-[#F8F5EF]/85 backdrop-blur-[2px]" />
         </div>
         
@@ -268,8 +268,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
               { title: "MATERIALS", img: "https://images.unsplash.com/photo-1620653066928-11b0e3efebbb?auto=format&fit=crop&q=85&w=1000" },
-              { title: "CRAFT", img: "https://images.unsplash.com/photo-1563236306-03f0b2fbe0be?auto=format&fit=crop&q=85&w=1000" },
-              { title: "DETAIL", img: "https://images.unsplash.com/photo-1599643477818-a784e5dc4c8f?auto=format&fit=crop&q=85&w=1000" }
+              { title: "CRAFT", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=85&w=1000" },
+              { title: "DETAIL", img: "https://images.unsplash.com/photo-1589674781759-c21c37956a44?auto=format&fit=crop&q=85&w=1000" }
             ].map((item, i) => (
               <FadeUp key={i} delay={i * 0.15}>
                 <div className="relative aspect-square overflow-hidden group">
@@ -294,7 +294,7 @@ export default function AboutPage() {
             
             <FadeUp className="md:col-span-8 md:row-span-2">
               <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=85&w=1600" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
+                <img src="https://images.unsplash.com/photo-1599643477818-a784e5dc4c8f?auto=format&fit=crop&q=85&w=1600" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
               </div>
             </FadeUp>
             
@@ -306,25 +306,25 @@ export default function AboutPage() {
             
             <FadeUp delay={0.2} className="md:col-span-4 hidden md:block">
               <div className="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&q=85&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
+                <img src="https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=85&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
               </div>
             </FadeUp>
 
             <FadeUp delay={0.1} className="md:col-span-4 mt-0 md:mt-8">
               <div className="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=85&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
+                <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&q=85&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
               </div>
             </FadeUp>
 
             <FadeUp delay={0.2} className="md:col-span-8 md:row-span-2 mt-0 md:mt-8">
               <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=85&w=1600" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
+                <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&q=85&w=1600" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
               </div>
             </FadeUp>
             
             <FadeUp delay={0.3} className="md:col-span-4 mt-0 md:mt-8 hidden md:block">
               <div className="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1574542278457-41abdfa5b172?auto=format&fit=crop&q=85&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 6" />
+                <img src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?auto=format&fit=crop&q=85&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 6" />
               </div>
             </FadeUp>
 
@@ -345,8 +345,8 @@ export default function AboutPage() {
             {[
               { name: "RINGS", img: "https://images.unsplash.com/photo-1605100804763-247f67b6348e?auto=format&fit=crop&q=80&w=800", link: "/category/rings" },
               { name: "NECKLACES", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800", link: "/category/necklaces" },
-              { name: "EARRINGS", img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=800", link: "/category/earrings" },
-              { name: "BRACELETS", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800", link: "/category/bracelets" }
+              { name: "EARRINGS", img: "https://images.unsplash.com/photo-1616805177002-3a31c518d6f5?auto=format&fit=crop&q=80&w=800", link: "/category/earrings" },
+              { name: "BRACELETS", img: "https://images.unsplash.com/photo-1573408301145-b98c465448b1?auto=format&fit=crop&q=80&w=800", link: "/category/bracelets" }
             ].map((cat, i) => (
               <FadeUp key={i} delay={i * 0.1}>
                 <Link to={cat.link} className="group block relative aspect-[4/5] overflow-hidden bg-[#F8F5EF]">
@@ -386,7 +386,7 @@ export default function AboutPage() {
       {/* 12. FINAL CTA */}
       <section className="relative py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&q=85&w=2000" alt="Tarini Collection" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=85&w=2000" alt="Tarini Collection" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#F8F5EF]/95 backdrop-blur-sm" />
         </div>
         
