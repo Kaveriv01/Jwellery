@@ -155,7 +155,7 @@ export default function ProductsPage() {
       case 'necklace':
       case 'necklaces': return { title: 'Necklaces', image: '/images/necklace-banner-floral.png' };
       case 'earring':
-      case 'earrings':  return { title: 'Earrings', image: '/images/banner-earrings.png' };
+      case 'earrings':  return { title: 'Earrings', image: '/images/banner-earrings-v2.png' };
       case 'ring':
       case 'rings':     return { title: 'Rings', image: '/images/rings-banner.png' };
       case 'bracelet':
