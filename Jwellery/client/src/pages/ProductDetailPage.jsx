@@ -451,8 +451,33 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
+        {/* ── You May Also Like / Related Products ──────────────────────────── */}
+        {relatedProducts.length > 0 && (
+          <div className="mt-28 border-t border-gray-100 pt-16">
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="text-[24px] md:text-[30px] font-normal tracking-wide text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>You May Also Like</h2>
+              <Link to={`/category/${category?.slug || 'all'}`} className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#22181C] hover:text-[#C5A059] transition-colors">View All</Link>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
+            </div>
+          </div>
+        )}
+
+        {/* ── Complete The Look ──────────────────────────── */}
+        {relatedProducts.length > 4 && (
+          <div className="mt-20">
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="text-[24px] md:text-[30px] font-normal tracking-wide text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete The Look</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {relatedProducts.slice(4, 8).map((p) => <ProductCard key={p._id} product={p} />)}
+            </div>
+          </div>
+        )}
+
         {/* ── Customer Reviews ──────────────────────────────────────────── */}
-        <div className="mt-24">
+        <div className="mt-24 border-t border-gray-100 pt-16">
           <div className="flex flex-col items-center text-center mb-12">
             <h2 className="text-[24px] md:text-[32px] font-normal text-[#22181C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Customer Reviews</h2>
             <div className="flex items-center gap-2">
@@ -498,15 +523,14 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* ── Recently Viewed / You May Also Like ──────────────────────────── */}
+        {/* ── Recently Viewed ──────────────────────────── */}
         {relatedProducts.length > 0 && (
-          <div className="mt-28 border-t border-gray-100 pt-16">
+          <div className="mt-24 border-t border-gray-100 pt-16">
             <div className="text-center mb-10">
-              <span className="text-[10px] text-[#C5A059] font-bold tracking-[0.2em] uppercase mb-3 block">Discover More</span>
-              <h2 className="text-[28px] md:text-[36px] text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
+              <h2 className="text-[24px] md:text-[32px] text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
+              {relatedProducts.slice(0, 4).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
             </div>
           </div>
         )}
