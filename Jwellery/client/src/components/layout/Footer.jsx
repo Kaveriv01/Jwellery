@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FiInstagram, FiFacebook, FiMail } from 'react-icons/fi';
 import { FaPinterestP } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -17,56 +17,61 @@ function FooterLink({ to, children }) {
 }
 
 export default function Footer() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <div className="bg-[#FDFBF7]">
       {/* ── TRUST & BENEFITS STRIP ────────────────────────────────────────── */}
-      <div className="border-t border-[#EAE6DF]">
-        <div className="container-luxury pt-16 pb-24 lg:py-16">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-6 text-center">
-            
-            <div className="flex flex-col items-center">
-              <Shield size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-              <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                AUTHENTIC CRAFTSMANSHIP
-              </h4>
-              <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                Thoughtfully designed jewellery made with attention to detail.
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <Lock size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-              <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                SECURE PAYMENTS
-              </h4>
-              <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                Safe and secure checkout experience.
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <RefreshCw size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-              <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                EASY RETURNS
-              </h4>
-              <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                Simple and transparent return experience.
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <HeartHandshake size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-              <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                CARE & SUPPORT
-              </h4>
-              <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                Dedicated customer support whenever you need us.
-              </p>
-            </div>
+      {isHomePage && (
+        <div className="border-t border-[#EAE6DF]">
+          <div className="container-luxury pt-16 pb-24 lg:py-16">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-6 text-center">
+              
+              <div className="flex flex-col items-center">
+                <Shield size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
+                <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  AUTHENTIC CRAFTSMANSHIP
+                </h4>
+                <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  Thoughtfully designed jewellery made with attention to detail.
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <Lock size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
+                <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  SECURE PAYMENTS
+                </h4>
+                <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  Safe and secure checkout experience.
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <RefreshCw size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
+                <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  EASY RETURNS
+                </h4>
+                <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  Simple and transparent return experience.
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <HeartHandshake size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
+                <h4 className="text-[13px] font-[600] text-[#22181C] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  CARE & SUPPORT
+                </h4>
+                <p className="text-[13px] text-[#22181C] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  Dedicated customer support whenever you need us.
+                </p>
+              </div>
 
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* ── NEWSLETTER SECTION ────────────────────────────────────────────── */}
       <div className="border-t border-[#EAE6DF] mt-8 lg:mt-0">
