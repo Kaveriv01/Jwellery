@@ -65,10 +65,10 @@ const ProductCard = memo(function ProductCard({ product }) {
   const hasHoverImage = images.length > 1;
 
   return (
-    <div className="group flex flex-col h-full bg-white transition-all duration-300 shadow-[0_2px_10px_rgba(34,24,28,0.04)] hover:shadow-[0_12px_35px_rgba(34,24,28,0.1)] border border-transparent p-4 rounded-md">
+    <div className="group flex flex-col h-full bg-transparent transition-all duration-300 pb-4">
       
       {/* Image Container */}
-      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#f8f8f8] mb-4 rounded-sm" style={{ aspectRatio: '4/5' }}>
+      <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-transparent mb-4" style={{ aspectRatio: '4/5' }}>
         
         {/* Images with Tanishq Crossfade & Zoom Transition */}
         <div className="relative w-full h-full overflow-hidden flex items-center justify-center p-2">
