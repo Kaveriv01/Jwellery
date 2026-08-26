@@ -24,12 +24,6 @@ export default function RootLayout() {
 
   return (
     <>
-
-      {/* Cinematic loader (first visit only) */}
-      {!loaderDone && (
-        <TariniLoader onComplete={() => setLoaderDone(true)} />
-      )}
-
       <div className="min-h-screen flex flex-col overflow-x-hidden">
         <Navbar />
         <main className="flex-1">

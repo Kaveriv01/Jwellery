@@ -130,7 +130,7 @@ export default function AboutPage() {
             </h2>
           </FadeUp>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 lg:gap-x-12 gap-y-12 lg:gap-y-16">
             {[
               { num: "01", title: "The Beginning", desc: "A vision inspired by the timeless beauty of jewellery." },
               { num: "02", title: "The Craft", desc: "A commitment to thoughtful design and refined craftsmanship." },
@@ -138,12 +138,12 @@ export default function AboutPage() {
               { num: "04", title: "The Future", desc: "Building a jewellery experience where tradition meets contemporary luxury." }
             ].map((step, idx) => (
               <FadeUp key={idx} delay={idx * 0.15} className="relative group">
-                <div className="text-[60px] lg:text-[80px] text-[#F8F5EF] font-medium leading-none mb-6 group-hover:text-[#EAE6DF] transition-colors duration-500" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <div className="text-[40px] md:text-[60px] lg:text-[80px] text-[#F8F5EF] font-medium leading-none mb-6 group-hover:text-[#EAE6DF] transition-colors duration-500" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {step.num}
                 </div>
-                <div className="w-12 h-[2px] bg-[#C5A059] mb-6 transform origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                <h3 className="text-[22px] lg:text-[26px] font-medium mb-4 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
-                <p className="text-[15px] lg:text-[16px] text-[#22181C]/70 leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>{step.desc}</p>
+                <div className="w-12 h-[2px] bg-[#C5A059] mb-4 lg:mb-6 transform origin-left group-hover:scale-x-150 transition-transform duration-500" />
+                <h3 className="text-[18px] md:text-[22px] lg:text-[26px] font-medium mb-3 lg:mb-4 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
+                <p className="text-[13px] md:text-[15px] lg:text-[16px] text-[#22181C]/70 leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>{step.desc}</p>
               </FadeUp>
             ))}
           </div>
@@ -229,7 +229,7 @@ export default function AboutPage() {
 
       {/* 7. OUR VALUES */}
       <section className="py-24 lg:py-32 px-6 bg-white border-y border-[#22181C]/5">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-16">
           {[
             { title: "Craftsmanship", desc: "Respect for the artistry and precision behind every piece." },
             { title: "Quality", desc: "Thoughtful materials, careful finishing and attention to detail." },
@@ -237,16 +237,16 @@ export default function AboutPage() {
             { title: "Trust", desc: "A jewellery experience built around transparency, care and confidence." }
           ].map((val, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="group flex flex-col border border-[#22181C]/10 p-10 md:p-14 hover:border-[#C5A059]/50 hover:bg-[#F8F5EF]/50 transition-all duration-500 min-h-[300px] justify-between shadow-sm hover:shadow-md">
+              <div className="group flex flex-col border border-[#22181C]/10 p-6 md:p-10 lg:p-14 hover:border-[#C5A059]/50 hover:bg-[#F8F5EF]/50 transition-all duration-500 min-h-[220px] md:min-h-[300px] justify-between shadow-sm hover:shadow-md">
                 <div>
-                  <h3 className="text-[28px] lg:text-[32px] font-medium mb-6 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <h3 className="text-[20px] md:text-[28px] lg:text-[32px] font-medium mb-4 lg:mb-6 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {val.title}
                   </h3>
-                  <p className="text-[16px] lg:text-[17px] text-[#22181C]/70 font-normal leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>
+                  <p className="text-[13px] md:text-[16px] lg:text-[17px] text-[#22181C]/70 font-normal leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>
                     {val.desc}
                   </p>
                 </div>
-                <div className="w-8 h-[2px] bg-[#C5A059] mt-8 group-hover:w-16 transition-all duration-500" />
+                <div className="w-8 h-[2px] bg-[#C5A059] mt-6 lg:mt-8 group-hover:w-16 transition-all duration-500" />
               </div>
             </FadeUp>
           ))}
@@ -262,7 +262,7 @@ export default function AboutPage() {
             </h2>
           </FadeUp>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             {[
               { title: "Materials", img: "/images/rings-banner.png" },
               { title: "Craft", img: "/images/banner-collections.png" },
@@ -273,7 +273,7 @@ export default function AboutPage() {
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <h3 className="text-white text-[28px] lg:text-[36px] font-medium tracking-wide drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <h3 className="text-white text-[20px] md:text-[28px] lg:text-[36px] font-medium tracking-wide drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {item.title}
                     </h3>
                   </div>
@@ -287,41 +287,41 @@ export default function AboutPage() {
       {/* 9. THE JEWELLERY EDITORIAL */}
       <section className="py-16 lg:py-24 px-6 bg-white overflow-hidden border-y border-[#22181C]/5">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 auto-rows-min">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-4 lg:gap-8 auto-rows-min">
             
-            <FadeUp className="md:col-span-8 md:row-span-2">
-              <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden shadow-md">
+            <FadeUp className="col-span-2 md:col-span-8 md:row-span-2">
+              <div className="aspect-[16/9] md:aspect-auto md:h-full overflow-hidden shadow-md">
                 <img src="/images/banner-earrings.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
               </div>
             </FadeUp>
             
-            <FadeUp delay={0.1} className="md:col-span-4">
+            <FadeUp delay={0.1} className="col-span-1 md:col-span-4">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
                 <img src="/images/cat-necklace.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 2" />
               </div>
             </FadeUp>
             
-            <FadeUp delay={0.2} className="md:col-span-4 hidden md:block">
+            <FadeUp delay={0.2} className="col-span-1 md:col-span-4">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
                 <img src="/images/cat-ring.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
               </div>
             </FadeUp>
 
-            <FadeUp delay={0.1} className="md:col-span-4 mt-0 md:mt-8">
+            <FadeUp delay={0.1} className="col-span-1 md:col-span-4 mt-0 md:mt-8">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
                 <img src="/images/banner-new.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
               </div>
             </FadeUp>
 
-            <FadeUp delay={0.2} className="md:col-span-8 md:row-span-2 mt-0 md:mt-8">
-              <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden shadow-md">
-                <img src="/images/home-banner.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
-              </div>
-            </FadeUp>
-            
-            <FadeUp delay={0.3} className="md:col-span-4 mt-0 md:mt-8 hidden md:block">
+            <FadeUp delay={0.3} className="col-span-1 md:col-span-4 mt-0 md:mt-8">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
                 <img src="/images/necklace-banner-floral.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 6" />
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.2} className="col-span-2 md:col-span-8 md:row-span-2 mt-0 md:mt-8">
+              <div className="aspect-[16/9] md:aspect-auto md:h-full overflow-hidden shadow-md">
+                <img src="/images/home-banner.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
               </div>
             </FadeUp>
 

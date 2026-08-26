@@ -100,11 +100,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Top Announcement Bar ────────────────────────────────────── */}
-      <div className="bg-[#22181C] text-[#FDFBF7] text-center py-2 px-4 text-[11px] sm:text-[12px] font-bold tracking-[0.15em] uppercase w-full relative z-50">
-        <span style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Free Shipping on All Orders • 30 Day Returns • Lifetime Warranty</span>
-      </div>
-
       {/* ── Main Navbar ─────────────────────────────────────── */}
       <header
         className={`sticky top-0 z-40 transition-all duration-[300ms] ease-out border-b ${
