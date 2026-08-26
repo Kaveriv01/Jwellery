@@ -14,13 +14,13 @@ export default function TariniLoader({ onComplete }) {
     }
     */
 
-    // Extended to ~3 seconds for a more immersive, premium aesthetic reveal
+    // Extended to 5 seconds for a more immersive, premium aesthetic reveal
     const t1 = setTimeout(() => setPhase('hold'), 100);
-    const t2 = setTimeout(() => setPhase('exit'), 2800);
+    const t2 = setTimeout(() => setPhase('exit'), 5000);
     const t3 = setTimeout(() => {
       sessionStorage.setItem('tarini-loader-seen', '1');
       onComplete?.();
-    }, 3400); // Gives time for the fade out
+    }, 5600); // Gives time for the fade out
 
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onComplete]);
@@ -113,7 +113,7 @@ export default function TariniLoader({ onComplete }) {
               className="h-full bg-[#C5A059]"
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
-              transition={{ duration: 2.8, ease: 'easeInOut', delay: 0.2 }}
+              transition={{ duration: 4.8, ease: 'easeInOut', delay: 0.2 }}
             />
           </motion.div>
         </motion.div>
