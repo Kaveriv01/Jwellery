@@ -8,6 +8,15 @@ import { formatPrice, getProductImage } from '../../lib/utils';
 import { toast } from 'sonner';
 import { openCartDrawer } from '../cart/CartDrawer';
 
+const getFallbackImage = (categoryObj, productName) => {
+  const catName = categoryObj?.name?.toLowerCase() || productName?.toLowerCase() || '';
+  if (catName.includes('ring')) return '/images/cat-ring.png';
+  if (catName.includes('earring')) return '/images/cat-earrings.png';
+  if (catName.includes('necklace')) return '/images/cat-necklace.png';
+  if (catName.includes('bracelet')) return '/images/cat-bracelet.png';
+  return '/images/cat-necklace-floral.png';
+};
+
 const ProductCard = memo(function ProductCard({ product }) {
   const { isAuthenticated } = useAuth();
   const { addToCart, isAddingToCart } = useCart();
@@ -16,10 +25,11 @@ const ProductCard = memo(function ProductCard({ product }) {
 
   const {
     _id, name, slug, images = [], price, discountPrice,
-    stock = 0, isNewArrival, isBestSeller,
+    stock = 0, isNewArrival, isBestSeller, category
   } = product;
 
-  const mainImage = getProductImage(images);
+  const fallbackImg = getFallbackImage(category, name);
+  const mainImage = images[0]?.url || fallbackImg;
   const hoverImage = images[1]?.url || mainImage;
   const effectivePrice = discountPrice || price;
   const isOutOfStock = false; // Forced to false so all items are available
@@ -61,19 +71,19 @@ const ProductCard = memo(function ProductCard({ product }) {
       <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#f8f8f8] mb-4 rounded-sm" style={{ aspectRatio: '4/5' }}>
         
         {/* Images with Tanishq Crossfade & Zoom Transition */}
-        <div className="relative w-full h-full overflow-hidden">
+        <div className="relative w-full h-full overflow-hidden flex items-center justify-center p-2">
           <img
             src={mainImage}
             alt={name}
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-105 ${hasHoverImage ? 'group-hover:opacity-0' : ''}`}
-            onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
+            className={`absolute inset-0 w-full h-full object-contain p-3 transition-all duration-1000 ease-out group-hover:scale-105 ${hasHoverImage ? 'group-hover:opacity-0' : ''}`}
+            onError={(e) => { e.target.src = fallbackImg; }}
           />
           {hasHoverImage && (
             <img
               src={hoverImage}
               alt={name}
-              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-1000 ease-out group-hover:opacity-100 group-hover:scale-105"
-              onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'; }}
+              className="absolute inset-0 w-full h-full object-contain p-3 opacity-0 transition-all duration-1000 ease-out group-hover:opacity-100 group-hover:scale-105"
+              onError={(e) => { e.target.src = fallbackImg; }}
             />
           )}
         </div>
