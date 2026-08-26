@@ -98,7 +98,7 @@ export default function AboutPage() {
             <FadeUp>
               <div className="aspect-[3/4] overflow-hidden w-full max-w-md mx-auto lg:max-w-none shadow-lg">
                 <img 
-                  src="https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                  src="/images/cat-ring-hands.png" 
                   alt="Jewellery That Tells Your Story" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" 
                 />
@@ -154,7 +154,7 @@ export default function AboutPage() {
       <section ref={craftRef} className="relative w-full h-[75vh] md:h-[90vh] overflow-hidden flex items-center justify-center">
         <motion.div style={{ scale: craftScale }} className="absolute inset-0 w-full h-full">
           <img 
-            src="https://images.pexels.com/photos/56904/pexels-photo-56904.jpeg?auto=compress&cs=tinysrgb&w=1600" 
+            src="/images/banner-new.png" 
             alt="Jewellery Craftsmanship" 
             className="w-full h-full object-cover"
           />
@@ -181,13 +181,13 @@ export default function AboutPage() {
           
           <FadeUp className="w-full lg:w-[45%] lg:absolute lg:left-0 lg:top-0 z-0">
             <div className="aspect-[4/5] overflow-hidden w-full shadow-lg">
-              <img src="https://images.pexels.com/photos/5442436/pexels-photo-5442436.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Traditional Indian Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+              <img src="/images/necklace-banner.jpg" alt="Traditional Indian Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
             </div>
           </FadeUp>
           
           <FadeUp delay={0.2} className="w-full lg:w-[45%] lg:absolute lg:right-0 lg:bottom-0 z-0 mt-8 lg:mt-0 hidden lg:block">
             <div className="aspect-[4/5] overflow-hidden w-full shadow-lg">
-              <img src="https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Modern Luxury Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+              <img src="/images/earrings-banner.jpg" alt="Modern Luxury Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
             </div>
           </FadeUp>
           
@@ -210,7 +210,7 @@ export default function AboutPage() {
       {/* 6. THE TARINI WOMAN */}
       <section className="relative w-full py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          <img src="https://images.pexels.com/photos/1721937/pexels-photo-1721937.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="The Tarini Woman" className="w-full h-full object-cover object-top" />
+          <img src="/images/home-banner.png" alt="The Tarini Woman" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-[#F8F5EF]/85 backdrop-blur-[2px]" />
         </div>
         
@@ -264,9 +264,9 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
-              { title: "Materials", img: "https://images.pexels.com/photos/943150/pexels-photo-943150.jpeg?auto=compress&cs=tinysrgb&w=800" },
-              { title: "Craft", img: "https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg?auto=compress&cs=tinysrgb&w=800" },
-              { title: "Detail", img: "https://images.pexels.com/photos/1050302/pexels-photo-1050302.jpeg?auto=compress&cs=tinysrgb&w=800" }
+              { title: "Materials", img: "/images/rings-banner.png" },
+              { title: "Craft", img: "/images/banner-collections.png" },
+              { title: "Detail", img: "/images/banner-bracelets.png" }
             ].map((item, i) => (
               <FadeUp key={i} delay={i * 0.15}>
                 <div className="relative aspect-square overflow-hidden group shadow-lg">
@@ -291,37 +291,37 @@ export default function AboutPage() {
             
             <FadeUp className="md:col-span-8 md:row-span-2">
               <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden shadow-md">
-                <img src="https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=1200" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
+                <img src="/images/banner-earrings.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
               </div>
             </FadeUp>
             
             <FadeUp delay={0.1} className="md:col-span-4">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="https://images.pexels.com/photos/177332/pexels-photo-177332.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 2" />
+                <img src="/images/cat-necklace.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 2" />
               </div>
             </FadeUp>
             
             <FadeUp delay={0.2} className="md:col-span-4 hidden md:block">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
+                <img src="/images/cat-ring.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
               </div>
             </FadeUp>
 
             <FadeUp delay={0.1} className="md:col-span-4 mt-0 md:mt-8">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="https://images.pexels.com/photos/3356054/pexels-photo-3356054.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
+                <img src="/images/banner-new.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
               </div>
             </FadeUp>
 
             <FadeUp delay={0.2} className="md:col-span-8 md:row-span-2 mt-0 md:mt-8">
               <div className="aspect-[4/3] md:aspect-auto md:h-full overflow-hidden shadow-md">
-                <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1200" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
+                <img src="/images/home-banner.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
               </div>
             </FadeUp>
             
             <FadeUp delay={0.3} className="md:col-span-4 mt-0 md:mt-8 hidden md:block">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg?auto=compress&cs=tinysrgb&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 6" />
+                <img src="/images/necklace-banner-floral.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 6" />
               </div>
             </FadeUp>
 
@@ -406,7 +406,7 @@ export default function AboutPage() {
       {/* 12. FINAL CTA */}
       <section className="relative py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          <img src="https://images.pexels.com/photos/177332/pexels-photo-177332.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Tarini Collection" className="w-full h-full object-cover" />
+          <img src="/images/banner-collections.png" alt="Tarini Collection" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#F8F5EF]/95 backdrop-blur-[4px]" />
         </div>
         
