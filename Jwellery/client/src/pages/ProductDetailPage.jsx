@@ -77,8 +77,7 @@ export default function ProductDetailPage() {
   } = product;
 
   // Build media gallery supporting video injection
-  
-  // Build media gallery supporting video injection`n  const mediaItems = images.map(img => ({ type: 'image', url: img.url }));
+  const mediaItems = images.map(img => ({ type: 'image', url: img.url }));
 
   if (videoUrl) {
     mediaItems.splice(Math.min(2, mediaItems.length), 0, { type: 'video', url: videoUrl, poster: videoPoster });
