@@ -21,7 +21,7 @@ export default function Footer() {
     <div className="bg-[#FDFBF7]">
       {/* ── TRUST & BENEFITS STRIP ────────────────────────────────────────── */}
       <div className="border-t border-[#EAE6DF]">
-        <div className="container-luxury py-16">
+        <div className="container-luxury pt-16 pb-24 lg:py-16">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-6 text-center">
             
             <div className="flex flex-col items-center">
@@ -69,8 +69,8 @@ export default function Footer() {
       </div>
 
       {/* ── NEWSLETTER SECTION ────────────────────────────────────────────── */}
-      <div className="border-t border-[#EAE6DF]">
-        <div className="container-luxury py-20 lg:py-24 flex flex-col items-center text-center">
+      <div className="border-t border-[#EAE6DF] mt-8 lg:mt-0">
+        <div className="container-luxury pt-20 pb-20 lg:py-24 flex flex-col items-center text-center">
           <h2 className="text-[28px] md:text-[32px] lg:text-[40px] text-[#22181C] font-[500] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Stay Close to TARINI
           </h2>
