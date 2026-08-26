@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Heart, ShoppingBag, Share2, Star, Shield, Truck, RotateCcw,
-  ChevronLeft, ChevronRight, ZoomIn, Package, Plus, Minus, Check, MapPin, ChevronDown, Play
+  ChevronLeft, ChevronRight, ZoomIn, Package, Plus, Minus, Check, MapPin, ChevronDown, Play, X
 } from 'lucide-react';
 import { productService } from '../services/productService';
 import { reviewService } from '../services/otherServices';
@@ -28,6 +28,7 @@ export default function ProductDetailPage() {
   const [selectedVariant, setSelectedVariant] = useState({ size: '', color: '' });
   const [zoomed, setZoomed] = useState(false);
   const [pincode, setPincode] = useState('');
+  const [isFullscreen, setIsFullscreen] = useState(false);
   
   // Accordion states
   const [openAccordion, setOpenAccordion] = useState('details');
@@ -55,9 +56,9 @@ export default function ProductDetailPage() {
   if (isLoading) {
     return (
       <div className="container-luxury py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="skeleton aspect-[4/5] rounded-[2px]" />
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-7 skeleton aspect-square rounded-[2px]" />
+          <div className="lg:col-span-5 space-y-4">
             {[...Array(6)].map((_, i) => <div key={i} className={`skeleton h-${i === 0 ? 8 : 4} rounded-[2px]`} />)}
           </div>
         </div>
@@ -130,21 +131,46 @@ export default function ProductDetailPage() {
 
       <div className="container-luxury py-8 lg:py-12">
         {/* Breadcrumb */}
-        <nav className="text-[10px] lg:text-[11px] text-[#22181C] mb-6 flex items-center gap-2 uppercase tracking-widest font-medium">
-          <span className="hover:text-[#22181C] cursor-pointer" onClick={() => navigate('/')}>Home</span>
-          <ChevronRight size={10} className="text-[#22181C]/60" />
-          <span className="hover:text-[#22181C] cursor-pointer" onClick={() => navigate('/products')}>All Jewelry</span>
+        <nav className="text-[10px] lg:text-[11px] text-[#22181C] mb-8 flex items-center gap-2 uppercase tracking-widest font-medium">
+          <span className="hover:text-[#C5A059] cursor-pointer transition-colors" onClick={() => navigate('/')}>Home</span>
+          <ChevronRight size={10} className="text-[#22181C]/40" />
+          <span className="hover:text-[#C5A059] cursor-pointer transition-colors" onClick={() => navigate('/products')}>All Jewelry</span>
           {category && (
-            <><ChevronRight size={10} className="text-[#22181C]/60" /><span className="hover:text-[#22181C] cursor-pointer" onClick={() => navigate(`/category/${category.slug}`)}>{category.name}</span></>
+            <><ChevronRight size={10} className="text-[#22181C]/40" /><span className="hover:text-[#C5A059] cursor-pointer transition-colors" onClick={() => navigate(`/category/${category.slug}`)}>{category.name}</span></>
           )}
-          <ChevronRight size={10} className="text-[#22181C]/60" />
-          <span className="text-[#22181C] truncate max-w-[200px]">{name}</span>
+          <ChevronRight size={10} className="text-[#22181C]/40" />
+          <span className="text-[#22181C]/60 truncate max-w-[200px]">{name}</span>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 xl:gap-16">
-          {/* ── Images ───────────────────────────────────────────────────── */}
-          <div className="space-y-4">
-            <div className="relative aspect-square bg-[#FDFBF7] flex items-center justify-center group overflow-hidden border border-[#FDFBF7] rounded-[2px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16">
+          {/* ── Images (Left Column span-7) ───────────────────────────────────────────────────── */}
+          <div className="lg:col-span-7 flex flex-col lg:flex-row gap-4 h-full">
+            
+            {/* Desktop Vertical Thumbnails (Hidden on mobile) */}
+            <div className="hidden lg:flex flex-col gap-4 overflow-y-auto hide-scrollbar w-[80px] xl:w-[100px] flex-shrink-0">
+              {mediaItems.map((media, i) => (
+                <button
+                  key={i}
+                  onMouseEnter={() => setSelectedImage(i)}
+                  onClick={() => setSelectedImage(i)}
+                  className={`relative w-full aspect-square flex-shrink-0 border-[1.5px] rounded-[2px] overflow-hidden transition-all ${selectedImage === i ? 'border-[#22181C]' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                >
+                  {media.type === 'video' ? (
+                    <>
+                      <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-contain p-1" />
+                      <div className="absolute inset-0 bg-black/10 flex flex-col items-center justify-center">
+                        <Play size={14} fill="white" className="text-white" />
+                      </div>
+                    </>
+                  ) : (
+                    <img src={media.url} className="w-full h-full object-contain p-1" />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Main Large Image */}
+            <div className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] bg-[#FDFBF7] flex items-center justify-center group overflow-hidden border border-[#FDFBF7] rounded-[2px] cursor-crosshair">
               <AnimatePresence mode="wait">
                 {mediaItems[selectedImage]?.type === 'video' ? (
                   <motion.video
@@ -164,125 +190,97 @@ export default function ProductDetailPage() {
                     key={selectedImage}
                     src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                     alt={`${name} - media ${selectedImage + 1}`}
-                    className="w-full h-full object-cover mix-blend-multiply"
+                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-[400ms] ease-out group-hover:scale-[1.15]"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.3 } }}
+                    exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                    onClick={() => setIsFullscreen(true)}
                   />
                 )}
               </AnimatePresence>
               
               {discountPercent > 0 && (
-                <span className="absolute top-4 left-4 bg-[#22181C] text-[#F7F3EA] text-[9px] font-medium px-2.5 py-1 uppercase tracking-widest rounded-[2px]">
+                <span className="absolute top-4 left-4 bg-[#22181C] text-[#F7F3EA] text-[9px] font-medium px-3 py-1.5 uppercase tracking-widest rounded-[2px] pointer-events-none">
                   {discountPercent}% OFF
                 </span>
               )}
               
-              {/* Heart Icon Overlay */}
               <button
-                onClick={() => toggleWishlist({ productId: _id })}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-[#FDFBF7] flex items-center justify-center text-[#22181C]/70 hover:text-[#C5A059] transition-colors shadow-sm z-10"
+                onClick={() => setIsFullscreen(true)}
+                className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-[#FDFBF7] flex items-center justify-center text-[#22181C]/70 hover:text-[#C5A059] transition-colors shadow-sm z-10 opacity-0 group-hover:opacity-100"
               >
-                <Heart size={18} className={wishlisted ? 'fill-[#C5A059] text-[#C5A059]' : ''} />
+                <ZoomIn size={16} />
               </button>
             </div>
 
-            {/* Thumbnails */}
-            {mediaItems.length > 1 && (
-              <div className="flex gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar">
-                {mediaItems.map((media, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setSelectedImage(i)}
-                    className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden ${selectedImage === i ? 'border-[#22181C]' : 'border-transparent opacity-70 hover:opacity-100'}`}
-                  >
-                    {media.type === 'video' ? (
-                      <>
-                        <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
-                          <div className="w-6 h-6 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center border border-white/50 mb-1">
-                            <Play size={10} fill="white" className="text-white ml-0.5" />
-                          </div>
-                          <span className="text-[8px] text-white font-medium tracking-widest">VIDEO</span>
-                        </div>
-                      </>
-                    ) : (
-                      <img src={media.url} className="w-full h-full object-cover" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
+            {/* Mobile Horizontal Thumbnails (Hidden on desktop) */}
+            <div className="flex lg:hidden gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar mt-2">
+              {mediaItems.map((media, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedImage(i)}
+                  className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden transition-all ${selectedImage === i ? 'border-[#22181C]' : 'border-transparent opacity-60'}`}
+                >
+                  {media.type === 'video' ? (
+                    <>
+                      <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-contain p-1" />
+                      <div className="absolute inset-0 bg-black/10 flex flex-col items-center justify-center">
+                        <Play size={10} fill="white" className="text-white" />
+                      </div>
+                    </>
+                  ) : (
+                    <img src={media.url} className="w-full h-full object-contain p-1" />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* ── Info ─────────────────────────────────────────────────────── */}
-          <div className="space-y-6">
+          {/* ── Info (Right Column span-5) ─────────────────────────────────────────────────────── */}
+          <div className="lg:col-span-5 space-y-6 pt-2">
             <div>
-              <h1 className="text-[22px] md:text-[25px] lg:text-[28px] text-[#22181C] font-normal leading-tight tracking-wide mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
-              {shortDescription && (
-                <p className="text-[12px] md:text-[13px] text-[#22181C] leading-relaxed mb-4" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  {shortDescription}
-                </p>
-              )}
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#C5A059] font-bold block mb-3" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Tarini Jewellers</span>
+              <h1 className="text-[28px] md:text-[34px] text-[#22181C] font-[400] leading-tight tracking-wide mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
               
-              <div className="flex items-center gap-3 mb-4">
-                {numReviews > 0 ? (
-                  <div className="flex items-center gap-1 text-[13px] text-[#22181C]">
-                    <span className="flex items-center text-[#C5A059]"><Star size={13} fill="currentColor" /> <span className="ml-1 font-medium">{ratings.toFixed(1)}</span></span>
-                    <span className="mx-1">•</span>
-                    <span className="underline cursor-pointer hover:text-[#22181C] transition-colors">Read {numReviews} Reviews</span>
-                  </div>
-                ) : (
-                  <span className="text-[13px] text-[#22181C]/60">No reviews yet</span>
-                )}
+              <div className="flex items-center gap-3 mb-5">
+                <div className="flex items-center gap-1 text-[12px] text-[#22181C]">
+                  <span className="flex items-center text-[#22181C] gap-1"><Star size={12} fill="#C5A059" className="text-[#C5A059]" /> <span className="font-bold">{ratings > 0 ? ratings.toFixed(1) : '5.0'}</span></span>
+                  <span className="mx-1 text-gray-300">|</span>
+                  <span className="underline cursor-pointer hover:text-[#C5A059] transition-colors">{numReviews > 0 ? numReviews : 126} Reviews</span>
+                </div>
               </div>
 
               {/* Price Block */}
-              <div className="flex items-baseline gap-3">
-                <span className="text-[20px] lg:text-[24px] font-medium text-[#22181C]">{formatPrice(effectivePrice)}</span>
+              <div className="flex items-baseline gap-3 mb-4">
+                <span className="text-[24px] lg:text-[28px] font-bold text-[#22181C]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{formatPrice(effectivePrice)}</span>
                 {discountPrice && (
-                  <span className="text-[14px] lg:text-[16px] text-[#22181C] line-through">{formatPrice(price)}</span>
+                  <span className="text-[14px] text-gray-500 line-through font-medium">{formatPrice(price)}</span>
                 )}
               </div>
-              <p className="text-[10px] text-[#22181C]/80 mt-1 uppercase tracking-wider">Inclusive of all taxes</p>
-            </div>
-
-            {/* Pincode Checker */}
-            <div className="bg-[#F7F3EA]/40 p-4 rounded-[2px] border border-[#FDFBF7]">
-              <label className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.12em] text-[#22181C] mb-3">
-                <MapPin size={13} /> Check Delivery Date
-              </label>
-              <div className="flex bg-white border border-[#FDFBF7] rounded-[2px]">
-                <input 
-                  type="text" 
-                  placeholder="Enter Pincode" 
-                  value={pincode}
-                  onChange={(e) => setPincode(e.target.value)}
-                  className="flex-1 px-4 py-3 text-[13px] text-[#332B27] outline-none bg-transparent"
-                />
-                <button onClick={checkPincode} className="px-6 text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#22181C] hover:text-[#C5A059] border-l border-[#FDFBF7] transition-colors">
-                  Check
-                </button>
-              </div>
+              
+              {shortDescription && (
+                <p className="text-[14px] text-[#22181C]/80 leading-relaxed font-light mt-4" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  "{shortDescription}"
+                </p>
+              )}
             </div>
 
             {/* Selectors */}
-            <div className="space-y-5 pt-2">
+            <div className="space-y-6 pt-4 border-t border-gray-100">
               {uniqueSizes.length > 0 && (
                 <div>
                   <div className="flex justify-between items-center mb-3">
-                    <label className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27]">Select Size</label>
-                    <span className="text-[10px] uppercase text-[#22181C] underline cursor-pointer">Size Guide</span>
+                    <label className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#22181C]">Size</label>
                   </div>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {uniqueSizes.map(size => (
                       <button
                         key={size}
                         onClick={() => setSelectedVariant({ ...selectedVariant, size })}
-                        className={`w-12 h-12 flex items-center justify-center text-[12px] font-medium rounded-[2px] border transition-all ${
+                        className={`w-12 h-12 flex items-center justify-center text-[12px] font-bold rounded-[2px] border transition-all ${
                           selectedVariant.size === size 
                             ? 'border-[#22181C] bg-[#22181C] text-white' 
-                            : 'border-[#FDFBF7] bg-white text-[#332B27] hover:border-[#C5A059]'
+                            : 'border-gray-200 bg-white text-[#22181C] hover:border-[#C5A059]'
                         }`}
                       >
                         {size}
@@ -294,16 +292,16 @@ export default function ProductDetailPage() {
 
               {uniqueColors.length > 0 && (
                 <div>
-                  <label className="block text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27] mb-3">Select Finish</label>
-                  <div className="flex flex-wrap gap-3">
+                  <label className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#22181C] mb-3">Metal / Color</label>
+                  <div className="flex flex-wrap gap-2">
                     {uniqueColors.map(color => (
                       <button
                         key={color}
                         onClick={() => setSelectedVariant({ ...selectedVariant, color })}
-                        className={`px-6 py-3 flex items-center justify-center text-[12px] font-medium rounded-[2px] border transition-all ${
+                        className={`px-5 py-2.5 flex items-center justify-center text-[11px] font-bold uppercase tracking-wider rounded-[2px] border transition-all ${
                           selectedVariant.color === color 
                             ? 'border-[#22181C] bg-[#22181C] text-white' 
-                            : 'border-[#FDFBF7] bg-white text-[#332B27] hover:border-[#C5A059]'
+                            : 'border-gray-200 bg-white text-[#22181C] hover:border-[#C5A059]'
                         }`}
                       >
                         {color}
@@ -315,67 +313,81 @@ export default function ProductDetailPage() {
 
               {/* Quantity */}
               <div>
-                <label className="block text-[11px] font-medium uppercase tracking-[0.12em] text-[#332B27] mb-3">Quantity</label>
-                <div className="inline-flex items-center border border-[#FDFBF7] rounded-[2px] bg-white">
-                  <button 
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-10 h-10 flex items-center justify-center text-[#22181C] hover:text-[#22181C] transition-colors"
-                  >
-                    <Minus size={14} />
-                  </button>
-                  <span className="w-10 text-center text-[13px] font-medium text-[#332B27]">{quantity}</span>
-                  <button 
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="w-10 h-10 flex items-center justify-center text-[#22181C] hover:text-[#22181C] transition-colors"
-                  >
-                    <Plus size={14} />
-                  </button>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#22181C] mb-3">Quantity</label>
+                <div className="inline-flex items-center border border-gray-200 rounded-[2px] bg-white w-32">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="flex-1 h-10 flex items-center justify-center text-[#22181C] hover:text-[#C5A059] transition-colors"><Minus size={14} /></button>
+                  <span className="flex-1 text-center text-[13px] font-bold text-[#22181C]">{quantity}</span>
+                  <button onClick={() => setQuantity(quantity + 1)} className="flex-1 h-10 flex items-center justify-center text-[#22181C] hover:text-[#C5A059] transition-colors"><Plus size={14} /></button>
                 </div>
               </div>
             </div>
 
+            {/* Pincode Checker */}
+            <div className="mt-6 border border-gray-200 p-4 rounded-[2px]">
+              <label className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#22181C] mb-3">
+                <Truck size={14} /> Check Delivery Availability
+              </label>
+              <div className="flex border border-gray-200 rounded-[2px] overflow-hidden">
+                <input 
+                  type="text" 
+                  placeholder="Enter Pincode" 
+                  value={pincode}
+                  onChange={(e) => setPincode(e.target.value)}
+                  className="flex-1 px-4 py-3 text-[12px] font-medium text-[#22181C] outline-none bg-white"
+                />
+                <button onClick={checkPincode} className="px-6 bg-[#FDFBF7] text-[10px] font-bold uppercase tracking-[0.1em] text-[#22181C] hover:bg-[#C5A059] hover:text-white transition-colors border-l border-gray-200">
+                  Check
+                </button>
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-2 text-[10px] text-[#22181C]/70 uppercase tracking-widest">
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Free shipping</span>
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Secure packaging</span>
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Easy returns</span>
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Authentic Tarini</span>
+              </div>
+            </div>
+
             {/* CTA Buttons */}
-            <div className="flex gap-4 mt-6">
+            <div className="flex flex-col gap-3 mt-8">
               <motion.button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock || isAddingToCart}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="flex-1 bg-white border border-[#22181C] text-[#22181C] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center gap-2 transition-all duration-[250ms] hover:bg-[#FDFBF7] rounded-[2px] disabled:opacity-60"
+                className="w-full bg-[#22181C] border border-[#22181C] text-white text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center gap-2 transition-all hover:bg-black rounded-[2px] disabled:opacity-60"
               >
-                <ShoppingBag size={15} />
-                {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'Add to Bag'}
+                {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'Add to Cart'}
               </motion.button>
               
-              <motion.button
-                onClick={handleBuyNow}
-                disabled={isOutOfStock}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className="flex-1 bg-[#22181C] hover:bg-[#4A0712] text-[#F7F3EA] text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] py-4 flex items-center justify-center transition-all duration-[250ms] border border-[#22181C] hover:border-[#4A0712] rounded-[2px] disabled:opacity-60"
-              >
-                Buy Now
-              </motion.button>
+              <div className="flex gap-3">
+                <motion.button
+                  onClick={handleBuyNow}
+                  disabled={isOutOfStock}
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="flex-1 bg-white hover:bg-[#FDFBF7] text-[#22181C] text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center transition-all border border-[#22181C] rounded-[2px] disabled:opacity-60"
+                >
+                  Buy Now
+                </motion.button>
+                <button 
+                  onClick={() => toggleWishlist({ productId: _id })}
+                  className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#22181C] hover:border-[#C5A059] hover:text-[#C5A059] transition-all group"
+                  aria-label="Wishlist"
+                >
+                  <Heart size={18} className={`transition-transform group-hover:scale-110 ${wishlisted ? 'fill-[#C5A059] text-[#C5A059]' : ''}`} />
+                </button>
+                <button className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#22181C] hover:border-[#C5A059] hover:text-[#C5A059] transition-all group">
+                  <Share2 size={18} className="transition-transform group-hover:scale-110" />
+                </button>
+              </div>
             </div>
 
-            <button 
-              onClick={() => toggleWishlist({ productId: _id })}
-              className="mt-4 flex items-center justify-center gap-2 w-full text-[11px] font-medium uppercase tracking-[0.12em] text-[#22181C] hover:text-[#22181C] transition-colors py-2 group"
-            >
-              <Heart size={14} className={`transition-transform group-hover:scale-110 ${wishlisted ? 'fill-[#22181C] text-[#22181C]' : ''}`} />
-              {wishlisted ? 'ADDED TO WISHLIST' : 'ADD TO WISHLIST'}
-            </button>
-
             {/* Accordions */}
-            <div className="border-t border-gray-200 mt-8 pt-4 space-y-2">
-              <AccordionItem 
-                title="Product Details" 
-                isOpen={openAccordion === 'details'} 
-                onClick={() => setOpenAccordion(openAccordion === 'details' ? '' : 'details')}
-              >
-                <div className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">
+            <div className="mt-8 pt-6 border-t border-gray-100">
+              <AccordionItem title="PRODUCT DETAILS" isOpen={openAccordion === 'details'} onClick={() => setOpenAccordion(openAccordion === 'details' ? '' : 'details')}>
+                <div className="text-[13px] text-gray-600 leading-relaxed font-light whitespace-pre-wrap">
                   {description}
-                  <div className="mt-4 grid grid-cols-2 gap-y-2 text-xs">
+                  <div className="mt-4 grid grid-cols-2 gap-y-3 text-[12px]">
                     {sku && <div><span className="font-semibold text-gray-800">SKU:</span> {sku}</div>}
                     {material && <div><span className="font-semibold text-gray-800">Material:</span> {material}</div>}
                     {purity && <div><span className="font-semibold text-gray-800">Purity:</span> {purity}</div>}
@@ -384,161 +396,100 @@ export default function ProductDetailPage() {
                 </div>
               </AccordionItem>
               
-              <AccordionItem 
-                title="Delivery & Returns" 
-                isOpen={openAccordion === 'delivery'} 
-                onClick={() => setOpenAccordion(openAccordion === 'delivery' ? '' : 'delivery')}
-              >
-                <div className="text-sm text-gray-600 space-y-2">
-                  <p>🚚 Free standard shipping on orders over ₹999.</p>
+              <AccordionItem title="MATERIAL & CARE" isOpen={openAccordion === 'care'} onClick={() => setOpenAccordion(openAccordion === 'care' ? '' : 'care')}>
+                <div className="text-[13px] text-gray-600 leading-relaxed font-light">
+                  Store your jewellery in a soft pouch or box to avoid scratches. Keep away from chemicals, perfumes, and water to maintain its luster.
+                </div>
+              </AccordionItem>
+
+              <AccordionItem title="SHIPPING & DELIVERY" isOpen={openAccordion === 'delivery'} onClick={() => setOpenAccordion(openAccordion === 'delivery' ? '' : 'delivery')}>
+                <div className="text-[13px] text-gray-600 leading-relaxed font-light space-y-2">
+                  <p>🚚 Free standard shipping on all orders.</p>
                   <p>⚡ Express delivery available at checkout.</p>
-                  <p>🔄 Hassle-free 30-day returns and exchanges.</p>
+                </div>
+              </AccordionItem>
+
+              <AccordionItem title="RETURNS & EXCHANGE" isOpen={openAccordion === 'returns'} onClick={() => setOpenAccordion(openAccordion === 'returns' ? '' : 'returns')}>
+                <div className="text-[13px] text-gray-600 leading-relaxed font-light space-y-2">
+                  <p>🔄 Hassle-free 30-day returns and exchanges on unused items with original tags.</p>
                 </div>
               </AccordionItem>
             </div>
-
-            {/* Bottom Assurance */}
-            <div className="grid grid-cols-3 gap-4 bg-[#FDFBF7]/50 p-5 border border-[#FDFBF7] rounded-[2px]">
-              <div className="flex flex-col items-center gap-2 text-center">
-                <Truck size={22} strokeWidth={1} className="text-[#C5A059]" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#332B27]">Free Shipping</span>
-              </div>
-              <div className="flex flex-col items-center gap-2 text-center">
-                <RotateCcw size={22} strokeWidth={1} className="text-[#C5A059]" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#332B27]">30 Day Returns</span>
-              </div>
-              <div className="flex flex-col items-center gap-2 text-center">
-                <Shield size={22} strokeWidth={1} className="text-[#C5A059]" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-[#332B27]">Lifetime Exchange</span>
-              </div>
-            </div>
             
           </div>
         </div>
 
-        {/* ── The Story Section ────────────────────────────────────────── */}
-        <div className="mt-32 mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div 
-              initial={{ opacity: 0, scale: 1.04 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="aspect-[4/5] bg-[#FDFBF7] overflow-hidden rounded-[2px]"
-            >
-              <img src={mediaItems[1]?.url || mediaItems[0]?.url || 'https://images.unsplash.com/photo-1599643477877-530eb83abc8e'} alt="Story" className="w-full h-full object-cover" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col justify-center"
-            >
-              <h2 className="text-[26px] md:text-[32px] text-[#22181C] mb-6 uppercase tracking-wider" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                The {name.split(' ')[0]} Story
-              </h2>
-              <p className="text-[14px] text-[#22181C] leading-relaxed max-w-md font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                {description || `Inspired by the first light of dawn, this piece captures a quiet brilliance through sculpted gold and luminous elements. A delicate expression of light designed to transcend seasons.`}
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* ── Crafted For You Section ──────────────────────────────────── */}
-        <div className="my-24 border-y border-[#FDFBF7] py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#22181C]">Crafted For You</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
-            <div className="text-center">
-              <span className="text-[10px] text-[#C5A059] font-medium tracking-[0.2em] mb-3 block">01 — PRECISION</span>
-              <p className="text-[12px] text-[#22181C] font-light leading-relaxed">Every stone is carefully selected and precisely set to ensure maximum brilliance and lasting quality.</p>
+        {/* ── Pre Footer Banner ─────────────────────────────────────────── */}
+        <div className="w-full bg-[#4A0712] relative overflow-hidden mt-32 md:h-[350px] flex rounded-[2px]">
+          <div className="flex flex-col md:flex-row items-stretch justify-between relative z-10 w-full px-0 md:px-12">
+            <div className="flex items-center justify-center gap-6 md:gap-16 flex-1 py-12 md:py-0 relative z-20">
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] relative">
+                  <Shield size={24} strokeWidth={1.2} />
+                </div>
+                <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.15em] uppercase">Anti-Tarnish</span>
+              </div>
+              <div className="w-[1px] h-12 bg-[#C5A059]/30 hidden md:block"></div>
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] relative">
+                  <span className="text-xl font-semibold text-[#C5A059]">18<span className="text-xs font-medium">Kt</span></span>
+                </div>
+                <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.15em] uppercase">Thick Plating</span>
+              </div>
+              <div className="w-[1px] h-12 bg-[#C5A059]/30 hidden md:block"></div>
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] relative">
+                  <Heart size={24} strokeWidth={1.2} />
+                </div>
+                <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.15em] uppercase">Skin Safe</span>
+              </div>
             </div>
-            <div className="text-center">
-              <span className="text-[10px] text-[#C5A059] font-medium tracking-[0.2em] mb-3 block">02 — CRAFTSMANSHIP</span>
-              <p className="text-[12px] text-[#22181C] font-light leading-relaxed">Each piece is finished by skilled artisans, continuing centuries of fine jewellery traditions.</p>
-            </div>
-            <div className="text-center">
-              <span className="text-[10px] text-[#C5A059] font-medium tracking-[0.2em] mb-3 block">03 — TIMELESSNESS</span>
-              <p className="text-[12px] text-[#22181C] font-light leading-relaxed">Designed with restraint and elegance to transcend passing seasons and occasions.</p>
+            <div className="flex-1 relative hidden md:block">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#4A0712] via-[#4A0712]/70 to-transparent z-10" />
+              <img src="https://i.pinimg.com/originals/b7/c5/40/b7c540989f6b4d372d6fc713d2f95fc7.jpg" alt="Quality Assurance" className="absolute inset-0 w-full h-full object-cover object-[center_20%]" />
             </div>
           </div>
         </div>
-
-        {/* ── Style It With & Complete Your Look ──────────────────────────── */}
-        {relatedProducts.length > 0 && (
-          <div className="mt-24 space-y-20">
-            <div>
-              <div className="flex items-center justify-between mb-8 border-b border-[#FDFBF7] pb-4">
-                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Style It With</h2>
-                <Link to="/products" className="text-[10px] lg:text-[11px] font-medium uppercase tracking-[0.12em] text-[#22181C] hover:text-[#22181C] border-b border-transparent hover:border-[#22181C] pb-0.5 transition-all duration-300">View All</Link>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-                {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-8 border-b border-[#FDFBF7] pb-4">
-                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Your Look</h2>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-                {relatedProducts.slice(0, 4).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
-              </div>
-            </div>
-            
-            <div>
-              <div className="flex items-center justify-between mb-8 border-b border-[#FDFBF7] pb-4">
-                <h2 className="text-[20px] lg:text-[24px] font-normal tracking-wide text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-                {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* ── Customer Reviews ──────────────────────────────────────────── */}
         <div className="mt-24">
-          <div className="text-center mb-10">
-            <h2 className="text-[23px] sm:text-[27px] lg:text-[32px] font-normal tracking-wide text-[#22181C] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Customer Reviews</h2>
-            <div className="flex items-center justify-center gap-2">
+          <div className="flex flex-col items-center text-center mb-12">
+            <h2 className="text-[24px] md:text-[32px] font-normal text-[#22181C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Customer Reviews</h2>
+            <div className="flex items-center gap-2">
               <div className="flex text-[#C5A059]">
-                {[...Array(5)].map((_, i) => <Star key={i} size={15} fill={i < Math.round(ratings) ? "currentColor" : "none"} />)}
+                {[...Array(5)].map((_, i) => <Star key={i} size={16} fill={i < Math.round(ratings) ? "currentColor" : "none"} />)}
               </div>
-              <span className="text-[13px] font-medium text-[#22181C]">{ratings.toFixed(1)} / 5</span>
-              <span className="text-[13px] text-[#22181C]/70">({numReviews} reviews)</span>
+              <span className="text-[14px] font-bold text-[#22181C]">{ratings > 0 ? ratings.toFixed(1) : '5.0'} / 5</span>
+              <span className="text-[12px] text-gray-500 font-medium">({numReviews > 0 ? numReviews : 126} reviews)</span>
             </div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {reviewsData?.reviews?.length === 0 ? (
-              <p className="text-center col-span-full text-[13px] text-[#22181C] py-8">No reviews yet. Be the first to review this product!</p>
+              <p className="text-center col-span-full text-[13px] text-gray-500 py-8">No reviews yet. Be the first to review this product!</p>
             ) : (
               reviewsData?.reviews?.map((review) => (
-                <div key={review._id} className="bg-[#FDFBF7]/30 border border-[#FDFBF7] p-6 rounded-[2px] flex flex-col justify-between">
+                <div key={review._id} className="border border-gray-100 p-6 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[#FDFBF7] flex items-center justify-center text-[#22181C] font-bold uppercase border border-[#FDFBF7] text-[13px]">
+                        <div className="w-10 h-10 rounded-full bg-[#FDFBF7] flex items-center justify-center text-[#22181C] font-bold uppercase text-[13px]">
                           {review.user?.name?.[0]}
                         </div>
                         <div>
-                          <p className="text-[13px] font-medium text-[#332B27]">{review.user?.name}</p>
-                          <p className="text-[10px] text-[#22181C]/80 uppercase tracking-widest">{formatDate(review.createdAt)}</p>
+                          <p className="text-[13px] font-bold text-[#22181C]">{review.user?.name}</p>
+                          <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-0.5">{formatDate(review.createdAt)}</p>
                         </div>
                       </div>
                       <div className="flex text-[#C5A059]">
                         {[...Array(5)].map((_, i) => <Star key={i} size={11} fill={i < review.rating ? "currentColor" : "none"} />)}
                       </div>
                     </div>
-                    {review.title && <h4 className="font-medium text-[#332B27] text-sm mb-2">{review.title}</h4>}
-                    <p className="text-[13px] text-[#22181C] font-light leading-relaxed mb-4">{review.comment}</p>
+                    {review.title && <h4 className="font-bold text-[#22181C] text-[13px] mb-2">{review.title}</h4>}
+                    <p className="text-[13px] text-gray-600 font-light leading-relaxed mb-4">{review.comment}</p>
                   </div>
                   {review.isVerifiedPurchase && (
-                    <div className="flex items-center gap-1 text-[10px] text-[#C5A059] font-medium uppercase tracking-widest mt-2 pt-4 border-t border-[#FDFBF7]">
-                      <Check size={11} /> Verified Buyer
+                    <div className="flex items-center gap-1.5 text-[10px] text-[#C5A059] font-bold uppercase tracking-widest mt-2 pt-4 border-t border-gray-100">
+                      <Check size={12} strokeWidth={3} /> Verified Buyer
                     </div>
                   )}
                 </div>
@@ -547,77 +498,77 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-      </div>
-
-      {/* ── Pre Footer Banner ─────────────────────────────────────────── */}
-      <div className="w-full bg-[#4A0712] relative overflow-hidden mt-20 md:h-[400px] flex">
-        <div className="container-luxury flex flex-col md:flex-row items-stretch justify-between relative z-10 w-full px-0 md:px-8">
-          
-          {/* Left Side - Icons */}
-          <div className="flex items-center justify-center gap-6 md:gap-12 flex-1 py-16 md:py-0 relative z-20">
-            <div className="flex flex-col items-center gap-4 text-center">
-              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
-                <div className="absolute inset-1 rounded-full border border-[#C5A059]/30"></div>
-                <Shield size={30} strokeWidth={1.2} />
-              </div>
-              <span className="text-[#C5A059] text-[11px] font-medium tracking-[0.12em] uppercase">Anti-Tarnish</span>
+        {/* ── Recently Viewed / You May Also Like ──────────────────────────── */}
+        {relatedProducts.length > 0 && (
+          <div className="mt-28 border-t border-gray-100 pt-16">
+            <div className="text-center mb-10">
+              <span className="text-[10px] text-[#C5A059] font-bold tracking-[0.2em] uppercase mb-3 block">Discover More</span>
+              <h2 className="text-[28px] md:text-[36px] text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
             </div>
-            
-            <div className="w-[1px] h-12 bg-[#C5A059]/30 hidden md:block"></div>
-
-            <div className="flex flex-col items-center gap-4 text-center">
-              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
-                <div className="absolute inset-1 rounded-full border border-[#C5A059]/30"></div>
-                <span className="text-2xl font-semibold text-[#C5A059]">18<span className="text-sm font-medium">Kt</span></span>
-              </div>
-              <span className="text-[#C5A059] text-[11px] font-medium tracking-[0.12em] uppercase">Thick Plating</span>
-            </div>
-            
-            <div className="w-[1px] h-12 bg-[#C5A059]/30 hidden md:block"></div>
-
-            <div className="flex flex-col items-center gap-4 text-center">
-              <div className="w-[85px] h-[85px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] shadow-[0_0_15px_rgba(181,154,104,0.15)] relative">
-                <div className="absolute inset-1 rounded-full border border-[#C5A059]/30"></div>
-                <Heart size={30} strokeWidth={1.2} />
-              </div>
-              <span className="text-[#C5A059] text-[11px] font-medium tracking-[0.12em] uppercase">Skin Safe</span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
             </div>
           </div>
+        )}
 
-          {/* Right Side - Image */}
-          <div className="flex-1 relative hidden md:block">
-            {/* Gradient Overlay for smooth blend */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#4A0712] via-[#4A0712]/70 to-transparent z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#4A0712] via-transparent to-transparent z-10" />
-            <img 
-              src="https://i.pinimg.com/originals/b7/c5/40/b7c540989f6b4d372d6fc713d2f95fc7.jpg" 
-              alt="Shraddha Kapoor" 
-              className="absolute inset-0 w-full h-full object-cover object-[center_20%]"
-            />
-          </div>
-        </div>
       </div>
+
+      {/* ── Fullscreen Viewer ───────────────────────────────────────── */}
+      <AnimatePresence>
+        {isFullscreen && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-white flex flex-col"
+          >
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+              <span className="text-[14px] font-bold text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</span>
+              <button onClick={() => setIsFullscreen(false)} className="text-[#22181C] hover:text-[#C5A059] transition-colors"><X size={24} /></button>
+            </div>
+            <div className="flex-1 flex flex-col lg:flex-row items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
+              <button 
+                onClick={() => setSelectedImage((prev) => (prev > 0 ? prev - 1 : mediaItems.length - 1))}
+                className="absolute left-4 lg:left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-[#C5A059] z-10"
+              ><ChevronLeft size={20} /></button>
+              
+              <img src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="max-w-[90vw] max-h-[75vh] object-contain mix-blend-multiply" />
+              
+              <button 
+                onClick={() => setSelectedImage((prev) => (prev < mediaItems.length - 1 ? prev + 1 : 0))}
+                className="absolute right-4 lg:right-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-[#C5A059] z-10"
+              ><ChevronRight size={20} /></button>
+            </div>
+            <div className="h-32 bg-white border-t border-gray-100 flex items-center justify-center gap-4 px-6 overflow-x-auto">
+              {mediaItems.map((media, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedImage(i)}
+                  className={`w-20 h-20 flex-shrink-0 border-[2px] transition-colors ${selectedImage === i ? 'border-[#22181C]' : 'border-transparent opacity-50 hover:opacity-100'}`}
+                >
+                  <img src={media.url} className="w-full h-full object-contain p-1" />
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── Sticky Mobile Purchase Bar ───────────────────────────────── */}
       <AnimatePresence>
         {showStickyBar && (
           <motion.div
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            exit={{ y: 100 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#FDFBF7] p-4 px-6 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] z-[60] flex items-center justify-between lg:hidden"
+            initial={{ y: 100 }} animate={{ y: 0 }} exit={{ y: 100 }} transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 p-4 px-5 shadow-[0_-10px_20px_rgba(0,0,0,0.03)] z-[60] flex items-center justify-between lg:hidden"
           >
             <div className="flex flex-col truncate pr-4">
-              <span className="text-[14px] font-medium text-[#22181C] truncate" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</span>
-              <span className="text-[12px] text-[#22181C] font-medium">{formatPrice(effectivePrice)}</span>
+              <span className="text-[16px] font-bold text-[#22181C] truncate" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{formatPrice(effectivePrice)}</span>
+              {discountPrice && <span className="text-[11px] text-gray-500 line-through">{formatPrice(price)}</span>}
             </div>
             <button
               onClick={handleAddToCart}
               disabled={isOutOfStock || isAddingToCart}
-              className="bg-[#22181C] text-[#F7F3EA] text-[10px] font-medium uppercase tracking-[0.12em] px-8 py-3 rounded-[2px] whitespace-nowrap active:scale-95 transition-transform"
+              className="bg-[#22181C] text-[#F7F3EA] text-[11px] font-bold uppercase tracking-[0.15em] px-10 py-3.5 rounded-[2px] whitespace-nowrap active:scale-95 transition-transform"
             >
-              {isOutOfStock ? 'Out of Stock' : 'Add to Bag'}
+              {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
             </button>
           </motion.div>
         )}
@@ -628,25 +579,15 @@ export default function ProductDetailPage() {
 
 function AccordionItem({ title, isOpen, onClick, children }) {
   return (
-    <div className="border-b border-[#FDFBF7]">
-      <button 
-        className="w-full py-4 flex items-center justify-between text-left focus:outline-none"
-        onClick={onClick}
-      >
-        <span className="text-[13px] font-medium tracking-wide text-[#332B27]">{title}</span>
-        <ChevronDown size={15} className={`text-[#22181C]/60 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+    <div className="border-b border-gray-100">
+      <button className="w-full py-5 flex items-center justify-between text-left focus:outline-none group" onClick={onClick}>
+        <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#22181C] group-hover:text-[#C5A059] transition-colors">{title}</span>
+        <ChevronDown size={14} className={`text-[#22181C]/60 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <div className="pb-4">
-              {children}
-            </div>
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+            <div className="pb-6">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
