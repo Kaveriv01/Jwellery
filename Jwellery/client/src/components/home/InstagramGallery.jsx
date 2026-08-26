@@ -26,7 +26,7 @@ export default function InstagramGallery() {
         className="text-center mb-12"
       >
         <p className="text-[#C5A059] text-[10px] tracking-widest uppercase mb-3 font-medium">Follow Our Journey</p>
-        <h2 className="text-3xl lg:text-4xl text-[#22181C] font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <h2 className="text-3xl lg:text-4xl text-[#1F1517] font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           @tarinijewellers
         </h2>
       </motion.div>
@@ -50,7 +50,7 @@ export default function InstagramGallery() {
                 alt="Instagram post"
                 className="w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 bg-[#22181C]/0 group-hover:bg-[#22181C]/30 transition-colors duration-[400ms] flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#1F1517]/0 group-hover:bg-[#1F1517]/30 transition-colors duration-[400ms] flex items-center justify-center">
                 <InstagramIcon size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out translate-y-2 group-hover:translate-y-0" />
               </div>
             </a>

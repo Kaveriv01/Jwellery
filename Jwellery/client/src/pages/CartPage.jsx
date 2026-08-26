@@ -37,11 +37,11 @@ export default function CartPage() {
     return (
       <div className="container-luxury py-24 text-center max-w-md mx-auto">
         <ShoppingBag size={48} strokeWidth={1} className="text-[#C5A059]/40 mx-auto mb-5" />
-        <h1 className="text-[24px] sm:text-[28px] text-[#22181C] font-normal mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Your cart is empty</h1>
-        <p className="text-[#22181C] text-[14px] font-light mb-8">Add some beautiful jewelry to get started.</p>
+        <h1 className="text-[24px] sm:text-[28px] text-[#1F1517] font-normal mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Your cart is empty</h1>
+        <p className="text-[#1F1517] text-[14px] font-light mb-8">Add some beautiful jewelry to get started.</p>
         <button
           onClick={() => navigate('/products')}
-          className="bg-[#22181C] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] px-8 py-3.5 transition-all duration-[250ms] border-b-2 border-transparent hover:border-[#C5A059] rounded-[2px]"
+          className="bg-[#1F1517] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] px-8 py-3.5 transition-all duration-[250ms] border-b-2 border-transparent hover:border-[#C5A059] rounded-[2px]"
         >
           Continue Shopping
         </button>
@@ -53,7 +53,7 @@ export default function CartPage() {
     <>
       <Helmet><title>Cart — Tarini Jewellers</title></Helmet>
       <div className="container-luxury py-12">
-        <h1 className="text-[26px] sm:text-[30px] text-[#22181C] mb-8 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Shopping Cart</h1>
+        <h1 className="text-[26px] sm:text-[30px] text-[#1F1517] mb-8 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Shopping Cart</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Items */}
@@ -66,39 +66,39 @@ export default function CartPage() {
           {/* Summary */}
           <div className="lg:col-span-1">
             <div className="bg-[#FDFBF7]/30 border border-[#FDFBF7] rounded-[2px] p-6 sticky top-24 space-y-4">
-              <h2 className="text-[18px] text-[#22181C] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Order Summary</h2>
+              <h2 className="text-[18px] text-[#1F1517] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Order Summary</h2>
 
               {/* Coupon */}
               {cart.coupon?.code ? (
                 <div className="flex items-center justify-between bg-[#FDFBF7] border border-[#C5A059]/30 rounded-[2px] p-3">
-                  <div className="flex items-center gap-2 text-xs text-[#22181C]">
+                  <div className="flex items-center gap-2 text-xs text-[#1F1517]">
                     <Tag size={12} />
                     <span className="font-medium">{cart.coupon.code}</span>
-                    <span className="text-[#22181C]">(-{formatPrice(cart.coupon.discountAmount)})</span>
+                    <span className="text-[#1F1517]">(-{formatPrice(cart.coupon.discountAmount)})</span>
                   </div>
                   <button onClick={removeCoupon}><X size={12} className="text-red-400 hover:text-red-600" /></button>
                 </div>
               ) : (
                 <div className="flex gap-2">
                   <input type="text" placeholder="Coupon code" value={couponInput} onChange={(e) => setCouponInput(e.target.value.toUpperCase())} className="input-gold flex-1 py-2 text-[13px] bg-transparent rounded-[2px]" />
-                  <button onClick={handleApplyCoupon} disabled={couponLoading} className="px-4 py-2 text-[10px] uppercase tracking-wider font-semibold border border-[#FDFBF7] rounded-[2px] bg-white text-[#22181C] hover:bg-[#FDFBF7] transition-colors whitespace-nowrap">
+                  <button onClick={handleApplyCoupon} disabled={couponLoading} className="px-4 py-2 text-[10px] uppercase tracking-wider font-semibold border border-[#FDFBF7] rounded-[2px] bg-white text-[#1F1517] hover:bg-[#FDFBF7] transition-colors whitespace-nowrap">
                     {couponLoading ? '...' : 'Apply'}
                   </button>
                 </div>
               )}
 
               <div className="space-y-2 text-[13px]">
-                <div className="flex justify-between text-[#22181C]"><span>Subtotal ({summary.totalItems} items)</span><span className="font-medium text-[#332B27]">{formatPrice(summary.subtotal)}</span></div>
+                <div className="flex justify-between text-[#1F1517]"><span>Subtotal ({summary.totalItems} items)</span><span className="font-medium text-[#332B27]">{formatPrice(summary.subtotal)}</span></div>
                 {summary.couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Coupon Discount</span><span className="font-medium">-{formatPrice(summary.couponDiscount)}</span></div>}
-                <div className="flex justify-between text-[#22181C]">
+                <div className="flex justify-between text-[#1F1517]">
                   <span>Shipping</span>
                   <span className={summary.shippingCharge === 0 ? 'text-[#C5A059] font-medium' : 'font-medium text-[#332B27]'}>{summary.shippingCharge === 0 ? 'FREE' : formatPrice(summary.shippingCharge)}</span>
                 </div>
-                {summary.giftWrapCharge > 0 && <div className="flex justify-between text-[#22181C]"><span>Gift Wrap</span><span className="font-medium text-[#332B27]">{formatPrice(summary.giftWrapCharge)}</span></div>}
-                <div className="flex justify-between text-[#22181C]"><span>GST (3%)</span><span className="font-medium text-[#332B27]">{formatPrice(summary.gstAmount)}</span></div>
-                <div className="flex justify-between font-normal text-[#22181C] text-base pt-3 border-t border-[#FDFBF7]">
+                {summary.giftWrapCharge > 0 && <div className="flex justify-between text-[#1F1517]"><span>Gift Wrap</span><span className="font-medium text-[#332B27]">{formatPrice(summary.giftWrapCharge)}</span></div>}
+                <div className="flex justify-between text-[#1F1517]"><span>GST (3%)</span><span className="font-medium text-[#332B27]">{formatPrice(summary.gstAmount)}</span></div>
+                <div className="flex justify-between font-normal text-[#1F1517] text-base pt-3 border-t border-[#FDFBF7]">
                   <span>Total</span>
-                  <span className="font-medium text-[#22181C]">{formatPrice(summary.totalPrice)}</span>
+                  <span className="font-medium text-[#1F1517]">{formatPrice(summary.totalPrice)}</span>
                 </div>
               </div>
 
@@ -112,14 +112,14 @@ export default function CartPage() {
                 onClick={() => navigate('/checkout')}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full bg-[#22181C] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 flex items-center justify-center gap-2 transition-all duration-[250ms] border-b-2 border-transparent hover:border-[#C5A059] rounded-[2px]"
+                className="w-full bg-[#1F1517] hover:bg-[#4A0712] text-[#F7F3EA] text-[11px] font-medium uppercase tracking-[0.12em] py-3.5 flex items-center justify-center gap-2 transition-all duration-[250ms] border-b-2 border-transparent hover:border-[#C5A059] rounded-[2px]"
               >
                 Proceed to Checkout <ArrowRight size={14} />
               </motion.button>
 
               <button
                 onClick={() => navigate('/products')}
-                className="text-[11px] uppercase tracking-wider text-[#22181C] hover:text-[#22181C] text-center block w-full transition-colors mt-2"
+                className="text-[11px] uppercase tracking-wider text-[#1F1517] hover:text-[#1F1517] text-center block w-full transition-colors mt-2"
               >
                 Continue Shopping
               </button>
@@ -146,20 +146,20 @@ function CartItem({ item, onUpdate, onRemove }) {
         <div>
           <div className="flex items-start justify-between gap-2">
             <Link to={`/products/${product.slug}`}>
-              <h3 className="font-normal text-[#332B27] text-[14px] leading-snug hover:text-[#22181C] transition-colors">{product.name}</h3>
+              <h3 className="font-normal text-[#332B27] text-[14px] leading-snug hover:text-[#1F1517] transition-colors">{product.name}</h3>
             </Link>
-            <button onClick={onRemove} className="text-[#22181C]/50 hover:text-red-400 flex-shrink-0 transition-colors"><Trash2 size={15} /></button>
+            <button onClick={onRemove} className="text-[#1F1517]/50 hover:text-red-400 flex-shrink-0 transition-colors"><Trash2 size={15} /></button>
           </div>
-          {variant?.size && <p className="text-xs text-[#22181C] mt-0.5">Size: {variant.size}</p>}
-          {variant?.color && <p className="text-xs text-[#22181C]">Color: {variant.color}</p>}
+          {variant?.size && <p className="text-xs text-[#1F1517] mt-0.5">Size: {variant.size}</p>}
+          {variant?.color && <p className="text-xs text-[#1F1517]">Color: {variant.color}</p>}
         </div>
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center border border-[#FDFBF7] rounded-[2px] overflow-hidden bg-white">
-            <button onClick={() => quantity > 1 && onUpdate(quantity - 1)} disabled={quantity <= 1} className="px-3 py-1 text-[#22181C] hover:bg-[#FDFBF7] disabled:opacity-40"><Minus size={11} /></button>
+            <button onClick={() => quantity > 1 && onUpdate(quantity - 1)} disabled={quantity <= 1} className="px-3 py-1 text-[#1F1517] hover:bg-[#FDFBF7] disabled:opacity-40"><Minus size={11} /></button>
             <span className="w-8 text-center text-[13px] font-medium text-[#332B27]">{quantity}</span>
-            <button onClick={() => onUpdate(quantity + 1)} className="px-3 py-1 text-[#22181C] hover:bg-[#FDFBF7]"><Plus size={11} /></button>
+            <button onClick={() => onUpdate(quantity + 1)} className="px-3 py-1 text-[#1F1517] hover:bg-[#FDFBF7]"><Plus size={11} /></button>
           </div>
-          <span className="font-medium text-[#22181C] text-[14px]">{formatPrice(effectivePrice * quantity)}</span>
+          <span className="font-medium text-[#1F1517] text-[14px]">{formatPrice(effectivePrice * quantity)}</span>
         </div>
       </div>
     </motion.div>

@@ -19,7 +19,7 @@ export default function ShopByCategory() {
         <div className="md:hidden">
           <div className="text-center mb-8">
             <h2 
-              className="text-2xl text-[#22181C] font-normal uppercase tracking-[0.15em] mb-3" 
+              className="text-2xl text-[#1F1517] font-normal uppercase tracking-[0.15em] mb-3" 
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Shop By Category
@@ -84,7 +84,7 @@ export default function ShopByCategory() {
                     </div>
                   </div>
                   <span 
-                    className="text-[12px] text-[#22181C] font-[600] tracking-[0.08em] uppercase transition-colors group-hover:text-[#C5A059]"
+                    className="text-[12px] text-[#1F1517] font-[600] tracking-[0.08em] uppercase transition-colors group-hover:text-[#C5A059]"
                     style={{ fontFamily: "'Nunito Sans', sans-serif" }}
                   >
                     {cat.name}

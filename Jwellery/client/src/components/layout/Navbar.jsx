@@ -72,12 +72,12 @@ export default function Navbar() {
         <span
           style={{ fontFamily: "'Nunito Sans', sans-serif" }}
           className={`relative z-10 text-[13px] lg:text-[14px] tracking-[0.1em] uppercase font-bold transition-colors duration-[280ms] ease-out ${
-            isActive ? 'text-[#22181C]' : 'text-[#22181C] group-hover:text-[#C5A059]'
+            isActive ? 'text-[#1F1517]' : 'text-[#1F1517] group-hover:text-[#C5A059]'
           }`}
         >
           {children}
         </span>
-        <span className={`absolute left-0 right-0 bottom-0 h-[1.5px] transform ${isActive ? 'bg-[#22181C] scale-x-100' : 'bg-[#C5A059] scale-x-0 group-hover:scale-x-100'} transition-transform duration-[280ms] origin-center ease-out`} />
+        <span className={`absolute left-0 right-0 bottom-0 h-[1.5px] transform ${isActive ? 'bg-[#1F1517] scale-x-100' : 'bg-[#C5A059] scale-x-0 group-hover:scale-x-100'} transition-transform duration-[280ms] origin-center ease-out`} />
       </Link>
     );
   };
@@ -90,7 +90,7 @@ export default function Navbar() {
         to={to} 
         onClick={() => setMenuOpen(false)} 
         className={`py-4 text-[12px] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 transition-all duration-300 ${
-          isActive ? 'text-[#22181C] pl-2' : 'text-[#22181C] hover:text-[#C5A059] hover:pl-2'
+          isActive ? 'text-[#1F1517] pl-2' : 'text-[#1F1517] hover:text-[#C5A059] hover:pl-2'
         }`}
       >
         {children}
@@ -112,17 +112,17 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20 lg:h-24">
             
             {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2 text-[#111] hover:text-[#666] transition-all duration-300" onClick={() => setMenuOpen(true)}>
+            <button className="lg:hidden p-2 text-[#1F1517] hover:text-[#666] transition-all duration-300" onClick={() => setMenuOpen(true)}>
               <Menu size={21} strokeWidth={1.8} />
             </button>
 
             {/* LEFT: Logo */}
             <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-10 lg:mr-4">
               {/* Simple Star Motif */}
-              <svg viewBox="0 0 24 24" className="w-5 h-5 lg:w-6 lg:h-6 text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 mb-1" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 lg:w-6 lg:h-6 text-[#1F1517] group-hover:text-[#C5A059] transition-colors duration-500 mb-1" fill="currentColor">
                 <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
               </svg>
-              <span className="text-[26px] lg:text-[34px] font-light tracking-[0.15em] text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <span className="text-[26px] lg:text-[34px] font-light tracking-[0.15em] text-[#1F1517] group-hover:text-[#C5A059] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 तारिणी
               </span>
             </Link>
@@ -140,12 +140,12 @@ export default function Navbar() {
 
             {/* RIGHT: Actions */}
             <div className="flex items-center gap-5 sm:gap-6">
-              <button onClick={() => setSearchOpen(true)} className="group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300" aria-label="Search">
+              <button onClick={() => setSearchOpen(true)} className="group text-[#1F1517] hover:text-[#C5A059] transition-all duration-300" aria-label="Search">
                 <Search size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
               </button>
 
               <div className="relative hidden lg:block">
-                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300" aria-label="Account">
+                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#1F1517] hover:text-[#C5A059] transition-all duration-300" aria-label="Account">
                   <User size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
                 </button>
                 <AnimatePresence>
@@ -154,20 +154,20 @@ export default function Navbar() {
                       {isAuthenticated ? (
                         <>
                           <div className="px-5 py-4 bg-gray-50 border-b border-gray-100">
-                            <p className="font-semibold text-sm text-[#111]">{user?.name}</p>
+                            <p className="font-semibold text-sm text-[#1F1517]">{user?.name}</p>
                             <p className="text-xs text-gray-500 truncate mt-0.5">{user?.email}</p>
                           </div>
                           <div className="py-2">
-                            {isAdmin && <Link to="/admin" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-gray-600 hover:text-[#111] hover:bg-gray-50 transition-colors"><Settings size={14} className="group-hover:rotate-90 transition-transform duration-500" /> Admin</Link>}
-                            <Link to="/profile" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-gray-600 hover:text-[#111] hover:bg-gray-50 transition-colors"><User size={14} className="group-hover:scale-110 transition-transform" /> Profile</Link>
-                            <Link to="/profile/orders" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-gray-600 hover:text-[#111] hover:bg-gray-50 transition-colors"><Package size={14} className="group-hover:scale-110 transition-transform" /> Orders</Link>
+                            {isAdmin && <Link to="/admin" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-gray-600 hover:text-[#1F1517] hover:bg-gray-50 transition-colors"><Settings size={14} className="group-hover:rotate-90 transition-transform duration-500" /> Admin</Link>}
+                            <Link to="/profile" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-gray-600 hover:text-[#1F1517] hover:bg-gray-50 transition-colors"><User size={14} className="group-hover:scale-110 transition-transform" /> Profile</Link>
+                            <Link to="/profile/orders" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-gray-600 hover:text-[#1F1517] hover:bg-gray-50 transition-colors"><Package size={14} className="group-hover:scale-110 transition-transform" /> Orders</Link>
                             <button onClick={handleLogout} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-red-500 hover:bg-gray-50 w-full text-left transition-colors"><LogOut size={14} className="group-hover:-translate-x-1 transition-transform" /> Logout</button>
                           </div>
                         </>
                       ) : (
                         <div className="p-5">
-                          <Link to="/login" onClick={() => setUserMenuOpen(false)} className="block w-full text-center mb-2 py-3 text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#111] text-white hover:bg-[#333] transition-colors duration-300">Sign In</Link>
-                          <Link to="/register" onClick={() => setUserMenuOpen(false)} className="block w-full text-center py-3 text-[10px] font-semibold uppercase tracking-[0.1em] border border-[#111] text-[#111] hover:bg-gray-50 transition-colors duration-300">Create Account</Link>
+                          <Link to="/login" onClick={() => setUserMenuOpen(false)} className="block w-full text-center mb-2 py-3 text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#1F1517] text-white hover:bg-[#333] transition-colors duration-300">Sign In</Link>
+                          <Link to="/register" onClick={() => setUserMenuOpen(false)} className="block w-full text-center py-3 text-[10px] font-semibold uppercase tracking-[0.1em] border border-[#1F1517] text-[#1F1517] hover:bg-gray-50 transition-colors duration-300">Create Account</Link>
                         </div>
                       )}
                     </motion.div>
@@ -175,14 +175,14 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link to="/wishlist" className="relative group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300 hidden sm:block" aria-label="Wishlist">
+              <Link to="/wishlist" className="relative group text-[#1F1517] hover:text-[#C5A059] transition-all duration-300 hidden sm:block" aria-label="Wishlist">
                 <Heart size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
-                {wishlistCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#5C1D24] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{wishlistCount}</span>}
+                {wishlistCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#1F1517] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{wishlistCount}</span>}
               </Link>
 
-              <button onClick={() => openCartDrawer()} className="relative group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300" aria-label="Cart">
+              <button onClick={() => openCartDrawer()} className="relative group text-[#1F1517] hover:text-[#C5A059] transition-all duration-300" aria-label="Cart">
                 <ShoppingBag size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
-                {totalItems > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#5C1D24] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{totalItems}</span>}
+                {totalItems > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#1F1517] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{totalItems}</span>}
               </button>
             </div>
           </div>
@@ -197,14 +197,14 @@ export default function Navbar() {
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
                 <div className="flex flex-col items-center justify-center cursor-pointer group mt-2">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 mb-1" fill="currentColor">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#1F1517] group-hover:text-[#C5A059] transition-colors duration-500 mb-1" fill="currentColor">
                     <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
                   </svg>
-                  <span className="text-[24px] font-light tracking-[0.15em] text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <span className="text-[24px] font-light tracking-[0.15em] text-[#1F1517] group-hover:text-[#C5A059] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     तारिणी
                   </span>
                 </div>
-                <button onClick={() => setMenuOpen(false)} className="text-[#111] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
+                <button onClick={() => setMenuOpen(false)} className="text-[#1F1517] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
               <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-white">
                 <MobileNavLink to="/products?isNewArrival=true">New In</MobileNavLink>
@@ -215,11 +215,11 @@ export default function Navbar() {
                 <MobileNavLink to="/collections">Collections</MobileNavLink>
                 <MobileNavLink to="/sale">Sale</MobileNavLink>
                 
-                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#22181C] hover:text-[#22181C] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
+                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#1F1517] hover:text-[#1F1517] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
                 {!isAuthenticated ? (
-                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#22181C] hover:text-[#22181C] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
+                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#1F1517] hover:text-[#1F1517] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
                 ) : (
-                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#22181C] hover:text-[#22181C] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
+                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#1F1517] hover:text-[#1F1517] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
                 )}
               </nav>
             </motion.aside>
@@ -236,8 +236,8 @@ export default function Navbar() {
                 <X size={24} strokeWidth={1} />
               </button>
               <form onSubmit={handleSearchSubmit} className="flex items-center gap-4 p-5 border-b border-gray-100">
-                <Search size={22} className="text-[#111] flex-shrink-0" strokeWidth={1.5} />
-                <input ref={searchRef} type="text" placeholder="Search our collections..." value={searchQuery} onChange={handleSearchChange} autoFocus className="flex-1 text-xl lg:text-2xl text-[#111] outline-none placeholder-gray-300 font-light bg-transparent" style={{ fontFamily: "'Cormorant Garamond', serif" }} />
+                <Search size={22} className="text-[#1F1517] flex-shrink-0" strokeWidth={1.5} />
+                <input ref={searchRef} type="text" placeholder="Search our collections..." value={searchQuery} onChange={handleSearchChange} autoFocus className="flex-1 text-xl lg:text-2xl text-[#1F1517] outline-none placeholder-gray-300 font-light bg-transparent" style={{ fontFamily: "'Cormorant Garamond', serif" }} />
               </form>
               <div className="max-h-[60vh] overflow-y-auto p-5">
                 {searchLoading ? <div className="text-center text-sm text-[#666] font-medium py-12 animate-pulse">Searching the archives...</div> : searchResults.length > 0 ? (
@@ -248,7 +248,7 @@ export default function Navbar() {
                           <img src={product.images?.[0]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                         </div>
                         <div>
-                          <p className="text-sm text-[#111] font-medium transition-colors">{product.name}</p>
+                          <p className="text-sm text-[#1F1517] font-medium transition-colors">{product.name}</p>
                           <p className="text-xs text-gray-500 mt-1 font-semibold">${(product.discountPrice || product.price)?.toLocaleString()}</p>
                         </div>
                       </Link>
@@ -258,10 +258,10 @@ export default function Navbar() {
                   <div className="text-center text-sm text-gray-500 py-12 font-medium">No results found for "{searchQuery}"</div>
                 ) : (
                   <div className="py-6">
-                    <p className="text-[10px] text-[#111] uppercase tracking-[0.2em] font-bold mb-5">Trending Searches</p>
+                    <p className="text-[10px] text-[#1F1517] uppercase tracking-[0.2em] font-bold mb-5">Trending Searches</p>
                     <div className="flex flex-wrap gap-3">
                       {['Diamond Ring', 'Gold Necklace', 'Earrings', 'Bracelet'].map(term => (
-                        <button key={term} onClick={() => { setSearchQuery(term); performSearch(term); }} className="text-xs font-medium tracking-wide bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-[#111] px-5 py-2.5 transition-colors border border-gray-100 rounded-sm">{term}</button>
+                        <button key={term} onClick={() => { setSearchQuery(term); performSearch(term); }} className="text-xs font-medium tracking-wide bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-[#1F1517] px-5 py-2.5 transition-colors border border-gray-100 rounded-sm">{term}</button>
                       ))}
                     </div>
                   </div>

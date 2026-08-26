@@ -66,7 +66,7 @@ export default function OccasionSection() {
           </motion.span>
           <motion.h2 
             variants={headingReveal}
-            className="text-[28px] sm:text-[32px] lg:text-[40px] text-[#22181C] font-normal tracking-wide mb-[16px]" 
+            className="text-[28px] sm:text-[32px] lg:text-[40px] text-[#1F1517] font-normal tracking-wide mb-[16px]" 
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Why Tarini
@@ -88,11 +88,11 @@ export default function OccasionSection() {
               transition={{ delay: shouldReduceMotion ? 0 : i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className={`bg-white p-10 border border-[#EAE6DF] rounded-[2px] text-center flex flex-col items-center justify-center transition-all duration-[400ms] ease-out hover:border-[#C5A059]/40 hover:shadow-sm ${shouldReduceMotion ? '' : 'hover:scale-[1.02]'}`}
             >
-              <h3 className="text-[#22181C] text-[18px] lg:text-[20px] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[#1F1517] text-[18px] lg:text-[20px] font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 {item.title}
               </h3>
               <div className="w-6 h-[1px] bg-[#C5A059] my-4" />
-              <p className="text-[#22181C] text-[11px] lg:text-[12px] leading-relaxed font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+              <p className="text-[#1F1517] text-[11px] lg:text-[12px] leading-relaxed font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                 {item.description}
               </p>
             </motion.div>

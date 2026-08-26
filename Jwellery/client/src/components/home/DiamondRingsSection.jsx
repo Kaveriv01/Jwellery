@@ -155,15 +155,15 @@ export default function DiamondRingsSection() {
         {/* ── Header ─────────────────────────────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-4">
-            <div className="w-[2px] h-8 bg-[#22181C]" />
+            <div className="w-[2px] h-8 bg-[#1F1517]" />
             <div>
-              <h2 className="text-[22px] sm:text-[26px] lg:text-[32px] font-normal text-[#22181C] leading-tight flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-[22px] sm:text-[26px] lg:text-[32px] font-normal text-[#1F1517] leading-tight flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Diamond Rings
                 <Gem size={18} className="text-[#C5A059]" />
               </h2>
-              <p className="text-[11px] text-[#22181C] mt-1 font-medium tracking-[0.1em] uppercase" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+              <p className="text-[11px] text-[#1F1517] mt-1 font-medium tracking-[0.1em] uppercase" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                 GIA Certified · BIS Hallmarked · Free Engraving
-                {total > 0 && <span className="ml-1.5 text-[#22181C] font-semibold">({total} designs)</span>}
+                {total > 0 && <span className="ml-1.5 text-[#1F1517] font-semibold">({total} designs)</span>}
               </p>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function DiamondRingsSection() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-[10px] font-medium text-[#22181C] bg-transparent outline-none cursor-pointer tracking-[0.1em] uppercase"
+                className="text-[10px] font-medium text-[#1F1517] bg-transparent outline-none cursor-pointer tracking-[0.1em] uppercase"
                 style={{ fontFamily: "'Nunito Sans', sans-serif" }}
               >
                 {SORT_OPTIONS.map((opt) => (
@@ -191,7 +191,7 @@ export default function DiamondRingsSection() {
             >
               <Link
                 to="/products?stone=Diamond"
-                className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-medium tracking-[0.15em] uppercase border border-[#22181C] text-[#22181C] hover:bg-[#22181C] hover:text-white rounded-[2px] px-6 py-2 transition-all duration-[300ms] ease-out shadow-sm cursor-pointer hover:scale-[1.02]"
+                className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-medium tracking-[0.15em] uppercase border border-[#1F1517] text-[#1F1517] hover:bg-[#1F1517] hover:text-white rounded-[2px] px-6 py-2 transition-all duration-[300ms] ease-out shadow-sm cursor-pointer hover:scale-[1.02]"
                 style={{ fontFamily: "'Nunito Sans', sans-serif" }}
               >
                 View All <ArrowRight size={11} />
@@ -229,7 +229,7 @@ export default function DiamondRingsSection() {
               >
                 <Link
                   to="/products?stone=Diamond"
-                  className="inline-flex items-center gap-1.5 bg-[#4A0712] text-[#FDFBF7] text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase rounded-[2px] px-6 py-3 transition-all duration-[300ms] ease-out hover:bg-[#22181C] shadow-md cursor-pointer hover:scale-[1.02]"
+                  className="inline-flex items-center gap-1.5 bg-[#4A0712] text-[#FDFBF7] text-[10px] lg:text-[11px] font-medium tracking-[0.12em] uppercase rounded-[2px] px-6 py-3 transition-all duration-[300ms] ease-out hover:bg-[#1F1517] shadow-md cursor-pointer hover:scale-[1.02]"
                   style={{ fontFamily: "'Nunito Sans', sans-serif" }}
                 >
                   Shop All Diamond Rings <ArrowRight size={11} />
@@ -295,7 +295,7 @@ export default function DiamondRingsSection() {
                 <Gem size={16} className="text-[#C5A059]" />
               </div>
               <p className="text-[12px] font-medium text-[#24191A] tracking-wide" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{label}</p>
-              <p className="text-[10px] text-[#22181C] font-light mt-1 tracking-[0.1em] uppercase" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{sub}</p>
+              <p className="text-[10px] text-[#1F1517] font-light mt-1 tracking-[0.1em] uppercase" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{sub}</p>
             </div>
           ))}
         </motion.div>

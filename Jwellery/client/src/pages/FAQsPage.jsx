@@ -16,14 +16,14 @@ export default function FAQsPage() {
         <title>FAQs — Tarini Jewellers</title>
       </Helmet>
       <div className="container-luxury py-20 max-w-3xl">
-        <h1 className="text-[32px] text-[#22181C] mb-8 text-center font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <h1 className="text-[32px] text-[#1F1517] mb-8 text-center font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Frequently Asked Questions
         </h1>
         <div className="space-y-4">
           {faqs.map(({ q, a }) => (
             <div key={q} className="border border-[#FDFBF7] bg-[#FDFBF7]/20 rounded-[2px] p-5">
               <h3 className="font-medium text-[#332B27] text-[15px] mb-2">{q}</h3>
-              <p className="text-[#22181C] text-[13.5px] font-light leading-relaxed">{a}</p>
+              <p className="text-[#1F1517] text-[13.5px] font-light leading-relaxed">{a}</p>
             </div>
           ))}
         </div>

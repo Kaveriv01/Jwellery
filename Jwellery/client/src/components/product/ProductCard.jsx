@@ -66,10 +66,10 @@ const ProductCard = memo(function ProductCard({ product }) {
   const hasHoverImage = images.length > 1;
 
   return (
-    <div className="group flex flex-col h-full bg-transparent transition-all duration-300 pb-4">
+    <div className="group flex flex-col h-full bg-transparent transition-all duration-300 pb-4 hover:shadow-[0_10px_30px_rgba(0,0,0,0.04)] rounded-[4px]">
       
       {/* Main Image Container (Square 1:1) */}
-      <div className="relative overflow-hidden bg-transparent mb-3" style={{ aspectRatio: '1/1' }}>
+      <div className="relative overflow-hidden bg-transparent mb-3 rounded-t-[4px]" style={{ aspectRatio: '1/1' }}>
         <Link to={`/products/${slug}`} className="block w-full h-full relative">
           
           <img
@@ -116,7 +116,7 @@ const ProductCard = memo(function ProductCard({ product }) {
            <button 
              onClick={handleAddToCart}
              disabled={isAddingToCart || isOutOfStock}
-             className="w-full bg-[#22181C]/95 backdrop-blur-sm text-white py-2.5 text-[10px] font-bold uppercase tracking-[0.15em] hover:bg-[#22181C] transition-colors flex items-center justify-center gap-1.5 disabled:opacity-70"
+             className="w-full bg-[#1F1517]/95 backdrop-blur-sm text-white py-2.5 text-[10px] font-bold uppercase tracking-[0.15em] hover:bg-[#1F1517] transition-colors flex items-center justify-center gap-1.5 disabled:opacity-70"
              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
            >
              <ShoppingBag size={13} />
@@ -133,7 +133,7 @@ const ProductCard = memo(function ProductCard({ product }) {
               key={idx}
               onMouseEnter={() => setActiveImageIdx(idx)}
               onClick={() => setActiveImageIdx(idx)}
-              className={`relative w-10 h-10 flex-shrink-0 rounded-[2px] overflow-hidden border ${activeImageIdx === idx ? 'border-[#22181C]' : 'border-gray-200'} transition-colors`}
+              className={`relative w-10 h-10 flex-shrink-0 rounded-[2px] overflow-hidden border ${activeImageIdx === idx ? 'border-[#1F1517]' : 'border-gray-200'} transition-colors`}
             >
               <img src={imgUrl} alt={`${name} thumbnail ${idx}`} className="w-full h-full object-contain p-0.5" onError={(e) => { e.target.src = fallbackImg; }} />
             </button>
@@ -142,15 +142,15 @@ const ProductCard = memo(function ProductCard({ product }) {
       )}
 
       {/* Info Section */}
-      <div className="flex flex-col flex-1 px-1 mt-1">
+      <div className="flex flex-col flex-1 px-2 mt-1">
         <Link to={`/products/${slug}`} className="block mb-1">
-          <h3 className="text-[14px] sm:text-[15px] text-[#22181C] font-[500] leading-snug hover:text-[#C5A059] transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h3 className="text-[14px] sm:text-[15px] text-[#1F1517] font-semibold leading-snug hover:text-[#C5A059] transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {name}
           </h3>
         </Link>
         
         <div className="flex items-baseline gap-2 flex-wrap mb-1">
-          <span className="text-[14px] sm:text-[15px] font-bold text-[#22181C]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+          <span className="text-[14px] sm:text-[15px] font-[800] text-[#1F1517]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
             {formatPrice(effectivePrice)}
           </span>
           {discountPrice && (

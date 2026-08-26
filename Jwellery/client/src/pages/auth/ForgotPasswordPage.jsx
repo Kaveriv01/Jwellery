@@ -55,7 +55,7 @@ export default function ForgotPasswordPage() {
               <p className="text-gray-500 text-sm mb-6">Enter your email and we'll send you a link to reset your password.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
-                  <label className="block text-[12px] font-bold text-[#22181C] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Email Address</label>
+                  <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Email Address</label>
                   <div className="relative">
                     <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input {...register('email')} type="email" placeholder="your@email.com" className={`input-gold !pl-10 ${errors.email ? 'border-red-400' : ''}`} />

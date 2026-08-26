@@ -69,7 +69,7 @@ export default function HeroBanner() {
           >
             <Link
               to="/collections"
-              className="inline-block px-8 py-3 md:px-10 md:py-4 bg-[#22181C] text-[#FDFBF7] text-[10px] md:text-[13px] font-bold tracking-[0.2em] uppercase hover:bg-[#C5A059] hover:text-[#22181C] hover:border-[#C5A059] border-2 border-[#22181C] transition-all duration-[300ms] ease-out shadow-xl"
+              className="inline-block px-8 py-3 md:px-10 md:py-4 bg-[#1F1517] text-[#FDFBF7] text-[10px] md:text-[13px] font-bold tracking-[0.2em] uppercase hover:bg-[#C5A059] hover:text-[#1F1517] hover:border-[#C5A059] border-2 border-[#1F1517] transition-all duration-[300ms] ease-out shadow-xl"
               style={{ fontFamily: "'Nunito Sans', sans-serif" }}
             >
               Shop Now

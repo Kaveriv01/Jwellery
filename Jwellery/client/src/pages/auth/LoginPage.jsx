@@ -186,7 +186,7 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   {/* Email Input */}
                   <motion.div variants={itemVariants}>
-                    <Label htmlFor="email" className="block text-[10px] uppercase tracking-[0.2em] font-bold text-[#22181C] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                    <Label htmlFor="email" className="block text-[10px] uppercase tracking-[0.2em] font-bold text-[#1F1517] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                       Email Address
                     </Label>
                     <div className="relative">
@@ -207,7 +207,7 @@ export default function LoginPage() {
                   {/* Password Input */}
                   <motion.div variants={itemVariants}>
                     <div className="flex justify-between items-center mb-2">
-                      <Label htmlFor="password" className="block text-[10px] uppercase tracking-[0.2em] font-bold text-[#22181C]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                      <Label htmlFor="password" className="block text-[10px] uppercase tracking-[0.2em] font-bold text-[#1F1517]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                         Password
                       </Label>
                       <Link to="/forgot-password" className="text-[10px] uppercase tracking-[0.1em] text-[#C5A059] hover:underline font-medium">

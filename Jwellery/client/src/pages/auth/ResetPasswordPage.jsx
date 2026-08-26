@@ -58,7 +58,7 @@ export default function ResetPasswordPage() {
               <p className="text-gray-500 text-sm mb-6">Create a strong password for your account.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
-                  <label className="block text-[12px] font-bold text-[#22181C] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>New Password</label>
+                  <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>New Password</label>
                   <div className="relative">
                     <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input {...register('password')} type={showPw ? 'text' : 'password'} placeholder="Min. 6 characters" className={`input-gold !pl-10 !pr-10 ${errors.password ? 'border-red-400' : ''}`} />
@@ -67,7 +67,7 @@ export default function ResetPasswordPage() {
                   {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
                 </div>
                 <div>
-                  <label className="block text-[12px] font-bold text-[#22181C] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Confirm Password</label>
+                  <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Confirm Password</label>
                   <div className="relative">
                     <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input {...register('confirmPassword')} type="password" placeholder="Re-enter password" className={`input-gold !pl-10 ${errors.confirmPassword ? 'border-red-400' : ''}`} />

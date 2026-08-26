@@ -31,14 +31,14 @@ export default function AboutPage() {
   const craftScale = useTransform(craftProgress, [0, 1], [1, 1.15]);
 
   return (
-    <div className="bg-[#F8F5EF] text-[#22181C] overflow-hidden selection:bg-[#C5A059] selection:text-white">
+    <div className="bg-[#F8F5EF] text-[#1F1517] overflow-hidden selection:bg-[#C5A059] selection:text-white">
       <Helmet>
         <title>Our Story — Tarini Jewellers</title>
         <meta name="description" content="Discover the story behind Tarini Jewellers — where tradition meets contemporary elegance." />
       </Helmet>
       
       {/* 1. HERO — CINEMATIC JEWELLERY CAMPAIGN */}
-      <section ref={heroRef} className="relative w-full h-[85vh] lg:h-[95vh] overflow-hidden bg-[#22181C]">
+      <section ref={heroRef} className="relative w-full h-[85vh] lg:h-[95vh] overflow-hidden bg-[#1F1517]">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full">
           <video 
             autoPlay 
@@ -67,7 +67,7 @@ export default function AboutPage() {
           <FadeUp delay={0.4}>
             <button 
               onClick={() => window.scrollTo({ top: window.innerHeight * 0.9, behavior: 'smooth' })} 
-              className="inline-block border border-[#F8F5EF]/50 text-[#F8F5EF] px-8 py-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] font-bold hover:bg-[#F8F5EF] hover:text-[#22181C] transition-all duration-500 backdrop-blur-sm"
+              className="inline-block border border-[#F8F5EF]/50 text-[#F8F5EF] px-8 py-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] font-bold hover:bg-[#F8F5EF] hover:text-[#1F1517] transition-all duration-500 backdrop-blur-sm"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               Discover Our Story
@@ -109,11 +109,11 @@ export default function AboutPage() {
           <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col justify-center">
             <FadeUp>
               <span className="text-[#C5A059] text-[11px] md:text-[13px] font-bold tracking-[0.25em] uppercase mb-6 block" style={{ fontFamily: "var(--font-sans)" }}>Our Story</span>
-              <h2 className="text-[48px] lg:text-[64px] xl:text-[72px] font-medium leading-[1.1] mb-10 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-[48px] lg:text-[64px] xl:text-[72px] font-medium leading-[1.1] mb-10 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Jewellery That<br/>Tells Your Story
               </h2>
             </FadeUp>
-            <FadeUp delay={0.2} className="space-y-6 text-[16px] md:text-[18px] font-normal leading-relaxed text-[#22181C]/80 max-w-2xl" style={{ fontFamily: "var(--font-sans)" }}>
+            <FadeUp delay={0.2} className="space-y-6 text-[16px] md:text-[18px] font-normal leading-relaxed text-[#1F1517]/80 max-w-2xl" style={{ fontFamily: "var(--font-sans)" }}>
               <p>At Tarini Jewellers, we believe jewellery is more than an adornment. It carries memories, celebrates milestones and becomes part of the stories we treasure.</p>
               <p>Rooted in the timeless beauty of Indian craftsmanship and inspired by contemporary design, Tarini creates jewellery that feels elegant today and meaningful for years to come.</p>
             </FadeUp>
@@ -122,10 +122,10 @@ export default function AboutPage() {
       </section>
 
       {/* 3. OUR JOURNEY */}
-      <section className="py-24 lg:py-32 px-6 bg-white border-y border-[#22181C]/5">
+      <section className="py-24 lg:py-32 px-6 bg-white border-y border-[#1F1517]/5">
         <div className="max-w-[1400px] mx-auto">
           <FadeUp>
-            <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-medium text-center mb-24 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-medium text-center mb-24 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               The Tarini Journey
             </h2>
           </FadeUp>
@@ -138,12 +138,12 @@ export default function AboutPage() {
               { num: "04", title: "The Future", desc: "Building a jewellery experience where tradition meets contemporary luxury." }
             ].map((step, idx) => (
               <FadeUp key={idx} delay={idx * 0.15} className="relative group">
-                <div className="text-[50px] md:text-[70px] lg:text-[90px] text-[#C5A059] font-bold leading-none mb-4 lg:mb-6 group-hover:text-[#22181C] transition-colors duration-500 drop-shadow-sm" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <div className="text-[50px] md:text-[70px] lg:text-[90px] text-[#C5A059] font-bold leading-none mb-4 lg:mb-6 group-hover:text-[#1F1517] transition-colors duration-500 drop-shadow-sm" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {step.num}
                 </div>
                 <div className="w-12 h-[2px] bg-[#C5A059] mb-4 lg:mb-6 transform origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                <h3 className="text-[18px] md:text-[22px] lg:text-[26px] font-bold mb-3 lg:mb-4 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
-                <p className="text-[13px] md:text-[15px] lg:text-[16px] text-[#22181C]/90 font-medium leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>{step.desc}</p>
+                <h3 className="text-[18px] md:text-[22px] lg:text-[26px] font-bold mb-3 lg:mb-4 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.title}</h3>
+                <p className="text-[13px] md:text-[15px] lg:text-[16px] text-[#1F1517]/90 font-medium leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>{step.desc}</p>
               </FadeUp>
             ))}
           </div>
@@ -194,10 +194,10 @@ export default function AboutPage() {
           <div className="w-full lg:w-[45%] lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 mt-8 lg:mt-0">
             <FadeUp delay={0.1}>
               <div className="bg-[#F8F5EF] p-10 md:p-16 lg:p-20 text-center border border-[#C5A059]/30 shadow-2xl">
-                <h2 className="text-[32px] md:text-[42px] lg:text-[48px] font-medium leading-tight mb-8 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <h2 className="text-[32px] md:text-[42px] lg:text-[48px] font-medium leading-tight mb-8 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   Where Tradition<br/>Meets Tomorrow
                 </h2>
-                <p className="text-[15px] lg:text-[17px] text-[#22181C]/80 leading-relaxed font-normal" style={{ fontFamily: "var(--font-sans)" }}>
+                <p className="text-[15px] lg:text-[17px] text-[#1F1517]/80 leading-relaxed font-normal" style={{ fontFamily: "var(--font-sans)" }}>
                   India's jewellery heritage is rich with stories, symbolism and craftsmanship. Tarini honours that heritage while interpreting it through a contemporary perspective.
                 </p>
               </div>
@@ -216,19 +216,19 @@ export default function AboutPage() {
         
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <FadeUp>
-            <h2 className="text-[42px] md:text-[56px] lg:text-[72px] font-medium leading-[1.1] mb-12 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-[42px] md:text-[56px] lg:text-[72px] font-medium leading-[1.1] mb-12 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               For The Woman<br/>Who Wears Her Story
             </h2>
           </FadeUp>
-          <FadeUp delay={0.2} className="space-y-6 text-[16px] lg:text-[18px] font-normal leading-relaxed text-[#22181C]/80 max-w-2xl mx-auto" style={{ fontFamily: "var(--font-sans)" }}>
-            <p className="font-semibold text-[#22181C]">Confident. Individual. Effortlessly elegant.</p>
+          <FadeUp delay={0.2} className="space-y-6 text-[16px] lg:text-[18px] font-normal leading-relaxed text-[#1F1517]/80 max-w-2xl mx-auto" style={{ fontFamily: "var(--font-sans)" }}>
+            <p className="font-semibold text-[#1F1517]">Confident. Individual. Effortlessly elegant.</p>
             <p>Tarini is created for the woman who celebrates her individuality and chooses jewellery that moves with her—from everyday moments to the occasions she remembers forever.</p>
           </FadeUp>
         </div>
       </section>
 
       {/* 7. OUR VALUES */}
-      <section className="py-24 lg:py-32 px-6 bg-white border-y border-[#22181C]/5">
+      <section className="py-24 lg:py-32 px-6 bg-white border-y border-[#1F1517]/5">
         <div className="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-16">
           {[
             { title: "Craftsmanship", desc: "Respect for the artistry and precision behind every piece." },
@@ -237,12 +237,12 @@ export default function AboutPage() {
             { title: "Trust", desc: "A jewellery experience built around transparency, care and confidence." }
           ].map((val, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="group flex flex-col border border-[#22181C]/10 p-6 md:p-10 lg:p-14 hover:border-[#C5A059]/50 hover:bg-[#F8F5EF]/50 transition-all duration-500 min-h-[220px] md:min-h-[300px] justify-between shadow-sm hover:shadow-md">
+              <div className="group flex flex-col border border-[#1F1517]/10 p-6 md:p-10 lg:p-14 hover:border-[#C5A059]/50 hover:bg-[#F8F5EF]/50 transition-all duration-500 min-h-[220px] md:min-h-[300px] justify-between shadow-sm hover:shadow-md">
                 <div>
-                  <h3 className="text-[20px] md:text-[28px] lg:text-[32px] font-medium mb-4 lg:mb-6 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <h3 className="text-[20px] md:text-[28px] lg:text-[32px] font-medium mb-4 lg:mb-6 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {val.title}
                   </h3>
-                  <p className="text-[13px] md:text-[16px] lg:text-[17px] text-[#22181C]/70 font-normal leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>
+                  <p className="text-[13px] md:text-[16px] lg:text-[17px] text-[#1F1517]/70 font-normal leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>
                     {val.desc}
                   </p>
                 </div>
@@ -257,7 +257,7 @@ export default function AboutPage() {
       <section className="py-24 lg:py-32 px-6 bg-[#FDFBF7]">
         <div className="max-w-[1400px] mx-auto">
           <FadeUp>
-            <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-medium mb-16 max-w-2xl leading-tight text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-medium mb-16 max-w-2xl leading-tight text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               What Goes Into<br/>A Tarini Piece
             </h2>
           </FadeUp>
@@ -286,7 +286,7 @@ export default function AboutPage() {
       </section>
 
       {/* 9. THE JEWELLERY EDITORIAL */}
-      <section className="py-16 lg:py-24 px-6 bg-white overflow-hidden border-y border-[#22181C]/5">
+      <section className="py-16 lg:py-24 px-6 bg-white overflow-hidden border-y border-[#1F1517]/5">
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-12 gap-4 lg:gap-8 auto-rows-min">
             
@@ -335,12 +335,12 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-16">
             <FadeUp>
-              <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-medium text-[#22181C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-[36px] md:text-[48px] lg:text-[56px] font-medium text-[#1F1517] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Shop by Category
               </h2>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <p style={{ fontFamily: "'Nunito Sans', sans-serif" }} className="text-[11px] md:text-sm tracking-widest uppercase text-[#22181C]/70">
+              <p style={{ fontFamily: "'Nunito Sans', sans-serif" }} className="text-[11px] md:text-sm tracking-widest uppercase text-[#1F1517]/70">
                 Discover our luxury collections
               </p>
             </FadeUp>
@@ -387,10 +387,10 @@ export default function AboutPage() {
       </section>
 
       {/* 11. BRAND STATEMENT */}
-      <section className="py-32 lg:py-48 px-6 bg-[#F8F5EF] border-t border-[#22181C]/5">
+      <section className="py-32 lg:py-48 px-6 bg-[#F8F5EF] border-t border-[#1F1517]/5">
         <div className="max-w-5xl mx-auto text-center">
           <FadeUp>
-            <h2 className="text-[32px] sm:text-[42px] md:text-[50px] lg:text-[70px] font-medium leading-[1.25] text-[#22181C] mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-[32px] sm:text-[42px] md:text-[50px] lg:text-[70px] font-medium leading-[1.25] text-[#1F1517] mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               "Beauty may fade<br/>
               from view,<br/><br/>
               but a meaningful piece<br/>
@@ -413,17 +413,17 @@ export default function AboutPage() {
         
         <div className="relative z-10 max-w-2xl mx-auto text-center">
           <FadeUp>
-            <h2 className="text-[36px] sm:text-[48px] lg:text-[60px] font-medium leading-[1.1] mb-8 text-[#22181C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-[36px] sm:text-[48px] lg:text-[60px] font-medium leading-[1.1] mb-8 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Find Something That<br/>Feels Like You
             </h2>
-            <p className="text-[16px] md:text-[18px] text-[#22181C]/80 font-normal mb-12" style={{ fontFamily: "var(--font-sans)" }}>
+            <p className="text-[16px] md:text-[18px] text-[#1F1517]/80 font-normal mb-12" style={{ fontFamily: "var(--font-sans)" }}>
               Discover jewellery designed for the moments that become memories.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link to="/collections" className="w-full sm:w-auto px-12 py-4 bg-[#22181C] text-[#F8F5EF] text-[12px] md:text-[13px] uppercase tracking-[0.2em] font-bold hover:bg-[#C5A059] transition-colors duration-300 shadow-lg" style={{ fontFamily: "var(--font-sans)" }}>
+              <Link to="/collections" className="w-full sm:w-auto px-12 py-4 bg-[#1F1517] text-[#F8F5EF] text-[12px] md:text-[13px] uppercase tracking-[0.2em] font-bold hover:bg-[#C5A059] transition-colors duration-300 shadow-lg" style={{ fontFamily: "var(--font-sans)" }}>
                 Shop The Collection
               </Link>
-              <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full sm:w-auto px-12 py-4 border border-[#22181C]/30 text-[#22181C] text-[12px] md:text-[13px] uppercase tracking-[0.2em] font-bold hover:border-[#22181C] hover:bg-white transition-all duration-300" style={{ fontFamily: "var(--font-sans)" }}>
+              <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full sm:w-auto px-12 py-4 border border-[#1F1517]/30 text-[#1F1517] text-[12px] md:text-[13px] uppercase tracking-[0.2em] font-bold hover:border-[#1F1517] hover:bg-white transition-all duration-300" style={{ fontFamily: "var(--font-sans)" }}>
                 Explore Our Story
               </button>
             </div>

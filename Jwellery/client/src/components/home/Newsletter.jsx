@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Newsletter() {
   return (
-    <section className="py-20 lg:py-24 bg-[#22181C] text-[#FDFBF7]">
+    <section className="py-20 lg:py-24 bg-[#1F1517] text-[#FDFBF7]">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export default function Newsletter() {
           />
           <button
             type="submit"
-            className="bg-[#4A0712] text-[#FDFBF7] px-8 py-3 text-[10px] tracking-[0.15em] uppercase hover:bg-[#C5A059] hover:text-[#22181C] transition-colors font-medium border border-[#4A0712] hover:border-[#C5A059]"
+            className="bg-[#4A0712] text-[#FDFBF7] px-8 py-3 text-[10px] tracking-[0.15em] uppercase hover:bg-[#C5A059] hover:text-[#1F1517] transition-colors font-medium border border-[#4A0712] hover:border-[#C5A059]"
             style={{ fontFamily: "'Nunito Sans', sans-serif" }}
           >
             SUBSCRIBE

@@ -128,7 +128,7 @@ export default function RegisterPage() {
 function FormField({ icon: Icon, label, error, children }) {
   return (
     <div>
-      <label className="block text-[12px] font-bold text-[#22181C] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{label}</label>
+      <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{label}</label>
       <div className="relative">
         <Icon size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10" />
         {children}

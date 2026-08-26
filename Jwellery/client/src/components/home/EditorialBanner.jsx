@@ -48,7 +48,7 @@ export default function EditorialBanner() {
             </motion.span>
             <motion.h2 
               variants={fadeUp}
-              className="text-[#22181C] text-[36px] md:text-[44px] leading-[1.1] mb-5 font-normal tracking-wide" 
+              className="text-[#1F1517] text-[36px] md:text-[44px] leading-[1.1] mb-5 font-normal tracking-wide" 
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Jewellery made to look perfect on everyone.
@@ -56,18 +56,18 @@ export default function EditorialBanner() {
             <motion.div variants={fadeUp} className="w-12 h-[1px] bg-[#C5A059] mb-6" />
             <motion.h3 
               variants={fadeUp}
-              className="text-[#22181C] text-xl lg:text-2xl italic mb-6 font-normal tracking-wide"
+              className="text-[#1F1517] text-xl lg:text-2xl italic mb-6 font-normal tracking-wide"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Indian Heritage pieces reimagined for the modern era.
             </motion.h3>
-            <motion.p variants={fadeUp} className="text-[#22181C] text-[13px] leading-[1.8] mb-10 font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+            <motion.p variants={fadeUp} className="text-[#1F1517] text-[13px] leading-[1.8] mb-10 font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               We carefully craft our pieces using the finest materials, combining traditional Indian artistry with contemporary design aesthetics. Discover a collection that celebrates your unique style and elegance.
             </motion.p>
             <motion.div variants={fadeUp}>
               <Link
                 to="/about"
-                className="inline-block bg-[#22181C] text-[#FDFBF7] px-10 py-3.5 text-[11px] tracking-[0.15em] uppercase hover:bg-[#4A0712] transition-colors shadow-sm font-medium hover:scale-[1.02] ease-out"
+                className="inline-block bg-[#1F1517] text-[#FDFBF7] px-10 py-3.5 text-[11px] tracking-[0.15em] uppercase hover:bg-[#4A0712] transition-colors shadow-sm font-medium hover:scale-[1.02] ease-out"
                 style={{ fontFamily: "'Nunito Sans', sans-serif" }}
               >
                 LEARN MORE
