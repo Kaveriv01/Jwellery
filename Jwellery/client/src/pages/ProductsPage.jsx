@@ -145,7 +145,7 @@ export default function ProductsPage() {
   // Narrow Hero Banner Data (Container-Width)
   const getBannerData = (s, isNew) => {
     if (isNew === 'true' || window.location.pathname === '/sale') {
-      return { title: 'New Arrivals', image: '/images/banner-new.png' };
+      return { title: 'New Arrivals', image: '/images/banner-new-v2.png' };
     }
     if (!s || window.location.pathname === '/collections') {
       return { title: 'Collections', image: '/images/banner-collections.png' };
