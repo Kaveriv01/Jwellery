@@ -99,15 +99,15 @@ const ProductCard = memo(function ProductCard({ product }) {
           </button>
         </div>
         
-        {/* Hover Add to Bag Button (Slides up from bottom) */}
-        <div className="absolute bottom-0 left-0 w-full z-10 opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto">
+        {/* Add to Bag Button (Always visible on mobile, slides up on desktop hover) */}
+        <div className="absolute bottom-0 left-0 w-full z-10 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-full group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out pointer-events-auto">
            <button 
              onClick={handleAddToCart}
              disabled={isAddingToCart || isOutOfStock}
-             className="w-full bg-[#22181C]/95 backdrop-blur-sm text-white py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-[#22181C] transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+             className="w-full bg-[#22181C]/95 backdrop-blur-sm text-white py-2.5 lg:py-3.5 text-[9px] lg:text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-[#22181C] transition-colors flex items-center justify-center gap-1.5 lg:gap-2 disabled:opacity-70"
              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
            >
-             <ShoppingBag size={14} />
+             <ShoppingBag size={14} className="scale-90 lg:scale-100" />
              {isOutOfStock ? 'Out Of Stock' : 'Add To Bag'}
            </button>
         </div>
