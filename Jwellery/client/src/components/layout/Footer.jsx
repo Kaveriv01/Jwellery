@@ -119,7 +119,7 @@ export default function Footer() {
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 text-center sm:text-left mb-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16 text-left mb-20 px-2 sm:px-0">
             <div>
               <h4 className="text-[13px] font-[700] uppercase tracking-[0.08em] text-[#22181C] mb-6" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>SHOP</h4>
               <ul className="space-y-4">
