@@ -239,15 +239,15 @@ export default function AdminEditProduct() {
 
             <div className="flex flex-wrap gap-6 pt-4 border-t border-gray-50">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('isFeatured')} className="accent-[#c9a84c] h-4 w-4" />
+                <input type="checkbox" {...register('isFeatured')} className="accent-[#C5A059] h-4 w-4" />
                 <span className="text-sm font-medium text-gray-700">Featured Product</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('isNewArrival')} className="accent-[#c9a84c] h-4 w-4" />
+                <input type="checkbox" {...register('isNewArrival')} className="accent-[#C5A059] h-4 w-4" />
                 <span className="text-sm font-medium text-gray-700">New Arrival</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('isBestSeller')} className="accent-[#c9a84c] h-4 w-4" />
+                <input type="checkbox" {...register('isBestSeller')} className="accent-[#C5A059] h-4 w-4" />
                 <span className="text-sm font-medium text-gray-700">Best Seller</span>
               </label>
             </div>
@@ -294,7 +294,7 @@ export default function AdminEditProduct() {
                     </button>
                   </div>
                 ))}
-                <label className="aspect-square rounded-xl border-2 border-dashed border-gray-200 hover:border-[#c9a84c] flex flex-col items-center justify-center cursor-pointer transition-colors bg-gray-50/50">
+                <label className="aspect-square rounded-xl border-2 border-dashed border-gray-200 hover:border-[#C5A059] flex flex-col items-center justify-center cursor-pointer transition-colors bg-gray-50/50">
                   <Upload size={20} className="text-gray-400 mb-1" />
                   <span className="text-[10px] text-gray-500 font-medium">Upload Image</span>
                   <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />

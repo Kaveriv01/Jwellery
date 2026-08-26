@@ -38,15 +38,15 @@ export default function AdminAnalytics() {
               <AreaChart data={chartData}>
                 <defs>
                   <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#c9a84c" stopOpacity={0.2}/>
-                    <stop offset="95%" stopColor="#c9a84c" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#C5A059" stopOpacity={0.2}/>
+                    <stop offset="95%" stopColor="#C5A059" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f1f1" />
                 <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#6b7280' }} />
                 <YAxis tick={{ fontSize: 11, fill: '#6b7280' }} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
                 <Tooltip formatter={(v) => [formatPrice(v), 'Revenue']} contentStyle={{ borderRadius: 12, border: '1px solid #f0f0f0' }} />
-                <Area type="monotone" dataKey="revenue" stroke="#c9a84c" strokeWidth={2} fillOpacity={1} fill="url(#colorRevenue)" />
+                <Area type="monotone" dataKey="revenue" stroke="#C5A059" strokeWidth={2} fillOpacity={1} fill="url(#colorRevenue)" />
               </AreaChart>
             </ResponsiveContainer>
           )}
@@ -65,7 +65,7 @@ export default function AdminAnalytics() {
                   <XAxis dataKey="categoryName" tick={{ fontSize: 11, fill: '#6b7280' }} />
                   <YAxis tick={{ fontSize: 11, fill: '#6b7280' }} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
                   <Tooltip formatter={(v) => [formatPrice(v), 'Revenue']} contentStyle={{ borderRadius: 12, border: '1px solid #f0f0f0' }} />
-                  <Bar dataKey="revenue" fill="#c9a84c" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="revenue" fill="#C5A059" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             )}

@@ -50,7 +50,7 @@ export default function ReelsSection() {
               transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
               whileHover={{ scale: 1.02 }}
               onClick={() => setPreviewVideo(reel.videoUrl)}
-              className="relative w-full aspect-[9/16] bg-[#FAF6EE] rounded-[12px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 ease-out"
+              className="relative w-full aspect-[9/16] bg-[#FDFBF7] rounded-[12px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 ease-out"
             >
               <video
                 src={reel.videoUrl}

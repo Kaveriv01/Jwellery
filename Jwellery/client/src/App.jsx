@@ -64,7 +64,7 @@ function SplashScreen({ onComplete }) {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
-      className="fixed inset-0 z-[99999] bg-[#FAF6EE] flex flex-col items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-[99999] bg-[#FDFBF7] flex flex-col items-center justify-center overflow-hidden"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -73,7 +73,7 @@ function SplashScreen({ onComplete }) {
         className="flex flex-col items-center justify-center"
       >
         <h1 
-          className="text-[#35050D] text-4xl md:text-5xl lg:text-7xl tracking-[0.25em] uppercase font-light ml-4"
+          className="text-[#22181C] text-4xl md:text-5xl lg:text-7xl tracking-[0.25em] uppercase font-light ml-4"
           style={{ fontFamily: "'Cormorant Garamond', serif" }}
         >
           Tarini
@@ -84,9 +84,9 @@ function SplashScreen({ onComplete }) {
           transition={{ delay: 1.5, duration: 2 }}
           className="mt-6 flex items-center justify-center gap-4 w-64 md:w-80"
         >
-          <div className="h-[1px] flex-1 bg-[#C7A56A]/40" />
-          <span className="text-[#C7A56A] text-[9px] md:text-[11px] tracking-[0.4em] uppercase font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>Jewellers</span>
-          <div className="h-[1px] flex-1 bg-[#C7A56A]/40" />
+          <div className="h-[1px] flex-1 bg-[#C5A059]/40" />
+          <span className="text-[#C5A059] text-[9px] md:text-[11px] tracking-[0.4em] uppercase font-medium" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Jewellers</span>
+          <div className="h-[1px] flex-1 bg-[#C5A059]/40" />
         </motion.div>
       </motion.div>
 
@@ -95,13 +95,13 @@ function SplashScreen({ onComplete }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-24 w-40 h-[1px] bg-[#C7A56A]/20 overflow-hidden"
+        className="absolute bottom-24 w-40 h-[1px] bg-[#C5A059]/20 overflow-hidden"
       >
         <motion.div 
           initial={{ x: "-100%" }}
           animate={{ x: "100%" }}
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-          className="w-1/2 h-full bg-[#C7A56A]"
+          className="w-1/2 h-full bg-[#C5A059]"
         />
       </motion.div>
     </motion.div>

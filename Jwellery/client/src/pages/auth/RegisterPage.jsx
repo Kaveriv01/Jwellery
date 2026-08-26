@@ -75,7 +75,7 @@ export default function RegisterPage() {
             <p className="font-serif text-5xl text-white leading-tight mb-4">Join Our<br />Circle</p>
             <p className="text-white/50 text-sm">Get early access, exclusive offers, and personalized jewelry recommendations.</p>
           </div>
-          <p className="relative z-10 text-[#c9a84c] text-xs tracking-widest">✦ WELCOME10 — 10% off your first order ✦</p>
+          <p className="relative z-10 text-[#C5A059] text-xs tracking-widest">✦ WELCOME10 — 10% off your first order ✦</p>
         </div>
 
         {/* Right panel */}
@@ -86,7 +86,7 @@ export default function RegisterPage() {
               <span className="font-serif text-xl text-gray-900">JWELLERY</span>
             </Link>
             <h1 className="font-serif text-3xl text-gray-900 mb-1">Create Account</h1>
-            <p className="text-sm text-gray-500 mb-8">Already have an account? <Link to="/login" className="text-[#c9a84c] hover:underline font-medium">Sign in</Link></p>
+            <p className="text-sm text-gray-500 mb-8">Already have an account? <Link to="/login" className="text-[#C5A059] hover:underline font-medium">Sign in</Link></p>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <FormField icon={User} label="Full Name" error={errors.name?.message}>
@@ -112,7 +112,7 @@ export default function RegisterPage() {
                 <input {...register('confirmPassword')} type="password" placeholder="Re-enter password" className={`input-gold !pl-10 ${errors.confirmPassword ? 'border-red-400' : ''}`} />
               </FormField>
 
-              <p className="text-[11px] text-gray-400">By creating an account, you agree to our <Link to="/terms" className="text-[#c9a84c] hover:underline">Terms</Link> and <Link to="/privacy" className="text-[#c9a84c] hover:underline">Privacy Policy</Link>.</p>
+              <p className="text-[11px] text-gray-400">By creating an account, you agree to our <Link to="/terms" className="text-[#C5A059] hover:underline">Terms</Link> and <Link to="/privacy" className="text-[#C5A059] hover:underline">Privacy Policy</Link>.</p>
 
               <motion.button type="submit" disabled={isSubmitting} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="btn-gold w-full rounded-xl py-3.5 text-sm disabled:opacity-60">
                 {isSubmitting ? 'Creating account...' : 'Create Account'}
@@ -128,7 +128,7 @@ export default function RegisterPage() {
 function FormField({ icon: Icon, label, error, children }) {
   return (
     <div>
-      <label className="block text-xs font-medium text-gray-700 mb-1.5">{label}</label>
+      <label className="block text-[12px] font-bold text-[#22181C] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{label}</label>
       <div className="relative">
         <Icon size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10" />
         {children}

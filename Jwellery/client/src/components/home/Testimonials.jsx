@@ -30,7 +30,7 @@ export default function Testimonials() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={sectionReveal}
-      className="py-20 bg-[#F8F4EC]/30 border-t border-[#FAF6EE] overflow-hidden"
+      className="py-20 bg-[#F8F4EC]/30 border-t border-[#FDFBF7] overflow-hidden"
     >
       <div className="container-luxury">
         {/* Section heading with premium reveal */}
@@ -53,7 +53,7 @@ export default function Testimonials() {
           centeredSlides={false}
           slidesPerView={1}
           spaceBetween={16}
-          autoplay={{ delay: 4500, disableOnMontserrataction: false }}
+          autoplay={{ delay: 4500, disableOnNunito Sansaction: false }}
           pagination={{ clickable: true }}
           breakpoints={{
             640:  { slidesPerView: 2, spaceBetween: 16 },
@@ -63,7 +63,7 @@ export default function Testimonials() {
         >
           {TESTIMONIALS.map((t) => (
             <SwiperSlide key={t.id}>
-              <div className="bg-white rounded-[2px] p-6 sm:p-7 border border-[#FAF6EE] shadow-sm hover:shadow-md transition-all duration-[450ms] h-full min-h-[260px] flex flex-col justify-between">
+              <div className="bg-white rounded-[2px] p-6 sm:p-7 border border-[#FDFBF7] shadow-sm hover:shadow-md transition-all duration-[450ms] h-full min-h-[260px] flex flex-col justify-between">
                 {/* Top: Stars + Quote */}
                 <div>
                   {/* Stars */}
@@ -83,13 +83,13 @@ export default function Testimonials() {
                 </div>
 
                 {/* Author */}
-                <div className="flex items-center gap-3 mt-5 pt-5 border-t border-[#FAF6EE]">
+                <div className="flex items-center gap-3 mt-5 pt-5 border-t border-[#FDFBF7]">
                   <div className="relative flex-shrink-0">
                     {t.avatar ? (
                       <img src={t.avatar} alt={t.name}
                            className="w-9 h-9 rounded-full object-cover ring-2 ring-[#F8F4EC]" />
                     ) : (
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#560817] to-[#FAF6EE] flex items-center justify-center text-white text-sm font-medium">
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#560817] to-[#FDFBF7] flex items-center justify-center text-white text-sm font-medium">
                         {t.initials}
                       </div>
                     )}

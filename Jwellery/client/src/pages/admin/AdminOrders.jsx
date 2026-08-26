@@ -112,7 +112,7 @@ export default function AdminOrders() {
                       <td className="py-4 px-6 text-right">
                         <Link
                           to={`/admin/orders/${o._id}`}
-                          className="p-2 hover:bg-gray-100 rounded-lg text-[#c9a84c] inline-flex items-center gap-1 transition-colors"
+                          className="p-2 hover:bg-gray-100 rounded-lg text-[#C5A059] inline-flex items-center gap-1 transition-colors"
                         >
                           <Eye size={15} /> Details
                         </Link>
@@ -129,7 +129,7 @@ export default function AdminOrders() {
                 <button
                   disabled={!pagination.hasPrevPage}
                   onClick={() => setPage((p) => p - 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Previous
                 </button>
@@ -137,7 +137,7 @@ export default function AdminOrders() {
                 <button
                   disabled={!pagination.hasNextPage}
                   onClick={() => setPage((p) => p + 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Next
                 </button>

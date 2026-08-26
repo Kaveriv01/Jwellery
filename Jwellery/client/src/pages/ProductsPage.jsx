@@ -34,7 +34,7 @@ function HorizontalDropdown({ title, value, options }) {
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center gap-1.5 py-2 px-3.5 text-[14px] font-[400] transition-colors rounded-[2px] ${hasSelection || isOpen ? 'text-[#111] bg-gray-50' : 'text-gray-700 hover:bg-gray-50 hover:text-[#111]'}`}
-        style={{ fontFamily: "'Montserrat', sans-serif" }}
+        style={{ fontFamily: "'Nunito Sans', sans-serif" }}
       >
         {hasSelection ? (activeLabel || title) : title} 
         <ChevronDown size={14} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
@@ -60,7 +60,7 @@ function HorizontalDropdown({ title, value, options }) {
                     )}
                   </div>
                   <input type="checkbox" checked={opt.checked} onChange={() => { opt.onChange(); setIsOpen(false); }} className="sr-only" />
-                  <span className={`text-[14px] transition-colors ${opt.checked ? 'text-[#111] font-[500]' : 'text-gray-600 group-hover:text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  <span className={`text-[14px] transition-colors ${opt.checked ? 'text-[#111] font-[500]' : 'text-gray-600 group-hover:text-[#111]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                     {opt.label}
                   </span>
                 </label>
@@ -317,12 +317,12 @@ export default function ProductsPage() {
 
           {/* Sort By Dropdown (Desktop) */}
           <div className="hidden lg:flex items-center gap-2">
-             <span className="text-[13px] text-gray-500 font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>Sort by:</span>
+             <span className="text-[13px] text-gray-500 font-medium" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Sort by:</span>
              <select
                 value={sortBy}
                 onChange={(e) => updateParam('sortBy', e.target.value)}
                 className="bg-transparent text-[14px] font-[500] cursor-pointer focus:ring-0 text-[#111] outline-none"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                style={{ fontFamily: "'Nunito Sans', sans-serif" }}
              >
                 {SORT_OPTIONS.map((opt) => (
                    <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -336,7 +336,7 @@ export default function ProductsPage() {
       <div className="container-luxury py-8 lg:py-10">
         {/* Title row */}
         <div className="mb-6">
-           <h2 className="text-[20px] md:text-[24px] text-[#111] font-[400]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+           <h2 className="text-[20px] md:text-[24px] text-[#111] font-[400]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
              {currentCategoryName} <span className="text-gray-400 text-[16px] md:text-[18px]">({pagination.totalItems || products.length} Designs)</span>
            </h2>
         </div>
@@ -351,7 +351,7 @@ export default function ProductsPage() {
         ) : products.length === 0 ? (
           <div className="text-center py-32">
             <p className="font-serif text-3xl text-gray-400 mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>No jewelry found</p>
-            <button onClick={clearAllFilters} className="bg-[#111] text-white text-[11px] tracking-[0.15em] uppercase px-8 py-3 hover:bg-[#B59A68] transition-colors rounded-[2px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <button onClick={clearAllFilters} className="bg-[#111] text-white text-[11px] tracking-[0.15em] uppercase px-8 py-3 hover:bg-[#C5A059] transition-colors rounded-[2px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               Clear Filters
             </button>
           </div>
@@ -366,18 +366,18 @@ export default function ProductsPage() {
         {/* Pagination */}
         {pagination.totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-20">
-            <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-5 py-2.5 border border-gray-200 rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-5 py-2.5 border border-gray-200 rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               Prev
             </button>
             {[...Array(Math.min(pagination.totalPages, 7))].map((_, i) => {
               const pageNum = i + 1;
               return (
-                <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-10 h-10 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#111] text-white border border-[#111]' : 'border border-gray-200 hover:border-[#111] text-[#111]'}`} style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-10 h-10 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#111] text-white border border-[#111]' : 'border border-gray-200 hover:border-[#111] text-[#111]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                   {pageNum}
                 </button>
               );
             })}
-            <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-5 py-2.5 border border-gray-200 rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-5 py-2.5 border border-gray-200 rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               Next
             </button>
           </div>
@@ -403,7 +403,7 @@ export default function ProductsPage() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-white sticky top-0 z-10">
-                <h2 className="text-[18px] text-[#111] font-semibold" style={{ fontFamily: "'Montserrat', sans-serif" }}>Filter & Sort</h2>
+                <h2 className="text-[18px] text-[#111] font-semibold" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Filter & Sort</h2>
                 <button onClick={() => setMobileFilterOpen(false)} className="text-gray-500 hover:text-black transition-colors"><X size={20} strokeWidth={2} /></button>
               </div>
               

@@ -15,7 +15,7 @@ export default function EditorialBanner() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-[#F8F4EE] border-t border-[#EAE6DF] overflow-hidden">
+    <section className="py-20 lg:py-28 bg-[#FDFBF7] border-t border-[#EAE6DF] overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           {/* Left Image */}
@@ -28,8 +28,8 @@ export default function EditorialBanner() {
           >
             <div className="aspect-[4/5] bg-white overflow-hidden rounded-[2px] relative group">
               <img
-                src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800"
-                alt="Diamond Bracelet"
+                src="https://plus.unsplash.com/premium_photo-1681276169450-4504a2442173?q=80&w=800&auto=format&fit=crop"
+                alt="Luxury Pearl Necklace"
                 className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03] ease-out"
               />
             </div>
@@ -43,32 +43,32 @@ export default function EditorialBanner() {
             viewport={{ once: true, amount: 0.2 }}
             className="w-full md:w-1/2 flex flex-col justify-center items-start lg:pr-12"
           >
-            <motion.span variants={fadeUp} className="text-[#C9A96E] text-[10px] lg:text-[11px] tracking-[0.2em] font-medium uppercase mb-5 block" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <motion.span variants={fadeUp} className="text-[#C5A059] text-[10px] lg:text-[11px] tracking-[0.2em] font-medium uppercase mb-5 block" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               OUR VISION
             </motion.span>
             <motion.h2 
               variants={fadeUp}
-              className="text-[#35050D] text-[36px] md:text-[44px] leading-[1.1] mb-5 font-normal tracking-wide" 
+              className="text-[#22181C] text-[36px] md:text-[44px] leading-[1.1] mb-5 font-normal tracking-wide" 
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Jewellery made to look perfect on everyone.
             </motion.h2>
-            <motion.div variants={fadeUp} className="w-12 h-[1px] bg-[#C9A96E] mb-6" />
+            <motion.div variants={fadeUp} className="w-12 h-[1px] bg-[#C5A059] mb-6" />
             <motion.h3 
               variants={fadeUp}
-              className="text-[#35050D] text-xl lg:text-2xl italic mb-6 font-normal tracking-wide"
+              className="text-[#22181C] text-xl lg:text-2xl italic mb-6 font-normal tracking-wide"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Indian Heritage pieces reimagined for the modern era.
             </motion.h3>
-            <motion.p variants={fadeUp} className="text-[#756869] text-[13px] leading-[1.8] mb-10 font-light" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <motion.p variants={fadeUp} className="text-[#22181C] text-[13px] leading-[1.8] mb-10 font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               We carefully craft our pieces using the finest materials, combining traditional Indian artistry with contemporary design aesthetics. Discover a collection that celebrates your unique style and elegance.
             </motion.p>
             <motion.div variants={fadeUp}>
               <Link
                 to="/about"
-                className="inline-block bg-[#35050D] text-[#F8F4EE] px-10 py-3.5 text-[11px] tracking-[0.15em] uppercase hover:bg-[#4A0712] transition-colors shadow-sm font-medium hover:scale-[1.02] ease-out"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className="inline-block bg-[#22181C] text-[#FDFBF7] px-10 py-3.5 text-[11px] tracking-[0.15em] uppercase hover:bg-[#4A0712] transition-colors shadow-sm font-medium hover:scale-[1.02] ease-out"
+                style={{ fontFamily: "'Nunito Sans', sans-serif" }}
               >
                 LEARN MORE
               </Link>

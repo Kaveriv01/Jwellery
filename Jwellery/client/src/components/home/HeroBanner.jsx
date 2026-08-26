@@ -36,17 +36,17 @@ export default function HeroBanner() {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-4 md:gap-6 mb-4 md:mb-8"
           >
-             <div className="w-10 md:w-16 h-[1px] bg-[#FAF6EE]/80"></div>
-             <Sparkles size={14} strokeWidth={1.5} className="text-[#FAF6EE]" fill="#FAF6EE" />
-             <div className="w-10 md:w-16 h-[1px] bg-[#FAF6EE]/80"></div>
+             <div className="w-10 md:w-16 h-[1px] bg-[#FDFBF7]/80"></div>
+             <Sparkles size={14} strokeWidth={1.5} className="text-[#FDFBF7]" fill="#FDFBF7" />
+             <div className="w-10 md:w-16 h-[1px] bg-[#FDFBF7]/80"></div>
           </motion.div>
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[22px] sm:text-[28px] md:text-[40px] lg:text-[52px] font-[300] leading-tight mb-3 md:mb-4 tracking-[0.2em] uppercase"
-            style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+            className="text-[#FDFBF7] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-bold leading-tight mb-3 md:mb-4 tracking-[0.2em] uppercase"
+            style={{ fontFamily: "'Nunito Sans', sans-serif", textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           >
             Timeless Elegance
           </motion.h1>
@@ -55,8 +55,8 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-            className="text-[#FAF6EE] text-[9px] sm:text-[12px] md:text-[14px] font-[300] tracking-[0.2em] uppercase mb-16 md:mb-14 max-w-lg mx-auto"
-            style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}
+            className="text-[#FDFBF7] text-[10px] sm:text-[13px] md:text-[15px] font-medium tracking-[0.2em] uppercase mb-16 md:mb-14 max-w-lg mx-auto"
+            style={{ fontFamily: "'Nunito Sans', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}
           >
             Discover jewellery designed to celebrate your everyday moments.
           </motion.p>
@@ -69,8 +69,8 @@ export default function HeroBanner() {
           >
             <Link
               to="/collections"
-              className="inline-block px-8 py-3 md:px-10 md:py-3.5 bg-[#FAF6EE] text-[#111] text-[10px] md:text-[12px] font-[500] tracking-[0.2em] uppercase hover:bg-white transition-all duration-[300ms] ease-out hover:scale-[1.02] shadow-xl"
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className="inline-block px-8 py-3 md:px-10 md:py-4 bg-[#22181C] text-[#FDFBF7] text-[10px] md:text-[13px] font-bold tracking-[0.2em] uppercase hover:bg-[#C5A059] hover:text-[#22181C] hover:border-[#C5A059] border-2 border-[#22181C] transition-all duration-[300ms] ease-out shadow-xl"
+              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
             >
               Shop Now
             </Link>
@@ -83,8 +83,8 @@ export default function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-[#FAF6EE] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase mb-6 md:mb-8 leading-relaxed font-[400]"
-            style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}
+            className="text-[#FDFBF7] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase mb-6 md:mb-8 leading-relaxed font-[400]"
+            style={{ fontFamily: "'Nunito Sans', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}
           >
             For the moments<br />that matter most.
           </motion.p>
@@ -95,9 +95,9 @@ export default function HeroBanner() {
              transition={{ duration: 0.8, delay: 0.7 }}
              className="flex items-center gap-6 mb-6 md:mb-8"
           >
-             <div className="w-8 md:w-10 h-[1px] bg-[#FAF6EE]/60"></div>
-             <Sparkles size={12} strokeWidth={1.5} className="text-[#FAF6EE]/80" fill="#FAF6EE" />
-             <div className="w-8 md:w-10 h-[1px] bg-[#FAF6EE]/60"></div>
+             <div className="w-8 md:w-10 h-[1px] bg-[#FDFBF7]/60"></div>
+             <Sparkles size={12} strokeWidth={1.5} className="text-[#FDFBF7]/80" fill="#FDFBF7" />
+             <div className="w-8 md:w-10 h-[1px] bg-[#FDFBF7]/60"></div>
           </motion.div>
 
           <motion.div
@@ -107,14 +107,14 @@ export default function HeroBanner() {
             className="flex flex-col items-center"
           >
             <div className="relative w-6 h-6 md:w-8 md:h-8 flex items-center justify-center mb-4">
-              <div className="absolute w-5 h-5 md:w-6 md:h-6 border-[1.5px] border-[#FAF6EE] rounded-full top-2"></div>
-              <div className="absolute w-1.5 h-1.5 md:w-2 md:h-2 border-[1.5px] border-[#FAF6EE] rounded-full -top-1 bg-transparent"></div>
+              <div className="absolute w-5 h-5 md:w-6 md:h-6 border-[1.5px] border-[#FDFBF7] rounded-full top-2"></div>
+              <div className="absolute w-1.5 h-1.5 md:w-2 md:h-2 border-[1.5px] border-[#FDFBF7] rounded-full -top-1 bg-transparent"></div>
             </div>
             
-            <p className="text-[#FAF6EE] text-xs md:text-sm tracking-[0.2em] uppercase font-[400]" style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>
+            <p className="text-[#FDFBF7] text-xs md:text-sm tracking-[0.2em] uppercase font-[400]" style={{ fontFamily: "'Nunito Sans', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>
               Tarini Jewellers
             </p>
-            <p className="text-[#FAF6EE]/80 text-[7px] md:text-[8px] tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Montserrat', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>
+            <p className="text-[#FDFBF7]/80 text-[7px] md:text-[8px] tracking-[0.2em] uppercase mt-2" style={{ fontFamily: "'Nunito Sans', sans-serif", textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>
               Diamonds
             </p>
           </motion.div>

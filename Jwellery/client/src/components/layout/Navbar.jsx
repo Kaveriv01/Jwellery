@@ -70,14 +70,14 @@ export default function Navbar() {
     return (
       <Link to={to} className="relative group py-2">
         <span
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className={`relative z-10 text-[12px] lg:text-[13px] tracking-[0.08em] uppercase font-[600] transition-colors duration-[280ms] ease-out ${
-            isActive ? 'text-[#756B62]' : 'text-[#35050D] group-hover:text-[#C7A56A]'
+          style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+          className={`relative z-10 text-[13px] lg:text-[14px] tracking-[0.1em] uppercase font-bold transition-colors duration-[280ms] ease-out ${
+            isActive ? 'text-[#22181C]' : 'text-[#22181C] group-hover:text-[#C5A059]'
           }`}
         >
           {children}
         </span>
-        <span className={`absolute left-0 right-0 bottom-0 h-[1.5px] transform ${isActive ? 'bg-[#756B62] scale-x-100' : 'bg-[#C7A56A] scale-x-0 group-hover:scale-x-100'} transition-transform duration-[280ms] origin-center ease-out`} />
+        <span className={`absolute left-0 right-0 bottom-0 h-[1.5px] transform ${isActive ? 'bg-[#22181C] scale-x-100' : 'bg-[#C5A059] scale-x-0 group-hover:scale-x-100'} transition-transform duration-[280ms] origin-center ease-out`} />
       </Link>
     );
   };
@@ -90,7 +90,7 @@ export default function Navbar() {
         to={to} 
         onClick={() => setMenuOpen(false)} 
         className={`py-4 text-[12px] tracking-[0.08em] uppercase font-[600] border-b border-gray-100 transition-all duration-300 ${
-          isActive ? 'text-[#756B62] pl-2' : 'text-[#35050D] hover:text-[#C7A56A] hover:pl-2'
+          isActive ? 'text-[#22181C] pl-2' : 'text-[#22181C] hover:text-[#C5A059] hover:pl-2'
         }`}
       >
         {children}
@@ -100,6 +100,11 @@ export default function Navbar() {
 
   return (
     <>
+      {/* ── Top Announcement Bar ────────────────────────────────────── */}
+      <div className="bg-[#22181C] text-[#FDFBF7] text-center py-2 px-4 text-[11px] sm:text-[12px] font-bold tracking-[0.15em] uppercase w-full relative z-50">
+        <span style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Free Shipping on All Orders • 30 Day Returns • Lifetime Warranty</span>
+      </div>
+
       {/* ── Main Navbar ─────────────────────────────────────── */}
       <header
         className={`sticky top-0 z-40 transition-all duration-[300ms] ease-out border-b ${
@@ -119,10 +124,10 @@ export default function Navbar() {
             {/* LEFT: Logo */}
             <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-10 lg:mr-4">
               {/* Simple Star Motif */}
-              <svg viewBox="0 0 24 24" className="w-5 h-5 lg:w-6 lg:h-6 text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-500 mb-1" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 lg:w-6 lg:h-6 text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 mb-1" fill="currentColor">
                 <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
               </svg>
-              <span className="text-[26px] lg:text-[34px] font-light tracking-[0.15em] text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <span className="text-[26px] lg:text-[34px] font-light tracking-[0.15em] text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 तारिणी
               </span>
             </Link>
@@ -140,12 +145,12 @@ export default function Navbar() {
 
             {/* RIGHT: Actions */}
             <div className="flex items-center gap-5 sm:gap-6">
-              <button onClick={() => setSearchOpen(true)} className="group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300" aria-label="Search">
+              <button onClick={() => setSearchOpen(true)} className="group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300" aria-label="Search">
                 <Search size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
               </button>
 
               <div className="relative hidden lg:block">
-                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300" aria-label="Account">
+                <button onClick={() => setUserMenuOpen(!userMenuOpen)} className="group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300" aria-label="Account">
                   <User size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
                 </button>
                 <AnimatePresence>
@@ -175,12 +180,12 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link to="/wishlist" className="relative group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300 hidden sm:block" aria-label="Wishlist">
+              <Link to="/wishlist" className="relative group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300 hidden sm:block" aria-label="Wishlist">
                 <Heart size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
                 {wishlistCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#5C1D24] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{wishlistCount}</span>}
               </Link>
 
-              <button onClick={() => openCartDrawer()} className="relative group text-[#5C1D24] hover:text-[#C7A56A] transition-all duration-300" aria-label="Cart">
+              <button onClick={() => openCartDrawer()} className="relative group text-[#5C1D24] hover:text-[#C5A059] transition-all duration-300" aria-label="Cart">
                 <ShoppingBag size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
                 {totalItems > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#5C1D24] text-white text-[9px] rounded-full flex items-center justify-center font-bold">{totalItems}</span>}
               </button>
@@ -197,10 +202,10 @@ export default function Navbar() {
             <motion.aside initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.5 }} className="fixed left-0 top-0 h-full w-80 bg-white z-50 overflow-y-auto flex flex-col shadow-2xl">
               <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-white">
                 <div className="flex flex-col items-center justify-center cursor-pointer group mt-2">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-500 mb-1" fill="currentColor">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 mb-1" fill="currentColor">
                     <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
                   </svg>
-                  <span className="text-[24px] font-light tracking-[0.15em] text-[#6a1b24] group-hover:text-[#C7A56A] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <span className="text-[24px] font-light tracking-[0.15em] text-[#22181C] group-hover:text-[#C5A059] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     तारिणी
                   </span>
                 </div>
@@ -215,11 +220,11 @@ export default function Navbar() {
                 <MobileNavLink to="/collections">Collections</MobileNavLink>
                 <MobileNavLink to="/sale">Sale</MobileNavLink>
                 
-                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#756B62] hover:text-[#35050D] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
+                <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#22181C] hover:text-[#22181C] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 mt-4 transition-colors"><Heart size={16} /> Wishlist</Link>
                 {!isAuthenticated ? (
-                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#756B62] hover:text-[#35050D] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
+                  <Link to="/login" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#22181C] hover:text-[#22181C] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> Account / Login</Link>
                 ) : (
-                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#756B62] hover:text-[#35050D] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
+                  <Link to="/profile" onClick={() => setMenuOpen(false)} className="py-4 text-[12px] text-[#22181C] hover:text-[#22181C] tracking-[0.08em] uppercase font-[600] flex items-center gap-3 transition-colors"><User size={16} /> My Profile</Link>
                 )}
               </nav>
             </motion.aside>

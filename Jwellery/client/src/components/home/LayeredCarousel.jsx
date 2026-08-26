@@ -93,7 +93,7 @@ export default function LayeredCarousel() {
   };
 
   return (
-    <section className="relative w-full py-16 md:py-24 flex flex-col items-center justify-center bg-[#FAF6EE] overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 flex flex-col items-center justify-center bg-[#FDFBF7] overflow-hidden">
       
       {/* Centered Title */}
       <div className="text-center z-50 px-4 w-full mb-12">
@@ -113,7 +113,7 @@ export default function LayeredCarousel() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-gray-500 text-[11px] md:text-[13px] uppercase tracking-[0.25em]" 
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          style={{ fontFamily: "'Nunito Sans', sans-serif" }}
         >
           Discover Timeless Elegance
         </motion.p>
@@ -196,7 +196,7 @@ export default function LayeredCarousel() {
                     <Link 
                       to={`/category/${item.title.toLowerCase()}`}
                       className="inline-block px-10 py-3.5 bg-white text-[#111] text-[12px] md:text-[13px] font-[600] uppercase tracking-[0.15em] hover:bg-[#111] hover:text-white transition-colors rounded-[2px]"
-                      style={{ fontFamily: "'Montserrat', sans-serif" }}
+                      style={{ fontFamily: "'Nunito Sans', sans-serif" }}
                     >
                       Explore
                     </Link>

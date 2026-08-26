@@ -19,12 +19,12 @@ export default function ShopByCategory() {
         <div className="md:hidden">
           <div className="text-center mb-8">
             <h2 
-              className="text-2xl text-[#35050D] font-normal uppercase tracking-[0.15em] mb-3" 
+              className="text-2xl text-[#22181C] font-normal uppercase tracking-[0.15em] mb-3" 
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Shop By Category
             </h2>
-            <div className="w-12 h-[1px] bg-[#C7A56A] mx-auto"></div>
+            <div className="w-12 h-[1px] bg-[#C5A059] mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -36,7 +36,7 @@ export default function ShopByCategory() {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
               >
-                <Link to={`/category/${cat.id}`} className="group block w-full relative overflow-hidden rounded-[8px] bg-[#F8F4EE] aspect-[4/5] shadow-sm">
+                <Link to={`/category/${cat.id}`} className="group block w-full relative overflow-hidden rounded-[8px] bg-[#FDFBF7] aspect-[4/5] shadow-sm">
                   <img
                     src={cat.image}
                     alt={cat.name}
@@ -46,7 +46,7 @@ export default function ShopByCategory() {
                   <div className="absolute bottom-0 left-0 w-full p-4 text-center">
                     <span 
                       className="text-[12px] text-white font-[500] tracking-[0.15em] uppercase drop-shadow-md"
-                      style={{ fontFamily: "'Montserrat', sans-serif" }}
+                      style={{ fontFamily: "'Nunito Sans', sans-serif" }}
                     >
                       {cat.name}
                     </span>
@@ -74,8 +74,8 @@ export default function ShopByCategory() {
                 transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
               >
                 <Link to={`/category/${cat.id}`} className="flex flex-col items-center">
-                  <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full p-[2px] mb-3 transition-all duration-300 group-hover:bg-gradient-to-tr group-hover:from-[#C7A56A] group-hover:to-[#E8D09E] bg-transparent">
-                    <div className="w-full h-full rounded-full overflow-hidden border-2 border-white bg-[#F8F4EE]">
+                  <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full p-[2px] mb-3 transition-all duration-300 group-hover:bg-gradient-to-tr group-hover:from-[#C5A059] group-hover:to-[#E8D09E] bg-transparent">
+                    <div className="w-full h-full rounded-full overflow-hidden border-2 border-white bg-[#FDFBF7]">
                       <img
                         src={cat.image}
                         alt={cat.name}
@@ -84,8 +84,8 @@ export default function ShopByCategory() {
                     </div>
                   </div>
                   <span 
-                    className="text-[12px] text-[#35050D] font-[600] tracking-[0.08em] uppercase transition-colors group-hover:text-[#C7A56A]"
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    className="text-[12px] text-[#22181C] font-[600] tracking-[0.08em] uppercase transition-colors group-hover:text-[#C5A059]"
+                    style={{ fontFamily: "'Nunito Sans', sans-serif" }}
                   >
                     {cat.name}
                   </span>

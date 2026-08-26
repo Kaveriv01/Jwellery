@@ -17,7 +17,7 @@ const INSTAGRAM_POSTS = [
 
 export default function InstagramGallery() {
   return (
-    <section className="py-20 bg-[#F8F4EE] overflow-hidden border-t border-[#EAE6DF]">
+    <section className="py-20 bg-[#FDFBF7] overflow-hidden border-t border-[#EAE6DF]">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -25,8 +25,8 @@ export default function InstagramGallery() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="text-center mb-12"
       >
-        <p className="text-[#C9A96E] text-[10px] tracking-widest uppercase mb-3 font-medium">Follow Our Journey</p>
-        <h2 className="text-3xl lg:text-4xl text-[#35050D] font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <p className="text-[#C5A059] text-[10px] tracking-widest uppercase mb-3 font-medium">Follow Our Journey</p>
+        <h2 className="text-3xl lg:text-4xl text-[#22181C] font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           @tarinijewellers
         </h2>
       </motion.div>
@@ -43,14 +43,14 @@ export default function InstagramGallery() {
               target="_blank" 
               rel="noreferrer"
               key={idx}
-              className="relative aspect-square w-[200px] sm:w-[280px] md:w-[320px] flex-shrink-0 overflow-hidden group block bg-[#F8F4EE]"
+              className="relative aspect-square w-[200px] sm:w-[280px] md:w-[320px] flex-shrink-0 overflow-hidden group block bg-[#FDFBF7]"
             >
               <img
                 src={post.url}
                 alt="Instagram post"
                 className="w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 bg-[#35050D]/0 group-hover:bg-[#35050D]/30 transition-colors duration-[400ms] flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#22181C]/0 group-hover:bg-[#22181C]/30 transition-colors duration-[400ms] flex items-center justify-center">
                 <InstagramIcon size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out translate-y-2 group-hover:translate-y-0" />
               </div>
             </a>

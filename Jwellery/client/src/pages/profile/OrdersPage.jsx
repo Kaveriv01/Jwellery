@@ -41,7 +41,7 @@ export default function OrdersPage() {
                     <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${getStatusColor(order.status)}`}>
                       {order.status.toUpperCase()}
                     </span>
-                    <p className="font-bold text-[#c9a84c] mt-1">{formatPrice(order.totalPrice)}</p>
+                    <p className="font-bold text-[#C5A059] mt-1">{formatPrice(order.totalPrice)}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

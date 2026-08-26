@@ -89,7 +89,7 @@ export default function LoginPage() {
         }
       `}</style>
 
-      <div className="min-h-screen flex bg-gradient-to-br from-[#FFFDF9] via-[#FFF8EE] to-[#F6EBD5] overflow-hidden">
+      <div className="min-h-screen flex bg-gradient-to-br from-[#FDFBF7] via-[#FDFBF7] to-[#F6EBD5] overflow-hidden">
         {/* ── Left Side: Luxury Editorial Brand Showcase ────────────────────── */}
         <div className="hidden lg:flex lg:w-1/2 relative flex-col justify-between p-16 overflow-hidden">
           {/* Background image & gradient overlay */}
@@ -99,14 +99,14 @@ export default function LoginPage() {
               alt="Diamond Jewelry Showcase"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/45 to-[#D4AF37]/25" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/45 to-[#C5A059]/25" />
           </div>
 
           {/* Floating gold dust particles */}
           <div className="absolute inset-0 pointer-events-none z-10 opacity-30">
-            <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-[#D4AF37] rounded-full blur-[1px] animate-dust-1" />
+            <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-[#C5A059] rounded-full blur-[1px] animate-dust-1" />
             <div className="absolute top-2/3 left-1/4 w-3 h-3 bg-[#EAD7B0] rounded-full blur-[2px] animate-dust-2" />
-            <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-[#D4AF37] rounded-full animate-dust-1" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-[#C5A059] rounded-full animate-dust-1" style={{ animationDelay: '2s' }} />
           </div>
 
           {/* Top Row: Brand Logo */}
@@ -115,7 +115,7 @@ export default function LoginPage() {
               <span className="font-serif text-3xl text-white tracking-[0.15em] font-light">
                 JWELLERY
               </span>
-              <p className="text-[8px] text-[#D4AF37] tracking-[0.4em] uppercase font-semibold mt-1">
+              <p className="text-[8px] text-[#C5A059] tracking-[0.4em] uppercase font-semibold mt-1">
                 LUXURY REDEFINED
               </p>
             </Link>
@@ -123,7 +123,7 @@ export default function LoginPage() {
 
           {/* Middle Row: Hero Headings */}
           <div className="relative z-20 space-y-4 max-w-md">
-            <p className="text-[#D4AF37] text-[10px] tracking-[0.4em] uppercase font-bold">
+            <p className="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase font-bold">
               ✦ Exclusive Portal ✦
             </p>
             <h1 className="font-serif text-5xl sm:text-6xl text-white leading-tight font-light tracking-wide">
@@ -155,14 +155,14 @@ export default function LoginPage() {
             animate="visible"
             className="w-full max-w-lg relative z-10"
           >
-            <Card className="bg-white/95 backdrop-blur-2xl border border-[#D4AF37]/35 shadow-2xl rounded-[28px] p-8 sm:p-12 border-solid ring-0">
+            <Card className="bg-white/95 backdrop-blur-2xl border border-[#C5A059]/35 shadow-2xl rounded-[28px] p-8 sm:p-12 border-solid ring-0">
               {/* Mobile Logo Showcase */}
               <div className="text-center mb-8 lg:hidden">
                 <Link to="/" className="inline-block">
                   <span className="font-serif text-2xl text-gray-900 tracking-widest font-light">
                     JWELLERY
                   </span>
-                  <p className="text-[7px] text-[#D4AF37] tracking-[0.4em] uppercase font-bold mt-1">
+                  <p className="text-[7px] text-[#C5A059] tracking-[0.4em] uppercase font-bold mt-1">
                     Luxury Redefined
                   </p>
                 </Link>
@@ -175,7 +175,7 @@ export default function LoginPage() {
                 </CardTitle>
                 <CardDescription className="text-xs text-gray-500 mt-2 font-light">
                   New to JWELLERY?{' '}
-                  <Link to="/register" className="text-[#B8921F] hover:underline font-medium inline-flex items-center gap-0.5">
+                  <Link to="/register" className="text-[#C5A059] hover:underline font-medium inline-flex items-center gap-0.5">
                     Create your luxury account →
                   </Link>
                 </CardDescription>
@@ -186,7 +186,7 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   {/* Email Input */}
                   <motion.div variants={itemVariants}>
-                    <Label htmlFor="email" className="block text-[10px] uppercase tracking-[0.2em] font-semibold text-gray-600 mb-2">
+                    <Label htmlFor="email" className="block text-[10px] uppercase tracking-[0.2em] font-bold text-[#22181C] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                       Email Address
                     </Label>
                     <div className="relative">
@@ -196,7 +196,7 @@ export default function LoginPage() {
                         id="email"
                         type="email"
                         placeholder="your@email.com"
-                        className={`h-[60px] bg-white border border-[#D4AF37]/20 rounded-xl pl-12 pr-4 text-sm text-gray-800 outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all font-light ${
+                        className={`h-[60px] bg-white border border-[#C5A059]/20 rounded-xl pl-12 pr-4 text-sm text-gray-800 outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] transition-all font-light ${
                           errors.email ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : ''
                         }`}
                       />
@@ -207,10 +207,10 @@ export default function LoginPage() {
                   {/* Password Input */}
                   <motion.div variants={itemVariants}>
                     <div className="flex justify-between items-center mb-2">
-                      <Label htmlFor="password" className="block text-[10px] uppercase tracking-[0.2em] font-semibold text-gray-600">
+                      <Label htmlFor="password" className="block text-[10px] uppercase tracking-[0.2em] font-bold text-[#22181C]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                         Password
                       </Label>
-                      <Link to="/forgot-password" className="text-[10px] uppercase tracking-[0.1em] text-[#B8921F] hover:underline font-medium">
+                      <Link to="/forgot-password" className="text-[10px] uppercase tracking-[0.1em] text-[#C5A059] hover:underline font-medium">
                         Forgot Password?
                       </Link>
                     </div>
@@ -221,7 +221,7 @@ export default function LoginPage() {
                         id="password"
                         type={showPassword ? 'text' : 'password'}
                         placeholder="••••••••"
-                        className={`h-[60px] bg-white border border-[#D4AF37]/20 rounded-xl pl-12 pr-12 text-sm text-gray-800 outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all font-light ${
+                        className={`h-[60px] bg-white border border-[#C5A059]/20 rounded-xl pl-12 pr-12 text-sm text-gray-800 outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] transition-all font-light ${
                           errors.password ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : ''
                         }`}
                       />
@@ -241,7 +241,7 @@ export default function LoginPage() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-[54px] bg-gradient-to-r from-[#D4AF37] via-[#F3E7C4] to-[#C9A84C] text-black font-semibold text-xs tracking-[0.2em] uppercase rounded-xl relative overflow-hidden transition-all duration-300 button-shimmer flex items-center justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-full h-[54px] bg-gradient-to-r from-[#C5A059] via-[#F3E7C4] to-[#C5A059] text-black font-semibold text-xs tracking-[0.2em] uppercase rounded-xl relative overflow-hidden transition-all duration-300 button-shimmer flex items-center justify-center disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? 'Signing in...' : 'Sign In'}
                     </Button>
@@ -261,7 +261,7 @@ export default function LoginPage() {
                   'Trusted by Thousands',
                 ].map((badge) => (
                   <div key={badge} className="flex items-center gap-2 text-[10px] text-gray-500 font-light">
-                    <ShieldCheck size={14} className="text-[#B8921F] flex-shrink-0" />
+                    <ShieldCheck size={14} className="text-[#C5A059] flex-shrink-0" />
                     <span>{badge}</span>
                   </div>
                 ))}
@@ -290,7 +290,7 @@ export default function LoginPage() {
               alt="Traditional Royal Jewelry"
               className="w-full h-full object-cover filter brightness-95"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#2C1810]/90 via-[#4A0E17]/75 to-[#D4AF37]/45 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#2C1810]/90 via-[#4A0E17]/75 to-[#C5A059]/45 mix-blend-multiply" />
             <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
           </div>
 
@@ -299,14 +299,14 @@ export default function LoginPage() {
             initial={{ opacity: 0, scale: 0.8, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 text-center max-w-sm w-full bg-gradient-to-b from-[#FFFDF9]/95 via-[#FFF9EE]/90 to-[#F5E6C8]/95 backdrop-blur-md p-10 rounded-[32px] border-2 border-[#D4AF37]/60 shadow-[0_20px_60px_rgba(0,0,0,0.4)] space-y-4"
+            className="relative z-10 text-center max-w-sm w-full bg-gradient-to-b from-[#FDFBF7]/95 via-[#FFF9EE]/90 to-[#F5E6C8]/95 backdrop-blur-md p-10 rounded-[32px] border-2 border-[#C5A059]/60 shadow-[0_20px_60px_rgba(0,0,0,0.4)] space-y-4"
           >
             {/* Traditional Golden Sparkle Icon with Rotation & Glow */}
             <motion.div
               initial={{ rotate: -180, scale: 0 }}
               animate={{ rotate: 0, scale: 1 }}
               transition={{ duration: 1.2, delay: 0.2, type: 'spring' }}
-              className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#D4AF37] to-[#8B6B23] p-0.5 shadow-lg flex items-center justify-center"
+              className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#C5A059] to-[#8B6B23] p-0.5 shadow-lg flex items-center justify-center"
             >
               <div className="w-full h-full rounded-full bg-[#3A090F] flex items-center justify-center">
                 <motion.span
@@ -342,7 +342,7 @@ export default function LoginPage() {
               initial={{ width: 0 }}
               animate={{ width: '90px' }}
               transition={{ duration: 1.5, delay: 1 }}
-              className="h-0.5 mx-auto bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent shadow-[0_0_10px_#D4AF37]"
+              className="h-0.5 mx-auto bg-gradient-to-r from-transparent via-[#C5A059] to-transparent shadow-[0_0_10px_#C5A059]"
             />
           </motion.div>
         </motion.div>

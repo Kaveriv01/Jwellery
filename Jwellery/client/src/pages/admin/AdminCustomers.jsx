@@ -119,7 +119,7 @@ export default function AdminCustomers() {
                 <button
                   disabled={!pagination.hasPrevPage}
                   onClick={() => setPage((p) => p - 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Previous
                 </button>
@@ -127,7 +127,7 @@ export default function AdminCustomers() {
                 <button
                   disabled={!pagination.hasNextPage}
                   onClick={() => setPage((p) => p + 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Next
                 </button>

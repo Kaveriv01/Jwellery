@@ -128,7 +128,7 @@ export default function AdminBanners() {
         {/* Form Column */}
         <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm h-fit">
           <h2 className="font-serif text-xl text-gray-900 mb-4 flex items-center gap-2">
-            <Layers size={18} className="text-[#c9a84c]" />
+            <Layers size={18} className="text-[#C5A059]" />
             {editingBanner ? 'Edit Banner' : 'Create Banner'}
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -173,7 +173,7 @@ export default function AdminBanners() {
                 {imagePreview && (
                   <img src={imagePreview} alt="" className="w-12 h-12 object-cover rounded-lg border border-gray-200" />
                 )}
-                <label className="flex-1 border-2 border-dashed border-gray-200 hover:border-[#c9a84c] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
+                <label className="flex-1 border-2 border-dashed border-gray-200 hover:border-[#C5A059] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
                   <Upload size={16} className="text-gray-400" />
                   <span className="text-xs text-gray-500 font-medium">Upload File</span>
                   <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
@@ -226,7 +226,7 @@ export default function AdminBanners() {
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleEdit(b)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#c9a84c] transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#C5A059] transition-colors"
                     >
                       <Edit2 size={15} />
                     </button>

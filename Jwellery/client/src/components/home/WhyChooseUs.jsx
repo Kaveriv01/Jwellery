@@ -56,10 +56,10 @@ export default function WhyChooseUs() {
                 {val.icon}
               </div>
               <div className="flex flex-col">
-                <h3 className="text-[11px] font-bold tracking-[0.05em] text-[#111] uppercase mb-0.5">
+                <h3 className="text-[11px] font-bold tracking-[0.05em] text-[#111] uppercase mb-0.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                   {val.title}
                 </h3>
-                <p className="text-[12px] text-gray-500 font-normal">
+                <p className="text-[12px] text-gray-500 font-normal" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                   {val.description}
                 </p>
               </div>

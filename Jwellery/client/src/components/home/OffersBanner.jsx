@@ -43,7 +43,7 @@ export default function OffersBanner({ banners = [] }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ delay: shouldReduceMotion ? 0 : i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[2px] group border border-[#FAF6EE]"
+            className="relative overflow-hidden rounded-[2px] group border border-[#FDFBF7]"
             style={{ aspectRatio: '16/8' }}
           >
             <img

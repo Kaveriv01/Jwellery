@@ -17,7 +17,7 @@ export default function LifestyleVideoSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-[#C7A56A] text-[10px] sm:text-xs tracking-widest uppercase mb-3 font-medium">
+            className="text-[#C5A059] text-[10px] sm:text-xs tracking-widest uppercase mb-3 font-medium">
             The Art of Everyday Luxury
           </motion.p>
           <motion.h2 
@@ -35,7 +35,7 @@ export default function LifestyleVideoSection() {
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           whileHover={{ scale: 1.02 }}
-          className="relative w-full aspect-video md:aspect-[21/9] rounded-[2px] overflow-hidden mb-10 border border-[#FAF6EE] shadow-sm transition-transform duration-[400ms] ease-out"
+          className="relative w-full aspect-video md:aspect-[21/9] rounded-[2px] overflow-hidden mb-10 border border-[#FDFBF7] shadow-sm transition-transform duration-[400ms] ease-out"
         >
           <video
             src={jewelleryMedia.lifestyle.video}

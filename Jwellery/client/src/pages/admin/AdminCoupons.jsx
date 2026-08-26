@@ -110,7 +110,7 @@ export default function AdminCoupons() {
         {/* Form Column */}
         <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm h-fit">
           <h2 className="font-serif text-xl text-gray-900 mb-4 flex items-center gap-2">
-            <Tag size={18} className="text-[#c9a84c]" />
+            <Tag size={18} className="text-[#C5A059]" />
             {editingCoupon ? 'Edit Coupon' : 'Create Coupon'}
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -241,7 +241,7 @@ export default function AdminCoupons() {
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleEdit(c)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#c9a84c] transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#C5A059] transition-colors"
                     >
                       <Edit2 size={15} />
                     </button>

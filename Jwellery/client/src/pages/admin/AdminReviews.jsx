@@ -98,8 +98,8 @@ export default function AdminReviews() {
                           <Star
                             key={i}
                             size={12}
-                            fill={i < r.rating ? '#c9a84c' : '#e5e7eb'}
-                            className={i < r.rating ? 'text-[#c9a84c]' : 'text-gray-200'}
+                            fill={i < r.rating ? '#C5A059' : '#e5e7eb'}
+                            className={i < r.rating ? 'text-[#C5A059]' : 'text-gray-200'}
                           />
                         ))}
                       </div>
@@ -152,7 +152,7 @@ export default function AdminReviews() {
                 <button
                   disabled={!pagination.hasPrevPage}
                   onClick={() => setPage((p) => p - 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Previous
                 </button>
@@ -160,7 +160,7 @@ export default function AdminReviews() {
                 <button
                   disabled={!pagination.hasNextPage}
                   onClick={() => setPage((p) => p + 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Next
                 </button>

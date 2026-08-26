@@ -146,7 +146,7 @@ export default function AdminProducts() {
                         </Link>
                         <Link
                           to={`/admin/products/${p._id}/edit`}
-                          className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#c9a84c] transition-colors"
+                          className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#C5A059] transition-colors"
                           title="Edit"
                         >
                           <Edit2 size={16} />
@@ -171,7 +171,7 @@ export default function AdminProducts() {
                 <button
                   disabled={!pagination.hasPrevPage}
                   onClick={() => setPage((p) => p - 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Previous
                 </button>
@@ -179,7 +179,7 @@ export default function AdminProducts() {
                 <button
                   disabled={!pagination.hasNextPage}
                   onClick={() => setPage((p) => p + 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#c9a84c] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Next
                 </button>

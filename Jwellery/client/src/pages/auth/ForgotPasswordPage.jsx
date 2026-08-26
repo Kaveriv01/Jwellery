@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
               </div>
               <h1 className="font-serif text-2xl text-gray-900 mb-2">Check Your Email</h1>
               <p className="text-gray-500 text-sm mb-6">We've sent a password reset link to <strong>{getValues('email')}</strong>. The link is valid for 30 minutes.</p>
-              <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-[#c9a84c] hover:underline">
+              <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-[#C5A059] hover:underline">
                 <ArrowLeft size={14} /> Back to Login
               </Link>
             </div>
@@ -55,7 +55,7 @@ export default function ForgotPasswordPage() {
               <p className="text-gray-500 text-sm mb-6">Enter your email and we'll send you a link to reset your password.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1.5">Email Address</label>
+                  <label className="block text-[12px] font-bold text-[#22181C] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Email Address</label>
                   <div className="relative">
                     <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input {...register('email')} type="email" placeholder="your@email.com" className={`input-gold !pl-10 ${errors.email ? 'border-red-400' : ''}`} />
@@ -65,7 +65,7 @@ export default function ForgotPasswordPage() {
                 <motion.button type="submit" disabled={isSubmitting} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="btn-gold w-full rounded-xl py-3.5 text-sm disabled:opacity-60">
                   {isSubmitting ? 'Sending...' : 'Send Reset Link'}
                 </motion.button>
-                <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-[#c9a84c]">
+                <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-[#C5A059]">
                   <ArrowLeft size={14} /> Back to Login
                 </Link>
               </form>

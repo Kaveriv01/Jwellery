@@ -55,7 +55,7 @@ const ProductCard = memo(function ProductCard({ product }) {
   const hasHoverImage = images.length > 1;
 
   return (
-    <div className="group flex flex-col h-full bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-transparent p-3 rounded-md">
+    <div className="group flex flex-col h-full bg-white transition-all duration-300 shadow-[0_2px_10px_rgba(34,24,28,0.04)] hover:shadow-[0_12px_35px_rgba(34,24,28,0.1)] border border-transparent p-4 rounded-md">
       
       {/* Image Container */}
       <Link to={`/products/${slug}`} className="block relative overflow-hidden bg-[#f8f8f8] mb-4 rounded-sm" style={{ aspectRatio: '4/5' }}>
@@ -81,7 +81,7 @@ const ProductCard = memo(function ProductCard({ product }) {
         {/* Tanishq Style Top-Left Pill Badge */}
         {(isNewArrival || isBestSeller || true) && (
            <div className="absolute top-2 left-2 z-10">
-             <div className="bg-[#8b5a2b] text-white text-[9px] sm:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-md flex items-center gap-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+             <div className="bg-[#8b5a2b] text-white text-[9px] sm:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-md flex items-center gap-1" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                <span>★</span> {isBestSeller ? 'BESTSELLER' : (isNewArrival ? 'NEW ARRIVAL' : 'PURE GOLD')}
              </div>
            </div>
@@ -104,8 +104,8 @@ const ProductCard = memo(function ProductCard({ product }) {
            <button 
              onClick={handleAddToCart}
              disabled={isAddingToCart || isOutOfStock}
-             className="w-full bg-[#35050D]/95 backdrop-blur-sm text-white py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-[#35050D] transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
-             style={{ fontFamily: "'Montserrat', sans-serif" }}
+             className="w-full bg-[#22181C]/95 backdrop-blur-sm text-white py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-[#22181C] transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+             style={{ fontFamily: "'Nunito Sans', sans-serif" }}
            >
              <ShoppingBag size={14} />
              {isOutOfStock ? 'Out Of Stock' : 'Add To Bag'}
@@ -117,17 +117,17 @@ const ProductCard = memo(function ProductCard({ product }) {
       {/* Info Section (Tanishq Typography) */}
       <div className="flex flex-col flex-1 px-1">
         <Link to={`/products/${slug}`} className="block mb-1.5">
-          <h3 className="text-[14px] sm:text-[16px] text-gray-800 font-[600] leading-snug hover:text-[#8b5a2b] transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h3 className="text-[15px] sm:text-[17px] text-[#22181C] font-bold leading-snug hover:text-[#C5A059] transition-colors" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
             {name}
           </h3>
         </Link>
         
-        <div className="flex items-baseline gap-2 flex-wrap mb-1">
-          <span className="text-[16px] sm:text-[18px] font-[700] text-[#111]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <div className="flex items-baseline gap-2 flex-wrap mb-1 mt-1">
+          <span className="text-[17px] sm:text-[19px] font-bold text-[#22181C]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
             {formatPrice(effectivePrice)}
           </span>
           {discountPrice && (
-            <span className="text-[12px] text-gray-400 line-through font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <span className="text-[13px] text-gray-500 line-through font-semibold" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               {formatPrice(price)}
             </span>
           )}
@@ -135,12 +135,12 @@ const ProductCard = memo(function ProductCard({ product }) {
 
         {/* Small Tanishq style stock alert if out of stock */}
         {isOutOfStock ? (
-          <span className="text-[#d9381e] text-[11px] font-[500] tracking-wide mt-0.5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <span className="text-[#d9381e] text-[11px] font-[500] tracking-wide mt-0.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
             Currently unavailable
           </span>
         ) : (
           discountPrice && (
-            <span className="text-[#8b5a2b] text-[11px] font-[600] tracking-wider mt-0.5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <span className="text-[#8b5a2b] text-[11px] font-[600] tracking-wider mt-0.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               ({discountPercent}% OFF)
             </span>
           )

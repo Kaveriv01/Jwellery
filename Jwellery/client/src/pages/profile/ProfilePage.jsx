@@ -45,7 +45,7 @@ export default function ProfilePage() {
           {/* Sidebar */}
           <aside className="lg:w-64 flex-shrink-0">
             <div className="bg-white rounded-2xl border border-gray-100 p-5 text-center mb-4">
-              <div className="w-16 h-16 rounded-full bg-[#c9a84c] flex items-center justify-center text-white text-2xl font-bold mx-auto mb-3">
+              <div className="w-16 h-16 rounded-full bg-[#C5A059] flex items-center justify-center text-white text-2xl font-bold mx-auto mb-3">
                 {user?.name?.[0]?.toUpperCase()}
               </div>
               <p className="font-semibold text-gray-900">{user?.name}</p>
@@ -59,7 +59,7 @@ export default function ProfilePage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-3 w-full px-5 py-3.5 text-sm transition-colors ${activeTab === tab.id ? 'bg-[#fdf9ee] text-[#c9a84c] font-medium border-r-2 border-[#c9a84c]' : 'text-gray-600 hover:bg-gray-50'}`}
+                    className={`flex items-center gap-3 w-full px-5 py-3.5 text-sm transition-colors ${activeTab === tab.id ? 'bg-[#fdf9ee] text-[#C5A059] font-medium border-r-2 border-[#C5A059]' : 'text-gray-600 hover:bg-gray-50'}`}
                   >
                     <Icon size={15} /> {tab.label}
                   </button>
@@ -74,7 +74,7 @@ export default function ProfilePage() {
               <div className="bg-white rounded-2xl border border-gray-100 p-6">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="font-semibold text-gray-900 text-lg">Personal Information</h2>
-                  <button onClick={() => setEditing(!editing)} className="text-sm text-[#c9a84c] hover:underline">
+                  <button onClick={() => setEditing(!editing)} className="text-sm text-[#C5A059] hover:underline">
                     {editing ? 'Cancel' : 'Edit'}
                   </button>
                 </div>
@@ -107,7 +107,7 @@ export default function ProfilePage() {
 
             {activeTab === 'addresses' && (
               <div className="text-center py-10">
-                <Link to="/checkout" className="text-sm text-[#c9a84c] hover:underline">Manage addresses during checkout</Link>
+                <Link to="/checkout" className="text-sm text-[#C5A059] hover:underline">Manage addresses during checkout</Link>
               </div>
             )}
 
@@ -144,11 +144,11 @@ function NotificationsTab() {
     <div className="bg-white rounded-2xl border border-gray-100 p-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="font-semibold text-gray-900">Notifications</h2>
-        {data?.unreadCount > 0 && <button onClick={() => markRead()} className="text-xs text-[#c9a84c] hover:underline">Mark all as read</button>}
+        {data?.unreadCount > 0 && <button onClick={() => markRead()} className="text-xs text-[#C5A059] hover:underline">Mark all as read</button>}
       </div>
       <div className="space-y-3">
         {notifications.map((n) => (
-          <div key={n._id} className={`p-3 rounded-xl border text-sm ${n.isRead ? 'border-gray-100 bg-gray-50' : 'border-[#c9a84c]/20 bg-[#fdf9ee]'}`}>
+          <div key={n._id} className={`p-3 rounded-xl border text-sm ${n.isRead ? 'border-gray-100 bg-gray-50' : 'border-[#C5A059]/20 bg-[#fdf9ee]'}`}>
             <p className="font-medium text-gray-800">{n.title}</p>
             <p className="text-gray-600 text-xs mt-0.5">{n.message}</p>
           </div>

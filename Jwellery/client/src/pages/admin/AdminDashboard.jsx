@@ -17,7 +17,7 @@ const STAT_CARDS = (stats) => [
   { title: 'Total Customers', value: stats?.users?.total?.toLocaleString() || '0', sub: `${stats?.users?.newThisMonth || 0} new this month`, icon: Users, color: 'bg-green-50 text-green-600', positive: true },
 ];
 
-const PIE_COLORS = ['#c9a84c', '#1a1a1a', '#6b7280', '#d64040', '#e07c3c'];
+const PIE_COLORS = ['#C5A059', '#1a1a1a', '#6b7280', '#d64040', '#e07c3c'];
 
 export default function AdminDashboard() {
   const { data: statsData, isLoading: statsLoading } = useQuery({
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
                 <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#9ca3af' }} />
                 <YAxis tick={{ fontSize: 11, fill: '#9ca3af' }} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
                 <Tooltip formatter={(value) => [formatPrice(value), 'Revenue']} labelStyle={{ fontSize: 12 }} contentStyle={{ borderRadius: 8, border: '1px solid #f0f0f0', fontSize: 12 }} />
-                <Line type="monotone" dataKey="revenue" stroke="#c9a84c" strokeWidth={2.5} dot={{ fill: '#c9a84c', strokeWidth: 0, r: 4 }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="revenue" stroke="#C5A059" strokeWidth={2.5} dot={{ fill: '#C5A059', strokeWidth: 0, r: 4 }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-semibold text-gray-900">Recent Orders</h2>
-              <a href="/admin/orders" className="text-xs text-[#c9a84c] hover:underline">View all</a>
+              <a href="/admin/orders" className="text-xs text-[#C5A059] hover:underline">View all</a>
             </div>
             <div className="space-y-3">
               {(recentOrdersData?.orders || []).map((order) => (
@@ -167,7 +167,7 @@ export default function AdminDashboard() {
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-semibold text-gray-900">Top Products</h2>
-              <a href="/admin/products" className="text-xs text-[#c9a84c] hover:underline">View all</a>
+              <a href="/admin/products" className="text-xs text-[#C5A059] hover:underline">View all</a>
             </div>
             <div className="space-y-3">
               {(topProductsData?.products || []).map((product, i) => (
@@ -177,7 +177,7 @@ export default function AdminDashboard() {
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-medium text-gray-800 truncate">{product.name}</p>
                     <div className="flex items-center gap-1">
-                      <Star size={10} fill="#c9a84c" className="text-[#c9a84c]" />
+                      <Star size={10} fill="#C5A059" className="text-[#C5A059]" />
                       <span className="text-[10px] text-gray-400">{product.ratings?.toFixed(1)}</span>
                       <span className="text-[10px] text-gray-300">•</span>
                       <span className="text-[10px] text-gray-400">{product.soldCount || 0} sold</span>

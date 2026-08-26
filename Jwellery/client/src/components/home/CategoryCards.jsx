@@ -10,13 +10,13 @@ const CATEGORIES = [
 
 export default function CategoryCards() {
   return (
-    <div className="w-full bg-[#FAF6EE] py-12 md:py-16 border-b border-[#EAE6DF]/50">
+    <div className="w-full bg-[#FDFBF7] py-12 md:py-16 border-b border-[#EAE6DF]/50">
       <div className="container-luxury max-w-[1400px] px-4 md:px-8">
         <div className="text-center mb-8 md:mb-10">
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-3xl md:text-4xl text-[#35050D] font-medium tracking-wide mb-3">
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-3xl md:text-4xl text-[#22181C] font-medium tracking-wide mb-3">
             Shop by Category
           </h2>
-          <p style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-[10px] md:text-sm tracking-widest uppercase text-[#756B62]">
+          <p style={{ fontFamily: "'Nunito Sans', sans-serif" }} className="text-[10px] md:text-sm tracking-widest uppercase text-[#22181C]">
             Discover our luxury collections
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function CategoryCards() {
                   <div className="overflow-hidden hidden md:block">
                     <span 
                       style={{ 
-                        fontFamily: "'Montserrat', sans-serif",
+                        fontFamily: "'Nunito Sans', sans-serif",
                         textShadow: "0px 1px 2px rgba(0,0,0,0.6)"
                       }}
                       className="text-white text-[11px] font-semibold uppercase tracking-[0.15em] border-b border-white pb-1 inline-block transform translate-y-[200%] group-hover:translate-y-0 transition-transform duration-500 ease-out drop-shadow-md"

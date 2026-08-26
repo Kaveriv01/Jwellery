@@ -34,7 +34,7 @@ createRoot(document.getElementById('root')).render(
                   richColors
                   closeButton
                   toastOptions={{
-                    style: { fontFamily: 'Montserrat, sans-serif', fontSize: '14px' },
+                    style: { fontFamily: 'Nunito Sans, sans-serif', fontSize: '14px' },
                   }}
                 />
               </WishlistProvider>

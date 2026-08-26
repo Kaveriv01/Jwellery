@@ -36,8 +36,8 @@ export default function LuxuryButton({
   const variantStyles = {
     gold:    'btn-gold rounded-sm text-white',
     outline: 'btn-outline-gold rounded-sm',
-    dark:    'bg-[#1a1a1a] text-white text-[0.7rem] tracking-[0.1em] uppercase font-medium px-8 py-3 hover:bg-[#c9a84c] transition-all duration-300 rounded-sm',
-    ghost:   'text-[#c9a84c] text-[0.7rem] tracking-[0.1em] uppercase font-medium border-b border-[#c9a84c]/40 hover:border-[#c9a84c] transition-all pb-0.5',
+    dark:    'bg-[#1a1a1a] text-white text-[0.7rem] tracking-[0.1em] uppercase font-medium px-8 py-3 hover:bg-[#C5A059] transition-all duration-300 rounded-sm',
+    ghost:   'text-[#C5A059] text-[0.7rem] tracking-[0.1em] uppercase font-medium border-b border-[#C5A059]/40 hover:border-[#C5A059] transition-all pb-0.5',
   };
 
   return (

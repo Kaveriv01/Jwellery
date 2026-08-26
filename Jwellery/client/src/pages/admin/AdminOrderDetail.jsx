@@ -112,7 +112,7 @@ export default function AdminOrderDetail() {
                 {order.couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Coupon Discount</span><span>-{formatPrice(order.couponDiscount)}</span></div>}
                 <div className="flex justify-between text-gray-650"><span>Shipping</span><span>{order.shippingCharge === 0 ? 'FREE' : formatPrice(order.shippingCharge)}</span></div>
                 <div className="flex justify-between text-gray-650"><span>GST (3%)</span><span>{formatPrice(order.gstAmount)}</span></div>
-                <div className="flex justify-between font-bold text-gray-900 pt-2 border-t"><span>Total</span><span className="text-[#c9a84c]">{formatPrice(order.totalPrice)}</span></div>
+                <div className="flex justify-between font-bold text-gray-900 pt-2 border-t"><span>Total</span><span className="text-[#C5A059]">{formatPrice(order.totalPrice)}</span></div>
               </div>
             </div>
 

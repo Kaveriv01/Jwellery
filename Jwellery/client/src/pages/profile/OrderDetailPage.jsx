@@ -55,14 +55,14 @@ export default function OrderDetailPage() {
           <div className="flex items-center justify-between mb-10 overflow-x-auto pb-2">
             {ORDER_STATUSES.map((status, i) => (
               <div key={status} className="flex items-center">
-                <div className={`flex flex-col items-center gap-1 ${i <= currentStatusIdx ? 'text-[#c9a84c]' : 'text-gray-300'}`}>
-                  <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center ${i <= currentStatusIdx ? 'border-[#c9a84c] bg-[#fdf9ee]' : 'border-gray-200'}`}>
+                <div className={`flex flex-col items-center gap-1 ${i <= currentStatusIdx ? 'text-[#C5A059]' : 'text-gray-300'}`}>
+                  <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center ${i <= currentStatusIdx ? 'border-[#C5A059] bg-[#fdf9ee]' : 'border-gray-200'}`}>
                     {i < currentStatusIdx ? '✓' : <span className="w-2 h-2 rounded-full bg-current" />}
                   </div>
                   <span className="text-[10px] capitalize whitespace-nowrap">{status}</span>
                 </div>
                 {i < ORDER_STATUSES.length - 1 && (
-                  <div className={`flex-1 h-0.5 mx-2 min-w-[30px] ${i < currentStatusIdx ? 'bg-[#c9a84c]' : 'bg-gray-200'}`} />
+                  <div className={`flex-1 h-0.5 mx-2 min-w-[30px] ${i < currentStatusIdx ? 'bg-[#C5A059]' : 'bg-gray-200'}`} />
                 )}
               </div>
             ))}
@@ -97,7 +97,7 @@ export default function OrderDetailPage() {
                 {order.couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Discount</span><span>-{formatPrice(order.couponDiscount)}</span></div>}
                 <div className="flex justify-between text-gray-600"><span>Shipping</span><span>{order.shippingCharge === 0 ? 'FREE' : formatPrice(order.shippingCharge)}</span></div>
                 <div className="flex justify-between text-gray-600"><span>GST</span><span>{formatPrice(order.gstAmount)}</span></div>
-                <div className="flex justify-between font-bold text-gray-900 pt-2 border-t border-gray-200"><span>Total</span><span className="text-[#c9a84c]">{formatPrice(order.totalPrice)}</span></div>
+                <div className="flex justify-between font-bold text-gray-900 pt-2 border-t border-gray-200"><span>Total</span><span className="text-[#C5A059]">{formatPrice(order.totalPrice)}</span></div>
               </div>
             </div>
 

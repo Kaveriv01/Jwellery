@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -6,34 +6,34 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* ── Two-font luxury system: Cormorant Garamond (display) + Montserrat (UI) ── */
+  /* ── Two-font luxury system: Cormorant Garamond (display) + Nunito Sans (UI) ── */
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-serif:   'Cormorant Garamond', Georgia, serif;
-  --font-sans:    'Montserrat', system-ui, sans-serif;
+  --font-sans:    'Nunito Sans', system-ui, sans-serif;
 
   /* TARINI JEWELLERS Color Palette */
   --color-ivory:        #F7F5F1;
   --color-warm-white:   #FFFFFF;
   --color-champagne:    #EEE9E0;
-  --color-soft-gold:    #C7A56A;
-  --color-luxury-gold:  #C7A56A;
-  --color-deep-charcoal:#333333;
+  --color-soft-gold:    #C5A059;
+  --color-luxury-gold:  #C5A059;
+  --color-deep-charcoal:#22181C;
 
   --color-beige:        #F7F5F1;
-  --color-soft-brown:   #756B62;
+  --color-soft-brown:   #22181C;
 
-  --color-matte-900:    #111111;
-  --color-matte-950:    #111111;
+  --color-matte-900:    #22181C;
+  --color-matte-950:    #22181C;
 
-  --color-gold-400:     #C7A56A;
-  --color-gold-500:     #C7A56A;
+  --color-gold-400:     #C5A059;
+  --color-gold-500:     #C5A059;
   --color-gold-600:     #B8904A;
   --color-gold-200:     #EEE9E0;
 
-  --color-deep-maroon:  #111111;
-  --color-maroon-dark:  #111111;
+  --color-deep-maroon:  #22181C;
+  --color-maroon-dark:  #22181C;
 
-  --color-charcoal-900: #333333;
+  --color-charcoal-900: #22181C;
   --color-charcoal-50:  #F7F5F1;
 }
 
@@ -52,8 +52,8 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: 14px;
-  background-color: #FAF6EE;
-  color: #35050D;
+  background-color: #FDFBF7;
+  color: #22181C;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -72,7 +72,7 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Headings: default to Montserrat; use .font-display for editorial serif */
+/* Headings: default to Nunito Sans; use .font-display for editorial serif */
 h1, h2, h3, h4, h5, h6,
 .heading {
   font-family: var(--font-sans);
@@ -385,7 +385,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── Gold Shimmer Text ─────────────────────────────────────────────────────── */
 .text-shimmer-gold {
-  background: linear-gradient(90deg, #c9a84c 0%, #ffffff 30%, #f2d98a 50%, #ffffff 80%, #c9a84c 100%);
+  background: linear-gradient(90deg, #C5A059 0%, #ffffff 30%, #f2d98a 50%, #ffffff 80%, #C5A059 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -396,7 +396,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── Gold Button ───────────────────────────────────────────────────────────── */
 .btn-gold {
-  background: linear-gradient(135deg, #c9a84c 0%, #b8921f 50%, #c9a84c 100%);
+  background: linear-gradient(135deg, #C5A059 0%, #C5A059 50%, #C5A059 100%);
   background-size: 200% 100%;
   color: white;
   font-weight: 500;
@@ -728,7 +728,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── Admin Sidebar ─────────────────────────────────────────────────────────── */
 .admin-sidebar {
-  background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%);
+  background: linear-gradient(180deg, #22181C 0%, #1a1a1a 100%);
 }
 
 /* ── Ripple Effect ─────────────────────────────────────────────────────────── */
@@ -850,7 +850,7 @@ h1, h2, h3, h4, h5, h6,
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #3A0508;
+  --primary: #22181C;
   --primary-foreground: #ffffff;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -861,7 +861,7 @@ h1, h2, h3, h4, h5, h6,
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: #3A0508;
+  --ring: #22181C;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);

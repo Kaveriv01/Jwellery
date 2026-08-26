@@ -43,11 +43,11 @@ export default function StorySection() {
             viewport={{ once: true, amount: 0.2 }}
             className="flex flex-col justify-center order-2 px-4 lg:px-12"
           >
-            {/* Label — Montserrat */}
+            {/* Label — Nunito Sans */}
             <motion.span
               variants={fadeUp}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-[#C9A96E] text-[10px] lg:text-[11px] tracking-[0.2em] font-medium uppercase mb-6 block"
+              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+              className="text-[#C5A059] text-[10px] lg:text-[11px] tracking-[0.2em] font-medium uppercase mb-6 block"
             >
               DISCOVER TARINI
             </motion.span>
@@ -56,36 +56,36 @@ export default function StorySection() {
             <motion.h2
               variants={fadeUp}
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              className="text-[#35050D] text-[40px] lg:text-[48px] leading-[1.1] font-normal mb-8 tracking-wide"
+              className="text-[#22181C] text-[40px] lg:text-[48px] leading-[1.1] font-normal mb-8 tracking-wide"
             >
               Our Story
             </motion.h2>
 
-            <motion.div variants={fadeUp} className="w-12 h-[1px] bg-[#C9A96E] mb-8" />
+            <motion.div variants={fadeUp} className="w-12 h-[1px] bg-[#C5A059] mb-8" />
 
-            {/* Body — Montserrat */}
+            {/* Body — Nunito Sans */}
             <motion.p
               variants={fadeUp}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-[#756869] text-[13px] leading-[1.8] mb-4 font-light tracking-wide"
+              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+              className="text-[#22181C] text-[13px] leading-[1.8] mb-4 font-light tracking-wide"
             >
               Founded with a passion for timeless elegance, Tarini Jewellers is dedicated to bringing you pieces that celebrate life's most precious moments.
             </motion.p>
 
             <motion.p
               variants={fadeUp}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-[#756869] text-[13px] leading-[1.8] mb-12 font-light tracking-wide"
+              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+              className="text-[#22181C] text-[13px] leading-[1.8] mb-12 font-light tracking-wide"
             >
               Every creation is a testament to our commitment to craftsmanship, heritage, and beauty — inspired by the rich traditions of Indian jewellery making.
             </motion.p>
 
-            {/* Button — Montserrat */}
+            {/* Button — Nunito Sans */}
             <motion.div variants={fadeUp}>
               <Link
                 to="/about"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="group inline-flex items-center justify-center border border-[#35050D] text-[#35050D] px-10 py-3.5 text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-[#35050D] hover:text-[#F8F4EE] transition-all duration-[300ms] ease-out rounded-[2px]"
+                style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+                className="group inline-flex items-center justify-center border border-[#22181C] text-[#22181C] px-10 py-3.5 text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-[#22181C] hover:text-[#FDFBF7] transition-all duration-[300ms] ease-out rounded-[2px]"
               >
                 EXPLORE OUR STORY
               </Link>

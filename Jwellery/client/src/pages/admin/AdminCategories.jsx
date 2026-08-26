@@ -131,7 +131,7 @@ export default function AdminCategories() {
                 {preview && (
                   <img src={preview} alt="" className="w-12 h-12 object-cover rounded-lg border border-gray-200" />
                 )}
-                <label className="flex-1 border-2 border-dashed border-gray-200 hover:border-[#c9a84c] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
+                <label className="flex-1 border-2 border-dashed border-gray-200 hover:border-[#C5A059] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
                   <Upload size={16} className="text-gray-400" />
                   <span className="text-xs text-gray-500 font-medium">Upload Image</span>
                   <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
@@ -184,7 +184,7 @@ export default function AdminCategories() {
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleEdit(cat)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#c9a84c] transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#C5A059] transition-colors"
                       title="Edit"
                     >
                       <Edit2 size={15} />
