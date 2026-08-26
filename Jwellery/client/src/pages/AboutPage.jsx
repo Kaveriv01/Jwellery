@@ -262,11 +262,12 @@ export default function AboutPage() {
             </h2>
           </FadeUp>
           
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             {[
               { title: "Materials", img: "/images/rings-banner.png" },
               { title: "Craft", img: "/images/banner-collections.png" },
-              { title: "Detail", img: "/images/banner-bracelets.png" }
+              { title: "Detail", img: "/images/banner-bracelets.png" },
+              { title: "Design", img: "/images/banner-earrings.png" }
             ].map((item, i) => (
               <FadeUp key={i} delay={i * 0.15}>
                 <div className="relative aspect-square overflow-hidden group shadow-lg">
