@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+﻿import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -33,11 +33,11 @@ export default function AboutPage() {
   return (
     <div className="bg-[#F8F5EF] text-[#1F1517] overflow-hidden selection:bg-[#C5A059] selection:text-white">
       <Helmet>
-        <title>Our Story — Tarini Jewellers</title>
-        <meta name="description" content="Discover the story behind Tarini Jewellers — where tradition meets contemporary elegance." />
+        <title>Our Story â€” Tarini Jewellers</title>
+        <meta name="description" content="Discover the story behind Tarini Jewellers â€” where tradition meets contemporary elegance." />
       </Helmet>
       
-      {/* 1. HERO — CINEMATIC JEWELLERY CAMPAIGN */}
+      {/* 1. HERO â€” CINEMATIC JEWELLERY CAMPAIGN */}
       <section ref={heroRef} className="relative w-full h-[85vh] lg:h-[95vh] overflow-hidden bg-[#1F1517]">
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-full">
           <video 
@@ -46,7 +46,7 @@ export default function AboutPage() {
             muted 
             playsInline 
             className="w-full h-full object-cover"
-            poster="/images/home-banner.png"
+            poster="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1600"
           >
             <source src="/pinterest_video.mp4" type="video/mp4" />
           </video>
@@ -154,7 +154,7 @@ export default function AboutPage() {
       <section ref={craftRef} className="relative w-full h-[75vh] md:h-[90vh] overflow-hidden flex items-center justify-center">
         <motion.div style={{ scale: craftScale }} className="absolute inset-0 w-full h-full">
           <img 
-            src="/images/banner-new.png" 
+            src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800" 
             alt="Jewellery Craftsmanship" 
             className="w-full h-full object-cover"
           />
@@ -175,19 +175,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. TRADITION × MODERNITY */}
+      {/* 5. TRADITION Ã— MODERNITY */}
       <section className="py-24 lg:py-40 px-6 max-w-[1400px] mx-auto overflow-hidden">
         <div className="relative flex flex-col lg:flex-row items-center justify-center min-h-[800px]">
           
           <FadeUp className="w-full lg:w-[45%] lg:absolute lg:left-0 lg:top-0 z-0">
             <div className="aspect-[4/5] overflow-hidden w-full shadow-lg">
-              <img src="/images/necklace-banner.jpg" alt="Traditional Indian Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1200" alt="Traditional Indian Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
             </div>
           </FadeUp>
           
           <FadeUp delay={0.2} className="w-full lg:w-[45%] lg:absolute lg:right-0 lg:bottom-0 z-0 mt-8 lg:mt-0 hidden lg:block">
             <div className="aspect-[4/5] overflow-hidden w-full shadow-lg">
-              <img src="/images/earrings-banner.jpg" alt="Modern Luxury Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+              <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=1200" alt="Modern Luxury Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
             </div>
           </FadeUp>
           
@@ -210,7 +210,7 @@ export default function AboutPage() {
       {/* 6. THE TARINI WOMAN */}
       <section className="relative w-full py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          <img src="/images/home-banner.png" alt="The Tarini Woman" className="w-full h-full object-cover object-center" />
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1600" alt="The Tarini Woman" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-[#F8F5EF]/85 backdrop-blur-[2px]" />
         </div>
         
@@ -222,7 +222,7 @@ export default function AboutPage() {
           </FadeUp>
           <FadeUp delay={0.2} className="space-y-6 text-[16px] lg:text-[18px] font-normal leading-relaxed text-[#1F1517]/80 max-w-2xl mx-auto" style={{ fontFamily: "var(--font-sans)" }}>
             <p className="font-semibold text-[#1F1517]">Confident. Individual. Effortlessly elegant.</p>
-            <p>Tarini is created for the woman who celebrates her individuality and chooses jewellery that moves with her—from everyday moments to the occasions she remembers forever.</p>
+            <p>Tarini is created for the woman who celebrates her individuality and chooses jewellery that moves with herâ€”from everyday moments to the occasions she remembers forever.</p>
           </FadeUp>
         </div>
       </section>
@@ -265,9 +265,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             {[
               { title: "Materials", img: "/images/rings-banner.png" },
-              { title: "Craft", img: "/images/banner-collections.png" },
+              { title: "Craft", img: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600" },
               { title: "Detail", img: "/images/banner-bracelets.png" },
-              { title: "Design", img: "/images/banner-earrings.png" }
+              { title: "Design", img: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=800" }
             ].map((item, i) => (
               <FadeUp key={i} delay={i * 0.15}>
                 <div className="relative aspect-square overflow-hidden group shadow-lg">
@@ -292,25 +292,25 @@ export default function AboutPage() {
             
             <FadeUp className="col-span-2 md:col-span-8 md:row-span-2">
               <div className="aspect-[16/9] md:aspect-auto md:h-full overflow-hidden shadow-md">
-                <img src="/images/banner-earrings.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
+                <img src="https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
               </div>
             </FadeUp>
             
             <FadeUp delay={0.1} className="col-span-1 md:col-span-4">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="/images/cat-necklace.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 2" />
+                <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 2" />
               </div>
             </FadeUp>
             
             <FadeUp delay={0.2} className="col-span-1 md:col-span-4">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="/images/cat-ring.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
+                <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
               </div>
             </FadeUp>
 
             <FadeUp delay={0.1} className="col-span-1 md:col-span-4 mt-0 md:mt-8">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="/images/banner-new.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
+                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
               </div>
             </FadeUp>
 
@@ -322,7 +322,7 @@ export default function AboutPage() {
 
             <FadeUp delay={0.2} className="col-span-2 md:col-span-8 md:row-span-2 mt-0 md:mt-8">
               <div className="aspect-[16/9] md:aspect-auto md:h-full overflow-hidden shadow-md">
-                <img src="/images/home-banner.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1600" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
               </div>
             </FadeUp>
 
@@ -407,7 +407,7 @@ export default function AboutPage() {
       {/* 12. FINAL CTA */}
       <section className="relative py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          <img src="/images/banner-collections.png" alt="Tarini Collection" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&q=80&w=1600" alt="Tarini Collection" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#F8F5EF]/95 backdrop-blur-[4px]" />
         </div>
         
@@ -434,4 +434,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
 
