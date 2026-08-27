@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
@@ -126,7 +126,7 @@ export default function ProductDetailPage() {
   return (
     <>
       <Helmet>
-        <title>{name} — Jwellery</title>
+        <title>{name} â€” Jwellery</title>
         <meta name="description" content={shortDescription || description?.slice(0, 160)} />
       </Helmet>
 
@@ -144,7 +144,7 @@ export default function ProductDetailPage() {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16">
-          {/* ── Images (Left Column span-7) ───────────────────────────────────────────────────── */}
+          {/* â”€â”€ Images (Left Column span-7) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
           <div className="lg:col-span-7 flex flex-col lg:flex-row gap-4 h-full">
             
             {/* Desktop Vertical Thumbnails (Hidden on mobile) */}
@@ -237,7 +237,7 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          {/* ── Info (Right Column span-5) ─────────────────────────────────────────────────────── */}
+          {/* â”€â”€ Info (Right Column span-5) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
           <div className="lg:col-span-5 space-y-6 pt-2">
             <div>
               <span className="text-[10px] uppercase tracking-[0.2em] text-[#C5A059] font-bold block mb-3" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Tarini Jewellers</span>
@@ -405,14 +405,14 @@ export default function ProductDetailPage() {
 
               <AccordionItem title="SHIPPING & DELIVERY" isOpen={openAccordion === 'delivery'} onClick={() => setOpenAccordion(openAccordion === 'delivery' ? '' : 'delivery')}>
                 <div className="text-[13px] text-gray-600 leading-relaxed font-light space-y-2">
-                  <p>🚚 Free standard shipping on all orders.</p>
-                  <p>⚡ Express delivery available at checkout.</p>
+                  <p>ðŸšš Free standard shipping on all orders.</p>
+                  <p>âš¡ Express delivery available at checkout.</p>
                 </div>
               </AccordionItem>
 
               <AccordionItem title="RETURNS & EXCHANGE" isOpen={openAccordion === 'returns'} onClick={() => setOpenAccordion(openAccordion === 'returns' ? '' : 'returns')}>
                 <div className="text-[13px] text-gray-600 leading-relaxed font-light space-y-2">
-                  <p>🔄 Hassle-free 30-day returns and exchanges on unused items with original tags.</p>
+                  <p>ðŸ”„ Hassle-free 30-day returns and exchanges on unused items with original tags.</p>
                 </div>
               </AccordionItem>
             </div>
@@ -420,7 +420,7 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* ── Pre Footer Banner ─────────────────────────────────────────── */}
+        {/* â”€â”€ Pre Footer Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="w-full bg-[#4A0712] relative overflow-hidden mt-32 md:h-[350px] flex rounded-[2px]">
           <div className="flex flex-col md:flex-row items-stretch justify-between relative z-10 w-full px-0 md:px-12">
             <div className="flex items-center justify-center gap-6 md:gap-16 flex-1 py-12 md:py-0 relative z-20">
@@ -452,7 +452,7 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* ── You May Also Like / Related Products ──────────────────────────── */}
+        {/* â”€â”€ You May Also Like / Related Products â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {relatedProducts.length > 0 && (
           <div className="mt-28 border-t border-gray-100 pt-16">
             <div className="flex items-center justify-between mb-10">
@@ -460,12 +460,12 @@ export default function ProductDetailPage() {
               <Link to={`/category/${category?.slug || 'all'}`} className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1F1517] hover:text-[#C5A059] transition-colors">View All</Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
+              {relatedProducts.slice(0, 8).map((p) => <ProductCard key={p._id} product={p} />)}
             </div>
           </div>
         )}
 
-        {/* ── Complete The Look ──────────────────────────── */}
+        {/* â”€â”€ Complete The Look â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {relatedProducts.length > 4 && (
           <div className="mt-20">
             <div className="flex items-center justify-between mb-10">
@@ -477,7 +477,7 @@ export default function ProductDetailPage() {
           </div>
         )}
 
-        {/* ── Customer Reviews ──────────────────────────────────────────── */}
+        {/* â”€â”€ Customer Reviews â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="mt-24 border-t border-gray-100 pt-16">
           <div className="flex flex-col items-center text-center mb-12">
             <h2 className="text-[24px] md:text-[32px] font-bold uppercase tracking-[0.1em] text-[#1F1517] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Customer Reviews</h2>
@@ -524,48 +524,21 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* ── Recently Viewed ──────────────────────────── */}
+        {/* â”€â”€ Recently Viewed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {relatedProducts.length > 0 && (
           <div className="mt-24 border-t border-gray-100 pt-16">
             <div className="text-center mb-10">
               <h2 className="text-[24px] md:text-[32px] font-bold uppercase tracking-[0.1em] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {relatedProducts.slice(0, 4).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
+              {relatedProducts.slice(0, 8).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
             </div>
           </div>
         )}
 
       </div>
 
-      {/* ── THE STYLE EDIT ──────────────────────────── */}
-      <div className="mt-24 border-t border-gray-100 pt-16 mb-20 px-4 md:px-8 xl:px-12 max-w-[1600px] mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-[24px] md:text-[32px] font-bold uppercase tracking-[0.1em] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Style Edit</h2>
-          <p className="text-gray-500 mt-2 text-[11px] font-bold tracking-[0.2em] uppercase" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Curated For You</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {[
-            { title: "The Heritage Collection", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800&h=1066" },
-            { title: "Modern Classics", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800&h=1066" },
-            { title: "The Bridal Edit", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=800&h=1066" }
-          ].map((collection, idx) => (
-            <div key={idx} className="group relative w-full aspect-[3/4] overflow-hidden rounded-[2px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-transparent hover:border-[#C5A059]/30 transition-all duration-500">
-              <img src={collection.img} alt={collection.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#4A121A]/95 via-[#1F1517]/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
-              <div className="absolute bottom-8 left-8 right-8 text-center flex flex-col items-center translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                <h3 className="text-[#FAF8F5] text-[20px] lg:text-[24px] font-bold uppercase tracking-[0.1em] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{collection.title}</h3>
-                <span className="text-[#C5A059] text-[11px] font-bold uppercase tracking-[0.2em] relative inline-block overflow-hidden pb-1">
-                  Explore
-                  <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C5A059] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Fullscreen Viewer ───────────────────────────────────────── */}
+      {/* â”€â”€ Fullscreen Viewer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <AnimatePresence>
         {isFullscreen && (
           <motion.div
@@ -604,7 +577,7 @@ export default function ProductDetailPage() {
         )}
       </AnimatePresence>
 
-      {/* ── Sticky Mobile Purchase Bar ───────────────────────────────── */}
+      {/* â”€â”€ Sticky Mobile Purchase Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <AnimatePresence>
         {showStickyBar && (
           <motion.div

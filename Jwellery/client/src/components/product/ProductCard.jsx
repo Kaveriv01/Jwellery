@@ -75,7 +75,7 @@ const ProductCard = memo(function ProductCard({ product }) {
           <img
             src={displayImages[activeImageIdx]}
             alt={name}
-            className="absolute inset-0 w-full h-full object-contain p-2 transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
             onError={(e) => { e.target.src = fallbackImg; }}
           />
 
@@ -84,7 +84,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             <img
               src={displayImages[1]}
               alt={name}
-              className="absolute inset-0 w-full h-full object-contain p-2 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
+              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
               onError={(e) => { e.target.src = fallbackImg; }}
             />
           )}
