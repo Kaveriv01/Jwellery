@@ -265,7 +265,7 @@ export default function ProductDetailPage() {
           <div className="lg:col-span-5 space-y-6 pt-2">
             <div>
               <span className="text-[10px] uppercase tracking-[0.2em] text-[#B39A6B] font-bold block mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>Tarini Jewellers</span>
-              <h1 className="text-[32px] md:text-[40px] text-[#292725] font-normal tracking-[0.02em] capitalize leading-tight mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
+              <h1 className="text-[26px] md:text-[32px] lg:text-[38px] text-[#292725] font-[500] leading-[1.1] mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>`n                <div className="text-[13px] text-[#77716A] mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>18K Gold-Plated | Signature Collection</div>
               
               <div className="flex items-center gap-3 mb-5">
                 <div className="flex items-center gap-1 text-[12px] text-[#292725]">
@@ -277,14 +277,14 @@ export default function ProductDetailPage() {
 
               {/* Price Block */}
               <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-[24px] lg:text-[28px] font-bold text-[#292725]" style={{ fontFamily: "'Inter', sans-serif" }}>{formatPrice(effectivePrice)}</span>
+                <span className="text-[18px] lg:text-[20px] font-[600] text-[#292725]" style={{ fontFamily: "'Inter', sans-serif" }}>{formatPrice(effectivePrice)}</span>
                 {discountPrice && (
                   <span className="text-[14px] text-gray-500 line-through font-medium">{formatPrice(price)}</span>
                 )}
               </div>
               
               {shortDescription && (
-                <p className="text-[14px] text-[#292725]/80 leading-relaxed font-light mt-4" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <p className="text-[14px] lg:text-[15px] text-[#77716A] leading-[1.7] max-w-[480px] mt-4" style={{ fontFamily: "'Inter', sans-serif" }}>
                   "{shortDescription}"
                 </p>
               )}
@@ -614,7 +614,7 @@ export default function ProductDetailPage() {
             </div>
             <button onClick={handleAddToCart} onMouseMove={handleButtonMouseMove} onMouseLeave={handleButtonMouseLeave} style={{ transform: `translate(${buttonTransform.x}px, ${buttonTransform.y}px)` }}
               disabled={isOutOfStock || isAddingToCart}
-              className="bg-[#292725] text-[#FFFDFC] text-[12px] font-medium uppercase tracking-[0.1em] px-12 py-4 rounded-[2px] whitespace-nowrap active:scale-95 transition-transform"
+              className="bg-[#292725] text-white text-[12px] lg:text-[13px] font-[500] uppercase tracking-[0.06em] px-12 py-4 rounded-[2px] whitespace-nowrap active:scale-95 hover:-translate-y-[1px] transition-all"
             >
               {isOutOfStock ? "Out of Stock" : isAddingLocal ? "Adding..." : addSuccess ? "✓ Added To Bag" : "Add to Bag"}
             </button>
@@ -642,6 +642,7 @@ function AccordionItem({ title, isOpen, onClick, children }) {
     </div>
   );
 }
+
 
 
 
