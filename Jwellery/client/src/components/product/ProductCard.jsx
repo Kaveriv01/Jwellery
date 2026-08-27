@@ -66,16 +66,16 @@ const ProductCard = memo(function ProductCard({ product }) {
   const hasHoverImage = images.length > 1;
 
   return (
-    <div className="group flex flex-col h-full bg-transparent transition-all duration-300 pb-4 hover:shadow-[0_10px_30px_rgba(0,0,0,0.04)] rounded-[4px]">
+    <div className="group flex flex-col h-full bg-[#FAF8F5] transition-all duration-[400ms] pb-4 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] rounded-[2px] border border-transparent hover:border-[#C5A059]/30">
       
       {/* Main Image Container (Square 1:1) */}
-      <div className="relative overflow-hidden bg-transparent mb-3 rounded-t-[4px]" style={{ aspectRatio: '1/1' }}>
+      <div className="relative overflow-hidden bg-transparent mb-3 rounded-t-[2px]" style={{ aspectRatio: '1/1' }}>
         <Link to={`/products/${slug}`} className="block w-full h-full relative">
           
           <img
             src={displayImages[activeImageIdx]}
             alt={name}
-            className="absolute inset-0 w-full h-full object-contain p-2 transition-opacity duration-500 ease-in-out"
+            className="absolute inset-0 w-full h-full object-contain p-2 transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
             onError={(e) => { e.target.src = fallbackImg; }}
           />
 

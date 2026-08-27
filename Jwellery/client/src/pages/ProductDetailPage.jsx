@@ -538,6 +538,33 @@ export default function ProductDetailPage() {
 
       </div>
 
+      {/* ── THE STYLE EDIT ──────────────────────────── */}
+      <div className="mt-24 border-t border-gray-100 pt-16 mb-20 px-4 md:px-8 xl:px-12 max-w-[1600px] mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="text-[24px] md:text-[32px] font-bold uppercase tracking-[0.1em] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Style Edit</h2>
+          <p className="text-gray-500 mt-2 text-[11px] font-bold tracking-[0.2em] uppercase" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Curated For You</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {[
+            { title: "The Heritage Collection", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800&h=1066" },
+            { title: "Modern Classics", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800&h=1066" },
+            { title: "The Bridal Edit", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=800&h=1066" }
+          ].map((collection, idx) => (
+            <div key={idx} className="group relative w-full aspect-[3/4] overflow-hidden rounded-[2px] cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.06)] border border-transparent hover:border-[#C5A059]/30 transition-all duration-500">
+              <img src={collection.img} alt={collection.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#4A121A]/95 via-[#1F1517]/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute bottom-8 left-8 right-8 text-center flex flex-col items-center translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                <h3 className="text-[#FAF8F5] text-[20px] lg:text-[24px] font-bold uppercase tracking-[0.1em] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{collection.title}</h3>
+                <span className="text-[#C5A059] text-[11px] font-bold uppercase tracking-[0.2em] relative inline-block overflow-hidden pb-1">
+                  Explore
+                  <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C5A059] transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── Fullscreen Viewer ───────────────────────────────────────── */}
       <AnimatePresence>
         {isFullscreen && (
