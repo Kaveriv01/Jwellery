@@ -1,174 +1,218 @@
-import { Link, useLocation } from 'react-router-dom';
-import { FiInstagram, FiFacebook, FiMail } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiInstagram, FiFacebook, FiYoutube, FiPlus, FiMinus } from 'react-icons/fi';
 import { FaPinterestP } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import { Shield, Lock, RefreshCw, HeartHandshake } from 'lucide-react';
 
-function FooterLink({ to, children }) {
+const footerLinks = {
+  shop: [
+    { label: 'New Arrivals', to: '/products' },
+    { label: 'Rings', to: '/category/rings' },
+    { label: 'Earrings', to: '/category/earrings' },
+    { label: 'Necklaces', to: '/category/necklaces' },
+    { label: 'Bracelets', to: '/category/bracelets' },
+    { label: 'Pendants', to: '/category/pendants' },
+    { label: 'Jewellery Sets', to: '/category/jewellery-sets' },
+    { label: 'Best Sellers', to: '/products' },
+  ],
+  customerCare: [
+    { label: 'Contact Us', to: '/contact' },
+    { label: 'Shipping & Delivery', to: '/shipping-policy' },
+    { label: 'Returns & Exchanges', to: '/return-policy' },
+    { label: 'Track Order', to: '/profile' },
+    { label: 'Size Guide', to: '/faqs' },
+    { label: 'Jewellery Care', to: '/faqs' },
+    { label: 'FAQs', to: '/faqs' },
+  ],
+  about: [
+    { label: 'Our Story', to: '/about' },
+    { label: 'About Us', to: '/about' },
+    { label: 'Craftsmanship', to: '/about' },
+    { label: 'Sustainability', to: '/about' },
+    { label: 'Careers', to: '/about' },
+  ],
+  social: [
+    { label: 'Instagram', icon: <FiInstagram className="w-4 h-4" />, to: '#' },
+    { label: 'Facebook', icon: <FiFacebook className="w-4 h-4" />, to: '#' },
+    { label: 'Pinterest', icon: <FaPinterestP className="w-4 h-4" />, to: '#' },
+    { label: 'YouTube', icon: <FiYoutube className="w-4 h-4" />, to: '#' },
+  ]
+};
+
+function FooterAccordion({ title, links, isSocial = false }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Link
-      to={to}
-      className="text-[14px] text-[#1F1517] font-[500] uppercase tracking-[0.10em] hover:text-[#1F1517] transition-colors"
-      style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-    >
-      {children}
-    </Link>
+    <div className="border-b border-[#E8E1D7] md:hidden">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex justify-between items-center w-full py-4 text-left"
+      >
+        <span className="text-[12px] font-semibold text-[#292725] uppercase tracking-[0.1em] font-sans">
+          {title}
+        </span>
+        <span className="text-[#77716A]">
+          {isOpen ? <FiMinus className="w-4 h-4" /> : <FiPlus className="w-4 h-4" />}
+        </span>
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 pb-4' : 'max-h-0'}`}>
+        <ul className="flex flex-col space-y-3">
+          {links.map((link, idx) => (
+            <li key={idx}>
+              <Link to={link.to} className="text-[14px] text-[#77716A] hover:text-[#B39A6B] transition-colors flex items-center gap-2 font-sans">
+                {isSocial && link.icon}
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
 
 export default function Footer() {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
   return (
-    <div className="bg-[#FDFBF7]">
-      {/* ── TRUST & BENEFITS STRIP ────────────────────────────────────────── */}
-      {isHomePage && (
-        <div className="border-t border-[#EAE6DF]">
-          <div className="container-luxury pt-16 pb-24 lg:py-16">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-6 text-center">
-              
-              <div className="flex flex-col items-center">
-                <Shield size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-                <h4 className="text-[13px] font-[600] text-[#1F1517] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  AUTHENTIC CRAFTSMANSHIP
-                </h4>
-                <p className="text-[13px] text-[#1F1517] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  Thoughtfully designed jewellery made with attention to detail.
-                </p>
-              </div>
-              
-              <div className="flex flex-col items-center">
-                <Lock size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-                <h4 className="text-[13px] font-[600] text-[#1F1517] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  SECURE PAYMENTS
-                </h4>
-                <p className="text-[13px] text-[#1F1517] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  Safe and secure checkout experience.
-                </p>
-              </div>
-              
-              <div className="flex flex-col items-center">
-                <RefreshCw size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-                <h4 className="text-[13px] font-[600] text-[#1F1517] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  EASY RETURNS
-                </h4>
-                <p className="text-[13px] text-[#1F1517] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  Simple and transparent return experience.
-                </p>
-              </div>
-              
-              <div className="flex flex-col items-center">
-                <HeartHandshake size={24} strokeWidth={1.5} className="text-[#C5A059] mb-4" />
-                <h4 className="text-[13px] font-[600] text-[#1F1517] uppercase tracking-[0.05em] mb-2" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  CARE & SUPPORT
-                </h4>
-                <p className="text-[13px] text-[#1F1517] font-[400] max-w-[200px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                  Dedicated customer support whenever you need us.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── NEWSLETTER SECTION ────────────────────────────────────────────── */}
-      <div className="border-t border-[#EAE6DF] mt-8 lg:mt-0">
-        <div className="container-luxury pt-20 pb-20 lg:py-24 flex flex-col items-center text-center">
-          <h2 className="text-[28px] md:text-[32px] lg:text-[40px] text-[#1F1517] font-[500] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Stay Close to TARINI
-          </h2>
-          <p className="text-[14px] text-[#1F1517] font-[400] max-w-md mb-8" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-            Discover new collections, thoughtful designs and stories from TARINI JEWELLERS.
-          </p>
-          <form className="flex w-full max-w-md border-b border-[#1F1517] pb-2 group relative overflow-visible" onSubmit={(e) => e.preventDefault()}>
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              className="flex-1 bg-transparent border-none outline-none text-[14px] text-[#1F1517] placeholder:text-[#1F1517] font-[400]" 
-              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-              required 
-            />
-            <button 
-              type="submit" 
-              className="text-[13px] text-[#1F1517] font-[600] uppercase tracking-[0.08em] hover:text-[#C5A059] transition-colors pl-4"
-              style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-            >
-              Subscribe
-            </button>
-            <div className="absolute bottom-[-1px] left-0 w-0 h-[1.5px] bg-[#C5A059] transition-all duration-500 ease-out group-hover:w-full" />
-          </form>
-        </div>
-      </div>
-
-      {/* ── MAIN FOOTER ───────────────────────────────────────────────────── */}
-      <footer className="pt-20 pb-10 bg-[#FDFBF7] text-[#1F1517] border-t border-[#EAE6DF]">
-        <div className="container-luxury max-w-[1400px]">
-          
-          {/* Top Brand Area */}
-          <div className="text-center mb-20 flex flex-col items-center">
-            <Link to="/" className="flex flex-col items-center justify-center group mb-10">
-              <svg viewBox="0 0 24 24" className="w-8 h-8 lg:w-10 lg:h-10 text-[#111] group-hover:text-[#C5A059] transition-colors duration-500 mb-2" fill="currentColor">
-                <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
-              </svg>
-              <span className="text-[46px] lg:text-[60px] font-light tracking-[0.15em] text-[#111] group-hover:text-[#C5A059] transition-colors duration-500 leading-none pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                तारिणी
-              </span>
-            </Link>
-            <div className="flex justify-center gap-6 text-[#1F1517]">
-              <motion.a whileHover={{ scale: 1.15, color: '#1F1517' }} href="#" className="transition-colors duration-300 p-2"><FiInstagram size={20} strokeWidth={1.5} /></motion.a>
-              <motion.a whileHover={{ scale: 1.15, color: '#1F1517' }} href="#" className="transition-colors duration-300 p-2"><FiFacebook size={20} strokeWidth={1.5} /></motion.a>
-              <motion.a whileHover={{ scale: 1.15, color: '#1F1517' }} href="#" className="transition-colors duration-300 p-2"><FaPinterestP size={20} /></motion.a>
-            </div>
-          </div>
-
-          {/* Links Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16 text-left mb-20 px-2 sm:px-0">
-            <div>
-              <h4 className="text-[13px] font-[700] uppercase tracking-[0.08em] text-[#1F1517] mb-6" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>SHOP</h4>
-              <ul className="space-y-4">
-                <li><FooterLink to="/category/rings">RINGS</FooterLink></li>
-                <li><FooterLink to="/category/necklaces">NECKLACES</FooterLink></li>
-                <li><FooterLink to="/category/earrings">EARRINGS</FooterLink></li>
-                <li><FooterLink to="/category/bracelets">BRACELETS</FooterLink></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[13px] font-[700] uppercase tracking-[0.08em] text-[#1F1517] mb-6" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>ABOUT</h4>
-              <ul className="space-y-4">
-                <li><FooterLink to="/about">OUR STORY</FooterLink></li>
-                <li><FooterLink to="/about">OUR MATERIALS</FooterLink></li>
-                <li><FooterLink to="/about">JOURNAL</FooterLink></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[13px] font-[700] uppercase tracking-[0.08em] text-[#1F1517] mb-6" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>HELP</h4>
-              <ul className="space-y-4">
-                <li><FooterLink to="/contact">CONTACT US</FooterLink></li>
-                <li><FooterLink to="/shipping">SHIPPING</FooterLink></li>
-                <li><FooterLink to="/returns">RETURNS</FooterLink></li>
-                <li><FooterLink to="/faqs">FAQS</FooterLink></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[13px] font-[700] uppercase tracking-[0.08em] text-[#1F1517] mb-6" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>LEGAL</h4>
-              <ul className="space-y-4">
-                <li><FooterLink to="/privacy">PRIVACY POLICY</FooterLink></li>
-                <li><FooterLink to="/terms">TERMS OF SERVICE</FooterLink></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom */}
-          <div className="text-center pt-8">
-            <p className="text-[11px] lg:text-[12px] tracking-[0.10em] uppercase text-[#1F1517] font-[500]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-              © 2026 TARINI JEWELLERS. ALL RIGHTS RESERVED.
+    <footer className="bg-[#F7F4EF] pt-16 md:pt-24 pb-8 border-t border-[#E8E1D7]">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 xl:px-12">
+        
+        {/* SECTION 1 - BRAND & NEWSLETTER */}
+        <div className="flex flex-col md:flex-row justify-between items-start mb-16 md:mb-20 gap-10 md:gap-16">
+          <div className="w-full md:w-1/2 max-w-md">
+            <h2 className="text-[32px] md:text-[40px] text-[#292725] mb-2 font-medium tracking-[0.05em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              TARINI
+            </h2>
+            <p className="text-[16px] text-[#292725] mb-3 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Timeless jewellery, thoughtfully crafted.
+            </p>
+            <p className="text-[14px] text-[#77716A] leading-relaxed font-sans">
+              Discover jewellery designed to celebrate every moment, from everyday elegance to unforgettable occasions.
             </p>
           </div>
-
+          
+          <div className="w-full md:w-1/2 max-w-md">
+            <h3 className="text-[14px] font-semibold text-[#292725] uppercase tracking-[0.1em] mb-2 font-sans">
+              Stay in the know
+            </h3>
+            <p className="text-[14px] text-[#77716A] mb-6 font-sans">
+              Sign up for exclusive collections, new arrivals and private offers.
+            </p>
+            <form className="flex border-b border-[#292725] pb-2 group">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="bg-transparent border-none outline-none w-full text-[14px] text-[#292725] placeholder-[#77716A] font-sans"
+              />
+              <button 
+                type="button" 
+                className="text-[12px] font-semibold text-[#292725] uppercase tracking-[0.15em] hover:text-[#B39A6B] transition-colors whitespace-nowrap ml-4 font-sans"
+              >
+                SUBSCRIBE
+              </button>
+            </form>
+          </div>
         </div>
-      </footer>
-    </div>
+
+        <div className="w-full h-px bg-[#E8E1D7] mb-12 md:mb-16"></div>
+
+        {/* SECTION 2 - NAVIGATION (DESKTOP) */}
+        <div className="hidden md:grid grid-cols-4 gap-8 mb-20">
+          <div>
+            <h4 className="text-[12px] font-semibold text-[#292725] uppercase tracking-[0.1em] mb-6 font-sans">SHOP</h4>
+            <ul className="flex flex-col space-y-4">
+              {footerLinks.shop.map((link, idx) => (
+                <li key={idx}>
+                  <Link to={link.to} className="text-[14px] text-[#77716A] hover:text-[#B39A6B] transition-colors relative group font-sans">
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B39A6B] transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[12px] font-semibold text-[#292725] uppercase tracking-[0.1em] mb-6 font-sans">CUSTOMER CARE</h4>
+            <ul className="flex flex-col space-y-4">
+              {footerLinks.customerCare.map((link, idx) => (
+                <li key={idx}>
+                  <Link to={link.to} className="text-[14px] text-[#77716A] hover:text-[#B39A6B] transition-colors relative group font-sans">
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B39A6B] transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[12px] font-semibold text-[#292725] uppercase tracking-[0.1em] mb-6 font-sans">ABOUT TARINI</h4>
+            <ul className="flex flex-col space-y-4">
+              {footerLinks.about.map((link, idx) => (
+                <li key={idx}>
+                  <Link to={link.to} className="text-[14px] text-[#77716A] hover:text-[#B39A6B] transition-colors relative group font-sans">
+                    {link.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B39A6B] transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[12px] font-semibold text-[#292725] uppercase tracking-[0.1em] mb-6 font-sans">FOLLOW US</h4>
+            <ul className="flex flex-col space-y-4">
+              {footerLinks.social.map((link, idx) => (
+                <li key={idx}>
+                  <Link to={link.to} className="text-[14px] text-[#77716A] hover:text-[#B39A6B] transition-all duration-300 flex items-center gap-3 relative group font-sans hover:-translate-y-[1px]">
+                    {link.icon}
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* SECTION 2 - NAVIGATION (MOBILE ACCORDION) */}
+        <div className="block md:hidden mb-16 border-t border-[#E8E1D7]">
+          <FooterAccordion title="SHOP" links={footerLinks.shop} />
+          <FooterAccordion title="CUSTOMER CARE" links={footerLinks.customerCare} />
+          <FooterAccordion title="ABOUT TARINI" links={footerLinks.about} />
+          <FooterAccordion title="FOLLOW US" links={footerLinks.social} isSocial={true} />
+        </div>
+
+        {/* SECTION 3 - BRAND STATEMENT */}
+        <div className="text-center mb-16 md:mb-24 px-4">
+          <h2 className="text-[22px] md:text-[32px] text-[#292725] uppercase tracking-[0.05em] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Jewellery that becomes part of your story.
+          </h2>
+          <p className="text-[15px] md:text-[18px] text-[#77716A] italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Designed to be worn, loved and remembered.
+          </p>
+        </div>
+
+        <div className="w-full h-px bg-[#E8E1D7] mb-8"></div>
+
+        {/* SECTION 4 - BOTTOM BAR */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] text-[#77716A] font-sans">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+            <span className="text-[#292725]">© 2026 TARINI. All Rights Reserved.</span>
+            <div className="flex items-center gap-4 mt-2 md:mt-0">
+              <span className="flex items-center gap-1"><span className="text-green-600">✓</span> Secure Checkout</span>
+              <span className="flex items-center gap-1"><span className="text-green-600">✓</span> Easy Returns</span>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+            <Link to="/privacy-policy" className="hover:text-[#B39A6B] transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-[#B39A6B] transition-colors">Terms & Conditions</Link>
+            <Link to="/shipping-policy" className="hover:text-[#B39A6B] transition-colors">Shipping Policy</Link>
+            <Link to="/return-policy" className="hover:text-[#B39A6B] transition-colors">Refund Policy</Link>
+          </div>
+          
+          <div className="hidden lg:block text-[#292725] italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Made with care for every story.
+          </div>
+        </div>
+
+      </div>
+    </footer>
   );
 }
