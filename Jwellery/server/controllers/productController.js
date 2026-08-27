@@ -119,14 +119,27 @@ exports.getProductBySlug = async (req, res, next) => {
     }
 
     // Fetch related products (same category, excluding current)
-    const relatedProducts = await Product.find({
+    let relatedProducts = await Product.find({
       category: product.category._id,
       _id: { $ne: product._id },
       isActive: true,
     })
       .select('name slug images price discountPrice ratings numReviews')
-      .limit(6)
+      .limit(8)
       .lean();
+
+    // If less than 8 related products in the same category, pad with other products
+    if (relatedProducts.length < 8) {
+      const extraProducts = await Product.find({
+        _id: { $ne: product._id, $nin: relatedProducts.map(p => p._id) },
+        isActive: true,
+      })
+        .select('name slug images price discountPrice ratings numReviews')
+        .limit(8 - relatedProducts.length)
+        .lean();
+      
+      relatedProducts = [...relatedProducts, ...extraProducts];
+    }
 
     res.status(200).json({ success: true, product, relatedProducts });
   } catch (error) {
