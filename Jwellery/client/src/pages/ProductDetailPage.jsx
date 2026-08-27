@@ -132,15 +132,15 @@ export default function ProductDetailPage() {
 
       <div className="container-luxury py-8 lg:py-12">
         {/* Breadcrumb */}
-        <nav className="text-[10px] lg:text-[11px] text-[#1F1517] mb-8 flex items-center gap-2 uppercase tracking-widest font-medium">
-          <span className="hover:text-[#C5A059] cursor-pointer transition-colors" onClick={() => navigate('/')}>Home</span>
-          <ChevronRight size={10} className="text-[#1F1517]/40" />
-          <span className="hover:text-[#C5A059] cursor-pointer transition-colors" onClick={() => navigate('/products')}>All Jewelry</span>
+        <nav className="text-[10px] lg:text-[11px] text-[#292725] mb-8 flex items-center gap-2 uppercase tracking-widest font-medium">
+          <span className="hover:text-[#B39A6B] cursor-pointer transition-colors" onClick={() => navigate('/')}>Home</span>
+          <ChevronRight size={10} className="text-[#292725]/40" />
+          <span className="hover:text-[#B39A6B] cursor-pointer transition-colors" onClick={() => navigate('/products')}>All Jewelry</span>
           {category && (
-            <><ChevronRight size={10} className="text-[#1F1517]/40" /><span className="hover:text-[#C5A059] cursor-pointer transition-colors" onClick={() => navigate(`/category/${category.slug}`)}>{category.name}</span></>
+            <><ChevronRight size={10} className="text-[#292725]/40" /><span className="hover:text-[#B39A6B] cursor-pointer transition-colors" onClick={() => navigate(`/category/${category.slug}`)}>{category.name}</span></>
           )}
-          <ChevronRight size={10} className="text-[#1F1517]/40" />
-          <span className="text-[#1F1517]/60 truncate max-w-[200px]">{name}</span>
+          <ChevronRight size={10} className="text-[#292725]/40" />
+          <span className="text-[#292725]/60 truncate max-w-[200px]">{name}</span>
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16">
@@ -154,7 +154,7 @@ export default function ProductDetailPage() {
                   key={i}
                   onMouseEnter={() => setSelectedImage(i)}
                   onClick={() => setSelectedImage(i)}
-                  className={`relative w-full aspect-square flex-shrink-0 border-[1.5px] rounded-[2px] overflow-hidden transition-all ${selectedImage === i ? 'border-[#1F1517]' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                  className={`relative w-full aspect-square flex-shrink-0 border-[1.5px] rounded-[2px] overflow-hidden transition-all ${selectedImage === i ? 'border-[#292725]' : 'border-transparent opacity-60 hover:opacity-100'}`}
                 >
                   {media.type === 'video' ? (
                     <>
@@ -171,7 +171,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Main Large Image */}
-            <div className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] bg-[#FDFBF7] flex items-center justify-center group overflow-hidden border border-[#FDFBF7] rounded-[2px] cursor-crosshair">
+            <div className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] bg-[#FFFDFC] flex items-center justify-center group overflow-hidden border border-[#FFFDFC] rounded-[2px] cursor-crosshair">
               <AnimatePresence mode="wait">
                 {mediaItems[selectedImage]?.type === 'video' ? (
                   <motion.video
@@ -201,14 +201,14 @@ export default function ProductDetailPage() {
               </AnimatePresence>
               
               {discountPercent > 0 && (
-                <span className="absolute top-4 left-4 bg-[#1F1517] text-[#F7F3EA] text-[9px] font-medium px-3 py-1.5 uppercase tracking-widest rounded-[2px] pointer-events-none">
+                <span className="absolute top-4 left-4 bg-[#292725] text-[#FFFDFC] text-[9px] font-medium px-3 py-1.5 uppercase tracking-widest rounded-[2px] pointer-events-none">
                   {discountPercent}% OFF
                 </span>
               )}
               
               <button
                 onClick={() => setIsFullscreen(true)}
-                className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-[#FDFBF7] flex items-center justify-center text-[#1F1517]/70 hover:text-[#C5A059] transition-colors shadow-sm z-10 opacity-0 group-hover:opacity-100"
+                className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-[#FFFDFC] flex items-center justify-center text-[#292725]/70 hover:text-[#B39A6B] transition-colors shadow-sm z-10 opacity-0 group-hover:opacity-100"
               >
                 <ZoomIn size={16} />
               </button>
@@ -220,7 +220,7 @@ export default function ProductDetailPage() {
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
-                  className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden transition-all ${selectedImage === i ? 'border-[#1F1517]' : 'border-transparent opacity-60'}`}
+                  className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden transition-all ${selectedImage === i ? 'border-[#292725]' : 'border-transparent opacity-60'}`}
                 >
                   {media.type === 'video' ? (
                     <>
@@ -240,27 +240,27 @@ export default function ProductDetailPage() {
           {/* â”€â”€ Info (Right Column span-5) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
           <div className="lg:col-span-5 space-y-6 pt-2">
             <div>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-[#C5A059] font-bold block mb-3" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Tarini Jewellers</span>
-              <h1 className="text-[28px] md:text-[34px] text-[#1F1517] font-bold uppercase tracking-[0.1em] leading-tight mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#B39A6B] font-bold block mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>Tarini Jewellers</span>
+              <h1 className="text-[32px] md:text-[40px] text-[#292725] font-normal tracking-[0.02em] capitalize leading-tight mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
               
               <div className="flex items-center gap-3 mb-5">
-                <div className="flex items-center gap-1 text-[12px] text-[#1F1517]">
-                  <span className="flex items-center text-[#1F1517] gap-1"><Star size={12} fill="#C5A059" className="text-[#C5A059]" /> <span className="font-bold">{ratings > 0 ? ratings.toFixed(1) : '5.0'}</span></span>
+                <div className="flex items-center gap-1 text-[12px] text-[#292725]">
+                  <span className="flex items-center text-[#292725] gap-1"><Star size={12} fill="#B39A6B" className="text-[#B39A6B]" /> <span className="font-bold">{ratings > 0 ? ratings.toFixed(1) : '5.0'}</span></span>
                   <span className="mx-1 text-gray-300">|</span>
-                  <span className="underline cursor-pointer hover:text-[#C5A059] transition-colors">{numReviews > 0 ? numReviews : 126} Reviews</span>
+                  <span className="underline cursor-pointer hover:text-[#B39A6B] transition-colors">{numReviews > 0 ? numReviews : 126} Reviews</span>
                 </div>
               </div>
 
               {/* Price Block */}
               <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-[24px] lg:text-[28px] font-bold text-[#1F1517]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{formatPrice(effectivePrice)}</span>
+                <span className="text-[24px] lg:text-[28px] font-bold text-[#292725]" style={{ fontFamily: "'Inter', sans-serif" }}>{formatPrice(effectivePrice)}</span>
                 {discountPrice && (
                   <span className="text-[14px] text-gray-500 line-through font-medium">{formatPrice(price)}</span>
                 )}
               </div>
               
               {shortDescription && (
-                <p className="text-[14px] text-[#1F1517]/80 leading-relaxed font-light mt-4" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                <p className="text-[14px] text-[#292725]/80 leading-relaxed font-light mt-4" style={{ fontFamily: "'Inter', sans-serif" }}>
                   "{shortDescription}"
                 </p>
               )}
@@ -271,7 +271,7 @@ export default function ProductDetailPage() {
               {uniqueSizes.length > 0 && (
                 <div>
                   <div className="flex justify-between items-center mb-3">
-                    <label className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#1F1517]">Size</label>
+                    <label className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#292725]">Size</label>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {uniqueSizes.map(size => (
@@ -280,8 +280,8 @@ export default function ProductDetailPage() {
                         onClick={() => setSelectedVariant({ ...selectedVariant, size })}
                         className={`w-12 h-12 flex items-center justify-center text-[12px] font-bold rounded-[2px] border transition-all ${
                           selectedVariant.size === size 
-                            ? 'border-[#1F1517] bg-[#1F1517] text-white' 
-                            : 'border-gray-200 bg-white text-[#1F1517] hover:border-[#C5A059]'
+                            ? 'border-[#292725] bg-[#292725] text-white' 
+                            : 'border-gray-200 bg-white text-[#292725] hover:border-[#B39A6B]'
                         }`}
                       >
                         {size}
@@ -293,7 +293,7 @@ export default function ProductDetailPage() {
 
               {uniqueColors.length > 0 && (
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#1F1517] mb-3">Metal / Color</label>
+                  <label className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#292725] mb-3">Metal / Color</label>
                   <div className="flex flex-wrap gap-2">
                     {uniqueColors.map(color => (
                       <button
@@ -301,8 +301,8 @@ export default function ProductDetailPage() {
                         onClick={() => setSelectedVariant({ ...selectedVariant, color })}
                         className={`px-5 py-2.5 flex items-center justify-center text-[11px] font-bold uppercase tracking-wider rounded-[2px] border transition-all ${
                           selectedVariant.color === color 
-                            ? 'border-[#1F1517] bg-[#1F1517] text-white' 
-                            : 'border-gray-200 bg-white text-[#1F1517] hover:border-[#C5A059]'
+                            ? 'border-[#292725] bg-[#292725] text-white' 
+                            : 'border-gray-200 bg-white text-[#292725] hover:border-[#B39A6B]'
                         }`}
                       >
                         {color}
@@ -314,18 +314,18 @@ export default function ProductDetailPage() {
 
               {/* Quantity */}
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#1F1517] mb-3">Quantity</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.1em] text-[#292725] mb-3">Quantity</label>
                 <div className="inline-flex items-center border border-gray-200 rounded-[2px] bg-white w-32">
-                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="flex-1 h-10 flex items-center justify-center text-[#1F1517] hover:text-[#C5A059] transition-colors"><Minus size={14} /></button>
-                  <span className="flex-1 text-center text-[13px] font-bold text-[#1F1517]">{quantity}</span>
-                  <button onClick={() => setQuantity(quantity + 1)} className="flex-1 h-10 flex items-center justify-center text-[#1F1517] hover:text-[#C5A059] transition-colors"><Plus size={14} /></button>
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="flex-1 h-10 flex items-center justify-center text-[#292725] hover:text-[#B39A6B] transition-colors"><Minus size={14} /></button>
+                  <span className="flex-1 text-center text-[13px] font-bold text-[#292725]">{quantity}</span>
+                  <button onClick={() => setQuantity(quantity + 1)} className="flex-1 h-10 flex items-center justify-center text-[#292725] hover:text-[#B39A6B] transition-colors"><Plus size={14} /></button>
                 </div>
               </div>
             </div>
 
             {/* Pincode Checker */}
             <div className="mt-6 border border-gray-200 p-4 rounded-[2px]">
-              <label className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#1F1517] mb-3">
+              <label className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#292725] mb-3">
                 <Truck size={14} /> Check Delivery Availability
               </label>
               <div className="flex border border-gray-200 rounded-[2px] overflow-hidden">
@@ -334,17 +334,17 @@ export default function ProductDetailPage() {
                   placeholder="Enter Pincode" 
                   value={pincode}
                   onChange={(e) => setPincode(e.target.value)}
-                  className="flex-1 px-4 py-3 text-[12px] font-medium text-[#1F1517] outline-none bg-white"
+                  className="flex-1 px-4 py-3 text-[12px] font-medium text-[#292725] outline-none bg-white"
                 />
-                <button onClick={checkPincode} className="px-6 bg-[#FDFBF7] text-[10px] font-bold uppercase tracking-[0.1em] text-[#1F1517] hover:bg-[#C5A059] hover:text-white transition-colors border-l border-gray-200">
+                <button onClick={checkPincode} className="px-6 bg-[#FFFDFC] text-[10px] font-bold uppercase tracking-[0.1em] text-[#292725] hover:bg-[#B39A6B] hover:text-white transition-colors border-l border-gray-200">
                   Check
                 </button>
               </div>
-              <div className="mt-4 grid grid-cols-2 gap-2 text-[10px] text-[#1F1517]/70 uppercase tracking-widest">
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Free shipping</span>
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Secure packaging</span>
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Easy returns</span>
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#C5A059]" /> Authentic Tarini</span>
+              <div className="mt-4 grid grid-cols-2 gap-2 text-[10px] text-[#292725]/70 uppercase tracking-widest">
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Free shipping</span>
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Secure packaging</span>
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Easy returns</span>
+                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Authentic Tarini</span>
               </div>
             </div>
 
@@ -355,7 +355,7 @@ export default function ProductDetailPage() {
                 disabled={isOutOfStock || isAddingToCart}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full bg-[#1F1517] border border-[#1F1517] text-white text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center gap-2 transition-all hover:bg-black rounded-[2px] disabled:opacity-60"
+                className="w-full bg-[#292725] border border-[#292725] text-white text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center gap-2 transition-all hover:bg-black rounded-[2px] disabled:opacity-60"
               >
                 {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'Add to Cart'}
               </motion.button>
@@ -366,18 +366,18 @@ export default function ProductDetailPage() {
                   disabled={isOutOfStock}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="flex-1 bg-white hover:bg-[#FDFBF7] text-[#1F1517] text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center transition-all border border-[#1F1517] rounded-[2px] disabled:opacity-60"
+                  className="flex-1 bg-white hover:bg-[#FFFDFC] text-[#292725] text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center transition-all border border-[#292725] rounded-[2px] disabled:opacity-60"
                 >
                   Buy Now
                 </motion.button>
                 <button 
                   onClick={() => toggleWishlist({ productId: _id })}
-                  className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#1F1517] hover:border-[#C5A059] hover:text-[#C5A059] transition-all group"
+                  className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#292725] hover:border-[#B39A6B] hover:text-[#B39A6B] transition-all group"
                   aria-label="Wishlist"
                 >
-                  <Heart size={18} className={`transition-transform group-hover:scale-110 ${wishlisted ? 'fill-[#C5A059] text-[#C5A059]' : ''}`} />
+                  <Heart size={18} className={`transition-transform group-hover:scale-110 ${wishlisted ? 'fill-[#B39A6B] text-[#B39A6B]' : ''}`} />
                 </button>
-                <button className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#1F1517] hover:border-[#C5A059] hover:text-[#C5A059] transition-all group">
+                <button className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#292725] hover:border-[#B39A6B] hover:text-[#B39A6B] transition-all group">
                   <Share2 size={18} className="transition-transform group-hover:scale-110" />
                 </button>
               </div>
@@ -421,32 +421,32 @@ export default function ProductDetailPage() {
         </div>
 
         {/* â”€â”€ Pre Footer Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-        <div className="w-full bg-[#4A0712] relative overflow-hidden mt-32 md:h-[350px] flex rounded-[2px]">
+        <div className="w-full bg-[#F2EEE7] relative overflow-hidden mt-32 md:h-[350px] flex rounded-[2px]">
           <div className="flex flex-col md:flex-row items-stretch justify-between relative z-10 w-full px-0 md:px-12">
             <div className="flex items-center justify-center gap-6 md:gap-16 flex-1 py-12 md:py-0 relative z-20">
               <div className="flex flex-col items-center gap-4 text-center">
-                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] relative">
+                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-[#F2EEE7] relative">
                   <Shield size={24} strokeWidth={1.2} />
                 </div>
-                <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.15em] uppercase">Anti-Tarnish</span>
+                <span className="text-[#B39A6B] text-[10px] font-bold tracking-[0.15em] uppercase">Anti-Tarnish</span>
               </div>
-              <div className="w-[1px] h-12 bg-[#C5A059]/30 hidden md:block"></div>
+              <div className="w-[1px] h-12 bg-[#B39A6B]/30 hidden md:block"></div>
               <div className="flex flex-col items-center gap-4 text-center">
-                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] relative">
-                  <span className="text-xl font-semibold text-[#C5A059]">18<span className="text-xs font-medium">Kt</span></span>
+                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-[#F2EEE7] relative">
+                  <span className="text-xl font-semibold text-[#B39A6B]">18<span className="text-xs font-medium">Kt</span></span>
                 </div>
-                <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.15em] uppercase">Thick Plating</span>
+                <span className="text-[#B39A6B] text-[10px] font-bold tracking-[0.15em] uppercase">Thick Plating</span>
               </div>
-              <div className="w-[1px] h-12 bg-[#C5A059]/30 hidden md:block"></div>
+              <div className="w-[1px] h-12 bg-[#B39A6B]/30 hidden md:block"></div>
               <div className="flex flex-col items-center gap-4 text-center">
-                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#C5A059] flex items-center justify-center text-[#C5A059] bg-[#4A0712] relative">
+                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-[#F2EEE7] relative">
                   <Heart size={24} strokeWidth={1.2} />
                 </div>
-                <span className="text-[#C5A059] text-[10px] font-bold tracking-[0.15em] uppercase">Skin Safe</span>
+                <span className="text-[#B39A6B] text-[10px] font-bold tracking-[0.15em] uppercase">Skin Safe</span>
               </div>
             </div>
             <div className="flex-1 relative hidden md:block">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#4A0712] via-[#4A0712]/70 to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F2EEE7] via-[#F2EEE7]/70 to-transparent z-10" />
               <img src="https://i.pinimg.com/originals/b7/c5/40/b7c540989f6b4d372d6fc713d2f95fc7.jpg" alt="Quality Assurance" className="absolute inset-0 w-full h-full object-cover object-[center_20%]" />
             </div>
           </div>
@@ -456,8 +456,8 @@ export default function ProductDetailPage() {
         {relatedProducts.length > 0 && (
           <div className="mt-28 border-t border-gray-100 pt-16">
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-[24px] md:text-[30px] font-bold uppercase tracking-[0.1em] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>You May Also Like</h2>
-              <Link to={`/category/${category?.slug || 'all'}`} className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1F1517] hover:text-[#C5A059] transition-colors">View All</Link>
+              <h2 className="text-[20px] md:text-[24px] font-[500] uppercase tracking-[0.08em] text-[#292725]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>You May Also Like</h2>
+              <Link to={`/category/${category?.slug || 'all'}`} className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#292725] hover:text-[#B39A6B] transition-colors">View All</Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
@@ -469,7 +469,7 @@ export default function ProductDetailPage() {
         {relatedProducts.length > 4 && (
           <div className="mt-20">
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-[24px] md:text-[30px] font-bold uppercase tracking-[0.1em] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete The Look</h2>
+              <h2 className="text-[20px] md:text-[24px] font-[500] uppercase tracking-[0.08em] text-[#292725]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete The Look</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {relatedProducts.slice(4, 8).map((p) => <ProductCard key={p._id} product={p} />)}
@@ -480,12 +480,12 @@ export default function ProductDetailPage() {
         {/* â”€â”€ Customer Reviews â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="mt-24 border-t border-gray-100 pt-16">
           <div className="flex flex-col items-center text-center mb-12">
-            <h2 className="text-[24px] md:text-[32px] font-bold uppercase tracking-[0.1em] text-[#1F1517] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Customer Reviews</h2>
+            <h2 className="text-[22px] md:text-[28px] font-[400] uppercase tracking-[0.08em] text-[#292725] mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>Customer Reviews</h2>
             <div className="flex items-center gap-2">
-              <div className="flex text-[#C5A059]">
+              <div className="flex text-[#B39A6B]">
                 {[...Array(5)].map((_, i) => <Star key={i} size={16} fill={i < Math.round(ratings) ? "currentColor" : "none"} />)}
               </div>
-              <span className="text-[14px] font-bold text-[#1F1517]">{ratings > 0 ? ratings.toFixed(1) : '5.0'} / 5</span>
+              <span className="text-[14px] font-bold text-[#292725]">{ratings > 0 ? ratings.toFixed(1) : '5.0'} / 5</span>
               <span className="text-[12px] text-gray-500 font-medium">({numReviews > 0 ? numReviews : 126} reviews)</span>
             </div>
           </div>
@@ -498,23 +498,23 @@ export default function ProductDetailPage() {
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[#FDFBF7] flex items-center justify-center text-[#1F1517] font-bold uppercase text-[13px]">
+                        <div className="w-10 h-10 rounded-full bg-[#FFFDFC] flex items-center justify-center text-[#292725] font-bold uppercase text-[13px]">
                           {review.user?.name?.[0]}
                         </div>
                         <div>
-                          <p className="text-[13px] font-bold text-[#1F1517]">{review.user?.name}</p>
+                          <p className="text-[13px] font-bold text-[#292725]">{review.user?.name}</p>
                           <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-0.5">{formatDate(review.createdAt)}</p>
                         </div>
                       </div>
-                      <div className="flex text-[#C5A059]">
+                      <div className="flex text-[#B39A6B]">
                         {[...Array(5)].map((_, i) => <Star key={i} size={11} fill={i < review.rating ? "currentColor" : "none"} />)}
                       </div>
                     </div>
-                    {review.title && <h4 className="font-bold text-[#1F1517] text-[13px] mb-2">{review.title}</h4>}
+                    {review.title && <h4 className="font-bold text-[#292725] text-[13px] mb-2">{review.title}</h4>}
                     <p className="text-[13px] text-gray-600 font-light leading-relaxed mb-4">{review.comment}</p>
                   </div>
                   {review.isVerifiedPurchase && (
-                    <div className="flex items-center gap-1.5 text-[10px] text-[#C5A059] font-bold uppercase tracking-widest mt-2 pt-4 border-t border-gray-100">
+                    <div className="flex items-center gap-1.5 text-[10px] text-[#B39A6B] font-bold uppercase tracking-widest mt-2 pt-4 border-t border-gray-100">
                       <Check size={12} strokeWidth={3} /> Verified Buyer
                     </div>
                   )}
@@ -528,7 +528,7 @@ export default function ProductDetailPage() {
         {relatedProducts.length > 0 && (
           <div className="mt-24 border-t border-gray-100 pt-16">
             <div className="text-center mb-10">
-              <h2 className="text-[24px] md:text-[32px] font-bold uppercase tracking-[0.1em] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
+              <h2 className="text-[22px] md:text-[28px] font-[400] uppercase tracking-[0.08em] text-[#292725]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {relatedProducts.slice(0, 4).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
@@ -546,20 +546,20 @@ export default function ProductDetailPage() {
             className="fixed inset-0 z-[100] bg-white flex flex-col"
           >
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              <span className="text-[14px] font-bold text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</span>
-              <button onClick={() => setIsFullscreen(false)} className="text-[#1F1517] hover:text-[#C5A059] transition-colors"><X size={24} /></button>
+              <span className="text-[14px] font-bold text-[#292725]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</span>
+              <button onClick={() => setIsFullscreen(false)} className="text-[#292725] hover:text-[#B39A6B] transition-colors"><X size={24} /></button>
             </div>
-            <div className="flex-1 flex flex-col lg:flex-row items-center justify-center bg-[#FDFBF7] relative overflow-hidden">
+            <div className="flex-1 flex flex-col lg:flex-row items-center justify-center bg-[#FFFDFC] relative overflow-hidden">
               <button 
                 onClick={() => setSelectedImage((prev) => (prev > 0 ? prev - 1 : mediaItems.length - 1))}
-                className="absolute left-4 lg:left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-[#C5A059] z-10"
+                className="absolute left-4 lg:left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-[#B39A6B] z-10"
               ><ChevronLeft size={20} /></button>
               
               <img src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="max-w-[90vw] max-h-[75vh] object-contain mix-blend-multiply" />
               
               <button 
                 onClick={() => setSelectedImage((prev) => (prev < mediaItems.length - 1 ? prev + 1 : 0))}
-                className="absolute right-4 lg:right-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-[#C5A059] z-10"
+                className="absolute right-4 lg:right-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-[#B39A6B] z-10"
               ><ChevronRight size={20} /></button>
             </div>
             <div className="h-32 bg-white border-t border-gray-100 flex items-center justify-center gap-4 px-6 overflow-x-auto">
@@ -567,7 +567,7 @@ export default function ProductDetailPage() {
                 <button
                   key={i}
                   onClick={() => setSelectedImage(i)}
-                  className={`w-20 h-20 flex-shrink-0 border-[2px] transition-colors ${selectedImage === i ? 'border-[#1F1517]' : 'border-transparent opacity-50 hover:opacity-100'}`}
+                  className={`w-20 h-20 flex-shrink-0 border-[2px] transition-colors ${selectedImage === i ? 'border-[#292725]' : 'border-transparent opacity-50 hover:opacity-100'}`}
                 >
                   <img src={media.url} className="w-full h-full object-contain p-1" />
                 </button>
@@ -585,13 +585,13 @@ export default function ProductDetailPage() {
             className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 p-4 px-5 shadow-[0_-10px_20px_rgba(0,0,0,0.03)] z-[60] flex items-center justify-between lg:hidden"
           >
             <div className="flex flex-col truncate pr-4">
-              <span className="text-[16px] font-bold text-[#1F1517] truncate" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{formatPrice(effectivePrice)}</span>
+              <span className="text-[14px] font-[500] text-[#292725] truncate" style={{ fontFamily: "'Inter', sans-serif" }}>{formatPrice(effectivePrice)}</span>
               {discountPrice && <span className="text-[11px] text-gray-500 line-through">{formatPrice(price)}</span>}
             </div>
             <button
               onClick={handleAddToCart}
               disabled={isOutOfStock || isAddingToCart}
-              className="bg-[#1F1517] text-[#F7F3EA] text-[11px] font-bold uppercase tracking-[0.15em] px-10 py-3.5 rounded-[2px] whitespace-nowrap active:scale-95 transition-transform"
+              className="bg-[#292725] text-[#FFFDFC] text-[12px] font-medium uppercase tracking-[0.1em] px-12 py-4 rounded-[2px] whitespace-nowrap active:scale-95 transition-transform"
             >
               {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
             </button>
@@ -606,8 +606,8 @@ function AccordionItem({ title, isOpen, onClick, children }) {
   return (
     <div className="border-b border-gray-100">
       <button className="w-full py-5 flex items-center justify-between text-left focus:outline-none group" onClick={onClick}>
-        <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#1F1517] group-hover:text-[#C5A059] transition-colors">{title}</span>
-        <ChevronDown size={14} className={`text-[#1F1517]/60 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#292725] group-hover:text-[#B39A6B] transition-colors">{title}</span>
+        <ChevronDown size={14} className={`text-[#292725]/60 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       <AnimatePresence>
         {isOpen && (
@@ -619,3 +619,5 @@ function AccordionItem({ title, isOpen, onClick, children }) {
     </div>
   );
 }
+
+
