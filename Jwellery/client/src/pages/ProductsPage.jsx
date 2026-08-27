@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { useSearchParams, useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
@@ -265,7 +265,7 @@ export default function ProductsPage() {
   return (
     <div className="bg-white min-h-screen pb-20">
       <Helmet>
-        <title>{currentCategoryName} — Tarini Jewellers</title>
+        <title>{currentCategoryName} â€” Tarini Jewellers</title>
         <meta name="description" content="Browse our complete luxury jewelry collection." />
       </Helmet>
 
@@ -346,7 +346,7 @@ export default function ProductsPage() {
 
         {/* Grid Area */}
         {isLoading || isFetching ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
             {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
               <div key={i} className="bg-gray-100 animate-pulse rounded-[2px] aspect-[4/5]" />
             ))}
@@ -359,7 +359,7 @@ export default function ProductsPage() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

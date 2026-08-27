@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -9,32 +9,32 @@
   /* â”€â”€ Two-font luxury system: Cormorant Garamond (display) + Nunito Sans (UI) â”€â”€ */
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-serif:   'Cormorant Garamond', Georgia, serif;
-  --font-sans:    'Nunito Sans', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 
   /* TARINI JEWELLERS Color Palette */
-  --color-ivory:        #FAF8F5;
+  --color-ivory:        #F8F5EF;
   --color-warm-white:   #FFFFFF;
   --color-champagne:    #EEE9E0;
-  --color-soft-gold:    #C5A059;
-  --color-luxury-gold:  #C5A059;
-  --color-deep-charcoal:#1F1517;
+  --color-soft-gold:    #B39A6B;
+  --color-luxury-gold:  #B39A6B;
+  --color-deep-charcoal:#252321;
 
-  --color-beige:        #FAF8F5;
-  --color-soft-brown:   #1F1517;
+  --color-beige:        #F8F5EF;
+  --color-soft-brown:   #252321;
 
-  --color-matte-900:    #1F1517;
-  --color-matte-950:    #1F1517;
+  --color-matte-900:    #252321;
+  --color-matte-950:    #252321;
 
-  --color-gold-400:     #C5A059;
-  --color-gold-500:     #C5A059;
+  --color-gold-400:     #B39A6B;
+  --color-gold-500:     #B39A6B;
   --color-gold-600:     #B8904A;
   --color-gold-200:     #EEE9E0;
 
-  --color-deep-maroon:  #4A121A;
-  --color-maroon-dark:  #4A121A;
+  --color-deep-maroon:  #252321;
+  --color-maroon-dark:  #252321;
 
-  --color-charcoal-900: #1F1517;
-  --color-charcoal-50:  #FAF8F5;
+  --color-charcoal-900: #252321;
+  --color-charcoal-50:  #F8F5EF;
 }
 
 /* â”€â”€ Base â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -52,8 +52,8 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: 14px;
-  background-color: #FAF8F5;
-  color: #1F1517;
+  background-color: #F8F5EF;
+  color: #252321;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -385,7 +385,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* â”€â”€ Gold Shimmer Text â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .text-shimmer-gold {
-  background: linear-gradient(90deg, #C5A059 0%, #ffffff 30%, #f2d98a 50%, #ffffff 80%, #C5A059 100%);
+  background: linear-gradient(90deg, #B39A6B 0%, #ffffff 30%, #f2d98a 50%, #ffffff 80%, #B39A6B 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -396,7 +396,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* â”€â”€ Gold Button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .btn-gold {
-  background: linear-gradient(135deg, #C5A059 0%, #C5A059 50%, #C5A059 100%);
+  background: linear-gradient(135deg, #B39A6B 0%, #B39A6B 50%, #B39A6B 100%);
   background-size: 200% 100%;
   color: white;
   font-weight: 500;
@@ -728,7 +728,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* â”€â”€ Admin Sidebar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .admin-sidebar {
-  background: linear-gradient(180deg, #1F1517 0%, #1a1a1a 100%);
+  background: linear-gradient(180deg, #252321 0%, #1a1a1a 100%);
 }
 
 /* â”€â”€ Ripple Effect â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -850,7 +850,7 @@ h1, h2, h3, h4, h5, h6,
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #1F1517;
+  --primary: #252321;
   --primary-foreground: #ffffff;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -861,7 +861,7 @@ h1, h2, h3, h4, h5, h6,
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: #1F1517;
+  --ring: #252321;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -939,3 +939,4 @@ h1, h2, h3, h4, h5, h6,
   animation-play-state: paused;
 }
 html, body { overflow-x: hidden !important; width: 100%; max-width: 100vw; }
+

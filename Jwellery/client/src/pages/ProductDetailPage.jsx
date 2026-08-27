@@ -460,7 +460,7 @@ export default function ProductDetailPage() {
               <Link to={`/category/${category?.slug || 'all'}`} className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#1F1517] hover:text-[#C5A059] transition-colors">View All</Link>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {relatedProducts.slice(0, 8).map((p) => <ProductCard key={p._id} product={p} />)}
+              {relatedProducts.slice(0, 4).map((p) => <ProductCard key={p._id} product={p} />)}
             </div>
           </div>
         )}
@@ -531,7 +531,7 @@ export default function ProductDetailPage() {
               <h2 className="text-[24px] md:text-[32px] font-bold uppercase tracking-[0.1em] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recently Viewed</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {relatedProducts.slice(0, 8).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
+              {relatedProducts.slice(0, 4).reverse().map((p) => <ProductCard key={p._id} product={p} />)}
             </div>
           </div>
         )}
