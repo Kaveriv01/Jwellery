@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+﻿import { memo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -75,7 +75,7 @@ const ProductCard = memo(function ProductCard({ product }) {
           <img
             src={displayImages[activeImageIdx]}
             alt={name}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
             onError={(e) => { e.target.src = fallbackImg; }}
           />
 
@@ -84,7 +84,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             <img
               src={displayImages[1]}
               alt={name}
-              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
+              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100"
               onError={(e) => { e.target.src = fallbackImg; }}
             />
           )}
@@ -93,7 +93,7 @@ const ProductCard = memo(function ProductCard({ product }) {
           {(isNewArrival || isBestSeller || true) && (
              <div className="absolute top-2 left-2 z-10 pointer-events-none">
                <div className="bg-[#8b5a2b] text-white text-[9px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-sm flex items-center gap-1" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                 <span>★</span> {isBestSeller ? 'BESTSELLER' : (isNewArrival ? 'NEW IN' : 'PURE GOLD')}
+                 <span>â˜…</span> {isBestSeller ? 'BESTSELLER' : (isNewArrival ? 'NEW IN' : 'PURE GOLD')}
                </div>
              </div>
           )}
@@ -104,7 +104,7 @@ const ProductCard = memo(function ProductCard({ product }) {
           <button
             onClick={handleWishlistToggle}
             disabled={isToggling}
-            className="w-8 h-8 rounded-full bg-white/80 hover:bg-white backdrop-blur-sm shadow-sm flex items-center justify-center transition-all"
+            className="w-8 h-8 rounded-full bg-white/80 hover:bg-white backdrop-blur-sm shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300"
             aria-label="Add to Wishlist"
           >
             <Heart size={16} strokeWidth={wishlisted ? 2.5 : 1.5} className={wishlisted ? 'fill-[#8b5a2b] text-[#8b5a2b]' : 'text-gray-600'} />
@@ -177,3 +177,4 @@ const ProductCard = memo(function ProductCard({ product }) {
 });
 
 export default ProductCard;
+

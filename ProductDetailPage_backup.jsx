@@ -195,7 +195,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Main Large Image */}
-            <div ref={imageRef} onMouseMove={handleMouseMove} onMouseLeave={() => setMousePos({x:50, y:50})} className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] bg-[#FFFDFC] flex items-center justify-center group overflow-hidden border border-[#FFFDFC] rounded-[2px] cursor-crosshair">
+            <div className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] bg-[#FFFDFC] flex items-center justify-center group overflow-hidden border border-[#FFFDFC] rounded-[2px] cursor-crosshair">
               <AnimatePresence mode="wait">
                 {mediaItems[selectedImage]?.type === 'video' ? (
                   <motion.video
@@ -215,7 +215,7 @@ export default function ProductDetailPage() {
                     key={selectedImage}
                     src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                     alt={`${name} - media ${selectedImage + 1}`}
-                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 ease-out" style={window.innerWidth > 1024 ? { transformOrigin: `${mousePos.x}% ${mousePos.y}%`, transform: `scale(${mousePos.x !== 50 ? 1.8 : 1})` } : {}}
+                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-[400ms] ease-out group-hover:scale-[1.15]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { duration: 0.3 } }}
                     exit={{ opacity: 0, transition: { duration: 0.3 } }}
@@ -612,11 +612,12 @@ export default function ProductDetailPage() {
               <span className="text-[14px] font-[500] text-[#292725] truncate" style={{ fontFamily: "'Inter', sans-serif" }}>{formatPrice(effectivePrice)}</span>
               {discountPrice && <span className="text-[11px] text-gray-500 line-through">{formatPrice(price)}</span>}
             </div>
-            <button onClick={handleAddToCart} onMouseMove={handleButtonMouseMove} onMouseLeave={handleButtonMouseLeave} style={{ transform: `translate(${buttonTransform.x}px, ${buttonTransform.y}px)` }}
+            <button
+              onClick={handleAddToCart}
               disabled={isOutOfStock || isAddingToCart}
               className="bg-[#292725] text-[#FFFDFC] text-[12px] font-medium uppercase tracking-[0.1em] px-12 py-4 rounded-[2px] whitespace-nowrap active:scale-95 transition-transform"
             >
-              {isOutOfStock ? "Out of Stock" : isAddingLocal ? "Adding..." : addSuccess ? "✓ Added To Bag" : "Add to Bag"}
+              {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
             </button>
           </motion.div>
         )}
@@ -642,7 +643,6 @@ function AccordionItem({ title, isOpen, onClick, children }) {
     </div>
   );
 }
-
 
 
 
