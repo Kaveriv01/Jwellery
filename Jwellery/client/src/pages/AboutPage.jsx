@@ -96,12 +96,10 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1 relative">
             <FadeUp>
-              <div className="aspect-[3/4] overflow-hidden w-full max-w-md mx-auto lg:max-w-none shadow-lg">
-                <img 
-                  src="/images/cat-ring-hands.png" 
-                  alt="Jewellery That Tells Your Story" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" 
-                />
+              <div className="premium-image-container aspect-[3/4] w-full max-w-md mx-auto lg:max-w-none">
+                <div className="premium-image-inner">
+                  <img src="/images/cat-ring-hands.png" alt="Jewellery That Tells Your Story" className="w-full h-full object-cover" />
+                </div>
               </div>
             </FadeUp>
           </div>
@@ -180,14 +178,18 @@ export default function AboutPage() {
         <div className="relative flex flex-col lg:flex-row items-center justify-center min-h-[800px]">
           
           <FadeUp className="w-full lg:w-[45%] lg:absolute lg:left-0 lg:top-0 z-0">
-            <div className="aspect-[4/5] overflow-hidden w-full shadow-lg">
-              <img src="/images/necklace-banner.jpg" alt="Traditional Indian Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+            <div className="premium-image-container aspect-[4/5] w-full">
+              <div className="premium-image-inner">
+                <img src="/images/necklace-banner.jpg" alt="Traditional Indian Jewellery" className="w-full h-full object-cover" />
+              </div>
             </div>
           </FadeUp>
           
           <FadeUp delay={0.2} className="w-full lg:w-[45%] lg:absolute lg:right-0 lg:bottom-0 z-0 mt-8 lg:mt-0 hidden lg:block">
-            <div className="aspect-[4/5] overflow-hidden w-full shadow-lg">
-              <img src="/images/earrings-banner.jpg" alt="Modern Luxury Jewellery" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+            <div className="premium-image-container aspect-[4/5] w-full">
+              <div className="premium-image-inner">
+                <img src="/images/earrings-banner.jpg" alt="Modern Luxury Jewellery" className="w-full h-full object-cover" />
+              </div>
             </div>
           </FadeUp>
           
@@ -270,13 +272,15 @@ export default function AboutPage() {
               { title: "Design", img: "/images/banner-earrings.png" }
             ].map((item, i) => (
               <FadeUp key={i} delay={i * 0.15}>
-                <div className="relative aspect-square overflow-hidden group shadow-lg">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-[#3E2024]/20 group-hover:bg-[#3E2024]/40 transition-colors duration-500" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <h3 className="text-white text-[20px] md:text-[28px] lg:text-[36px] font-medium tracking-wide drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                      {item.title}
-                    </h3>
+                <div className="premium-image-container aspect-square group">
+                  <div className="premium-image-inner relative">
+                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-[#3E2024]/20 group-hover:bg-[#3E2024]/40 transition-colors duration-500 rounded-[20px]" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <h3 className="text-white text-[20px] md:text-[28px] lg:text-[36px] font-medium tracking-wide drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        {item.title}
+                      </h3>
+                    </div>
                   </div>
                 </div>
               </FadeUp>
@@ -291,38 +295,50 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             
             <FadeUp>
-              <div className="aspect-[4/5] overflow-hidden shadow-md">
-                <img src="/images/banner-earrings.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
+              <div className="premium-image-container aspect-[4/5]">
+                <div className="premium-image-inner">
+                  <img src="/images/banner-earrings.png" className="w-full h-full object-cover" alt="Editorial 1" />
+                </div>
               </div>
             </FadeUp>
             
             <FadeUp delay={0.1}>
-              <div className="aspect-[4/5] overflow-hidden shadow-md">
-                <img src="/images/cat-necklace.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 2" />
+              <div className="premium-image-container aspect-[4/5]">
+                <div className="premium-image-inner">
+                  <img src="/images/cat-necklace.png" className="w-full h-full object-cover" alt="Editorial 2" />
+                </div>
               </div>
             </FadeUp>
             
             <FadeUp delay={0.2}>
-              <div className="aspect-[4/5] overflow-hidden shadow-md">
-                <img src="/images/cat-ring.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
+              <div className="premium-image-container aspect-[4/5]">
+                <div className="premium-image-inner">
+                  <img src="/images/cat-ring.png" className="w-full h-full object-cover" alt="Editorial 3" />
+                </div>
               </div>
             </FadeUp>
 
             <FadeUp delay={0.1}>
-              <div className="aspect-[4/5] overflow-hidden shadow-md">
-                <img src="/images/banner-new-v2.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
+              <div className="premium-image-container aspect-[4/5]">
+                <div className="premium-image-inner">
+                  <img src="/images/banner-new-v2.png" className="w-full h-full object-cover" alt="Editorial 4" />
+                </div>
               </div>
             </FadeUp>
 
             <FadeUp delay={0.2}>
-              <div className="aspect-[4/5] overflow-hidden shadow-md">
-                <img src="/images/necklace-banner-floral.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 6" />
+              <div className="premium-image-container aspect-[4/5]">
+                <div className="premium-image-inner">
+                  <img src="/images/necklace-banner-floral.png" className="w-full h-full object-cover" alt="Editorial 6" />
+                </div>
               </div>
             </FadeUp>
 
             <FadeUp delay={0.3}>
-              <div className="aspect-[4/5] overflow-hidden shadow-md">
-                <img src="/images/home-banner.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
+              <div className="premium-image-container aspect-[4/5]">
+                <div className="premium-image-inner">
+                  <img src="/images/home-banner.png" className="w-full h-full object-cover" alt="Editorial 5" />
+                </div>
               </div>
             </FadeUp>
 
@@ -354,8 +370,10 @@ export default function AboutPage() {
               { name: "Bracelets", img: "/images/cat-bracelet.png", link: "/category/bracelets" }
             ].map((cat, i) => (
               <FadeUp key={i} delay={i * 0.1}>
-                <Link to={cat.link} className="group block relative aspect-[4/5] overflow-hidden shadow-sm">
-                  <img src={cat.img} alt={cat.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105" />
+                <Link to={cat.link} className="premium-image-container block aspect-[4/5] group">
+                  <div className="premium-image-inner relative w-full h-full">
+                    <img src={cat.img} alt={cat.name} className="absolute inset-0 w-full h-full object-cover" />
+
                   
                   <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 text-center pointer-events-none">
                     <span 
@@ -379,6 +397,7 @@ export default function AboutPage() {
                       </span>
                     </div>
                   </div>
+                                  </div>
                 </Link>
               </FadeUp>
             ))}
