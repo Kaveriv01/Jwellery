@@ -133,7 +133,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <FiMapPin className="text-[#10B981] mt-1 flex-shrink-0" size={16} />
                 <div>
-                  <p className="text-[#E2E8F0] mb-1">Haryana, India</p>
+                  <p className="text-[#E2E8F0] mb-1">Mumbai, India</p>
                   <a href="#" className="text-[#10B981] hover:underline hover:text-emerald-400 transition-colors text-xs">View on Google map</a>
                 </div>
               </li>
@@ -154,7 +154,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-8 pb-2 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-[#64748B]">
           <div className="flex flex-col gap-1.5 text-center md:text-left">
             <p>
-              © 2026 Tarini Jewellers | Design & Develop with <span className="text-red-500">❤️</span> by Kaveri Valve
+              © 2026 Tarini Jewellers
             </p>
             <div className="flex justify-center md:justify-start gap-2 text-[11px]">
               <Link to="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
