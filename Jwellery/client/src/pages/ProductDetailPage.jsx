@@ -212,7 +212,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Main Large Image */}
-            <div ref={imageRef} onMouseMove={handleMouseMove} onMouseLeave={() => setMousePos({x:50, y:50})} className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] flex items-center justify-center group overflow-hidden rounded-[2px] cursor-crosshair">
+            <div ref={imageRef} onMouseMove={handleMouseMove} onMouseLeave={() => setMousePos({x:50, y:50})} className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] flex items-center justify-center group overflow-hidden rounded-[12px] cursor-crosshair">
               <AnimatePresence mode="wait">
                 {mediaItems[selectedImage]?.type === 'video' ? (
                   <motion.video
