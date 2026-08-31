@@ -288,40 +288,40 @@ export default function AboutPage() {
       {/* 9. THE JEWELLERY EDITORIAL */}
       <section className="py-16 lg:py-24 px-6 bg-white overflow-hidden border-y border-[#1F1517]/5">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-12 gap-4 lg:gap-8 auto-rows-min">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             
-            <FadeUp className="col-span-2 md:col-span-8 md:row-span-2">
-              <div className="aspect-[16/9] md:aspect-auto md:h-full overflow-hidden shadow-md">
+            <FadeUp>
+              <div className="aspect-[4/5] overflow-hidden shadow-md">
                 <img src="/images/banner-earrings.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 1" />
               </div>
             </FadeUp>
             
-            <FadeUp delay={0.1} className="col-span-1 md:col-span-4">
-              <div className="aspect-[3/4] overflow-hidden shadow-md">
+            <FadeUp delay={0.1}>
+              <div className="aspect-[4/5] overflow-hidden shadow-md">
                 <img src="/images/cat-necklace.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 2" />
               </div>
             </FadeUp>
             
-            <FadeUp delay={0.2} className="col-span-1 md:col-span-4">
-              <div className="aspect-[3/4] overflow-hidden shadow-md">
+            <FadeUp delay={0.2}>
+              <div className="aspect-[4/5] overflow-hidden shadow-md">
                 <img src="/images/cat-ring.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 3" />
               </div>
             </FadeUp>
 
-            <FadeUp delay={0.1} className="col-span-1 md:col-span-4 mt-0 md:mt-8">
-              <div className="aspect-[3/4] overflow-hidden shadow-md">
+            <FadeUp delay={0.1}>
+              <div className="aspect-[4/5] overflow-hidden shadow-md">
                 <img src="/images/banner-new-v2.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
               </div>
             </FadeUp>
 
-            <FadeUp delay={0.3} className="col-span-1 md:col-span-4 mt-0 md:mt-8">
-              <div className="aspect-[3/4] overflow-hidden shadow-md">
+            <FadeUp delay={0.2}>
+              <div className="aspect-[4/5] overflow-hidden shadow-md">
                 <img src="/images/necklace-banner-floral.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 6" />
               </div>
             </FadeUp>
 
-            <FadeUp delay={0.2} className="col-span-2 md:col-span-8 md:row-span-2 mt-0 md:mt-8">
-              <div className="aspect-[16/9] md:aspect-auto md:h-full overflow-hidden shadow-md">
+            <FadeUp delay={0.3}>
+              <div className="aspect-[4/5] overflow-hidden shadow-md">
                 <img src="/images/home-banner.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 5" />
               </div>
             </FadeUp>
