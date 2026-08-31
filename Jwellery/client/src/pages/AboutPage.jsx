@@ -154,7 +154,7 @@ export default function AboutPage() {
       <section ref={craftRef} className="relative w-full h-[75vh] md:h-[90vh] overflow-hidden flex items-center justify-center">
         <motion.div style={{ scale: craftScale }} className="absolute inset-0 w-full h-full">
           <img 
-            src="/images/banner-new.png" 
+            src="/images/banner-new-v2.png" 
             alt="Jewellery Craftsmanship" 
             className="w-full h-full object-cover"
           />
@@ -310,7 +310,7 @@ export default function AboutPage() {
 
             <FadeUp delay={0.1} className="col-span-1 md:col-span-4 mt-0 md:mt-8">
               <div className="aspect-[3/4] overflow-hidden shadow-md">
-                <img src="/images/banner-new.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
+                <img src="/images/banner-new-v2.png" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" alt="Editorial 4" />
               </div>
             </FadeUp>
 
