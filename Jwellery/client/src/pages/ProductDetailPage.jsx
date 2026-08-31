@@ -176,24 +176,25 @@ export default function ProductDetailPage() {
             <div className="hidden lg:flex flex-col gap-4 overflow-y-auto hide-scrollbar w-[80px] xl:w-[100px] flex-shrink-0">
               {mediaItems.map((media, i) => (
                 <ScatteredReveal key={i} index={i}>
-                <button
-                  onMouseEnter={() => setSelectedImage(i)}
-                  onClick={() => setSelectedImage(i)}
-                  className={`premium-image-container relative w-full aspect-square flex-shrink-0 border-[1.5px] !rounded-[12px] transition-all ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-60 hover:opacity-100'}`}
-                >
-                  <div className="premium-image-inner w-full h-full relative">
-                    {media.type === 'video' ? (
-                      <>
-                        <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-[#3E2024]/10 flex flex-col items-center justify-center rounded-[12px]">
-                          <Play size={14} fill="white" className="text-white" />
-                        </div>
-                      </>
-                    ) : (
-                      <img src={media.url} className="w-full h-full object-cover" />
-                    )}
-                  </div>
-                </button>
+                  <button
+                    onMouseEnter={() => setSelectedImage(i)}
+                    onClick={() => setSelectedImage(i)}
+                    className={`premium-image-container relative w-full aspect-square flex-shrink-0 border-[1.5px] !rounded-[12px] transition-all ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                  >
+                    <div className="premium-image-inner w-full h-full relative">
+                      {media.type === 'video' ? (
+                        <>
+                          <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-[#3E2024]/10 flex flex-col items-center justify-center rounded-[12px]">
+                            <Play size={14} fill="white" className="text-white" />
+                          </div>
+                        </>
+                      ) : (
+                        <img src={media.url} className="w-full h-full object-cover" />
+                      )}
+                    </div>
+                  </button>
+                </ScatteredReveal>
               ))}
             </div>
 
@@ -244,22 +245,25 @@ export default function ProductDetailPage() {
             {/* Mobile Horizontal Thumbnails (Hidden on desktop) */}
             <div className="flex lg:hidden gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar mt-2">
               {mediaItems.map((media, i) => (
-                <button
-                  key={i}
-                  onClick={() => setSelectedImage(i)}
-                  className={`relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] rounded-[2px] overflow-hidden transition-all ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-60'}`}
-                >
-                  {media.type === 'video' ? (
-                    <>
-                      <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-contain p-1" />
-                      <div className="absolute inset-0 bg-[#3E2024]/10 flex flex-col items-center justify-center">
-                        <Play size={10} fill="white" className="text-white" />
-                      </div>
-                    </>
-                  ) : (
-                    <img src={media.url} className="w-full h-full object-contain p-1" />
-                  )}
-                </button>
+                <ScatteredReveal key={i} index={i}>
+                  <button
+                    onClick={() => setSelectedImage(i)}
+                    className={`premium-image-container relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] !rounded-[12px] transition-all ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-60'}`}
+                  >
+                    <div className="premium-image-inner w-full h-full relative">
+                      {media.type === 'video' ? (
+                        <>
+                          <img src={media.poster || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-[#3E2024]/10 flex flex-col items-center justify-center rounded-[12px]">
+                            <Play size={10} fill="white" className="text-white" />
+                          </div>
+                        </>
+                      ) : (
+                        <img src={media.url} className="w-full h-full object-cover" />
+                      )}
+                    </div>
+                  </button>
+                </ScatteredReveal>
               ))}
             </div>
           </div>
