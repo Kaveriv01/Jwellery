@@ -83,10 +83,23 @@ export default function ProductDetailPage() {
   } = product;
 
   // Build media gallery supporting video injection
-  const mediaItems = images.map(img => ({ type: 'image', url: img.url }));
+  let mediaItems = images.map(img => ({ type: 'image', url: img.url }));
 
   if (videoUrl) {
     mediaItems.splice(Math.min(2, mediaItems.length), 0, { type: 'video', url: videoUrl, poster: videoPoster });
+  }
+
+  if (relatedProducts && relatedProducts.length > 0) {
+    const relatedThumbnails = relatedProducts
+      .filter(p => p.images && p.images.length > 0)
+      .slice(0, 4)
+      .map(p => ({
+        type: 'image',
+        url: p.images[0].url,
+        productSlug: p.slug,
+        isRelated: true
+      }));
+    mediaItems = [...mediaItems, ...relatedThumbnails];
   }
 
   const discountPercent = getDiscountPercent(price, discountPrice);
@@ -177,8 +190,8 @@ export default function ProductDetailPage() {
               {mediaItems.map((media, i) => (
                 <ScatteredReveal key={i} index={i}>
                   <button
-                    onMouseEnter={() => setSelectedImage(i)}
-                    onClick={() => setSelectedImage(i)}
+                    onMouseEnter={() => !media.isRelated && setSelectedImage(i)}
+                    onClick={() => media.isRelated ? navigate(`/products/${media.productSlug}`) : setSelectedImage(i)}
                     className={`premium-image-container relative w-full aspect-square flex-shrink-0 border-[1.5px] !rounded-[12px] transition-all ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-60 hover:opacity-100'}`}
                   >
                     <div className="premium-image-inner w-full h-full relative">
@@ -199,7 +212,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Main Large Image */}
-            <div ref={imageRef} onMouseMove={handleMouseMove} onMouseLeave={() => setMousePos({x:50, y:50})} className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] bg-[#FFFDFC] flex items-center justify-center group overflow-hidden border border-[#FFFDFC] rounded-[2px] cursor-crosshair">
+            <div ref={imageRef} onMouseMove={handleMouseMove} onMouseLeave={() => setMousePos({x:50, y:50})} className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] flex items-center justify-center group overflow-hidden rounded-[2px] cursor-crosshair">
               <AnimatePresence mode="wait">
                 {mediaItems[selectedImage]?.type === 'video' ? (
                   <motion.video
@@ -219,7 +232,7 @@ export default function ProductDetailPage() {
                     key={selectedImage}
                     src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                     alt={`${name} - media ${selectedImage + 1}`}
-                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-300 ease-out" style={window.innerWidth > 1024 ? { transformOrigin: `${mousePos.x}% ${mousePos.y}%`, transform: `scale(${mousePos.x !== 50 ? 1.8 : 1})` } : {}}
+                    className="w-full h-full object-cover transition-transform duration-300 ease-out" style={window.innerWidth > 1024 ? { transformOrigin: `${mousePos.x}% ${mousePos.y}%`, transform: `scale(${mousePos.x !== 50 ? 1.8 : 1})` } : {}}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { duration: 0.3 } }}
                     exit={{ opacity: 0, transition: { duration: 0.3 } }}
@@ -247,7 +260,7 @@ export default function ProductDetailPage() {
               {mediaItems.map((media, i) => (
                 <ScatteredReveal key={i} index={i}>
                   <button
-                    onClick={() => setSelectedImage(i)}
+                    onClick={() => media.isRelated ? navigate(`/products/${media.productSlug}`) : setSelectedImage(i)}
                     className={`premium-image-container relative w-20 h-20 flex-shrink-0 snap-start border-[1.5px] !rounded-[12px] transition-all ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-60'}`}
                   >
                     <div className="premium-image-inner w-full h-full relative">
@@ -635,7 +648,7 @@ export default function ProductDetailPage() {
                 className="absolute left-4 lg:left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-[#B79A6B] z-10"
               ><ChevronLeft size={20} /></button>
               
-              <img src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="max-w-[90vw] max-h-[75vh] object-contain mix-blend-multiply" />
+              <img src={mediaItems[selectedImage]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} className="max-w-[90vw] max-h-[75vh] object-cover" />
               
               <button 
                 onClick={() => setSelectedImage((prev) => (prev < mediaItems.length - 1 ? prev + 1 : 0))}
@@ -646,10 +659,10 @@ export default function ProductDetailPage() {
               {mediaItems.map((media, i) => (
                 <button
                   key={i}
-                  onClick={() => setSelectedImage(i)}
+                  onClick={() => media.isRelated ? navigate(`/products/${media.productSlug}`) : setSelectedImage(i)}
                   className={`w-20 h-20 flex-shrink-0 border-[2px] transition-colors ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-50 hover:opacity-100'}`}
                 >
-                  <img src={media.url} className="w-full h-full object-contain p-1" />
+                  <img src={media.url} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
