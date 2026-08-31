@@ -43,15 +43,17 @@ export default function InstagramGallery() {
               target="_blank" 
               rel="noreferrer"
               key={idx}
-              className="relative aspect-square w-[200px] sm:w-[280px] md:w-[320px] flex-shrink-0 overflow-hidden group block bg-[#FDFBF7]"
+              className="premium-image-container relative aspect-square w-[200px] sm:w-[280px] md:w-[320px] flex-shrink-0 group block bg-[#FDFBF7]"
             >
-              <img
-                src={post.url}
-                alt="Instagram post"
-                className="w-full h-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-[#1F1517]/0 group-hover:bg-[#1F1517]/30 transition-colors duration-[400ms] flex items-center justify-center">
-                <InstagramIcon size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out translate-y-2 group-hover:translate-y-0" />
+              <div className="premium-image-inner relative w-full h-full">
+                <img
+                  src={post.url}
+                  alt="Instagram post"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-[#1F1517]/0 group-hover:bg-[#1F1517]/30 transition-colors duration-[400ms] flex items-center justify-center rounded-[20px]">
+                  <InstagramIcon size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out translate-y-2 group-hover:translate-y-0" />
+                </div>
               </div>
             </a>
           ))}

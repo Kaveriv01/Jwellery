@@ -26,21 +26,21 @@ export default function CategoryCards() {
           {CATEGORIES.map((cat, index) => (
             <motion.div 
               key={cat.id} 
-              className="group relative overflow-hidden aspect-[9/16] md:aspect-auto md:h-[450px] lg:h-[500px]"
+              className="premium-image-container group relative aspect-[9/16] md:aspect-auto md:h-[450px] lg:h-[500px]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
             >
-              <Link to={`/category/${cat.id}`} className="block w-full h-full">
+              <Link to={`/category/${cat.id}`} className="premium-image-inner block w-full h-full relative">
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
                 
                 {/* Text positioned at the bottom, perfectly clear image with no gradient */}
-                <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8 text-center pointer-events-none">
+                <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-8 text-center pointer-events-none rounded-[20px]">
                   <span 
                     style={{ 
                       fontFamily: "'Cormorant Garamond', serif",

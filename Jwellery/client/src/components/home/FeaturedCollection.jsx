@@ -278,8 +278,10 @@ export function NewArrivals() {
         <div className="w-full flex flex-col gap-16 md:gap-24 lg:gap-32 pb-10">
           
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
-            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
-               <img src="/images/editorial/rings.png" alt="Luxury Rings" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
+               <div className="premium-image-inner w-full h-full relative">
+                 <img src="/images/editorial/rings.png" alt="Luxury Rings" className="w-full h-full object-cover" />
+               </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signature Rings</h3>
@@ -288,8 +290,10 @@ export function NewArrivals() {
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
-            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
-               <img src="/images/editorial/necklace.png" alt="Luxury Necklaces" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
+               <div className="premium-image-inner w-full h-full relative">
+                 <img src="/images/editorial/necklace.png" alt="Luxury Necklaces" className="w-full h-full object-cover" />
+               </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Statement Necklaces</h3>
@@ -298,8 +302,10 @@ export function NewArrivals() {
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
-            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
-               <img src="/images/editorial/earrings.png" alt="Luxury Earrings" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
+               <div className="premium-image-inner w-full h-full relative">
+                 <img src="/images/editorial/earrings.png" alt="Luxury Earrings" className="w-full h-full object-cover" />
+               </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Elegant Earrings</h3>
@@ -308,8 +314,10 @@ export function NewArrivals() {
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
-            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden">
-               <img src="/images/editorial/bracelet.png" alt="Luxury Bracelets" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
+               <div className="premium-image-inner w-full h-full relative">
+                 <img src="/images/editorial/bracelet.png" alt="Luxury Bracelets" className="w-full h-full object-cover" />
+               </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Fine Bracelets</h3>

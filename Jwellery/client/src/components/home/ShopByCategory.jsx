@@ -36,20 +36,22 @@ export default function ShopByCategory() {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
               >
-                <Link to={`/category/${cat.id}`} className="group block w-full relative overflow-hidden rounded-[8px] bg-[#FDFBF7] aspect-[4/5] shadow-sm">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover transition-transform duration-[700ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 w-full p-4 text-center">
-                    <span 
-                      className="text-[12px] text-white font-[500] tracking-[0.15em] uppercase drop-shadow-md"
-                      style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-                    >
-                      {cat.name}
-                    </span>
+                <Link to={`/category/${cat.id}`} className="premium-image-container group block w-full aspect-[4/5] shadow-sm">
+                  <div className="premium-image-inner relative w-full h-full">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px]" />
+                    <div className="absolute bottom-0 left-0 w-full p-4 text-center">
+                      <span 
+                        className="text-[12px] text-white font-[500] tracking-[0.15em] uppercase drop-shadow-md"
+                        style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+                      >
+                        {cat.name}
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
@@ -74,13 +76,15 @@ export default function ShopByCategory() {
                 transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
               >
                 <Link to={`/category/${cat.id}`} className="flex flex-col items-center">
-                  <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full p-[2px] mb-3 transition-all duration-300 group-hover:bg-gradient-to-tr group-hover:from-[#C5A059] group-hover:to-[#E8D09E] bg-transparent">
-                    <div className="w-full h-full rounded-full overflow-hidden border-2 border-white bg-[#FDFBF7]">
-                      <img
-                        src={cat.image}
-                        alt={cat.name}
-                        className="w-full h-full object-cover transition-transform duration-[500ms] ease-out group-hover:scale-110"
-                      />
+                  <div className="relative w-24 h-24 md:w-28 md:h-28 mb-3 transition-all duration-300">
+                    <div className="premium-image-container !rounded-full w-full h-full border-2 border-white bg-[#FDFBF7] shadow-sm">
+                      <div className="premium-image-inner relative w-full h-full">
+                        <img
+                          src={cat.image}
+                          alt={cat.name}
+                          className="w-full h-full object-cover !rounded-full"
+                        />
+                      </div>
                     </div>
                   </div>
                   <span 

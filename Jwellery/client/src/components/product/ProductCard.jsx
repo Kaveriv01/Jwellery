@@ -74,61 +74,63 @@ const ProductCard = memo(function ProductCard({ product }) {
     <div className="group flex flex-col h-full bg-transparent transition-all duration-[300ms]">
       
       {/* Main Image Container (Portrait 4:5, Full Bleed) */}
-      <div className="relative overflow-hidden bg-transparent w-full" style={{ aspectRatio: '4/5' }}>
-        <Link to={`/products/${slug}`} className="block w-full h-full relative">
-          
-          <img
-            src={displayImages[0]}
-            alt={name}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-            onError={(e) => { e.target.src = fallbackImg; }}
-          />
-
-          {/* Hover Image Crossfade */}
-          {hasHoverImage && (
+      <div className="premium-image-container relative bg-transparent w-full" style={{ aspectRatio: '4/5' }}>
+        <div className="premium-image-inner relative w-full h-full">
+          <Link to={`/products/${slug}`} className="block w-full h-full relative">
+            
             <img
-              src={displayImages[1]}
+              src={displayImages[0]}
               alt={name}
-              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 hidden md:block"
+              className="absolute inset-0 w-full h-full object-cover"
               onError={(e) => { e.target.src = fallbackImg; }}
             />
-          )}
 
-          {/* Optional Badge */}
-          {(isNewArrival || isBestSeller) && (
-             <div className="absolute top-3 left-3 z-10 pointer-events-none">
-               <span className="text-[9px] font-bold text-[#77716A] uppercase tracking-[0.15em] font-sans bg-white/80 px-2 py-1 rounded backdrop-blur-sm">
-                 {isBestSeller ? 'Bestseller' : 'New In'}
-               </span>
-             </div>
-          )}
-        </Link>
+            {/* Hover Image Crossfade */}
+            {hasHoverImage && (
+              <img
+                src={displayImages[1]}
+                alt={name}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 hidden md:block"
+                onError={(e) => { e.target.src = fallbackImg; }}
+              />
+            )}
 
-        {/* Wishlist Icon */}
-        <div className="absolute top-3 right-3 z-10">
-          <button
-            onClick={handleWishlistToggle}
-            disabled={isToggling}
-            className="w-8 h-8 flex items-center justify-center transition-transform duration-300 hover:scale-110 active:scale-95 bg-white/50 hover:bg-white/90 backdrop-blur-sm rounded-full"
-            aria-label="Add to Wishlist"
-          >
-            <Heart 
-              size={16} 
-              strokeWidth={wishlisted ? 0 : 1.5} 
-              className={`transition-all duration-300 ${wishlisted ? 'fill-[#B39A6B] text-[#B79A6B]' : 'text-[#2A2020]'}`} 
-            />
-          </button>
-        </div>
+            {/* Optional Badge */}
+            {(isNewArrival || isBestSeller) && (
+               <div className="absolute top-3 left-3 z-10 pointer-events-none">
+                 <span className="text-[9px] font-bold text-[#77716A] uppercase tracking-[0.15em] font-sans bg-white/80 px-2 py-1 rounded backdrop-blur-sm">
+                   {isBestSeller ? 'Bestseller' : 'New In'}
+                 </span>
+               </div>
+            )}
+          </Link>
 
-        {/* Hover-Reveal Add to Bag Button overlaying image */}
-        <div className="absolute bottom-0 left-0 w-full z-10 translate-y-full group-hover:translate-y-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-auto hidden lg:block">
-          <button 
-            onClick={handleAddToCart}
-            disabled={isAddingToCart || isOutOfStock || isAddingLocal}
-            className={`w-full py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 flex items-center justify-center font-sans ${isOutOfStock ? "bg-[#3E2024]/80 text-white cursor-not-allowed" : addSuccess ? "bg-[#B79A6B] text-white" : "bg-[#5A3034]/90 backdrop-blur-md text-white hover:bg-[#5A3034]"}`}
-          >
-            {isOutOfStock ? "Out Of Stock" : isAddingLocal ? "Adding..." : addSuccess ? "✓ Added" : "Add To Bag"}
-          </button>
+          {/* Wishlist Icon */}
+          <div className="absolute top-3 right-3 z-10">
+            <button
+              onClick={handleWishlistToggle}
+              disabled={isToggling}
+              className="w-8 h-8 flex items-center justify-center transition-transform duration-300 hover:scale-110 active:scale-95 bg-white/50 hover:bg-white/90 backdrop-blur-sm rounded-full"
+              aria-label="Add to Wishlist"
+            >
+              <Heart 
+                size={16} 
+                strokeWidth={wishlisted ? 0 : 1.5} 
+                className={`transition-all duration-300 ${wishlisted ? 'fill-[#B39A6B] text-[#B79A6B]' : 'text-[#2A2020]'}`} 
+              />
+            </button>
+          </div>
+
+          {/* Hover-Reveal Add to Bag Button overlaying image */}
+          <div className="absolute bottom-0 left-0 w-full z-10 translate-y-full group-hover:translate-y-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-auto hidden lg:block">
+            <button 
+              onClick={handleAddToCart}
+              disabled={isAddingToCart || isOutOfStock || isAddingLocal}
+              className={`w-full py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 flex items-center justify-center font-sans ${isOutOfStock ? "bg-[#3E2024]/80 text-white cursor-not-allowed" : addSuccess ? "bg-[#B79A6B] text-white" : "bg-[#5A3034]/90 backdrop-blur-md text-white hover:bg-[#5A3034]"}`}
+            >
+              {isOutOfStock ? "Out Of Stock" : isAddingLocal ? "Adding..." : addSuccess ? "✓ Added" : "Add To Bag"}
+            </button>
+          </div>
         </div>
       </div>
 
