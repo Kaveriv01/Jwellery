@@ -1,219 +1,191 @@
-﻿import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiInstagram, FiFacebook, FiYoutube, FiPlus, FiMinus } from 'react-icons/fi';
-import { FaPinterestP } from 'react-icons/fa';
-
-const footerLinks = {
-  shop: [
-    { label: 'New Arrivals', to: '/products' },
-    { label: 'Rings', to: '/category/rings' },
-    { label: 'Earrings', to: '/category/earrings' },
-    { label: 'Necklaces', to: '/category/necklaces' },
-    { label: 'Bracelets', to: '/category/bracelets' },
-    { label: 'Pendants', to: '/category/pendants' },
-    { label: 'Jewellery Sets', to: '/category/jewellery-sets' },
-    { label: 'Best Sellers', to: '/products' },
-  ],
-  customerCare: [
-    { label: 'Contact Us', to: '/contact' },
-    { label: 'Shipping & Delivery', to: '/shipping-policy' },
-    { label: 'Returns & Exchanges', to: '/return-policy' },
-    { label: 'Track Order', to: '/profile' },
-    { label: 'Size Guide', to: '/faqs' },
-    { label: 'Jewellery Care', to: '/faqs' },
-    { label: 'FAQs', to: '/faqs' },
-  ],
-  about: [
-    { label: 'Our Story', to: '/about' },
-    { label: 'About Us', to: '/about' },
-    { label: 'Craftsmanship', to: '/about' },
-    { label: 'Sustainability', to: '/about' },
-    { label: 'Careers', to: '/about' },
-  ],
-  social: [
-    { label: 'Instagram', icon: <FiInstagram className="w-4 h-4" />, to: '#' },
-    { label: 'Facebook', icon: <FiFacebook className="w-4 h-4" />, to: '#' },
-    { label: 'Pinterest', icon: <FaPinterestP className="w-4 h-4" />, to: '#' },
-    { label: 'YouTube', icon: <FiYoutube className="w-4 h-4" />, to: '#' },
-  ]
-};
-
-function FooterAccordion({ title, links, isSocial = false }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b border-[#403D39] md:hidden">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center w-full py-4 text-left"
-      >
-        <span className="text-[12px] font-semibold text-[#F8F5EF] uppercase tracking-[0.1em] font-sans">
-          {title}
-        </span>
-        <span className="text-[#A8A196]">
-          {isOpen ? <FiMinus className="w-4 h-4" /> : <FiPlus className="w-4 h-4" />}
-        </span>
-      </button>
-      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 pb-4' : 'max-h-0'}`}>
-        <ul className="flex flex-col space-y-3">
-          {links.map((link, idx) => (
-            <li key={idx}>
-              <Link to={link.to} className="text-[14px] text-[#A8A196] hover:text-[#B39A6B] transition-colors flex items-center gap-2 font-sans">
-                {isSocial && link.icon}
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
+import { FiInstagram, FiFacebook, FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
+import { FaChevronRight, FaArrowUp } from 'react-icons/fa';
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#F7F4EF] pt-16 md:pt-24 pb-8 border-t border-[#403D39]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 xl:px-12">
+    <footer className="bg-[#0F172A] relative mt-32 pt-32 pb-6 font-sans">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* SECTION 1 - BRAND & NEWSLETTER */}
-        <div className="flex flex-col md:flex-row justify-between items-start mb-16 md:mb-20 gap-10 md:gap-16">
-          <div className="w-full md:w-1/2 max-w-md">
-            <h2 className="text-[32px] md:text-[40px] text-[#F8F5EF] mb-2 font-medium tracking-[0.05em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              TARINI
-            </h2>
-            <p className="text-[16px] text-[#F8F5EF] mb-3 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              Timeless jewellery, thoughtfully crafted.
-            </p>
-            <p className="text-[14px] text-[#A8A196] leading-relaxed font-sans">
-              Discover jewellery designed to celebrate every moment, from everyday elegance to unforgettable occasions.
-            </p>
+        {/* Overlapping Newsletter Box */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1100px] px-4">
+          <div className="bg-white rounded-[4px] shadow-xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+            {/* Background pattern similar to screenshot */}
+            <div className="absolute right-0 top-0 opacity-5 pointer-events-none">
+              <svg width="200" height="200" viewBox="0 0 100 100" className="rotate-45 transform scale-150 -translate-y-12 translate-x-12">
+                <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" strokeWidth="10"/>
+              </svg>
+            </div>
+            
+            <div className="w-full md:w-1/2 relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Subscribe to Newsletter!</h2>
+              <p className="text-[#64748B] text-sm md:text-base">Subscribe to get latest updates and information.</p>
+            </div>
+            <div className="w-full md:w-[45%] relative z-10">
+              <form className="relative flex items-center bg-white rounded-full border border-gray-200 overflow-hidden p-1.5 focus-within:border-[#F97316] focus-within:ring-1 focus-within:ring-[#F97316] transition-all shadow-sm">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email :" 
+                  className="bg-transparent border-none outline-none w-full px-5 text-gray-700 placeholder-gray-400 text-sm"
+                  required
+                />
+                <button 
+                  type="submit" 
+                  className="bg-[#F97316] hover:bg-[#EA580C] text-white font-semibold py-3 px-8 rounded-full transition-colors whitespace-nowrap text-sm"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
+        </div>
+
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-8 mb-12">
           
-          <div className="w-full md:w-1/2 max-w-md">
-            <h3 className="text-[14px] font-semibold text-[#F8F5EF] uppercase tracking-[0.1em] mb-2 font-sans">
-              Stay in the know
-            </h3>
-            <p className="text-[14px] text-[#A8A196] mb-6 font-sans">
-              Sign up for exclusive collections, new arrivals and private offers.
+          {/* Column 1: Brand */}
+          <div className="pr-4">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1 overflow-hidden">
+                <img src="/tarini-logo.png" alt="Logo" className="w-full h-full object-contain" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
+                <span className="hidden text-[#0F172A] font-bold text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>T</span>
+              </div>
+              <h3 className="text-lg font-bold text-[#10B981]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>TARINI</h3>
+            </div>
+            <p className="text-[#94A3B8] text-[13px] leading-relaxed">
+              A great platform to buy the most exquisite and timeless jewellery without any hassle.
             </p>
-            <form className="flex border-b border-[#292725] pb-2 group">
-              <input 
-                type="email" 
-                placeholder="Enter your email address" 
-                className="bg-transparent border-none outline-none w-full text-[14px] text-[#F8F5EF] placeholder-[#77716A] font-sans"
-              />
-              <button 
-                type="button" 
-                className="text-[12px] font-semibold text-[#F8F5EF] uppercase tracking-[0.15em] hover:text-[#B39A6B] transition-colors whitespace-nowrap ml-4 font-sans"
-              >
-                SUBSCRIBE
-              </button>
-            </form>
           </div>
-        </div>
 
-        <div className="w-full h-px bg-[#E8E1D7] mb-12 md:mb-16"></div>
-
-        {/* SECTION 2 - NAVIGATION (DESKTOP) */}
-        <div className="hidden md:grid grid-cols-4 gap-8 mb-20">
+          {/* Column 2: Company */}
           <div>
-            <h4 className="text-[12px] font-semibold text-[#F8F5EF] uppercase tracking-[0.1em] mb-6 font-sans">SHOP</h4>
-            <ul className="flex flex-col space-y-4">
-              {footerLinks.shop.map((link, idx) => (
-                <li key={idx}>
-                  <Link to={link.to} className="text-[14px] text-[#A8A196] hover:text-[#B39A6B] transition-colors relative group font-sans">
-                    {link.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B39A6B] transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-[17px] font-bold text-white mb-6">Company</h4>
+            <ul className="flex flex-col space-y-3.5">
+              <li>
+                <Link to="/about" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> About us
+                </Link>
+              </li>
+              <li>
+                <Link to="/blogs" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Blogs
+                </Link>
+              </li>
+              <li>
+                <Link to="/faqs" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> FAQ
+                </Link>
+              </li>
+              <li>
+                <Link to="/pricing" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Pricing
+                </Link>
+              </li>
+              <li>
+                <Link to="/listing" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Listing
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Login
+                </Link>
+              </li>
             </ul>
           </div>
+
+          {/* Column 3: Usefull Links */}
           <div>
-            <h4 className="text-[12px] font-semibold text-[#F8F5EF] uppercase tracking-[0.1em] mb-6 font-sans">CUSTOMER CARE</h4>
-            <ul className="flex flex-col space-y-4">
-              {footerLinks.customerCare.map((link, idx) => (
-                <li key={idx}>
-                  <Link to={link.to} className="text-[14px] text-[#A8A196] hover:text-[#B39A6B] transition-colors relative group font-sans">
-                    {link.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B39A6B] transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-[17px] font-bold text-white mb-6">Usefull Links</h4>
+            <ul className="flex flex-col space-y-3.5">
+              <li>
+                <Link to="/terms" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/return-policy" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Return & Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-[#94A3B8] hover:text-white transition-colors flex items-center gap-2 text-[14px] group">
+                  <FaChevronRight className="text-white text-[10px] group-hover:translate-x-1 transition-transform" /> Contact
+                </Link>
+              </li>
             </ul>
           </div>
+
+          {/* Column 4: Contact Details */}
           <div>
-            <h4 className="text-[12px] font-semibold text-[#F8F5EF] uppercase tracking-[0.1em] mb-6 font-sans">ABOUT TARINI</h4>
-            <ul className="flex flex-col space-y-4">
-              {footerLinks.about.map((link, idx) => (
-                <li key={idx}>
-                  <Link to={link.to} className="text-[14px] text-[#A8A196] hover:text-[#B39A6B] transition-colors relative group font-sans">
-                    {link.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#B39A6B] transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-[17px] font-bold text-white mb-6">Contact Details</h4>
+            <ul className="flex flex-col space-y-5 text-[14px] text-[#94A3B8]">
+              <li className="flex items-start gap-3">
+                <FiMapPin className="text-[#10B981] mt-1 flex-shrink-0" size={16} />
+                <div>
+                  <p className="text-[#E2E8F0] mb-1">Haryana, India</p>
+                  <a href="#" className="text-[#10B981] hover:underline hover:text-emerald-400 transition-colors text-xs">View on Google map</a>
+                </div>
+              </li>
+              <li className="flex items-center gap-3">
+                <FiMail className="text-[#10B981] flex-shrink-0" size={16} />
+                <a href="mailto:customercare@tarinijewellers.com" className="hover:text-white transition-colors break-all">customercare@tarinijewellers.com</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <FiPhone className="text-[#10B981] flex-shrink-0" size={16} />
+                <a href="tel:+916376542007" className="hover:text-[#E2E8F0] transition-colors">+91 63765 42007</a>
+              </li>
             </ul>
           </div>
-          <div>
-            <h4 className="text-[12px] font-semibold text-[#F8F5EF] uppercase tracking-[0.1em] mb-6 font-sans">FOLLOW US</h4>
-            <ul className="flex flex-col space-y-4">
-              {footerLinks.social.map((link, idx) => (
-                <li key={idx}>
-                  <Link to={link.to} className="text-[14px] text-[#A8A196] hover:text-[#B39A6B] transition-all duration-300 flex items-center gap-3 relative group font-sans hover:-translate-y-[1px]">
-                    {link.icon}
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+
         </div>
 
-        {/* SECTION 2 - NAVIGATION (MOBILE ACCORDION) */}
-        <div className="block md:hidden mb-16 border-t border-[#403D39]">
-          <FooterAccordion title="SHOP" links={footerLinks.shop} />
-          <FooterAccordion title="CUSTOMER CARE" links={footerLinks.customerCare} />
-          <FooterAccordion title="ABOUT TARINI" links={footerLinks.about} />
-          <FooterAccordion title="FOLLOW US" links={footerLinks.social} isSocial={true} />
-        </div>
-
-        {/* SECTION 3 - BRAND STATEMENT */}
-        <div className="text-center mb-16 md:mb-24 px-4">
-          <h2 className="text-[22px] md:text-[32px] text-[#F8F5EF] uppercase tracking-[0.05em] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Jewellery that becomes part of your story.
-          </h2>
-          <p className="text-[15px] md:text-[18px] text-[#A8A196] italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Designed to be worn, loved and remembered.
-          </p>
-        </div>
-
-        <div className="w-full h-px bg-[#E8E1D7] mb-8"></div>
-
-        {/* SECTION 4 - BOTTOM BAR */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] text-[#A8A196] font-sans">
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
-            <span className="text-[#F8F5EF]">Â© 2026 TARINI. All Rights Reserved.</span>
-            <div className="flex items-center gap-4 mt-2 md:mt-0">
-              <span className="flex items-center gap-1"><span className="text-green-600">âœ“</span> Secure Checkout</span>
-              <span className="flex items-center gap-1"><span className="text-green-600">âœ“</span> Easy Returns</span>
+        {/* Bottom Bar */}
+        <div className="border-t border-slate-800 pt-8 pb-2 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-[#64748B]">
+          <div className="flex flex-col gap-1.5 text-center md:text-left">
+            <p>
+              © 2026 Tarini Jewellers | Design & Develop with <span className="text-red-500">❤️</span> by Kaveri Valve
+            </p>
+            <div className="flex justify-center md:justify-start gap-2 text-[11px]">
+              <Link to="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
+              <span>|</span>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             </div>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-            <Link to="/privacy-policy" className="hover:text-[#B39A6B] transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-[#B39A6B] transition-colors">Terms & Conditions</Link>
-            <Link to="/shipping-policy" className="hover:text-[#B39A6B] transition-colors">Shipping Policy</Link>
-            <Link to="/return-policy" className="hover:text-[#B39A6B] transition-colors">Refund Policy</Link>
-          </div>
-          
-          <div className="hidden lg:block text-[#F8F5EF] italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Made with care for every story.
+          <div className="flex items-center gap-3">
+            <a href="#" className="w-8 h-8 rounded border border-[#334155] flex items-center justify-center hover:bg-[#334155] hover:text-white transition-colors">
+              <FiFacebook size={14} />
+            </a>
+            <a href="#" className="w-8 h-8 rounded border border-[#334155] flex items-center justify-center hover:bg-[#334155] hover:text-white transition-colors">
+              <FiInstagram size={14} />
+            </a>
+            <a href="#" className="w-8 h-8 rounded border border-[#334155] flex items-center justify-center hover:bg-[#334155] hover:text-white transition-colors">
+              <FiMail size={14} />
+            </a>
           </div>
         </div>
 
       </div>
+
+      {/* Scroll to top button */}
+      <button 
+        onClick={scrollToTop}
+        className="absolute bottom-8 -right-4 md:right-8 w-10 h-10 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white flex items-center justify-center shadow-lg transition-transform hover:-translate-y-1 z-50"
+      >
+        <FaArrowUp size={14} />
+      </button>
+
     </footer>
   );
 }
-

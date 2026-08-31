@@ -225,8 +225,8 @@ export default function ProductDetailPage() {
               </AnimatePresence>
               
               {discountPercent > 0 && (
-                <span className="absolute top-4 left-4 bg-[#292725] text-[#FFFDFC] text-[9px] font-medium px-3 py-1.5 uppercase tracking-widest rounded-[2px] pointer-events-none">
-                  {discountPercent}% OFF
+                <span className="absolute top-4 left-4 bg-[#D83636] text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-[2px] pointer-events-none shadow-sm">
+                  SALE
                 </span>
               )}
               
@@ -265,22 +265,38 @@ export default function ProductDetailPage() {
           <div className="lg:col-span-5 space-y-6 pt-2">
             <div>
               <span className="text-[10px] uppercase tracking-[0.2em] text-[#B39A6B] font-bold block mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>Tarini Jewellers</span>
-              <h1 className="text-[26px] md:text-[32px] lg:text-[38px] text-[#292725] font-[500] leading-[1.1] mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>`n                <div className="text-[13px] text-[#77716A] mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>18K Gold-Plated | Signature Collection</div>
+              <h1 className="text-[26px] md:text-[32px] lg:text-[36px] text-[#292725] font-[500] leading-[1.2] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{name}</h1>
               
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="flex items-center gap-1 text-[12px] text-[#292725]">
-                  <span className="flex items-center text-[#292725] gap-1"><Star size={12} fill="#B39A6B" className="text-[#B39A6B]" /> <span className="font-bold">{ratings > 0 ? ratings.toFixed(1) : '5.0'}</span></span>
+                  <span className="flex items-center text-[#292725] gap-1"><Star size={14} fill="#B39A6B" className="text-[#B39A6B]" /> <span className="font-bold">{ratings > 0 ? ratings.toFixed(1) : '5.0'}</span></span>
                   <span className="mx-1 text-gray-300">|</span>
                   <span className="underline cursor-pointer hover:text-[#B39A6B] transition-colors">{numReviews > 0 ? numReviews : 126} Reviews</span>
                 </div>
               </div>
 
               {/* Price Block */}
-              <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-[18px] lg:text-[20px] font-[600] text-[#292725]" style={{ fontFamily: "'Inter', sans-serif" }}>{formatPrice(effectivePrice)}</span>
-                {discountPrice && (
-                  <span className="text-[14px] text-gray-500 line-through font-medium">{formatPrice(price)}</span>
-                )}
+              <div className="flex flex-col mb-5">
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="text-[22px] lg:text-[24px] font-[700] text-[#D83636]" style={{ fontFamily: "'Inter', sans-serif" }}>{formatPrice(effectivePrice)}</span>
+                  {discountPrice && (
+                    <>
+                      <span className="text-[16px] text-gray-500 line-through font-medium">{formatPrice(price)}</span>
+                      <span className="text-[12px] font-bold text-[#D83636] bg-[#FCE8E8] px-2 py-1 rounded-[2px]">({discountPercent}% OFF)</span>
+                    </>
+                  )}
+                </div>
+                <span className="text-[11px] text-gray-500">Inclusive of all taxes</span>
+              </div>
+              
+              <div className="flex flex-col gap-2 mb-4 bg-[#F8F8F8] p-3 rounded-[2px]">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] uppercase font-bold text-[#292725] tracking-widest border border-gray-200 px-2 py-1 bg-white">Pay via UPI</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Truck size={16} className="text-[#292725]" />
+                  <span className="text-[12px] text-[#292725] font-medium">Usually ships in 48 hours</span>
+                </div>
               </div>
               
               {shortDescription && (
@@ -348,40 +364,50 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Pincode Checker */}
-            <div className="mt-6 border border-gray-200 p-4 rounded-[2px]">
-              <label className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#292725] mb-3">
-                <Truck size={14} /> Check Delivery Availability
+            <div className="mt-6 border border-gray-200 p-4 rounded-[2px] bg-[#FAFAFA]">
+              <label className="flex items-center gap-2 text-[12px] font-bold text-[#292725] mb-3">
+                <MapPin size={16} className="text-[#B39A6B]" /> Check Delivery Time
               </label>
-              <div className="flex border border-gray-200 rounded-[2px] overflow-hidden">
+              <div className="flex border border-gray-300 rounded-[2px] overflow-hidden bg-white">
                 <input 
                   type="text" 
                   placeholder="Enter Pincode" 
                   value={pincode}
                   onChange={(e) => setPincode(e.target.value)}
-                  className="flex-1 px-4 py-3 text-[12px] font-medium text-[#292725] outline-none bg-white"
+                  className="flex-1 px-4 py-2.5 text-[13px] font-medium text-[#292725] outline-none"
                 />
-                <button onClick={checkPincode} className="px-6 bg-[#FFFDFC] text-[10px] font-bold uppercase tracking-[0.1em] text-[#292725] hover:bg-[#B39A6B] hover:text-white transition-colors border-l border-gray-200">
+                <button onClick={checkPincode} className="px-6 bg-[#292725] text-[11px] font-bold uppercase tracking-[0.1em] text-white hover:bg-black transition-colors">
                   Check
                 </button>
               </div>
-              <div className="mt-4 grid grid-cols-2 gap-2 text-[10px] text-[#292725]/70 uppercase tracking-widest">
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Free shipping</span>
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Secure packaging</span>
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Easy returns</span>
-                <span className="flex items-center gap-1.5"><Check size={12} className="text-[#B39A6B]" /> Authentic Tarini</span>
+            </div>
+
+            {/* Quick Features */}
+            <div className="grid grid-cols-3 gap-2 mt-6 py-4 border-y border-gray-100">
+              <div className="flex flex-col items-center justify-center gap-2 text-center">
+                <Shield size={22} className="text-[#B39A6B]" strokeWidth={1.5} />
+                <span className="text-[10px] uppercase font-bold text-[#292725] tracking-wide">Skin Safe</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-2 text-center border-x border-gray-100">
+                <div className="text-[16px] font-bold text-[#B39A6B] leading-none">18K</div>
+                <span className="text-[10px] uppercase font-bold text-[#292725] tracking-wide">Gold Plated</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-2 text-center">
+                <RotateCcw size={22} className="text-[#B39A6B]" strokeWidth={1.5} />
+                <span className="text-[10px] uppercase font-bold text-[#292725] tracking-wide">Anti-Tarnish</span>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col gap-3 mt-8">
+            <div className="flex flex-col gap-3 mt-6">
               <motion.button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock || isAddingToCart}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full bg-[#292725] border border-[#292725] text-white text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center gap-2 transition-all hover:bg-black rounded-[2px] disabled:opacity-60"
+                className="w-full bg-[#292725] border border-[#292725] text-white text-[13px] font-bold uppercase tracking-[0.1em] py-3.5 flex items-center justify-center gap-2 transition-all hover:bg-black rounded-[2px] disabled:opacity-60"
               >
-                {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'Add to Cart'}
+                {isOutOfStock ? 'Out of Stock' : isAddingToCart ? 'Adding...' : 'ADD TO CART'}
               </motion.button>
               
               <div className="flex gap-3">
@@ -390,19 +416,16 @@ export default function ProductDetailPage() {
                   disabled={isOutOfStock}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="flex-1 bg-white hover:bg-[#FFFDFC] text-[#292725] text-[11px] font-bold uppercase tracking-[0.15em] py-4 flex items-center justify-center transition-all border border-[#292725] rounded-[2px] disabled:opacity-60"
+                  className="flex-1 bg-white hover:bg-[#FAFAFA] text-[#292725] text-[13px] font-bold uppercase tracking-[0.1em] py-3.5 flex items-center justify-center transition-all border-2 border-[#292725] rounded-[2px] disabled:opacity-60"
                 >
-                  Buy Now
+                  BUY IT NOW
                 </motion.button>
                 <button 
                   onClick={() => toggleWishlist({ productId: _id })}
-                  className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#292725] hover:border-[#B39A6B] hover:text-[#B39A6B] transition-all group"
+                  className="w-[50px] border-2 border-[#292725] rounded-[2px] flex items-center justify-center text-[#292725] hover:bg-[#292725] hover:text-white transition-all group"
                   aria-label="Wishlist"
                 >
-                  <Heart size={18} className={`transition-transform group-hover:scale-110 ${wishlisted ? 'fill-[#B39A6B] text-[#B39A6B]' : ''}`} />
-                </button>
-                <button className="w-[50px] border border-gray-200 rounded-[2px] flex items-center justify-center text-[#292725] hover:border-[#B39A6B] hover:text-[#B39A6B] transition-all group">
-                  <Share2 size={18} className="transition-transform group-hover:scale-110" />
+                  <Heart size={20} className={`transition-transform group-hover:scale-110 ${wishlisted ? 'fill-current' : ''}`} />
                 </button>
               </div>
             </div>
@@ -444,34 +467,29 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* â”€â”€ Pre Footer Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-        <div className="w-full bg-[#F2EEE7] relative overflow-hidden mt-32 md:h-[350px] flex rounded-[2px]">
-          <div className="flex flex-col md:flex-row items-stretch justify-between relative z-10 w-full px-0 md:px-12">
-            <div className="flex items-center justify-center gap-6 md:gap-16 flex-1 py-12 md:py-0 relative z-20">
-              <div className="flex flex-col items-center gap-4 text-center">
-                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-[#F2EEE7] relative">
-                  <Shield size={24} strokeWidth={1.2} />
-                </div>
-                <span className="text-[#B39A6B] text-[10px] font-bold tracking-[0.15em] uppercase">Anti-Tarnish</span>
-              </div>
-              <div className="w-[1px] h-12 bg-[#B39A6B]/30 hidden md:block"></div>
-              <div className="flex flex-col items-center gap-4 text-center">
-                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-[#F2EEE7] relative">
-                  <span className="text-xl font-semibold text-[#B39A6B]">18<span className="text-xs font-medium">Kt</span></span>
-                </div>
-                <span className="text-[#B39A6B] text-[10px] font-bold tracking-[0.15em] uppercase">Thick Plating</span>
-              </div>
-              <div className="w-[1px] h-12 bg-[#B39A6B]/30 hidden md:block"></div>
-              <div className="flex flex-col items-center gap-4 text-center">
-                <div className="w-[70px] h-[70px] rounded-full border-[1.5px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-[#F2EEE7] relative">
-                  <Heart size={24} strokeWidth={1.2} />
-                </div>
-                <span className="text-[#B39A6B] text-[10px] font-bold tracking-[0.15em] uppercase">Skin Safe</span>
+        {/* ── Shop The Look ────────────────────────────────── */}
+        <div className="mt-20 pt-10 border-t border-gray-100">
+          <div className="text-center mb-10">
+            <h2 className="text-[20px] md:text-[26px] font-[500] uppercase tracking-[0.08em] text-[#292725]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Shop The Look</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 max-w-5xl mx-auto">
+            <div className="relative group overflow-hidden bg-[#F9F9F9] rounded-[2px] aspect-square">
+              <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=600" alt="Look 1" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <button className="bg-white/90 backdrop-blur-sm text-[#292725] px-6 py-2 text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2"><Plus size={14} /> View</button>
               </div>
             </div>
-            <div className="flex-1 relative hidden md:block">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#F2EEE7] via-[#F2EEE7]/70 to-transparent z-10" />
-              <img src="https://i.pinimg.com/originals/b7/c5/40/b7c540989f6b4d372d6fc713d2f95fc7.jpg" alt="Quality Assurance" className="absolute inset-0 w-full h-full object-cover object-[center_20%]" />
+            <div className="relative group overflow-hidden bg-[#F9F9F9] rounded-[2px] aspect-square">
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600" alt="Look 2" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <button className="bg-white/90 backdrop-blur-sm text-[#292725] px-6 py-2 text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2"><Plus size={14} /> View</button>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden bg-[#F9F9F9] rounded-[2px] aspect-square">
+              <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&q=80&w=600" alt="Look 3" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <button className="bg-white/90 backdrop-blur-sm text-[#292725] px-6 py-2 text-[11px] font-bold uppercase tracking-widest hover:bg-white transition-colors flex items-center gap-2"><Plus size={14} /> View</button>
+              </div>
             </div>
           </div>
         </div>
@@ -489,11 +507,11 @@ export default function ProductDetailPage() {
           </div>
         )}
 
-        {/* â”€â”€ Complete The Look â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {/* ── Compare Products ────────────────────────────────── */}
         {relatedProducts.length > 4 && (
           <div className="mt-20">
-            <div className="flex items-center justify-between mb-10">
-              <h2 className="text-[20px] md:text-[24px] font-[500] uppercase tracking-[0.08em] text-[#292725]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete The Look</h2>
+            <div className="text-center mb-10">
+              <h2 className="text-[20px] md:text-[26px] font-[500] uppercase tracking-[0.08em] text-[#292725]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Compare Products</h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {relatedProducts.slice(4, 8).map((p) => <ProductCard key={p._id} product={p} />)}
@@ -562,7 +580,40 @@ export default function ProductDetailPage() {
 
       </div>
 
-      {/* â”€â”€ Fullscreen Viewer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ── Pre Footer Banner (Moved to bottom) ────────────────────────────────── */}
+        <div className="w-full bg-[#1A1A1A] relative overflow-hidden mt-32 md:h-[400px] flex rounded-[2px]">
+          <div className="flex flex-col md:flex-row items-stretch justify-between relative z-10 w-full px-0">
+            <div className="flex items-center justify-center gap-8 md:gap-16 flex-1 py-16 md:py-0 relative z-20 md:pl-12">
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="w-[80px] h-[80px] rounded-full border-[1px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-transparent relative">
+                  <Shield size={28} strokeWidth={1} />
+                </div>
+                <span className="text-[#B39A6B] text-[11px] font-bold tracking-[0.15em] uppercase">Anti-Tarnish</span>
+              </div>
+              <div className="w-[1px] h-16 bg-[#B39A6B]/30 hidden md:block"></div>
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="w-[80px] h-[80px] rounded-full border-[1px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-transparent relative">
+                  <span className="text-2xl font-semibold text-[#B39A6B]">18<span className="text-sm font-medium">Kt</span></span>
+                </div>
+                <span className="text-[#B39A6B] text-[11px] font-bold tracking-[0.15em] uppercase">Thick Plating</span>
+              </div>
+              <div className="w-[1px] h-16 bg-[#B39A6B]/30 hidden md:block"></div>
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="w-[80px] h-[80px] rounded-full border-[1px] border-[#B39A6B] flex items-center justify-center text-[#B39A6B] bg-transparent relative">
+                  <Heart size={28} strokeWidth={1} />
+                </div>
+                <span className="text-[#B39A6B] text-[11px] font-bold tracking-[0.15em] uppercase">Skin Safe</span>
+              </div>
+            </div>
+            <div className="flex-1 relative hidden md:block h-full">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-transparent to-transparent z-10" />
+              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1200" alt="Quality Assurance" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Fullscreen Viewer ──â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <AnimatePresence>
         {isFullscreen && (
           <motion.div
