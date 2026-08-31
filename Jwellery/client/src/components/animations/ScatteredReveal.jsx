@@ -42,7 +42,7 @@ const scatteredVariants = {
   })
 };
 
-export default function ScatteredReveal({ children, index = 0, className = '' }) {
+export default function ScatteredReveal({ children, index = 0, className = '', ...props }) {
   const shouldReduceMotion = useReducedMotion();
   
   // Fallback for reduced motion: simple fade
@@ -54,6 +54,7 @@ export default function ScatteredReveal({ children, index = 0, className = '' })
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className={className}
+        {...props}
       >
         {children}
       </motion.div>
@@ -68,6 +69,7 @@ export default function ScatteredReveal({ children, index = 0, className = '' })
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }} // Trigger when 20% enters viewport
       className={`will-change-transform ${className}`}
+      {...props}
       onAnimationComplete={(definition) => {
         // Clear all transform styles after animation completes to prevent stacking context bugs 
         // and allow hover animations (like 3D flip) to work perfectly
