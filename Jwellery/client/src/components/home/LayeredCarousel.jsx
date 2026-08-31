@@ -112,7 +112,7 @@ export default function LayeredCarousel() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-gray-500 text-[11px] md:text-[13px] uppercase tracking-[0.25em]" 
+          className="text-[#756A63] text-[11px] md:text-[13px] uppercase tracking-[0.25em]" 
           style={{ fontFamily: "'Nunito Sans', sans-serif" }}
         >
           Discover Timeless Elegance

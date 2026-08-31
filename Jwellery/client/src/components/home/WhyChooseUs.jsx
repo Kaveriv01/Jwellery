@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section className="bg-white py-12 border-b border-gray-100 overflow-hidden">
+    <section className="bg-white py-12 border-b border-[#DED3C4] overflow-hidden">
       <div className="container-luxury max-w-7xl mx-auto">
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200"
@@ -59,7 +59,7 @@ export default function WhyChooseUs() {
                 <h3 className="text-[11px] font-bold tracking-[0.05em] text-[#111] uppercase mb-0.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                   {val.title}
                 </h3>
-                <p className="text-[12px] text-gray-500 font-normal" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                <p className="text-[12px] text-[#756A63] font-normal" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                   {val.description}
                 </p>
               </div>

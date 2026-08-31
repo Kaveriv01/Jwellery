@@ -10,7 +10,7 @@ export default function MidBanner() {
           alt="The Tarini Experience"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-[#3E2024]/20" />
       </div>
 
       {/* Content Box */}

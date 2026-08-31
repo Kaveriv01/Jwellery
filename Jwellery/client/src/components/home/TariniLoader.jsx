@@ -32,7 +32,7 @@ export default function TariniLoader({ onComplete }) {
       {phase !== 'exit' ? (
         <motion.div
           key="loader"
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#111111]"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#211719]"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}

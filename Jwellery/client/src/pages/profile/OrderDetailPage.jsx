@@ -27,7 +27,7 @@ export default function OrderDetailPage() {
   const order = data?.order;
 
   if (isLoading) return <div className="container-luxury py-12"><div className="skeleton h-96 rounded-2xl" /></div>;
-  if (!order) return <div className="container-luxury py-20 text-center text-gray-500">Order not found.</div>;
+  if (!order) return <div className="container-luxury py-20 text-center text-[#756A63]">Order not found.</div>;
 
   const canCancel = ['pending', 'confirmed'].includes(order.status);
   const currentStatusIdx = ORDER_STATUSES.indexOf(order.status);
@@ -36,14 +36,14 @@ export default function OrderDetailPage() {
     <>
       <Helmet><title>Order #{order.orderNumber} — Jwellery</title></Helmet>
       <div className="container-luxury py-8 max-w-4xl">
-        <button onClick={() => navigate('/profile/orders')} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800 mb-6">
+        <button onClick={() => navigate('/profile/orders')} className="flex items-center gap-2 text-sm text-[#756A63] hover:text-gray-800 mb-6">
           <ArrowLeft size={16} /> Back to Orders
         </button>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="font-serif text-2xl text-gray-900">Order #{order.orderNumber}</h1>
-            <p className="text-sm text-gray-400 mt-0.5">Placed on {formatDate(order.createdAt)}</p>
+            <p className="text-sm text-[#756A63] mt-0.5">Placed on {formatDate(order.createdAt)}</p>
           </div>
           <span className={`text-sm font-semibold px-4 py-1.5 rounded-full ${getStatusColor(order.status)}`}>
             {order.status.toUpperCase()}
@@ -56,7 +56,7 @@ export default function OrderDetailPage() {
             {ORDER_STATUSES.map((status, i) => (
               <div key={status} className="flex items-center">
                 <div className={`flex flex-col items-center gap-1 ${i <= currentStatusIdx ? 'text-[#C5A059]' : 'text-gray-300'}`}>
-                  <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center ${i <= currentStatusIdx ? 'border-[#C5A059] bg-[#fdf9ee]' : 'border-gray-200'}`}>
+                  <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center ${i <= currentStatusIdx ? 'border-[#C5A059] bg-[#fdf9ee]' : 'border-[#DED3C4]'}`}>
                     {i < currentStatusIdx ? '✓' : <span className="w-2 h-2 rounded-full bg-current" />}
                   </div>
                   <span className="text-[10px] capitalize whitespace-nowrap">{status}</span>
@@ -74,13 +74,13 @@ export default function OrderDetailPage() {
           <div className="lg:col-span-2 space-y-4">
             <h2 className="font-semibold text-gray-800 flex items-center gap-2"><Package size={16} /> Items ({order.items?.length})</h2>
             {order.items?.map((item) => (
-              <div key={item._id} className="flex gap-3 bg-white border border-gray-100 rounded-xl p-4">
+              <div key={item._id} className="flex gap-3 bg-white border border-[#DED3C4] rounded-xl p-4">
                 <img src={item.image || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={item.name} className="w-16 h-16 rounded-lg object-cover" />
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-sm text-gray-800 truncate">{item.name}</p>
-                  {item.size && <p className="text-xs text-gray-400">Size: {item.size}</p>}
-                  {item.color && <p className="text-xs text-gray-400">Color: {item.color}</p>}
-                  <p className="text-xs text-gray-400">Qty: {item.quantity}</p>
+                  {item.size && <p className="text-xs text-[#756A63]">Size: {item.size}</p>}
+                  {item.color && <p className="text-xs text-[#756A63]">Color: {item.color}</p>}
+                  <p className="text-xs text-[#756A63]">Qty: {item.quantity}</p>
                 </div>
                 <p className="font-semibold text-sm text-gray-900 whitespace-nowrap">{formatPrice((item.discountPrice || item.price) * item.quantity)}</p>
               </div>
@@ -93,11 +93,11 @@ export default function OrderDetailPage() {
             <div className="bg-gray-50 rounded-2xl p-4">
               <h3 className="font-semibold text-gray-800 mb-3">Price Details</h3>
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-gray-600"><span>Subtotal</span><span>{formatPrice(order.subtotal)}</span></div>
+                <div className="flex justify-between text-[#756A63]"><span>Subtotal</span><span>{formatPrice(order.subtotal)}</span></div>
                 {order.couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Discount</span><span>-{formatPrice(order.couponDiscount)}</span></div>}
-                <div className="flex justify-between text-gray-600"><span>Shipping</span><span>{order.shippingCharge === 0 ? 'FREE' : formatPrice(order.shippingCharge)}</span></div>
-                <div className="flex justify-between text-gray-600"><span>GST</span><span>{formatPrice(order.gstAmount)}</span></div>
-                <div className="flex justify-between font-bold text-gray-900 pt-2 border-t border-gray-200"><span>Total</span><span className="text-[#C5A059]">{formatPrice(order.totalPrice)}</span></div>
+                <div className="flex justify-between text-[#756A63]"><span>Shipping</span><span>{order.shippingCharge === 0 ? 'FREE' : formatPrice(order.shippingCharge)}</span></div>
+                <div className="flex justify-between text-[#756A63]"><span>GST</span><span>{formatPrice(order.gstAmount)}</span></div>
+                <div className="flex justify-between font-bold text-gray-900 pt-2 border-t border-[#DED3C4]"><span>Total</span><span className="text-[#C5A059]">{formatPrice(order.totalPrice)}</span></div>
               </div>
             </div>
 
@@ -105,19 +105,19 @@ export default function OrderDetailPage() {
             {order.shippingAddress && (
               <div className="bg-gray-50 rounded-2xl p-4">
                 <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-1"><MapPin size={14} /> Delivery Address</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-[#756A63] leading-relaxed">
                   {order.shippingAddress.fullName}<br />
                   {order.shippingAddress.addressLine1}, {order.shippingAddress.city}<br />
                   {order.shippingAddress.state} - {order.shippingAddress.pincode}
                 </p>
-                <p className="text-xs text-gray-400 flex items-center gap-1 mt-1"><Phone size={11} /> {order.shippingAddress.phone}</p>
+                <p className="text-xs text-[#756A63] flex items-center gap-1 mt-1"><Phone size={11} /> {order.shippingAddress.phone}</p>
               </div>
             )}
 
             {/* Payment */}
             <div className="bg-gray-50 rounded-2xl p-4">
               <h3 className="font-semibold text-gray-800 mb-1 flex items-center gap-1"><CreditCard size={14} /> Payment</h3>
-              <p className="text-sm text-gray-600 capitalize">{order.paymentMethod}</p>
+              <p className="text-sm text-[#756A63] capitalize">{order.paymentMethod}</p>
               <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${order.paymentStatus === 'paid' ? 'text-green-600 bg-green-50' : 'text-yellow-600 bg-yellow-50'}`}>
                 {order.paymentStatus?.toUpperCase()}
               </span>

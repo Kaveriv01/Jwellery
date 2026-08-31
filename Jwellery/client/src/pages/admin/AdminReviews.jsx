@@ -52,11 +52,11 @@ export default function AdminReviews() {
       <div className="space-y-6">
         <div>
           <h1 className="font-serif text-3xl text-gray-900">Reviews</h1>
-          <p className="text-sm text-gray-500 mt-1">Moderate customer feedback and product ratings</p>
+          <p className="text-sm text-[#756A63] mt-1">Moderate customer feedback and product ratings</p>
         </div>
 
         {/* Toolbar */}
-        <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center justify-between">
+        <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#DED3C4] flex items-center justify-between">
           <select
             value={status}
             onChange={(e) => { setStatus(e.target.value); setPage(1); }}
@@ -75,19 +75,19 @@ export default function AdminReviews() {
             {[...Array(3)].map((_, i) => <div key={i} className="skeleton h-24 rounded-xl animate-pulse" />)}
           </div>
         ) : reviews.length === 0 ? (
-          <div className="bg-white rounded-2xl p-16 text-center border border-gray-100 shadow-sm">
+          <div className="bg-white rounded-2xl p-16 text-center border border-[#DED3C4] shadow-sm">
             <Star size={48} className="text-gray-200 mx-auto mb-4" />
-            <p className="text-gray-500 font-medium">No reviews found.</p>
+            <p className="text-[#756A63] font-medium">No reviews found.</p>
           </div>
         ) : (
-          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+          <div className="bg-white rounded-2xl border border-[#DED3C4] overflow-hidden shadow-sm">
             <div className="divide-y divide-gray-100">
               {reviews.map((r) => (
                 <div key={r._id} className="p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4 hover:bg-gray-50/50 transition-colors">
                   <div className="space-y-2 min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="font-semibold text-gray-800 text-sm">{r.user?.name}</span>
-                      <span className="text-xs text-gray-400 font-normal">({r.user?.email})</span>
+                      <span className="text-xs text-[#756A63] font-normal">({r.user?.email})</span>
                       <span className="text-[10px] text-gray-300">•</span>
                       <span className="text-xs text-gray-450 truncate max-w-xs">Product: <strong>{r.product?.name}</strong></span>
                     </div>
@@ -103,7 +103,7 @@ export default function AdminReviews() {
                           />
                         ))}
                       </div>
-                      <span className="text-xs text-gray-400">{formatDate(r.createdAt)}</span>
+                      <span className="text-xs text-[#756A63]">{formatDate(r.createdAt)}</span>
                       <span className={`text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full ${
                         r.status === 'approved' ? 'bg-green-50 text-green-600' :
                         r.status === 'rejected' ? 'bg-red-50 text-red-600' :
@@ -112,14 +112,14 @@ export default function AdminReviews() {
                     </div>
 
                     {r.title && <p className="text-sm font-semibold text-gray-850">{r.title}</p>}
-                    <p className="text-sm text-gray-600 max-w-2xl leading-relaxed">{r.comment}</p>
+                    <p className="text-sm text-[#756A63] max-w-2xl leading-relaxed">{r.comment}</p>
                   </div>
 
                   <div className="flex items-center gap-1.5 self-end sm:self-start">
                     {r.status !== 'approved' && (
                       <button
                         onClick={() => updateStatusMutation.mutate({ id: r._id, status: 'approved' })}
-                        className="p-2 hover:bg-green-50 rounded-lg text-gray-400 hover:text-green-600 transition-colors"
+                        className="p-2 hover:bg-green-50 rounded-lg text-[#756A63] hover:text-green-600 transition-colors"
                         title="Approve"
                       >
                         <Check size={16} />
@@ -128,7 +128,7 @@ export default function AdminReviews() {
                     {r.status !== 'rejected' && (
                       <button
                         onClick={() => updateStatusMutation.mutate({ id: r._id, status: 'rejected' })}
-                        className="p-2 hover:bg-red-50 rounded-lg text-gray-400 hover:text-red-500 transition-colors"
+                        className="p-2 hover:bg-red-50 rounded-lg text-[#756A63] hover:text-red-500 transition-colors"
                         title="Reject"
                       >
                         <X size={16} />
@@ -136,7 +136,7 @@ export default function AdminReviews() {
                     )}
                     <button
                       onClick={() => handleDelete(r._id)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-300 hover:text-gray-600 transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-300 hover:text-[#756A63] transition-colors"
                       title="Delete Permanently"
                     >
                       <Trash2 size={16} />
@@ -148,19 +148,19 @@ export default function AdminReviews() {
 
             {/* Pagination */}
             {pagination.totalPages > 1 && (
-              <div className="flex items-center justify-between border-t border-gray-100 px-6 py-4">
+              <div className="flex items-center justify-between border-t border-[#DED3C4] px-6 py-4">
                 <button
                   disabled={!pagination.hasPrevPage}
                   onClick={() => setPage((p) => p - 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-[#DED3C4] rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Previous
                 </button>
-                <span className="text-sm text-gray-500">Page {page} of {pagination.totalPages}</span>
+                <span className="text-sm text-[#756A63]">Page {page} of {pagination.totalPages}</span>
                 <button
                   disabled={!pagination.hasNextPage}
                   onClick={() => setPage((p) => p + 1)}
-                  className="px-4 py-2 border border-gray-200 rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
+                  className="px-4 py-2 border border-[#DED3C4] rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
                 >
                   Next
                 </button>

@@ -115,7 +115,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             <Heart 
               size={16} 
               strokeWidth={wishlisted ? 0 : 1.5} 
-              className={`transition-all duration-300 ${wishlisted ? 'fill-[#B39A6B] text-[#B39A6B]' : 'text-[#292725]'}`} 
+              className={`transition-all duration-300 ${wishlisted ? 'fill-[#B39A6B] text-[#B79A6B]' : 'text-[#2A2020]'}`} 
             />
           </button>
         </div>
@@ -125,7 +125,7 @@ const ProductCard = memo(function ProductCard({ product }) {
           <button 
             onClick={handleAddToCart}
             disabled={isAddingToCart || isOutOfStock || isAddingLocal}
-            className={`w-full py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 flex items-center justify-center font-sans ${isOutOfStock ? "bg-black/80 text-white cursor-not-allowed" : addSuccess ? "bg-[#B39A6B] text-white" : "bg-[#292725]/90 backdrop-blur-md text-white hover:bg-[#292725]"}`}
+            className={`w-full py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 flex items-center justify-center font-sans ${isOutOfStock ? "bg-[#3E2024]/80 text-white cursor-not-allowed" : addSuccess ? "bg-[#B79A6B] text-white" : "bg-[#5A3034]/90 backdrop-blur-md text-white hover:bg-[#5A3034]"}`}
           >
             {isOutOfStock ? "Out Of Stock" : isAddingLocal ? "Adding..." : addSuccess ? "✓ Added" : "Add To Bag"}
           </button>
@@ -137,13 +137,13 @@ const ProductCard = memo(function ProductCard({ product }) {
         
         <Link to={`/products/${slug}`} className="block mb-1">
           {/* Reserved height for product name ensures price alignment */}
-          <h3 className="text-[14px] text-[#292725] font-[500] leading-snug tracking-wide hover:text-[#B39A6B] transition-colors font-sans min-h-[42px] line-clamp-2">
+          <h3 className="text-[14px] text-[#2A2020] font-[500] leading-snug tracking-wide hover:text-[#B79A6B] transition-colors font-sans min-h-[42px] line-clamp-2">
             {name}
           </h3>
         </Link>
         
         <div className="flex items-baseline gap-2 flex-wrap font-sans">
-          <span className="text-[14px] font-[600] text-[#292725]">
+          <span className="text-[14px] font-[600] text-[#2A2020]">
             {formatPrice(effectivePrice)}
           </span>
           {discountPrice && (

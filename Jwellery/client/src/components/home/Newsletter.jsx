@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Newsletter() {
   return (
-    <section className="py-20 lg:py-24 bg-[#1F1517] text-[#FDFBF7]">
+    <section className="py-20 lg:py-24 bg-[#211719] text-[#FFFFFF]">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -13,7 +13,7 @@ export default function Newsletter() {
         <h2 className="text-3xl lg:text-4xl mb-4 font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Subscribe to our Newsletter
         </h2>
-        <p className="text-[11px] uppercase tracking-[0.15em] text-[#FDFBF7]/70 mb-10" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+        <p className="text-[11px] uppercase tracking-[0.15em] text-[#D8CFC7] mb-10" style={{ fontFamily: "'Inter', sans-serif" }}>
           Join our mailing list to receive updates on new arrivals, special offers, and our latest editorial stories.
         </p>
         
@@ -21,13 +21,13 @@ export default function Newsletter() {
           <input
             type="email"
             placeholder="Email Address"
-            className="bg-transparent border border-[#FDFBF7]/30 text-[#FDFBF7] px-6 py-3 w-full sm:w-72 focus:outline-none focus:border-[#C5A059] placeholder:text-[#FDFBF7]/50 text-xs tracking-wide transition-colors"
-            style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+            className="bg-[#FAF7F2] border-none text-[#2A2020] px-6 py-3 w-full sm:w-72 focus:outline-none focus:ring-1 focus:ring-[#B79A6B] placeholder:text-[#756A63] text-[13px] tracking-wide transition-colors"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           />
           <button
             type="submit"
-            className="bg-[#4A0712] text-[#FDFBF7] px-8 py-3 text-[10px] tracking-[0.15em] uppercase hover:bg-[#C5A059] hover:text-[#1F1517] transition-colors font-medium border border-[#4A0712] hover:border-[#C5A059]"
-            style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+            className="bg-[#B79A6B] text-[#211719] px-8 py-3 text-[11px] tracking-[0.15em] uppercase hover:bg-[#C9B28A] transition-colors font-medium border-none"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             SUBSCRIBE
           </button>

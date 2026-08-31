@@ -101,7 +101,7 @@ const SORT_OPTIONS = [
 // ── Skeleton card ─────────────────────────────────────────────────────────────
 function SkeletonCard() {
   return (
-    <div className="rounded-[2px] border border-gray-100 overflow-hidden animate-pulse">
+    <div className="rounded-[2px] border border-[#DED3C4] overflow-hidden animate-pulse">
       <div className="aspect-[4/5] bg-gray-100" />
       <div className="p-3 space-y-2">
         <div className="h-3 bg-gray-100 rounded w-2/3" />

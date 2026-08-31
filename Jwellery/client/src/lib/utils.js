@@ -51,7 +51,7 @@ export function getStatusColor(status) {
     case 'cancelled':
       return 'bg-rose-50 text-rose-700 border border-rose-200/50';
     default:
-      return 'bg-gray-50 text-gray-700 border border-gray-200/50';
+      return 'bg-gray-50 text-gray-700 border border-[#DED3C4]/50';
   }
 }
 

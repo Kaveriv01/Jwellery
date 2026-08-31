@@ -102,7 +102,7 @@ export default function AdminCategories() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Form Column */}
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm h-fit">
+        <div className="bg-white rounded-2xl p-5 border border-[#DED3C4] shadow-sm h-fit">
           <h2 className="font-serif text-xl text-gray-900 mb-4">
             {editingCategory ? 'Edit Category' : 'Create Category'}
           </h2>
@@ -129,11 +129,11 @@ export default function AdminCategories() {
               <label className="text-xs font-semibold text-gray-700 block mb-1.5">Category Image</label>
               <div className="flex items-center gap-3">
                 {preview && (
-                  <img src={preview} alt="" className="w-12 h-12 object-cover rounded-lg border border-gray-200" />
+                  <img src={preview} alt="" className="w-12 h-12 object-cover rounded-lg border border-[#DED3C4]" />
                 )}
-                <label className="flex-1 border-2 border-dashed border-gray-200 hover:border-[#C5A059] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
-                  <Upload size={16} className="text-gray-400" />
-                  <span className="text-xs text-gray-500 font-medium">Upload Image</span>
+                <label className="flex-1 border-2 border-dashed border-[#DED3C4] hover:border-[#C5A059] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
+                  <Upload size={16} className="text-[#756A63]" />
+                  <span className="text-xs text-[#756A63] font-medium">Upload Image</span>
                   <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                 </label>
               </div>
@@ -157,15 +157,15 @@ export default function AdminCategories() {
         </div>
 
         {/* List Column */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-gray-100">Category Directory</h2>
+        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#DED3C4] shadow-sm overflow-hidden">
+          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-[#DED3C4]">Category Directory</h2>
 
           {isLoading ? (
             <div className="p-5 space-y-2">
               {[...Array(4)].map((_, i) => <div key={i} className="skeleton h-12 rounded-xl" />)}
             </div>
           ) : categories.length === 0 ? (
-            <div className="p-10 text-center text-gray-400">No categories found.</div>
+            <div className="p-10 text-center text-[#756A63]">No categories found.</div>
           ) : (
             <div className="divide-y divide-gray-100">
               {categories.map((cat) => (
@@ -174,17 +174,17 @@ export default function AdminCategories() {
                     <img
                       src={cat.image?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                       alt={cat.name}
-                      className="w-10 h-10 object-cover rounded-lg border border-gray-200"
+                      className="w-10 h-10 object-cover rounded-lg border border-[#DED3C4]"
                     />
                     <div>
                       <p className="font-medium text-gray-800 text-sm">{cat.name}</p>
-                      {cat.description && <p className="text-xs text-gray-400 line-clamp-1">{cat.description}</p>}
+                      {cat.description && <p className="text-xs text-[#756A63] line-clamp-1">{cat.description}</p>}
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleEdit(cat)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#C5A059] transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg text-[#756A63] hover:text-[#C5A059] transition-colors"
                       title="Edit"
                     >
                       <Edit2 size={15} />

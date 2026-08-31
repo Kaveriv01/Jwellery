@@ -25,11 +25,11 @@ export default function AdminAnalytics() {
       <div className="space-y-6">
         <div>
           <h1 className="font-serif text-3xl text-gray-900">Analytics</h1>
-          <p className="text-sm text-gray-500 mt-1">Review store revenue, growth patterns, and category popularity</p>
+          <p className="text-sm text-[#756A63] mt-1">Review store revenue, growth patterns, and category popularity</p>
         </div>
 
         {/* 12-Month Revenue Area Chart */}
-        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+        <div className="bg-white rounded-2xl p-6 border border-[#DED3C4] shadow-sm">
           <h2 className="font-semibold text-gray-800 text-base mb-6">Annual Revenue Curve</h2>
           {revenueLoading ? (
             <div className="skeleton h-80 w-full animate-pulse" />
@@ -54,7 +54,7 @@ export default function AdminAnalytics() {
 
         {/* Category breakdown bar chart */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 border border-[#DED3C4] shadow-sm">
             <h2 className="font-semibold text-gray-800 text-base mb-6">Top Categories by Revenue</h2>
             {categoriesLoading ? (
               <div className="skeleton h-60 w-full animate-pulse" />
@@ -71,7 +71,7 @@ export default function AdminAnalytics() {
             )}
           </div>
 
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <div className="bg-white rounded-2xl p-6 border border-[#DED3C4] shadow-sm">
             <h2 className="font-semibold text-gray-800 text-base mb-6">Top Categories by Volume (Sold Count)</h2>
             {categoriesLoading ? (
               <div className="skeleton h-60 w-full animate-pulse" />

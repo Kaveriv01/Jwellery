@@ -49,27 +49,27 @@ export default function ResetPasswordPage() {
             <div className="text-center">
               <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
               <h1 className="font-serif text-2xl text-gray-900 mb-2">Password Reset!</h1>
-              <p className="text-gray-500 text-sm mb-4">Redirecting to login...</p>
+              <p className="text-[#756A63] text-sm mb-4">Redirecting to login...</p>
               <Link to="/login" className="text-[#C5A059] text-sm hover:underline">Go to Login →</Link>
             </div>
           ) : (
             <>
               <h1 className="font-serif text-2xl text-gray-900 mb-2">Set New Password</h1>
-              <p className="text-gray-500 text-sm mb-6">Create a strong password for your account.</p>
+              <p className="text-[#756A63] text-sm mb-6">Create a strong password for your account.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
                   <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>New Password</label>
                   <div className="relative">
-                    <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#756A63]" />
                     <input {...register('password')} type={showPw ? 'text' : 'password'} placeholder="Min. 6 characters" className={`input-gold !pl-10 !pr-10 ${errors.password ? 'border-red-400' : ''}`} />
-                    <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">{showPw ? <EyeOff size={15} /> : <Eye size={15} />}</button>
+                    <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#756A63]">{showPw ? <EyeOff size={15} /> : <Eye size={15} />}</button>
                   </div>
                   {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
                 </div>
                 <div>
                   <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Confirm Password</label>
                   <div className="relative">
-                    <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#756A63]" />
                     <input {...register('confirmPassword')} type="password" placeholder="Re-enter password" className={`input-gold !pl-10 ${errors.confirmPassword ? 'border-red-400' : ''}`} />
                   </div>
                   {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>}

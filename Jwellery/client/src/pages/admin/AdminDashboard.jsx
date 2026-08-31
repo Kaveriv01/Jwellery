@@ -68,7 +68,7 @@ export default function AdminDashboard() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100"
+                className="bg-white rounded-2xl p-5 shadow-sm border border-[#DED3C4]"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${card.color}`}>
@@ -83,8 +83,8 @@ export default function AdminDashboard() {
                 <p className="text-2xl font-bold text-gray-900 mb-0.5">
                   {statsLoading ? <span className="skeleton inline-block w-20 h-7 rounded" /> : card.value}
                 </p>
-                <p className="text-xs text-gray-500 font-medium mb-1">{card.title}</p>
-                <p className="text-[11px] text-gray-400">{card.sub}</p>
+                <p className="text-xs text-[#756A63] font-medium mb-1">{card.title}</p>
+                <p className="text-[11px] text-[#756A63]">{card.sub}</p>
               </motion.div>
             );
           })}
@@ -93,10 +93,10 @@ export default function AdminDashboard() {
         {/* Revenue Chart + Order Status */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
           {/* Revenue chart */}
-          <div className="xl:col-span-2 bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div className="xl:col-span-2 bg-white rounded-2xl p-5 shadow-sm border border-[#DED3C4]">
             <div className="flex items-center justify-between mb-5">
               <h2 className="font-semibold text-gray-900">Revenue Overview</h2>
-              <span className="text-xs text-gray-400 bg-gray-100 px-2.5 py-1 rounded-full">Last 6 months</span>
+              <span className="text-xs text-[#756A63] bg-gray-100 px-2.5 py-1 rounded-full">Last 6 months</span>
             </div>
             <ResponsiveContainer width="100%" height={240}>
               <LineChart data={revenueData?.chart || []}>
@@ -110,7 +110,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Order status pie */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-2xl p-5 shadow-sm border border-[#DED3C4]">
             <h2 className="font-semibold text-gray-900 mb-5">Order Status</h2>
             <ResponsiveContainer width="100%" height={180}>
               <PieChart>
@@ -127,7 +127,7 @@ export default function AdminDashboard() {
                 <div key={item._id} className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full" style={{ background: PIE_COLORS[i % PIE_COLORS.length] }} />
-                    <span className="capitalize text-gray-600">{item._id}</span>
+                    <span className="capitalize text-[#756A63]">{item._id}</span>
                   </div>
                   <span className="font-semibold text-gray-800">{item.count}</span>
                 </div>
@@ -139,7 +139,7 @@ export default function AdminDashboard() {
         {/* Recent Orders + Top Products */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           {/* Recent orders */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-2xl p-5 shadow-sm border border-[#DED3C4]">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-semibold text-gray-900">Recent Orders</h2>
               <a href="/admin/orders" className="text-xs text-[#C5A059] hover:underline">View all</a>
@@ -149,7 +149,7 @@ export default function AdminDashboard() {
                 <div key={order._id} className="flex items-center justify-between gap-2 py-2 border-b border-gray-50 last:border-0">
                   <div className="min-w-0">
                     <p className="text-xs font-semibold text-gray-800 truncate">#{order.orderNumber}</p>
-                    <p className="text-[11px] text-gray-400 truncate">{order.user?.name}</p>
+                    <p className="text-[11px] text-[#756A63] truncate">{order.user?.name}</p>
                   </div>
                   <div className="text-right flex-shrink-0">
                     <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${getStatusColor(order.status)}`}>{order.status}</span>
@@ -158,13 +158,13 @@ export default function AdminDashboard() {
                 </div>
               ))}
               {!recentOrdersData?.orders?.length && (
-                <p className="text-sm text-gray-400 text-center py-4">No recent orders.</p>
+                <p className="text-sm text-[#756A63] text-center py-4">No recent orders.</p>
               )}
             </div>
           </div>
 
           {/* Top products */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div className="bg-white rounded-2xl p-5 shadow-sm border border-[#DED3C4]">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-semibold text-gray-900">Top Products</h2>
               <a href="/admin/products" className="text-xs text-[#C5A059] hover:underline">View all</a>
@@ -172,22 +172,22 @@ export default function AdminDashboard() {
             <div className="space-y-3">
               {(topProductsData?.products || []).map((product, i) => (
                 <div key={product._id} className="flex items-center gap-3">
-                  <span className="w-5 text-xs font-bold text-gray-400">{i + 1}.</span>
+                  <span className="w-5 text-xs font-bold text-[#756A63]">{i + 1}.</span>
                   <img src={product.images?.[0]?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'} alt={product.name} className="w-10 h-10 rounded-lg object-cover" />
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-medium text-gray-800 truncate">{product.name}</p>
                     <div className="flex items-center gap-1">
                       <Star size={10} fill="#C5A059" className="text-[#C5A059]" />
-                      <span className="text-[10px] text-gray-400">{product.ratings?.toFixed(1)}</span>
+                      <span className="text-[10px] text-[#756A63]">{product.ratings?.toFixed(1)}</span>
                       <span className="text-[10px] text-gray-300">•</span>
-                      <span className="text-[10px] text-gray-400">{product.soldCount || 0} sold</span>
+                      <span className="text-[10px] text-[#756A63]">{product.soldCount || 0} sold</span>
                     </div>
                   </div>
                   <span className="text-xs font-semibold text-gray-800 flex-shrink-0">{formatPrice(product.discountPrice || product.price)}</span>
                 </div>
               ))}
               {!topProductsData?.products?.length && (
-                <p className="text-sm text-gray-400 text-center py-4">No data available.</p>
+                <p className="text-sm text-[#756A63] text-center py-4">No data available.</p>
               )}
             </div>
           </div>

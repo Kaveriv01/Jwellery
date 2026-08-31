@@ -80,7 +80,7 @@ export default function VerifyOTPPage() {
             <Gem size={24} className="text-white" />
           </div>
           <h1 className="font-serif text-3xl text-gray-900 mb-2">Verify Your Email</h1>
-          <p className="text-gray-500 text-sm mb-8">
+          <p className="text-[#756A63] text-sm mb-8">
             Enter the 6-digit OTP sent to<br />
             <span className="font-medium text-gray-700">{email || 'your email'}</span>
           </p>
@@ -99,7 +99,7 @@ export default function VerifyOTPPage() {
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onFocus={(e) => e.target.select()}
                   className={`w-12 h-12 text-center text-xl font-bold border-2 rounded-xl outline-none transition-all ${
-                    digit ? 'border-[#C5A059] bg-[#fdf9ee]' : 'border-gray-200 focus:border-[#C5A059]'
+                    digit ? 'border-[#C5A059] bg-[#fdf9ee]' : 'border-[#DED3C4] focus:border-[#C5A059]'
                   }`}
                 />
               ))}
@@ -110,11 +110,11 @@ export default function VerifyOTPPage() {
             </motion.button>
           </form>
 
-          <button onClick={handleResend} disabled={resending} className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-[#C5A059] mx-auto transition-colors disabled:opacity-50">
+          <button onClick={handleResend} disabled={resending} className="flex items-center justify-center gap-2 text-sm text-[#756A63] hover:text-[#C5A059] mx-auto transition-colors disabled:opacity-50">
             <RotateCcw size={14} /> {resending ? 'Resending...' : 'Resend OTP'}
           </button>
 
-          <p className="text-xs text-gray-400 mt-4">OTP is valid for 10 minutes</p>
+          <p className="text-xs text-[#756A63] mt-4">OTP is valid for 10 minutes</p>
         </motion.div>
       </div>
     </>

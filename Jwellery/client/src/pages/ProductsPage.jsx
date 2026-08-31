@@ -47,12 +47,12 @@ function HorizontalDropdown({ title, value, options }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 5 }}
             transition={{ duration: 0.15 }}
-            className="absolute top-[calc(100%+8px)] left-0 bg-white border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.1)] min-w-[220px] z-50 py-2 rounded-[2px]"
+            className="absolute top-[calc(100%+8px)] left-0 bg-white border border-[#DED3C4] shadow-[0_4px_16px_rgba(0,0,0,0.1)] min-w-[220px] z-50 py-2 rounded-[2px]"
           >
             <div className="max-h-[300px] overflow-y-auto scrollbar-thin">
               {options.map((opt, i) => (
                 <label key={i} className="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer group">
-                  <div className="relative flex items-center justify-center w-4 h-4 border border-gray-300 rounded-[2px] group-hover:border-[#111] transition-colors">
+                  <div className="relative flex items-center justify-center w-4 h-4 border border-[#DED3C4] rounded-[2px] group-hover:border-[#111] transition-colors">
                     {opt.checked && (
                       <div className="absolute inset-0 bg-[#E8345E] border-[#E8345E] flex items-center justify-center rounded-[2px]">
                         <Check size={12} className="text-white" strokeWidth={3} />
@@ -60,21 +60,21 @@ function HorizontalDropdown({ title, value, options }) {
                     )}
                   </div>
                   <input type="checkbox" checked={opt.checked} onChange={() => { opt.onChange(); setIsOpen(false); }} className="sr-only" />
-                  <span className={`text-[14px] transition-colors ${opt.checked ? 'text-[#111] font-[500]' : 'text-gray-600 group-hover:text-[#111]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                  <span className={`text-[14px] transition-colors ${opt.checked ? 'text-[#111] font-[500]' : 'text-[#756A63] group-hover:text-[#111]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                     {opt.label}
                   </span>
                 </label>
               ))}
             </div>
             {hasSelection && (
-              <div className="px-4 pt-3 pb-1 border-t border-gray-100 mt-2">
+              <div className="px-4 pt-3 pb-1 border-t border-[#DED3C4] mt-2">
                 <button 
                   onClick={() => {
                      const selectedOpt = options.find(o => o.checked);
                      if(selectedOpt) selectedOpt.onChange();
                      setIsOpen(false);
                   }} 
-                  className="text-[12px] uppercase tracking-wider text-gray-500 hover:text-[#E8345E] font-semibold w-full text-left transition-colors"
+                  className="text-[12px] uppercase tracking-wider text-[#756A63] hover:text-[#E8345E] font-semibold w-full text-left transition-colors"
                 >
                   Clear Selection
                 </button>
@@ -283,7 +283,7 @@ export default function ProductsPage() {
               alt={bannerData.title} 
               className="w-full h-full object-cover object-[center_30%]"
             />
-            <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#3E2024]/30 pointer-events-none" />
             
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4 mt-8">
               <h1 
@@ -301,7 +301,7 @@ export default function ProductsPage() {
       )}
 
       {/* HORIZONTAL FILTER BAR */}
-      <div className="border-b border-t border-gray-100 bg-white sticky top-[80px] lg:top-[96px] z-30">
+      <div className="border-b border-t border-[#DED3C4] bg-white sticky top-[80px] lg:top-[96px] z-30">
         <div className="container-luxury py-2 flex items-center justify-between gap-4">
           
           {/* Desktop Filters */}
@@ -314,13 +314,13 @@ export default function ProductsPage() {
           </div>
 
           {/* Mobile Filter Trigger */}
-          <button onClick={() => setMobileFilterOpen(true)} className="flex lg:hidden items-center gap-2 text-[#111] py-2 px-3 text-[13px] font-[500] border border-gray-200 rounded-[4px] bg-white">
+          <button onClick={() => setMobileFilterOpen(true)} className="flex lg:hidden items-center gap-2 text-[#111] py-2 px-3 text-[13px] font-[500] border border-[#DED3C4] rounded-[4px] bg-white">
             <Filter size={14} /> Filter
           </button>
 
           {/* Sort By Dropdown (Desktop) */}
           <div className="hidden lg:flex items-center gap-2">
-             <span className="text-[13px] text-gray-500 font-medium" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Sort by:</span>
+             <span className="text-[13px] text-[#756A63] font-medium" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Sort by:</span>
              <select
                 value={sortBy}
                 onChange={(e) => updateParam('sortBy', e.target.value)}
@@ -340,7 +340,7 @@ export default function ProductsPage() {
         {/* Title row */}
         <div className="mb-6">
            <h2 className="text-[20px] md:text-[24px] text-[#111] font-[400]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-             {currentCategoryName} <span className="text-gray-400 text-[16px] md:text-[18px]">({pagination.totalItems || products.length} Designs)</span>
+             {currentCategoryName} <span className="text-[#756A63] text-[16px] md:text-[18px]">({pagination.totalItems || products.length} Designs)</span>
            </h2>
         </div>
 
@@ -353,7 +353,7 @@ export default function ProductsPage() {
           </div>
         ) : products.length === 0 ? (
           <div className="text-center py-32">
-            <p className="font-serif text-3xl text-gray-400 mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>No jewelry found</p>
+            <p className="font-serif text-3xl text-[#756A63] mb-5" style={{ fontFamily: "'Cormorant Garamond', serif" }}>No jewelry found</p>
             <button onClick={clearAllFilters} className="bg-[#111] text-white text-[11px] tracking-[0.15em] uppercase px-8 py-3 hover:bg-[#C5A059] transition-colors rounded-[2px]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               Clear Filters
             </button>
@@ -369,18 +369,18 @@ export default function ProductsPage() {
         {/* Pagination */}
         {pagination.totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-20">
-            <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-5 py-2.5 border border-gray-200 rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+            <button disabled={!pagination.hasPrevPage} onClick={() => goToPage(page - 1)} className="px-5 py-2.5 border border-[#DED3C4] rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               Prev
             </button>
             {[...Array(Math.min(pagination.totalPages, 7))].map((_, i) => {
               const pageNum = i + 1;
               return (
-                <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-10 h-10 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#111] text-white border border-[#111]' : 'border border-gray-200 hover:border-[#111] text-[#111]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+                <button key={pageNum} onClick={() => goToPage(pageNum)} className={`w-10 h-10 rounded-[2px] text-[12px] font-medium transition-all duration-300 ${page === pageNum ? 'bg-[#111] text-white border border-[#111]' : 'border border-[#DED3C4] hover:border-[#111] text-[#111]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
                   {pageNum}
                 </button>
               );
             })}
-            <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-5 py-2.5 border border-gray-200 rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+            <button disabled={!pagination.hasNextPage} onClick={() => goToPage(page + 1)} className="px-5 py-2.5 border border-[#DED3C4] rounded-[2px] text-[11px] uppercase tracking-[0.1em] text-[#111] hover:border-[#111] disabled:opacity-40 transition-all duration-300 font-[600]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               Next
             </button>
           </div>
@@ -394,7 +394,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] lg:hidden" 
+            className="fixed inset-0 bg-[#3E2024]/50 backdrop-blur-sm z-[100] lg:hidden" 
             onClick={() => setMobileFilterOpen(false)}
           >
             <motion.div 
@@ -405,9 +405,9 @@ export default function ProductsPage() {
               className="absolute left-0 bottom-0 w-full max-h-[85vh] bg-white rounded-t-xl overflow-hidden flex flex-col" 
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-white sticky top-0 z-10">
+              <div className="flex items-center justify-between p-5 border-b border-[#DED3C4] bg-white sticky top-0 z-10">
                 <h2 className="text-[18px] text-[#111] font-semibold" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Filter & Sort</h2>
-                <button onClick={() => setMobileFilterOpen(false)} className="text-gray-500 hover:text-black transition-colors"><X size={20} strokeWidth={2} /></button>
+                <button onClick={() => setMobileFilterOpen(false)} className="text-[#756A63] hover:text-black transition-colors"><X size={20} strokeWidth={2} /></button>
               </div>
               
               <div className="overflow-y-auto p-5 space-y-6 pb-24">
@@ -417,7 +417,7 @@ export default function ProductsPage() {
                   <select
                     value={sortBy}
                     onChange={(e) => updateParam('sortBy', e.target.value)}
-                    className="w-full border border-gray-200 rounded-[4px] bg-transparent text-[14px] font-[500] py-3 px-3 outline-none focus:border-black"
+                    className="w-full border border-[#DED3C4] rounded-[4px] bg-transparent text-[14px] font-[500] py-3 px-3 outline-none focus:border-black"
                   >
                     {SORT_OPTIONS.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -451,7 +451,7 @@ export default function ProductsPage() {
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-gray-100 flex gap-3">
+              <div className="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-[#DED3C4] flex gap-3">
                  <button onClick={clearAllFilters} className="flex-1 py-3 text-[13px] font-semibold text-gray-700 bg-gray-100 rounded-[4px]">Clear All</button>
                  <button onClick={() => setMobileFilterOpen(false)} className="flex-1 py-3 text-[13px] font-semibold text-white bg-[#E8345E] rounded-[4px]">Apply</button>
               </div>

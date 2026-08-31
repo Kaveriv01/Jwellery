@@ -80,7 +80,7 @@ export default function BottomBanners() {
               <div className="w-[180px] h-[180px] border border-[#C5A059]/20 rotate-45 absolute" />
               <div className="w-[240px] h-[240px] border border-[#C5A059]/10 rotate-45 absolute" />
             </div>
-            <div className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-all duration-500" />
+            <div className="absolute inset-0 bg-[#3E2024]/45 group-hover:bg-[#3E2024]/35 transition-all duration-500" />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
               {/* Label — Nunito Sans */}
               <span

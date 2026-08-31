@@ -46,7 +46,7 @@ export default function SectionHeading({ eyebrow, title, subtitle, centered = tr
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className={`mt-3 text-xs sm:text-sm leading-relaxed max-w-xl ${centered ? 'mx-auto' : ''} ${dark ? 'text-white/60' : 'text-gray-500'}`}
+          className={`mt-3 text-xs sm:text-sm leading-relaxed max-w-xl ${centered ? 'mx-auto' : ''} ${dark ? 'text-white/60' : 'text-[#756A63]'}`}
         >
           {subtitle}
         </motion.p>

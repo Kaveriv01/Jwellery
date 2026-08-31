@@ -108,7 +108,7 @@ export default function AdminCoupons() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Form Column */}
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm h-fit">
+        <div className="bg-white rounded-2xl p-5 border border-[#DED3C4] shadow-sm h-fit">
           <h2 className="font-serif text-xl text-gray-900 mb-4 flex items-center gap-2">
             <Tag size={18} className="text-[#C5A059]" />
             {editingCoupon ? 'Edit Coupon' : 'Create Coupon'}
@@ -212,15 +212,15 @@ export default function AdminCoupons() {
         </div>
 
         {/* List Column */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-gray-100">Coupons Directory</h2>
+        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#DED3C4] shadow-sm overflow-hidden">
+          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-[#DED3C4]">Coupons Directory</h2>
 
           {isLoading ? (
             <div className="p-5 space-y-2">
               {[...Array(4)].map((_, i) => <div key={i} className="skeleton h-14 rounded-xl animate-pulse" />)}
             </div>
           ) : coupons.length === 0 ? (
-            <div className="p-10 text-center text-gray-400">No coupons active.</div>
+            <div className="p-10 text-center text-[#756A63]">No coupons active.</div>
           ) : (
             <div className="divide-y divide-gray-100">
               {coupons.map((c) => (
@@ -232,7 +232,7 @@ export default function AdminCoupons() {
                         {c.discountType === 'percentage' ? `${c.discountValue}% off` : `₹${c.discountValue} off`}
                       </span>
                     </div>
-                    <div className="flex flex-wrap gap-x-4 gap-y-0.5 mt-1.5 text-xs text-gray-400">
+                    <div className="flex flex-wrap gap-x-4 gap-y-0.5 mt-1.5 text-xs text-[#756A63]">
                       {c.minimumPurchase > 0 && <span>Min: ₹{c.minimumPurchase}</span>}
                       {c.expiryDate && <span>Expires: {formatDate(c.expiryDate)}</span>}
                       {c.usedCount !== undefined && <span>Used: {c.usedCount} times</span>}
@@ -241,7 +241,7 @@ export default function AdminCoupons() {
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleEdit(c)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#C5A059] transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg text-[#756A63] hover:text-[#C5A059] transition-colors"
                     >
                       <Edit2 size={15} />
                     </button>

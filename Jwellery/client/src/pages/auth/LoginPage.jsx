@@ -173,7 +173,7 @@ export default function LoginPage() {
                 <CardTitle className="font-serif text-3xl text-gray-900 font-light tracking-wide">
                   Sign In
                 </CardTitle>
-                <CardDescription className="text-xs text-gray-500 mt-2 font-light">
+                <CardDescription className="text-xs text-[#756A63] mt-2 font-light">
                   New to JWELLERY?{' '}
                   <Link to="/register" className="text-[#C5A059] hover:underline font-medium inline-flex items-center gap-0.5">
                     Create your luxury account →
@@ -190,7 +190,7 @@ export default function LoginPage() {
                       Email Address
                     </Label>
                     <div className="relative">
-                      <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#756A63]" />
                       <Input
                         {...register('email')}
                         id="email"
@@ -215,7 +215,7 @@ export default function LoginPage() {
                       </Link>
                     </div>
                     <div className="relative">
-                      <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <Lock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#756A63]" />
                       <Input
                         {...register('password')}
                         id="password"
@@ -228,7 +228,7 @@ export default function LoginPage() {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-[#756A63] hover:text-[#756A63] transition-colors"
                       >
                         {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                       </button>
@@ -252,7 +252,7 @@ export default function LoginPage() {
               {/* Trust Badges */}
               <motion.div
                 variants={itemVariants}
-                className="mt-8 pt-8 border-t border-gray-100 grid grid-cols-2 gap-4"
+                className="mt-8 pt-8 border-t border-[#DED3C4] grid grid-cols-2 gap-4"
               >
                 {[
                   'BIS Hallmarked Gold',
@@ -260,7 +260,7 @@ export default function LoginPage() {
                   'Certified Diamonds',
                   'Trusted by Thousands',
                 ].map((badge) => (
-                  <div key={badge} className="flex items-center gap-2 text-[10px] text-gray-500 font-light">
+                  <div key={badge} className="flex items-center gap-2 text-[10px] text-[#756A63] font-light">
                     <ShieldCheck size={14} className="text-[#C5A059] flex-shrink-0" />
                     <span>{badge}</span>
                   </div>
@@ -291,7 +291,7 @@ export default function LoginPage() {
               className="w-full h-full object-cover filter brightness-95"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-[#2C1810]/90 via-[#4A0E17]/75 to-[#C5A059]/45 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-[#3E2024]/30 backdrop-blur-sm" />
           </div>
 
           {/* Royal Decorative Card with Animated Framer Motion */}

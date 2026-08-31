@@ -44,7 +44,7 @@ export default function ForgotPasswordPage() {
                 <Mail size={24} className="text-green-600" />
               </div>
               <h1 className="font-serif text-2xl text-gray-900 mb-2">Check Your Email</h1>
-              <p className="text-gray-500 text-sm mb-6">We've sent a password reset link to <strong>{getValues('email')}</strong>. The link is valid for 30 minutes.</p>
+              <p className="text-[#756A63] text-sm mb-6">We've sent a password reset link to <strong>{getValues('email')}</strong>. The link is valid for 30 minutes.</p>
               <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-[#C5A059] hover:underline">
                 <ArrowLeft size={14} /> Back to Login
               </Link>
@@ -52,12 +52,12 @@ export default function ForgotPasswordPage() {
           ) : (
             <>
               <h1 className="font-serif text-2xl text-gray-900 mb-2">Forgot Password?</h1>
-              <p className="text-gray-500 text-sm mb-6">Enter your email and we'll send you a link to reset your password.</p>
+              <p className="text-[#756A63] text-sm mb-6">Enter your email and we'll send you a link to reset your password.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
                   <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Email Address</label>
                   <div className="relative">
-                    <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#756A63]" />
                     <input {...register('email')} type="email" placeholder="your@email.com" className={`input-gold !pl-10 ${errors.email ? 'border-red-400' : ''}`} />
                   </div>
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -65,7 +65,7 @@ export default function ForgotPasswordPage() {
                 <motion.button type="submit" disabled={isSubmitting} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="btn-gold w-full rounded-xl py-3.5 text-sm disabled:opacity-60">
                   {isSubmitting ? 'Sending...' : 'Send Reset Link'}
                 </motion.button>
-                <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-[#C5A059]">
+                <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-[#756A63] hover:text-[#C5A059]">
                   <ArrowLeft size={14} /> Back to Login
                 </Link>
               </form>

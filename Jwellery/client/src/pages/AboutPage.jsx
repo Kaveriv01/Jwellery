@@ -31,7 +31,7 @@ export default function AboutPage() {
   const craftScale = useTransform(craftProgress, [0, 1], [1, 1.15]);
 
   return (
-    <div className="bg-[#F8F5EF] text-[#1F1517] overflow-hidden selection:bg-[#C5A059] selection:text-white">
+    <div className="bg-[#FAF7F2] text-[#1F1517] overflow-hidden selection:bg-[#C5A059] selection:text-white">
       <Helmet>
         <title>Our Story — Tarini Jewellers</title>
         <meta name="description" content="Discover the story behind Tarini Jewellers — where tradition meets contemporary elegance." />
@@ -67,7 +67,7 @@ export default function AboutPage() {
           <FadeUp delay={0.4}>
             <button 
               onClick={() => window.scrollTo({ top: window.innerHeight * 0.9, behavior: 'smooth' })} 
-              className="inline-block border border-[#F8F5EF]/50 text-[#F8F5EF] px-8 py-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] font-bold hover:bg-[#F8F5EF] hover:text-[#1F1517] transition-all duration-500 backdrop-blur-sm"
+              className="inline-block border border-[#F8F5EF]/50 text-[#F8F5EF] px-8 py-3 text-[11px] md:text-[12px] uppercase tracking-[0.2em] font-bold hover:bg-[#FAF7F2] hover:text-[#1F1517] transition-all duration-500 backdrop-blur-sm"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               Discover Our Story
@@ -81,11 +81,11 @@ export default function AboutPage() {
           transition={{ delay: 1.2, duration: 1 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
         >
-          <div className="w-[1px] h-20 bg-[#F8F5EF]/30 overflow-hidden relative">
+          <div className="w-[1px] h-20 bg-[#FAF7F2]/30 overflow-hidden relative">
             <motion.div 
               animate={{ y: ["-100%", "200%"] }}
               transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-              className="absolute inset-0 w-full h-1/2 bg-[#F8F5EF]"
+              className="absolute inset-0 w-full h-1/2 bg-[#FAF7F2]"
             />
           </div>
         </motion.div>
@@ -158,7 +158,7 @@ export default function AboutPage() {
             alt="Jewellery Craftsmanship" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-[#3E2024]/50" />
         </motion.div>
         
         <div className="relative z-10 text-center px-6 w-full max-w-4xl mx-auto">
@@ -193,7 +193,7 @@ export default function AboutPage() {
           
           <div className="w-full lg:w-[45%] lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 mt-8 lg:mt-0">
             <FadeUp delay={0.1}>
-              <div className="bg-[#F8F5EF] p-10 md:p-16 lg:p-20 text-center border border-[#C5A059]/30 shadow-2xl">
+              <div className="bg-[#FAF7F2] p-10 md:p-16 lg:p-20 text-center border border-[#C5A059]/30 shadow-2xl">
                 <h2 className="text-[32px] md:text-[42px] lg:text-[48px] font-medium leading-tight mb-8 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   Where Tradition<br/>Meets Tomorrow
                 </h2>
@@ -211,7 +211,7 @@ export default function AboutPage() {
       <section className="relative w-full py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img src="/images/home-banner.png" alt="The Tarini Woman" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-[#F8F5EF]/85 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-[#FAF7F2]/85 backdrop-blur-[2px]" />
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -237,7 +237,7 @@ export default function AboutPage() {
             { title: "Trust", desc: "A jewellery experience built around transparency, care and confidence." }
           ].map((val, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="group flex flex-col border border-[#1F1517]/10 p-6 md:p-10 lg:p-14 hover:border-[#C5A059]/50 hover:bg-[#F8F5EF]/50 transition-all duration-500 min-h-[220px] md:min-h-[300px] justify-between shadow-sm hover:shadow-md">
+              <div className="group flex flex-col border border-[#1F1517]/10 p-6 md:p-10 lg:p-14 hover:border-[#C5A059]/50 hover:bg-[#FAF7F2]/50 transition-all duration-500 min-h-[220px] md:min-h-[300px] justify-between shadow-sm hover:shadow-md">
                 <div>
                   <h3 className="text-[20px] md:text-[28px] lg:text-[32px] font-medium mb-4 lg:mb-6 text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {val.title}
@@ -272,7 +272,7 @@ export default function AboutPage() {
               <FadeUp key={i} delay={i * 0.15}>
                 <div className="relative aspect-square overflow-hidden group shadow-lg">
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-[#3E2024]/20 group-hover:bg-[#3E2024]/40 transition-colors duration-500" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <h3 className="text-white text-[20px] md:text-[28px] lg:text-[36px] font-medium tracking-wide drop-shadow-md" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {item.title}
@@ -387,7 +387,7 @@ export default function AboutPage() {
       </section>
 
       {/* 11. BRAND STATEMENT */}
-      <section className="py-32 lg:py-48 px-6 bg-[#F8F5EF] border-t border-[#1F1517]/5">
+      <section className="py-32 lg:py-48 px-6 bg-[#FAF7F2] border-t border-[#1F1517]/5">
         <div className="max-w-5xl mx-auto text-center">
           <FadeUp>
             <h2 className="text-[32px] sm:text-[42px] md:text-[50px] lg:text-[70px] font-medium leading-[1.25] text-[#1F1517] mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -408,7 +408,7 @@ export default function AboutPage() {
       <section className="relative py-32 lg:py-48 px-6 overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img src="/images/banner-collections.png" alt="Tarini Collection" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#F8F5EF]/95 backdrop-blur-[4px]" />
+          <div className="absolute inset-0 bg-[#FAF7F2]/95 backdrop-blur-[4px]" />
         </div>
         
         <div className="relative z-10 max-w-2xl mx-auto text-center">

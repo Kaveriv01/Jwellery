@@ -96,19 +96,19 @@ export default function AdminAddProduct() {
       <Helmet><title>Add New Product — Admin | Jwellery</title></Helmet>
 
       <div className="space-y-6 max-w-4xl">
-        <button onClick={() => navigate('/admin/products')} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800">
+        <button onClick={() => navigate('/admin/products')} className="flex items-center gap-2 text-sm text-[#756A63] hover:text-gray-800">
           <ArrowLeft size={16} /> Back to Products
         </button>
 
         <div>
           <h1 className="font-serif text-3xl text-gray-900">Add New Product</h1>
-          <p className="text-sm text-gray-500 mt-1">Create a new jewelry piece in your store catalog</p>
+          <p className="text-sm text-[#756A63] mt-1">Create a new jewelry piece in your store catalog</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Main Info */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-gray-100 pb-3">Product Details</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
+            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Product Details</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="text-xs font-semibold text-gray-700 block mb-1.5">Product Name *</label>
@@ -147,8 +147,8 @@ export default function AdminAddProduct() {
           </div>
 
           {/* Pricing & Stock */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-gray-100 pb-3">Pricing & Inventory</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
+            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Pricing & Inventory</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label className="text-xs font-semibold text-gray-700 block mb-1.5">Original Price (₹) *</label>
@@ -168,8 +168,8 @@ export default function AdminAddProduct() {
           </div>
 
           {/* Attributes */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-gray-100 pb-3">Specifications & Badges</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
+            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Specifications & Badges</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div>
                 <label className="text-xs font-semibold text-gray-700 block mb-1.5">Material *</label>
@@ -206,24 +206,24 @@ export default function AdminAddProduct() {
           </div>
 
           {/* Media */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-gray-100 pb-3">Product Images *</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
+            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Product Images *</h2>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
               {previews.map((preview, idx) => (
-                <div key={idx} className="relative aspect-square rounded-xl overflow-hidden border border-gray-200 group">
+                <div key={idx} className="relative aspect-square rounded-xl overflow-hidden border border-[#DED3C4] group">
                   <img src={preview} alt="" className="w-full h-full object-cover" />
                   <button
                     type="button"
                     onClick={() => removeImage(idx)}
-                    className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute inset-0 bg-[#3E2024]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     <Trash2 size={16} className="text-white" />
                   </button>
                 </div>
               ))}
-              <label className="aspect-square rounded-xl border-2 border-dashed border-gray-200 hover:border-[#C5A059] flex flex-col items-center justify-center cursor-pointer transition-colors bg-gray-50/50">
-                <Upload size={20} className="text-gray-400 mb-1" />
-                <span className="text-[10px] text-gray-500 font-medium">Upload Image</span>
+              <label className="aspect-square rounded-xl border-2 border-dashed border-[#DED3C4] hover:border-[#C5A059] flex flex-col items-center justify-center cursor-pointer transition-colors bg-gray-50/50">
+                <Upload size={20} className="text-[#756A63] mb-1" />
+                <span className="text-[10px] text-[#756A63] font-medium">Upload Image</span>
                 <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />
               </label>
             </div>

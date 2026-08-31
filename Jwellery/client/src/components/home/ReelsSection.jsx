@@ -64,7 +64,7 @@ export default function ReelsSection() {
               
               {/* Subtle play icon on hover, NO background blur/dimming of the video itself */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="w-12 h-12 rounded-full bg-black/30 flex items-center justify-center shadow-lg backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-full bg-[#3E2024]/30 flex items-center justify-center shadow-lg backdrop-blur-sm">
                   <Play size={20} className="text-white ml-1" fill="white" />
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function ReelsSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#3E2024]/95 p-4"
             onClick={() => setPreviewVideo(null)}
           >
             <button 
@@ -94,7 +94,7 @@ export default function ReelsSection() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-[400px] aspect-[9/16] bg-black rounded-xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-[400px] aspect-[9/16] bg-[#3E2024] rounded-xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <video

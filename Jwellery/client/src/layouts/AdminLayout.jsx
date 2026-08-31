@@ -46,7 +46,7 @@ export default function AdminLayout() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            className="fixed inset-0 bg-[#3E2024]/50 z-40 lg:hidden"
             onClick={() => setSidebarOpen(false)}
           />
         )}
@@ -120,16 +120,16 @@ export default function AdminLayout() {
       {/* ── Main content ─────────────────────────────────────────────── */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Header */}
-        <header className="bg-white border-b border-gray-200 px-4 lg:px-6 py-4 flex items-center gap-4">
+        <header className="bg-white border-b border-[#DED3C4] px-4 lg:px-6 py-4 flex items-center gap-4">
           <button
-            className="lg:hidden text-gray-600 hover:text-gray-900"
+            className="lg:hidden text-[#756A63] hover:text-gray-900"
             onClick={() => setSidebarOpen(true)}
           >
             <Menu size={22} />
           </button>
           <div>
             <h1 className="text-lg font-semibold text-gray-900">{currentPage}</h1>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-[#756A63]">
               {new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })}
             </p>
           </div>

@@ -126,7 +126,7 @@ export default function AdminBanners() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Form Column */}
-        <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm h-fit">
+        <div className="bg-white rounded-2xl p-5 border border-[#DED3C4] shadow-sm h-fit">
           <h2 className="font-serif text-xl text-gray-900 mb-4 flex items-center gap-2">
             <Layers size={18} className="text-[#C5A059]" />
             {editingBanner ? 'Edit Banner' : 'Create Banner'}
@@ -171,11 +171,11 @@ export default function AdminBanners() {
               <label className="text-xs font-semibold text-gray-700 block mb-1.5">Banner Image</label>
               <div className="flex items-center gap-3">
                 {imagePreview && (
-                  <img src={imagePreview} alt="" className="w-12 h-12 object-cover rounded-lg border border-gray-200" />
+                  <img src={imagePreview} alt="" className="w-12 h-12 object-cover rounded-lg border border-[#DED3C4]" />
                 )}
-                <label className="flex-1 border-2 border-dashed border-gray-200 hover:border-[#C5A059] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
-                  <Upload size={16} className="text-gray-400" />
-                  <span className="text-xs text-gray-500 font-medium">Upload File</span>
+                <label className="flex-1 border-2 border-dashed border-[#DED3C4] hover:border-[#C5A059] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
+                  <Upload size={16} className="text-[#756A63]" />
+                  <span className="text-xs text-[#756A63] font-medium">Upload File</span>
                   <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                 </label>
               </div>
@@ -199,15 +199,15 @@ export default function AdminBanners() {
         </div>
 
         {/* List Column */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-gray-100">Banners Directory</h2>
+        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#DED3C4] shadow-sm overflow-hidden">
+          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-[#DED3C4]">Banners Directory</h2>
 
           {isLoading ? (
             <div className="p-5 space-y-2">
               {[...Array(3)].map((_, i) => <div key={i} className="skeleton h-16 rounded-xl animate-pulse" />)}
             </div>
           ) : banners.length === 0 ? (
-            <div className="p-10 text-center text-gray-400">No banners found.</div>
+            <div className="p-10 text-center text-[#756A63]">No banners found.</div>
           ) : (
             <div className="divide-y divide-gray-100">
               {banners.map((b) => (
@@ -216,17 +216,17 @@ export default function AdminBanners() {
                     <img
                       src={b.image?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
                       alt={b.title}
-                      className="w-16 h-10 object-cover rounded-lg border border-gray-200"
+                      className="w-16 h-10 object-cover rounded-lg border border-[#DED3C4]"
                     />
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-800 text-sm truncate">{b.title || 'Untitled Banner'}</p>
-                      <p className="text-xs text-gray-400 capitalize">{b.type} | Position: {b.position}</p>
+                      <p className="text-xs text-[#756A63] capitalize">{b.type} | Position: {b.position}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => handleEdit(b)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#C5A059] transition-colors"
+                      className="p-2 hover:bg-gray-100 rounded-lg text-[#756A63] hover:text-[#C5A059] transition-colors"
                     >
                       <Edit2 size={15} />
                     </button>
