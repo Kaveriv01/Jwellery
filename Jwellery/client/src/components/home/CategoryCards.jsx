@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import ScatteredReveal from '../animations/ScatteredReveal';
 
 const CATEGORIES = [
   { id: 'necklaces', name: 'Necklaces', image: '/images/cat-necklace-floral.png' },
@@ -24,13 +24,10 @@ export default function CategoryCards() {
         {/* Mobile: 2 columns, Desktop: 4 columns */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {CATEGORIES.map((cat, index) => (
-            <motion.div 
+            <ScatteredReveal 
               key={cat.id} 
+              index={index}
               className="premium-image-container group relative aspect-[9/16] md:aspect-auto md:h-[450px] lg:h-[500px]"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
             >
               <Link to={`/category/${cat.id}`} className="premium-image-inner block w-full h-full relative">
                 <img
@@ -63,7 +60,7 @@ export default function CategoryCards() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </ScatteredReveal>
           ))}
         </div>
       </div>

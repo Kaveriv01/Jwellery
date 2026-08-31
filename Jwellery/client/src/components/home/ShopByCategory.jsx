@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import ScatteredReveal from '../animations/ScatteredReveal';
 
 const CATEGORIES = [
   { id: 'rings', name: 'Rings', image: '/images/cat-ring-hands.png' },

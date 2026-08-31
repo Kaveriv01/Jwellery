@@ -16,8 +16,9 @@ const getFallbackImage = (categoryObj, productName) => {
   if (catName.includes('bracelet')) return '/images/cat-bracelet.png';
   return '/images/cat-necklace-floral.png';
 };
+import ScatteredReveal from '../animations/ScatteredReveal';
 
-const ProductCard = memo(function ProductCard({ product }) {
+const ProductCard = memo(function ProductCard({ product, index = 0 }) {
   const { isAuthenticated } = useAuth();
   const { addToCart, isAddingToCart } = useCart();
   const { isWishlisted, toggleWishlist, isToggling } = useWishlist();
@@ -74,7 +75,7 @@ const ProductCard = memo(function ProductCard({ product }) {
     <div className="group flex flex-col h-full bg-transparent transition-all duration-[300ms]">
       
       {/* Main Image Container (Portrait 4:5, Full Bleed) */}
-      <div className="premium-image-container relative bg-transparent w-full" style={{ aspectRatio: '4/5' }}>
+      <ScatteredReveal index={index} className="premium-image-container relative bg-transparent w-full" style={{ aspectRatio: '4/5' }}>
         <div className="premium-image-inner relative w-full h-full">
           <Link to={`/products/${slug}`} className="block w-full h-full relative">
             
@@ -132,7 +133,7 @@ const ProductCard = memo(function ProductCard({ product }) {
             </button>
           </div>
         </div>
-      </div>
+      </ScatteredReveal>
 
       {/* Info Section (No Button here) */}
       <div className="flex flex-col flex-1 px-1 mt-3">

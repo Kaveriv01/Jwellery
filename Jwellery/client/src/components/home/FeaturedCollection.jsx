@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from '../product/ProductCard';
+import ScatteredReveal from '../animations/ScatteredReveal';
 
 function SectionHeading({ title, subtitle, dark = false }) {
   const shouldReduceMotion = useReducedMotion();
@@ -81,9 +82,9 @@ function ProductCarousel({ products }) {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <div key={product._id} className="snap-start shrink-0 w-[75vw] sm:w-[45vw] md:w-[35vw] lg:w-[23vw]">
-            <ProductCard product={product} />
+            <ProductCard product={product} index={index} />
           </div>
         ))}
       </div>
@@ -157,9 +158,9 @@ function ProductSection({ title, subtitle, products = [], viewAllLink, dark = fa
             viewport={{ once: true, amount: 0.15 }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
           >
-            {products.slice(0, Math.max(4, products.length - (products.length % 4))).slice(0, 8).map((product) => (
+            {products.slice(0, Math.max(4, products.length - (products.length % 4))).slice(0, 8).map((product, index) => (
               <motion.div key={product._id} variants={cardVariants} className="h-full">
-                <ProductCard product={product} />
+                <ProductCard product={product} index={index} />
               </motion.div>
             ))}
           </motion.div>
@@ -277,7 +278,7 @@ export function NewArrivals() {
         {/* Editorial Stack */}
         <div className="w-full flex flex-col gap-16 md:gap-24 lg:gap-32 pb-10">
           
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+          <ScatteredReveal className="w-full group">
             <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
                <div className="premium-image-inner w-full h-full relative">
                  <img src="/images/editorial/rings.png" alt="Luxury Rings" className="w-full h-full object-cover" />
@@ -287,9 +288,9 @@ export function NewArrivals() {
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signature Rings</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </motion.div>
+          </ScatteredReveal>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+          <ScatteredReveal className="w-full group">
             <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
                <div className="premium-image-inner w-full h-full relative">
                  <img src="/images/editorial/necklace.png" alt="Luxury Necklaces" className="w-full h-full object-cover" />
@@ -299,9 +300,9 @@ export function NewArrivals() {
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Statement Necklaces</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </motion.div>
+          </ScatteredReveal>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+          <ScatteredReveal className="w-full group">
             <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
                <div className="premium-image-inner w-full h-full relative">
                  <img src="/images/editorial/earrings.png" alt="Luxury Earrings" className="w-full h-full object-cover" />
@@ -311,9 +312,9 @@ export function NewArrivals() {
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Elegant Earrings</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </motion.div>
+          </ScatteredReveal>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={fadeUp} className="w-full group">
+          <ScatteredReveal className="w-full group">
             <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
                <div className="premium-image-inner w-full h-full relative">
                  <img src="/images/editorial/bracelet.png" alt="Luxury Bracelets" className="w-full h-full object-cover" />
@@ -323,7 +324,7 @@ export function NewArrivals() {
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Fine Bracelets</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </motion.div>
+          </ScatteredReveal>
 
         </div>
       </div>

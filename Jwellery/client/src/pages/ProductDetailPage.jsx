@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
+import ScatteredReveal from '../components/animations/ScatteredReveal';
 import {
   Heart, ShoppingBag, Share2, Star, Shield, Truck, RotateCcw,
   ChevronLeft, ChevronRight, ZoomIn, Package, Plus, Minus, Check, MapPin, ChevronDown, Play, X
@@ -174,8 +175,8 @@ export default function ProductDetailPage() {
             {/* Desktop Vertical Thumbnails (Hidden on mobile) */}
             <div className="hidden lg:flex flex-col gap-4 overflow-y-auto hide-scrollbar w-[80px] xl:w-[100px] flex-shrink-0">
               {mediaItems.map((media, i) => (
+                <ScatteredReveal key={i} index={i}>
                 <button
-                  key={i}
                   onMouseEnter={() => setSelectedImage(i)}
                   onClick={() => setSelectedImage(i)}
                   className={`premium-image-container relative w-full aspect-square flex-shrink-0 border-[1.5px] !rounded-[12px] transition-all ${selectedImage === i ? 'border-[#5A3034]' : 'border-transparent opacity-60 hover:opacity-100'}`}

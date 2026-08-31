@@ -95,13 +95,13 @@ export default function AboutPage() {
       <section className="py-24 lg:py-40 px-6 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1 relative">
-            <FadeUp>
+            <ScatteredReveal index={Math.floor(Math.random() * 8)}>
               <div className="premium-image-container aspect-[3/4] w-full max-w-md mx-auto lg:max-w-none">
                 <div className="premium-image-inner">
                   <img src="/images/cat-ring-hands.png" alt="Jewellery That Tells Your Story" className="w-full h-full object-cover" />
                 </div>
               </div>
-            </FadeUp>
+            </ScatteredReveal>
           </div>
           
           <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col justify-center">
@@ -294,53 +294,53 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             
-            <FadeUp>
+            <ScatteredReveal index={Math.floor(Math.random() * 8)}>
               <div className="premium-image-container aspect-[4/5]">
                 <div className="premium-image-inner">
                   <img src="/images/banner-earrings.png" className="w-full h-full object-cover" alt="Editorial 1" />
                 </div>
               </div>
-            </FadeUp>
+            </ScatteredReveal>
             
-            <FadeUp delay={0.1}>
+            <ScatteredReveal index={Math.floor(Math.random() * 8)}>
               <div className="premium-image-container aspect-[4/5]">
                 <div className="premium-image-inner">
                   <img src="/images/cat-necklace.png" className="w-full h-full object-cover" alt="Editorial 2" />
                 </div>
               </div>
-            </FadeUp>
+            </ScatteredReveal>
             
-            <FadeUp delay={0.2}>
+            <ScatteredReveal index={Math.floor(Math.random() * 8)}>
               <div className="premium-image-container aspect-[4/5]">
                 <div className="premium-image-inner">
                   <img src="/images/cat-ring.png" className="w-full h-full object-cover" alt="Editorial 3" />
                 </div>
               </div>
-            </FadeUp>
+            </ScatteredReveal>
 
-            <FadeUp delay={0.1}>
+            <ScatteredReveal index={Math.floor(Math.random() * 8)}>
               <div className="premium-image-container aspect-[4/5]">
                 <div className="premium-image-inner">
                   <img src="/images/banner-new-v2.png" className="w-full h-full object-cover" alt="Editorial 4" />
                 </div>
               </div>
-            </FadeUp>
+            </ScatteredReveal>
 
-            <FadeUp delay={0.2}>
+            <ScatteredReveal index={Math.floor(Math.random() * 8)}>
               <div className="premium-image-container aspect-[4/5]">
                 <div className="premium-image-inner">
                   <img src="/images/necklace-banner-floral.png" className="w-full h-full object-cover" alt="Editorial 6" />
                 </div>
               </div>
-            </FadeUp>
+            </ScatteredReveal>
 
-            <FadeUp delay={0.3}>
+            <ScatteredReveal index={Math.floor(Math.random() * 8)}>
               <div className="premium-image-container aspect-[4/5]">
                 <div className="premium-image-inner">
                   <img src="/images/home-banner.png" className="w-full h-full object-cover" alt="Editorial 5" />
                 </div>
               </div>
-            </FadeUp>
+            </ScatteredReveal>
 
           </div>
         </div>
