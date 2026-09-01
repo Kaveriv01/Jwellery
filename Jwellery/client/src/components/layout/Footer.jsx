@@ -1,196 +1,141 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiInstagram, FiFacebook, FiPlus, FiMinus, FiArrowRight } from 'react-icons/fi';
-import { FaPinterestP, FaCcVisa, FaCcMastercard } from 'react-icons/fa';
-
-const footerLinks = {
-  shop: [
-    { label: 'New Arrivals', to: '/products' },
-    { label: 'Rings', to: '/category/rings' },
-    { label: 'Earrings', to: '/category/earrings' },
-    { label: 'Necklaces', to: '/category/necklaces' },
-    { label: 'Bracelets', to: '/category/bracelets' },
-    { label: 'Collections', to: '/collections' }
-  ],
-  customerCare: [
-    { label: 'Shipping', to: '/shipping-policy' },
-    { label: 'Returns', to: '/return-policy' },
-    { label: 'FAQs', to: '/faqs' },
-    { label: 'Size Guide', to: '/size-guide' },
-    { label: 'Care Guide', to: '/care-guide' }
-  ],
-  about: [
-    { label: 'Our Story', to: '/about' },
-    { label: 'About Tarini', to: '/about' },
-    { label: 'Craftsmanship', to: '/about' },
-    { label: 'Contact Us', to: '/contact' }
-  ],
-  social: [
-    { label: 'Instagram', icon: <FiInstagram size={14} />, to: '#' },
-    { label: 'Facebook', icon: <FiFacebook size={14} />, to: '#' },
-    { label: 'Pinterest', icon: <FaPinterestP size={14} />, to: '#' }
-  ]
-};
-
-function FooterAccordion({ title, links, isSocial = false }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b border-[#C6A15B]/10 md:hidden">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center w-full py-5 text-left"
-      >
-        <span className="text-[11px] font-medium text-[#C6A15B] uppercase tracking-[0.2em] font-sans">
-          {title}
-        </span>
-        <span className="text-[#C6A15B]">
-          {isOpen ? <FiMinus size={16} /> : <FiPlus size={16} />}
-        </span>
-      </button>
-      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-        {isSocial ? (
-           <div className="flex items-center gap-4 pt-2">
-              {links.map((link, idx) => (
-                <a key={idx} href={link.to} className="w-10 h-10 rounded-full border border-[#C6A15B]/40 flex items-center justify-center text-[#C6A15B]/40 hover:bg-[#C6A15B] hover:border-[#C6A15B] hover:text-[#1A1512] transition-all duration-300">
-                  {link.icon}
-                </a>
-              ))}
-           </div>
-        ) : (
-          <ul className="flex flex-col space-y-4">
-            {links.map((link, idx) => (
-              <li key={idx}>
-                <Link to={link.to} className="text-[13px] text-[#E8E1D6] hover:text-[#E4C989] hover:translate-x-1.5 transition-transform duration-200 inline-block font-sans">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-  );
-}
+import { FiInstagram, FiFacebook, FiPhone, FiMail, FiMapPin, FiArrowRight } from 'react-icons/fi';
+import { FaPinterestP, FaCcVisa, FaCcMastercard, FaCcAmex, FaCcPaypal } from 'react-icons/fa';
+import { CONTACT_DETAILS, APP_TAGLINE } from '../../constants';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#1A1512] overflow-hidden">
-      {/* Subtle radial glow background behind the logo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#C6A15B] opacity-[0.04] blur-[100px] rounded-full pointer-events-none"></div>
+    <footer className="w-full font-sans">
       
-      {/* Noise Texture Overlay for depth */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-screen"></div>
-
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-28 pb-10">
-        
-        {/* TOP: Brand Statement & Newsletter */}
-        <div className="flex flex-col items-center text-center mb-24">
-          <h2 className="text-[44px] md:text-[54px] text-[#E8E1D6] mb-4 tracking-[0.2em] md:tracking-[0.25em] hover:drop-shadow-[0_0_15px_rgba(198,161,91,0.3)] transition-all duration-500" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            TARINI
-          </h2>
-          <p className="text-[15px] md:text-[17px] text-[#8A8177] italic max-w-lg tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Timeless fine jewellery designed to celebrate every moment.
-          </p>
-
-          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C6A15B]/20 to-transparent my-16"></div>
-
-          <div className="flex flex-col items-center w-full max-w-md">
-            <h3 className="text-[13px] text-[#C6A15B] uppercase tracking-[0.15em] mb-6 font-sans">Join the TARINI Circle</h3>
-            <form className="w-full flex items-center border-b border-[#C6A15B]/20 pb-3 group focus-within:border-[#C6A15B] transition-colors duration-300" onSubmit={(e) => e.preventDefault()}>
+      {/* Newsletter Section - Light Background */}
+      <div className="bg-[#FAF6F2] py-10 border-y border-[#E8DED1]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Left Side: Icon & Text */}
+          <div className="flex items-center gap-5">
+            <div className="w-[52px] h-[52px] flex-shrink-0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C6A15B" strokeWidth="1" className="w-full h-full">
+                <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" strokeLinecap="round" strokeLinejoin="round"/>
+                <rect x="3" y="5" width="18" height="14" rx="2" strokeLinecap="round"/>
+                <circle cx="12" cy="12" r="2.5" fill="#C6A15B" stroke="none" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-[18px] font-medium text-[#2A2020] mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Join Our Exclusive Circle</h3>
+              <p className="text-[13px] text-[#756A63] font-light">Be the first to know about new collections, special offers & more.</p>
+            </div>
+          </div>
+          
+          {/* Right Side: Input & Button */}
+          <div className="w-full lg:w-auto">
+            <form className="flex w-full lg:w-[420px] bg-white rounded-[2px] overflow-hidden shadow-sm" onSubmit={(e) => e.preventDefault()}>
               <input 
                 type="email" 
                 placeholder="Enter your email address" 
-                className="flex-1 bg-transparent border-none outline-none text-[14px] text-[#E8E1D6] placeholder-[#8A8177] font-light tracking-wide px-2"
+                className="flex-1 px-5 py-3.5 text-[13px] text-[#2A2020] outline-none placeholder:text-[#A99D95]"
+                required
               />
-              <button type="submit" className="text-[11px] font-medium uppercase tracking-[0.1em] text-[#C6A15B] hover:text-[#E4C989] transition-colors px-2 flex items-center gap-1.5">
+              <button 
+                type="submit" 
+                className="bg-[#2B0E14] hover:bg-[#1E090E] text-white px-8 py-3.5 text-[12px] font-medium transition-colors flex items-center gap-2"
+              >
                 Subscribe <FiArrowRight size={14} />
               </button>
             </form>
           </div>
         </div>
+      </div>
 
-        {/* MIDDLE: Desktop Navigation */}
-        <div className="hidden md:grid grid-cols-4 gap-12 lg:gap-16 mb-24">
-          <div>
-            <h4 className="text-[11px] font-medium text-[#C6A15B] uppercase tracking-[0.2em] mb-8 font-sans">Shop</h4>
-            <ul className="flex flex-col space-y-4">
-              {footerLinks.shop.map((link, idx) => (
-                <li key={idx}>
-                  <Link to={link.to} className="text-[13px] text-[#E8E1D6] hover:text-[#E4C989] hover:translate-x-1.5 transition-transform duration-200 inline-block font-sans">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[11px] font-medium text-[#C6A15B] uppercase tracking-[0.2em] mb-8 font-sans">About</h4>
-            <ul className="flex flex-col space-y-4">
-              {footerLinks.about.map((link, idx) => (
-                <li key={idx}>
-                  <Link to={link.to} className="text-[13px] text-[#E8E1D6] hover:text-[#E4C989] hover:translate-x-1.5 transition-transform duration-200 inline-block font-sans">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[11px] font-medium text-[#C6A15B] uppercase tracking-[0.2em] mb-8 font-sans">Customer Care</h4>
-            <ul className="flex flex-col space-y-4">
-              {footerLinks.customerCare.map((link, idx) => (
-                <li key={idx}>
-                  <Link to={link.to} className="text-[13px] text-[#E8E1D6] hover:text-[#E4C989] hover:translate-x-1.5 transition-transform duration-200 inline-block font-sans">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[11px] font-medium text-[#C6A15B] uppercase tracking-[0.2em] mb-8 font-sans">Connect</h4>
-            <div className="flex items-center gap-4">
-              {footerLinks.social.map((link, idx) => (
-                <a key={idx} href={link.to} className="w-10 h-10 rounded-full border border-[#C6A15B]/40 flex items-center justify-center text-[#C6A15B]/40 hover:bg-[#C6A15B] hover:border-[#C6A15B] hover:text-[#1A1512] transition-all duration-300">
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* MIDDLE: Mobile Accordion */}
-        <div className="block md:hidden mb-20 border-t border-[#C6A15B]/10">
-          <FooterAccordion title="Shop" links={footerLinks.shop} />
-          <FooterAccordion title="About" links={footerLinks.about} />
-          <FooterAccordion title="Customer Care" links={footerLinks.customerCare} />
-          <FooterAccordion title="Connect" links={footerLinks.social} isSocial={true} />
-        </div>
-
-        {/* BOTTOM */}
-        <div className="pt-8 border-t border-[#C6A15B]/10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6">
-          <div className="flex items-center gap-6 text-[#8A8177]">
-            <div className="text-[11px] font-sans tracking-wide">
-              <span>© {new Date().getFullYear()} TARINI. All Rights Reserved.</span>
-            </div>
-            {/* Subtle Payment Icons */}
-            <div className="hidden md:flex items-center gap-3">
-              <FaCcVisa size={20} />
-              <FaCcMastercard size={20} />
-              <span className="text-[10px] border border-current rounded-[2px] px-1.5 py-[1px] font-bold tracking-wider">UPI</span>
-            </div>
-          </div>
+      {/* Main Dark Footer */}
+      <div className="bg-[#1C1116] pt-20 pb-8 text-[#E8E1D6]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           
-          <div className="flex flex-wrap justify-center items-center text-[11px] text-[#E8E1D6] font-sans tracking-wide">
-            <Link to="/privacy-policy" className="hover:text-[#E4C989] transition-colors duration-200">Privacy Policy</Link>
-            <span className="mx-3 text-[#C6A15B]">•</span>
-            <Link to="/terms" className="hover:text-[#E4C989] transition-colors duration-200">Terms & Conditions</Link>
-            <span className="mx-3 text-[#C6A15B]">•</span>
-            <Link to="/shipping-policy" className="hover:text-[#E4C989] transition-colors duration-200">Shipping</Link>
-          </div>
-        </div>
+          {/* Top Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-20">
+            
+            {/* Column 1: Brand (Takes 2 columns space on large screens) */}
+            <div className="lg:col-span-2 pr-4 md:pr-12">
+              <h2 className="text-[28px] md:text-[32px] text-white mb-1 tracking-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                TARINI
+              </h2>
+              <p className="text-[9px] text-[#C6A15B] tracking-[0.3em] uppercase mb-6 font-medium">
+                Fine Jewellery
+              </p>
+              <p className="text-[13px] text-[#A69C9F] mb-8 font-light">
+                {APP_TAGLINE}.
+              </p>
+              <div className="flex items-center gap-4">
+                <a href="#" className="w-9 h-9 rounded-full border border-[#A69C9F]/50 flex items-center justify-center text-[#A69C9F] hover:bg-[#C6A15B] hover:border-[#C6A15B] hover:text-[#1C1116] transition-colors">
+                  <FiFacebook size={14} />
+                </a>
+                <a href="#" className="w-9 h-9 rounded-full border border-[#A69C9F]/50 flex items-center justify-center text-[#A69C9F] hover:bg-[#C6A15B] hover:border-[#C6A15B] hover:text-[#1C1116] transition-colors">
+                  <FiInstagram size={14} />
+                </a>
+                <a href="#" className="w-9 h-9 rounded-full border border-[#A69C9F]/50 flex items-center justify-center text-[#A69C9F] hover:bg-[#C6A15B] hover:border-[#C6A15B] hover:text-[#1C1116] transition-colors">
+                  <FaPinterestP size={14} />
+                </a>
+              </div>
+            </div>
 
+            {/* Column 2: Quick Links */}
+            <div>
+              <h4 className="text-[14px] font-medium text-white mb-6">Quick Links</h4>
+              <ul className="flex flex-col space-y-3.5 text-[13px] font-light text-[#E8E1D6]">
+                <li><Link to="/" className="hover:text-[#C6A15B] transition-colors">Home</Link></li>
+                <li><Link to="/products" className="hover:text-[#C6A15B] transition-colors">Shop</Link></li>
+                <li><Link to="/collections" className="hover:text-[#C6A15B] transition-colors">Collections</Link></li>
+                <li><Link to="/about" className="hover:text-[#C6A15B] transition-colors">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-[#C6A15B] transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Customer Service */}
+            <div>
+              <h4 className="text-[14px] font-medium text-white mb-6">Customer Service</h4>
+              <ul className="flex flex-col space-y-3.5 text-[13px] font-light text-[#E8E1D6]">
+                <li><Link to="/shipping-policy" className="hover:text-[#C6A15B] transition-colors">Shipping Policy</Link></li>
+                <li><Link to="/return-policy" className="hover:text-[#C6A15B] transition-colors">Returns & Exchange</Link></li>
+                <li><Link to="/faqs" className="hover:text-[#C6A15B] transition-colors">FAQs</Link></li>
+                <li><Link to="/terms" className="hover:text-[#C6A15B] transition-colors">Terms & Conditions</Link></li>
+                <li><Link to="/size-guide" className="hover:text-[#C6A15B] transition-colors">Size Guide</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Contact Us */}
+            <div>
+              <h4 className="text-[14px] font-medium text-white mb-6">Contact Us</h4>
+              <ul className="flex flex-col space-y-4 text-[13px] font-light text-[#A69C9F]">
+                <li className="flex items-start gap-3">
+                  <FiPhone className="mt-1 flex-shrink-0 text-[#C6A15B]" size={14} />
+                  <span>{CONTACT_DETAILS.phone}</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FiMail className="mt-1 flex-shrink-0 text-[#C6A15B]" size={14} />
+                  <span>{CONTACT_DETAILS.email}</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <FiMapPin className="mt-1 flex-shrink-0 text-[#C6A15B]" size={14} />
+                  <span className="leading-relaxed">350 Fifth Avenue, New York,<br/>NY 10118, USA</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-[#A69C9F]/20 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="text-[11.5px] text-[#A69C9F] font-light tracking-wide">
+              © {new Date().getFullYear()} Tarini Fine Jewellery. All Rights Reserved.
+            </p>
+            <div className="flex items-center gap-2">
+              <div className="bg-white px-2 py-1 flex items-center justify-center rounded-sm"><FaCcVisa size={18} className="text-[#1A1F71]" /></div>
+              <div className="bg-white px-2 py-1 flex items-center justify-center rounded-sm"><FaCcMastercard size={18} className="text-[#EB001B]" /></div>
+              <div className="bg-[#0079C1] px-2 py-1 flex items-center justify-center rounded-sm"><FaCcAmex size={18} className="text-white" /></div>
+              <div className="bg-white px-2 py-1 flex items-center justify-center rounded-sm"><FaCcPaypal size={18} className="text-[#00457C]" /></div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </footer>
   );
