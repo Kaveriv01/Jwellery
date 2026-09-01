@@ -25,7 +25,7 @@ function SectionHeading({ title, subtitle, dark = false }) {
       className="flex flex-col items-center justify-center text-center mb-16"
     >
       {subtitle && (
-        <motion.span className={`text-[10px] tracking-[0.15em] uppercase mb-3 block font-medium ${dark ? 'text-[#FDFBF7]/80' : 'text-[#1F1517]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+        <motion.span className={`text-[10px] tracking-[0.15em] uppercase mb-3 block font-medium ${dark ? 'text-[#FDFBF7]/80' : 'text-[#E8E1D6]'}`} style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
           {subtitle}
         </motion.span>
       )}
@@ -37,7 +37,7 @@ function SectionHeading({ title, subtitle, dark = false }) {
 
       <motion.h2 
         variants={headingReveal}
-        className={`text-[30px] md:text-[38px] lg:text-[48px] font-[500] leading-[1.15] tracking-wide mb-[16px] ${dark ? 'text-[#FDFBF7]' : 'text-[#1F1517]'}`} 
+        className={`text-[30px] md:text-[38px] lg:text-[48px] font-[500] leading-[1.15] tracking-wide mb-[16px] ${dark ? 'text-[#FDFBF7]' : 'text-[#E8E1D6]'}`} 
         style={{ fontFamily: "'Cormorant Garamond', serif" }}
       >
         {title}
@@ -92,7 +92,7 @@ function ProductCarousel({ products }) {
       <button 
         onClick={() => scroll('left')}
         disabled={!canScrollLeft}
-        className={`absolute left-0 top-[40%] -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(53,5,13,0.06)] flex items-center justify-center text-[#1F1517] transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#4A0712]' : 'opacity-0 pointer-events-none'}`}
+        className={`absolute left-0 top-[40%] -translate-y-1/2 -translate-x-1/2 md:-translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-[#1A1512] rounded-full shadow-[0_5px_15px_rgba(53,5,13,0.06)] flex items-center justify-center text-[#E8E1D6] transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#4A0712]' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronLeft size={24} strokeWidth={1} />
       </button>
@@ -100,7 +100,7 @@ function ProductCarousel({ products }) {
       <button 
         onClick={() => scroll('right')}
         disabled={!canScrollRight}
-        className={`absolute right-0 top-[40%] -translate-y-1/2 translate-x-1/2 md:translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-[0_5px_15px_rgba(53,5,13,0.06)] flex items-center justify-center text-[#1F1517] transition-all duration-300 z-10 ${canScrollRight ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#4A0712]' : 'opacity-0 pointer-events-none'}`}
+        className={`absolute right-0 top-[40%] -translate-y-1/2 translate-x-1/2 md:translate-x-4 w-10 h-10 md:w-12 md:h-12 bg-[#1A1512] rounded-full shadow-[0_5px_15px_rgba(53,5,13,0.06)] flex items-center justify-center text-[#E8E1D6] transition-all duration-300 z-10 ${canScrollRight ? 'opacity-0 group-hover:opacity-100 hover:scale-110 hover:text-[#4A0712]' : 'opacity-0 pointer-events-none'}`}
       >
         <ChevronRight size={24} strokeWidth={1} />
       </button>
@@ -170,7 +170,7 @@ function ProductSection({ title, subtitle, products = [], viewAllLink, dark = fa
           <div className="text-center mt-12">
             <Link
               to={viewAllLink}
-              className="inline-block border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#4A0712] hover:border-[#4A0712] text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase transition-all duration-[300ms] ease-out hover:-translate-y-px"
+              className="inline-block border-b border-[#1F1517] pb-1 text-[#E8E1D6] hover:text-[#4A0712] hover:border-[#4A0712] text-[12px] lg:text-[13px] font-[600] tracking-[0.08em] uppercase transition-all duration-[300ms] ease-out hover:-translate-y-px"
               style={{ fontFamily: "'Nunito Sans', sans-serif" }}
             >
               View All
@@ -188,7 +188,7 @@ export function FeaturedCollection({ products }) {
       title="Featured Collection"
       products={products}
       viewAllLink="/products?isFeatured=true"
-      bg="bg-white"
+      bg="bg-[#1A1512]"
     />
   );
 }
@@ -238,7 +238,7 @@ export function NewArrivals() {
   };
 
   return (
-    <section className="bg-[#FDFBF7] py-20 lg:py-32 overflow-hidden">
+    <section className="bg-[#1A1512] py-20 lg:py-32 overflow-hidden">
       <div className="w-full max-w-[1800px] mx-auto px-4 md:px-8 flex flex-col items-center">
         
         {/* Main Hero Image */}
@@ -260,10 +260,10 @@ export function NewArrivals() {
           <span className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#C5A059] font-bold mb-4 block" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
             New Arrivals
           </span>
-          <h2 className="text-[36px] md:text-[52px] lg:text-[64px] text-[#1F1517] font-[500] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="text-[36px] md:text-[52px] lg:text-[64px] text-[#E8E1D6] font-[500] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             The Latest From Tarini
           </h2>
-          <p className="text-[#1F1517]/80 text-[14px] md:text-[16px] font-light leading-relaxed mb-8" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+          <p className="text-[#E8E1D6]/80 text-[14px] md:text-[16px] font-light leading-relaxed mb-8" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
             Discover our newest jewellery pieces, thoughtfully designed to bring a refined touch to every occasion.
           </p>
           <Link
@@ -285,8 +285,8 @@ export function NewArrivals() {
                </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
-               <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signature Rings</h3>
-               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+               <h3 className="text-[24px] md:text-[32px] text-[#E8E1D6]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signature Rings</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#E8E1D6] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
           </ScatteredReveal>
 
@@ -297,8 +297,8 @@ export function NewArrivals() {
                </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
-               <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Statement Necklaces</h3>
-               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+               <h3 className="text-[24px] md:text-[32px] text-[#E8E1D6]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Statement Necklaces</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#E8E1D6] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
           </ScatteredReveal>
 
@@ -309,8 +309,8 @@ export function NewArrivals() {
                </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
-               <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Elegant Earrings</h3>
-               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+               <h3 className="text-[24px] md:text-[32px] text-[#E8E1D6]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Elegant Earrings</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#E8E1D6] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
           </ScatteredReveal>
 
@@ -321,8 +321,8 @@ export function NewArrivals() {
                </div>
             </div>
             <div className="mt-6 md:mt-8 text-center">
-               <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Fine Bracelets</h3>
-               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
+               <h3 className="text-[24px] md:text-[32px] text-[#E8E1D6]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Fine Bracelets</h3>
+               <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#E8E1D6] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
           </ScatteredReveal>
 

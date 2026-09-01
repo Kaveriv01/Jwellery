@@ -20,7 +20,7 @@ export default function HomePage() {
         <title>TARINI JEWELLERS | Fine Jewellery Crafted with Precision</title>
       </Helmet>
 
-      <div className="overflow-x-hidden bg-[#FDFBF7]">
+      <div className="overflow-x-hidden bg-[#1A1512]">
         <HeroBanner />
         <FeaturesBar />
         

@@ -5,7 +5,7 @@ import { jewelleryMedia } from '../../config/mediaConfig';
 
 export default function LifestyleVideoSection() {
   return (
-    <section className="py-16 bg-[#FDFBF7]">
+    <section className="py-16 bg-[#1A1512]">
       <div className="container mx-auto px-4">
         <motion.div 
           initial="hidden"
