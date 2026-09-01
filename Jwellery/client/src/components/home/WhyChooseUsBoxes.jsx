@@ -9,7 +9,7 @@ export default function WhyChooseUsBoxes() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-[#1A1512]">
+    <section className="py-20 lg:py-28 bg-[#FDFBF7]">
       <div className="container mx-auto px-4 text-center">
         <motion.div
           initial="hidden"
@@ -25,7 +25,7 @@ export default function WhyChooseUsBoxes() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl lg:text-4xl text-[#E8E1D6] mb-16 font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Why Choose Tarini</motion.h2>
+            className="text-3xl lg:text-4xl text-[#1F1517] mb-16 font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Why Choose Tarini</motion.h2>
         </motion.div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-6xl mx-auto">
@@ -36,10 +36,10 @@ export default function WhyChooseUsBoxes() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, delay: idx * 0.15, ease: "easeOut" }}
-              className="bg-[#1A1512] p-10 shadow-sm border border-[#EAE6DF] hover:shadow-md transition-shadow duration-[400ms] rounded-[2px]"
+              className="bg-white p-10 shadow-sm border border-[#EAE6DF] hover:shadow-md transition-shadow duration-[400ms] rounded-[2px]"
             >
-              <h3 className="text-[#E8E1D6] text-xl font-normal mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{reason.title}</h3>
-              <p className="text-[11px] text-[#E8E1D6] leading-relaxed uppercase tracking-[0.1em]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{reason.desc}</p>
+              <h3 className="text-[#1F1517] text-xl font-normal mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{reason.title}</h3>
+              <p className="text-[11px] text-[#1F1517] leading-relaxed uppercase tracking-[0.1em]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{reason.desc}</p>
             </motion.div>
           ))}
         </div>

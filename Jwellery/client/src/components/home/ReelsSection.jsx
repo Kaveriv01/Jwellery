@@ -50,7 +50,7 @@ export default function ReelsSection() {
               transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
               whileHover={{ scale: 1.02 }}
               onClick={() => setPreviewVideo(reel.videoUrl)}
-              className="relative w-full aspect-[9/16] bg-[#1A1512] rounded-[12px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 ease-out"
+              className="relative w-full aspect-[9/16] bg-[#FDFBF7] rounded-[12px] shadow-sm overflow-hidden group cursor-pointer transition-transform duration-300 ease-out"
             >
               <video
                 src={reel.videoUrl}
@@ -84,7 +84,7 @@ export default function ReelsSection() {
             onClick={() => setPreviewVideo(null)}
           >
             <button 
-              className="absolute top-4 right-4 md:top-8 md:right-8 text-white p-2 z-50 bg-[#1A1512]/10 rounded-full hover:bg-[#1A1512]/20 transition-colors backdrop-blur-md"
+              className="absolute top-4 right-4 md:top-8 md:right-8 text-white p-2 z-50 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-md"
               onClick={() => setPreviewVideo(null)}
             >
               <X size={28} />

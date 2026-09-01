@@ -13,14 +13,14 @@ const CATEGORIES = [
 
 export default function ShopByCategory() {
   return (
-    <section className="w-full bg-[#1A1512] py-8 md:py-6 mb-0 md:mb-8 border-b border-[#EAE6DF]/50">
+    <section className="w-full bg-[#FDFBF7] py-8 md:py-6 mb-0 md:mb-8 border-b border-[#EAE6DF]/50">
       <div className="container-luxury max-w-[1400px] px-4 md:px-0">
         
         {/* Mobile View: 2-column grid of parallel photos */}
         <div className="md:hidden">
           <div className="text-center mb-8">
             <h2 
-              className="text-2xl text-[#E8E1D6] font-normal uppercase tracking-[0.15em] mb-3" 
+              className="text-2xl text-[#1F1517] font-normal uppercase tracking-[0.15em] mb-3" 
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Shop By Category
@@ -78,7 +78,7 @@ export default function ShopByCategory() {
               >
                 <Link to={`/category/${cat.id}`} className="flex flex-col items-center">
                   <div className="relative w-24 h-24 md:w-28 md:h-28 mb-3 transition-all duration-300">
-                    <div className="premium-image-container !rounded-full w-full h-full border-2 border-white bg-[#1A1512] shadow-sm">
+                    <div className="premium-image-container !rounded-full w-full h-full border-2 border-white bg-[#FDFBF7] shadow-sm">
                       <div className="premium-image-inner relative w-full h-full">
                         <img
                           src={cat.image}
@@ -89,7 +89,7 @@ export default function ShopByCategory() {
                     </div>
                   </div>
                   <span 
-                    className="text-[12px] text-[#E8E1D6] font-[600] tracking-[0.08em] uppercase transition-colors group-hover:text-[#C5A059]"
+                    className="text-[12px] text-[#1F1517] font-[600] tracking-[0.08em] uppercase transition-colors group-hover:text-[#C5A059]"
                     style={{ fontFamily: "'Nunito Sans', sans-serif" }}
                   >
                     {cat.name}

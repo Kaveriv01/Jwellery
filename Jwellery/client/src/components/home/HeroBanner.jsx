@@ -36,9 +36,9 @@ export default function HeroBanner() {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-4 md:gap-6 mb-4 md:mb-8"
           >
-             <div className="w-10 md:w-16 h-[1px] bg-[#1A1512]/80"></div>
+             <div className="w-10 md:w-16 h-[1px] bg-[#FDFBF7]/80"></div>
              <Sparkles size={14} strokeWidth={1.5} className="text-[#FDFBF7]" fill="#FDFBF7" />
-             <div className="w-10 md:w-16 h-[1px] bg-[#1A1512]/80"></div>
+             <div className="w-10 md:w-16 h-[1px] bg-[#FDFBF7]/80"></div>
           </motion.div>
           
           <motion.h1
@@ -69,7 +69,7 @@ export default function HeroBanner() {
           >
             <Link
               to="/collections"
-              className="inline-block px-8 py-3 md:px-10 md:py-4 bg-[#1F1517] text-[#FDFBF7] text-[10px] md:text-[13px] font-bold tracking-[0.2em] uppercase hover:bg-[#C5A059] hover:text-[#E8E1D6] hover:border-[#C5A059] border-2 border-[#1F1517] transition-all duration-[300ms] ease-out shadow-xl"
+              className="inline-block px-8 py-3 md:px-10 md:py-4 bg-[#1F1517] text-[#FDFBF7] text-[10px] md:text-[13px] font-bold tracking-[0.2em] uppercase hover:bg-[#C5A059] hover:text-[#1F1517] hover:border-[#C5A059] border-2 border-[#1F1517] transition-all duration-[300ms] ease-out shadow-xl"
               style={{ fontFamily: "'Nunito Sans', sans-serif" }}
             >
               Shop Now
@@ -95,9 +95,9 @@ export default function HeroBanner() {
              transition={{ duration: 0.8, delay: 0.7 }}
              className="flex items-center gap-6 mb-6 md:mb-8"
           >
-             <div className="w-8 md:w-10 h-[1px] bg-[#1A1512]/60"></div>
+             <div className="w-8 md:w-10 h-[1px] bg-[#FDFBF7]/60"></div>
              <Sparkles size={12} strokeWidth={1.5} className="text-[#FDFBF7]/80" fill="#FDFBF7" />
-             <div className="w-8 md:w-10 h-[1px] bg-[#1A1512]/60"></div>
+             <div className="w-8 md:w-10 h-[1px] bg-[#FDFBF7]/60"></div>
           </motion.div>
 
           <motion.div

@@ -63,7 +63,7 @@ export default function Testimonials() {
         >
           {TESTIMONIALS.map((t) => (
             <SwiperSlide key={t.id}>
-              <div className="bg-[#1A1512] rounded-[2px] p-6 sm:p-7 border border-[#FDFBF7] shadow-sm hover:shadow-md transition-all duration-[450ms] h-full min-h-[260px] flex flex-col justify-between">
+              <div className="bg-white rounded-[2px] p-6 sm:p-7 border border-[#FDFBF7] shadow-sm hover:shadow-md transition-all duration-[450ms] h-full min-h-[260px] flex flex-col justify-between">
                 {/* Top: Stars + Quote */}
                 <div>
                   {/* Stars */}

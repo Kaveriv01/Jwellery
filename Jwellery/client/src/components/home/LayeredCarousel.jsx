@@ -93,7 +93,7 @@ export default function LayeredCarousel() {
   };
 
   return (
-    <section className="relative w-full py-16 md:py-24 flex flex-col items-center justify-center bg-[#1A1512] overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 flex flex-col items-center justify-center bg-[#FDFBF7] overflow-hidden">
       
       {/* Centered Title */}
       <div className="text-center z-50 px-4 w-full mb-12">
@@ -112,7 +112,7 @@ export default function LayeredCarousel() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-[#8A8177] text-[11px] md:text-[13px] uppercase tracking-[0.25em]" 
+          className="text-[#756A63] text-[11px] md:text-[13px] uppercase tracking-[0.25em]" 
           style={{ fontFamily: "'Nunito Sans', sans-serif" }}
         >
           Discover Timeless Elegance
@@ -123,7 +123,7 @@ export default function LayeredCarousel() {
         {/* Navigation Arrows */}
         <button 
           onClick={prevSlide}
-          className="absolute left-4 sm:left-12 md:left-24 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#1A1512] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-[#111] hover:scale-110 transition-transform duration-300"
+          className="absolute left-4 sm:left-12 md:left-24 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 md:w-14 md:h-14 rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-[#111] hover:scale-110 transition-transform duration-300"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={24} strokeWidth={1.5} />
@@ -131,7 +131,7 @@ export default function LayeredCarousel() {
 
         <button 
           onClick={nextSlide}
-          className="absolute right-4 sm:right-12 md:right-24 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#1A1512] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-[#111] hover:scale-110 transition-transform duration-300"
+          className="absolute right-4 sm:right-12 md:right-24 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 md:w-14 md:h-14 rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center text-[#111] hover:scale-110 transition-transform duration-300"
           aria-label="Next Slide"
         >
           <ChevronRight size={24} strokeWidth={1.5} />
@@ -147,7 +147,7 @@ export default function LayeredCarousel() {
               return (
                 <motion.div
                   key={item.id}
-                  className="absolute w-full h-full rounded-[16px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-[#1A1512] cursor-pointer touch-none"
+                  className="absolute w-full h-full rounded-[16px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white cursor-pointer touch-none"
                   initial={false}
                   animate={{
                     x: styles.x,
@@ -195,7 +195,7 @@ export default function LayeredCarousel() {
                     </h3>
                     <Link 
                       to={`/category/${item.title.toLowerCase()}`}
-                      className="inline-block px-10 py-3.5 bg-[#1A1512] text-[#111] text-[12px] md:text-[13px] font-[600] uppercase tracking-[0.15em] hover:bg-[#111] hover:text-white transition-colors rounded-[2px]"
+                      className="inline-block px-10 py-3.5 bg-white text-[#111] text-[12px] md:text-[13px] font-[600] uppercase tracking-[0.15em] hover:bg-[#111] hover:text-white transition-colors rounded-[2px]"
                       style={{ fontFamily: "'Nunito Sans', sans-serif" }}
                     >
                       Explore

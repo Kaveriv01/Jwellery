@@ -14,7 +14,7 @@ export default function RecentlyViewed() {
   if (products.length === 0) return null;
 
   return (
-    <section className="py-16 bg-[#1A1512]">
+    <section className="py-16 bg-[#FDFBF7]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-[#C5A059] text-[10px] tracking-widest uppercase mb-2">NEW IN</p>

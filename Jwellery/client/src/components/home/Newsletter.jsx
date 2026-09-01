@@ -21,7 +21,7 @@ export default function Newsletter() {
           <input
             type="email"
             placeholder="Email Address"
-            className="bg-[#1A1512] border-none text-[#2A2020] px-6 py-3 w-full sm:w-72 focus:outline-none focus:ring-1 focus:ring-[#B79A6B] placeholder:text-[#8A8177] text-[13px] tracking-wide transition-colors"
+            className="bg-[#FAF7F2] border-none text-[#2A2020] px-6 py-3 w-full sm:w-72 focus:outline-none focus:ring-1 focus:ring-[#B79A6B] placeholder:text-[#756A63] text-[13px] tracking-wide transition-colors"
             style={{ fontFamily: "'Inter', sans-serif" }}
           />
           <button

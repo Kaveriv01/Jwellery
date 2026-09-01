@@ -14,7 +14,7 @@ export default function StorySection() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-[#1A1512] border-t border-[#EAE6DF]">
+    <section className="py-20 lg:py-28 bg-white border-t border-[#EAE6DF]">
       <div className="container-luxury max-w-[1320px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -56,7 +56,7 @@ export default function StorySection() {
             <motion.h2
               variants={fadeUp}
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              className="text-[#E8E1D6] text-[40px] lg:text-[48px] leading-[1.1] font-normal mb-8 tracking-wide"
+              className="text-[#1F1517] text-[40px] lg:text-[48px] leading-[1.1] font-normal mb-8 tracking-wide"
             >
               Our Story
             </motion.h2>
@@ -67,7 +67,7 @@ export default function StorySection() {
             <motion.p
               variants={fadeUp}
               style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-              className="text-[#E8E1D6] text-[13px] leading-[1.8] mb-4 font-light tracking-wide"
+              className="text-[#1F1517] text-[13px] leading-[1.8] mb-4 font-light tracking-wide"
             >
               Founded with a passion for timeless elegance, Tarini Jewellers is dedicated to bringing you pieces that celebrate life's most precious moments.
             </motion.p>
@@ -75,7 +75,7 @@ export default function StorySection() {
             <motion.p
               variants={fadeUp}
               style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-              className="text-[#E8E1D6] text-[13px] leading-[1.8] mb-12 font-light tracking-wide"
+              className="text-[#1F1517] text-[13px] leading-[1.8] mb-12 font-light tracking-wide"
             >
               Every creation is a testament to our commitment to craftsmanship, heritage, and beauty — inspired by the rich traditions of Indian jewellery making.
             </motion.p>
@@ -85,7 +85,7 @@ export default function StorySection() {
               <Link
                 to="/about"
                 style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-                className="group inline-flex items-center justify-center border border-[#1F1517] text-[#E8E1D6] px-10 py-3.5 text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-[#1F1517] hover:text-[#FDFBF7] transition-all duration-[300ms] ease-out rounded-[2px]"
+                className="group inline-flex items-center justify-center border border-[#1F1517] text-[#1F1517] px-10 py-3.5 text-[11px] uppercase tracking-[0.15em] font-medium hover:bg-[#1F1517] hover:text-[#FDFBF7] transition-all duration-[300ms] ease-out rounded-[2px]"
               >
                 EXPLORE OUR STORY
               </Link>
