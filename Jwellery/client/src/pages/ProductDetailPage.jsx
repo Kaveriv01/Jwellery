@@ -627,7 +627,7 @@ export default function ProductDetailPage() {
             </div>
             <div className="flex-1 relative hidden md:block h-full">
               <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-transparent to-transparent z-10" />
-              <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1200" alt="Quality Assurance" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
+              <img src="/images/premium_quality_banner.png" alt="Premium Quality Assurance" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
             </div>
           </div>
       </div>
