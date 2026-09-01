@@ -276,3 +276,9 @@ export const TRUST_FEATURES = [
   { icon: 'rotate-ccw', title: '7-Day Returns', desc: 'Hassle-free returns & exchanges' },
   { icon: 'shield', title: 'Secure Payments', desc: 'SSL encrypted checkout. 100% safe.' },
 ];
+
+export const CONTACT_DETAILS = {
+  email: 'care@tarinijewellers.com',
+  phone: '+91 98765 43210',
+  hours: 'Monday to Saturday, 10:00 AM - 6:00 PM'
+};

@@ -77,7 +77,7 @@ export default function App() {
           <Route path="faqs" element={<FAQsPage />} />
           <Route path="privacy" element={<PrivacyPolicyPage />} />
           <Route path="terms" element={<TermsPage />} />
-          <Route path="shipping" element={<ShippingPolicyPage />} />
+          <Route path="shipping-policy" element={<ShippingPolicyPage />} />
           <Route path="returns" element={<ReturnPolicyPage />} />
 
           <Route path="cart" element={<CartPage />} />
