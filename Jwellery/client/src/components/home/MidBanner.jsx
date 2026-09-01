@@ -14,7 +14,7 @@ export default function MidBanner() {
       </div>
 
       {/* Content Box */}
-      <div className="relative z-10 bg-[#FDFBF7] px-12 py-10 text-center max-w-xl mx-4 shadow-lg">
+      <div className="relative z-10 bg-[#1A1512] px-12 py-10 text-center max-w-xl mx-4 shadow-lg">
         <p className="text-[#C5A059] text-[10px] tracking-widest uppercase mb-4">The Tarini Experience</p>
         <h2 className="text-[#5C1D24] text-3xl mb-6 font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Jewellery made to look perfect on everyone.

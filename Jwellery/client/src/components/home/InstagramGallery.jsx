@@ -17,7 +17,7 @@ const INSTAGRAM_POSTS = [
 
 export default function InstagramGallery() {
   return (
-    <section className="py-20 bg-[#FDFBF7] overflow-hidden border-t border-[#EAE6DF]">
+    <section className="py-20 bg-[#1A1512] overflow-hidden border-t border-[#EAE6DF]">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export default function InstagramGallery() {
         className="text-center mb-12"
       >
         <p className="text-[#C5A059] text-[10px] tracking-widest uppercase mb-3 font-medium">Follow Our Journey</p>
-        <h2 className="text-3xl lg:text-4xl text-[#1F1517] font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <h2 className="text-3xl lg:text-4xl text-[#E8E1D6] font-normal" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           @tarinijewellers
         </h2>
       </motion.div>
@@ -43,7 +43,7 @@ export default function InstagramGallery() {
               target="_blank" 
               rel="noreferrer"
               key={idx}
-              className="premium-image-container relative aspect-square w-[200px] sm:w-[280px] md:w-[320px] flex-shrink-0 group block bg-[#FDFBF7]"
+              className="premium-image-container relative aspect-square w-[200px] sm:w-[280px] md:w-[320px] flex-shrink-0 group block bg-[#1A1512]"
             >
               <div className="premium-image-inner relative w-full h-full">
                 <img

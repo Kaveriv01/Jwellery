@@ -106,7 +106,7 @@ export default function TariniLoader({ onComplete }) {
 
           {/* Progress bar */}
           <motion.div
-            className="absolute bottom-16 left-1/2 -translate-x-1/2 h-[1px] bg-[#FDFBF7]/10 overflow-hidden z-10"
+            className="absolute bottom-16 left-1/2 -translate-x-1/2 h-[1px] bg-[#1A1512]/10 overflow-hidden z-10"
             style={{ width: 180 }}
           >
             <motion.div

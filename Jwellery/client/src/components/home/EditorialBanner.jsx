@@ -15,7 +15,7 @@ export default function EditorialBanner() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-[#FDFBF7] border-t border-[#EAE6DF] overflow-hidden">
+    <section className="py-20 lg:py-28 bg-[#1A1512] border-t border-[#EAE6DF] overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           {/* Left Image */}
@@ -26,7 +26,7 @@ export default function EditorialBanner() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="w-full md:w-1/2"
           >
-            <div className="aspect-[4/5] bg-white overflow-hidden rounded-[2px] relative group">
+            <div className="aspect-[4/5] bg-[#1A1512] overflow-hidden rounded-[2px] relative group">
               <img
                 src="https://plus.unsplash.com/premium_photo-1681276169450-4504a2442173?q=80&w=800&auto=format&fit=crop"
                 alt="Luxury Pearl Necklace"
@@ -48,7 +48,7 @@ export default function EditorialBanner() {
             </motion.span>
             <motion.h2 
               variants={fadeUp}
-              className="text-[#1F1517] text-[36px] md:text-[44px] leading-[1.1] mb-5 font-normal tracking-wide" 
+              className="text-[#E8E1D6] text-[36px] md:text-[44px] leading-[1.1] mb-5 font-normal tracking-wide" 
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Jewellery made to look perfect on everyone.
@@ -56,12 +56,12 @@ export default function EditorialBanner() {
             <motion.div variants={fadeUp} className="w-12 h-[1px] bg-[#C5A059] mb-6" />
             <motion.h3 
               variants={fadeUp}
-              className="text-[#1F1517] text-xl lg:text-2xl italic mb-6 font-normal tracking-wide"
+              className="text-[#E8E1D6] text-xl lg:text-2xl italic mb-6 font-normal tracking-wide"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Indian Heritage pieces reimagined for the modern era.
             </motion.h3>
-            <motion.p variants={fadeUp} className="text-[#1F1517] text-[13px] leading-[1.8] mb-10 font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
+            <motion.p variants={fadeUp} className="text-[#E8E1D6] text-[13px] leading-[1.8] mb-10 font-light" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
               We carefully craft our pieces using the finest materials, combining traditional Indian artistry with contemporary design aesthetics. Discover a collection that celebrates your unique style and elegance.
             </motion.p>
             <motion.div variants={fadeUp}>

@@ -57,7 +57,7 @@ export default function BottomBanners() {
               <Link
                 to="/products"
                 style={{ fontFamily: "'Nunito Sans', sans-serif" }}
-                className="bg-white text-[#111] px-8 py-3 text-[11px] font-[600] tracking-[0.08em] uppercase transition-all duration-300 hover:bg-[#C5A059] hover:text-white rounded-sm"
+                className="bg-[#1A1512] text-[#111] px-8 py-3 text-[11px] font-[600] tracking-[0.08em] uppercase transition-all duration-300 hover:bg-[#C5A059] hover:text-white rounded-sm"
               >
                 SHOP SALE
               </Link>

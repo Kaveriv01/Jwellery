@@ -10,13 +10,13 @@ const CATEGORIES = [
 
 export default function CategoryCards() {
   return (
-    <div className="w-full bg-[#FDFBF7] py-12 md:py-16 border-b border-[#EAE6DF]/50">
+    <div className="w-full bg-[#1A1512] py-12 md:py-16 border-b border-[#EAE6DF]/50">
       <div className="container-luxury max-w-[1400px] px-4 md:px-8">
         <div className="text-center mb-8 md:mb-10">
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-3xl md:text-4xl text-[#1F1517] font-medium tracking-wide mb-3">
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-3xl md:text-4xl text-[#E8E1D6] font-medium tracking-wide mb-3">
             Shop by Category
           </h2>
-          <p style={{ fontFamily: "'Nunito Sans', sans-serif" }} className="text-[10px] md:text-sm tracking-widest uppercase text-[#1F1517]">
+          <p style={{ fontFamily: "'Nunito Sans', sans-serif" }} className="text-[10px] md:text-sm tracking-widest uppercase text-[#E8E1D6]">
             Discover our luxury collections
           </p>
         </div>
