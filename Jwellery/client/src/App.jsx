@@ -80,7 +80,7 @@ export default function App() {
           <Route path="privacy" element={<PrivacyPolicyPage />} />
           <Route path="terms" element={<TermsPage />} />
           <Route path="shipping-policy" element={<ShippingPolicyPage />} />
-          <Route path="returns" element={<ReturnPolicyPage />} />
+          <Route path="return-policy" element={<ReturnPolicyPage />} />
           <Route path="size-guide" element={<SizeGuidePage />} />
           <Route path="care-guide" element={<CareGuidePage />} />
 
