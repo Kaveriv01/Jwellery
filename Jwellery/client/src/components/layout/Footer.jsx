@@ -16,8 +16,8 @@ const footerLinks = {
     { label: 'Shipping', to: '/shipping-policy' },
     { label: 'Returns', to: '/return-policy' },
     { label: 'FAQs', to: '/faqs' },
-    { label: 'Size Guide', to: '/faqs' },
-    { label: 'Care Guide', to: '/faqs' }
+    { label: 'Size Guide', to: '/size-guide' },
+    { label: 'Care Guide', to: '/care-guide' }
   ],
   about: [
     { label: 'Our Story', to: '/about' },
