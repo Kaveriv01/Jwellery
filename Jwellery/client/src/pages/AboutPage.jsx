@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ScatteredReveal from '../components/animations/ScatteredReveal';
 
 const FadeUp = ({ children, delay = 0, className = "" }) => (
   <motion.div
