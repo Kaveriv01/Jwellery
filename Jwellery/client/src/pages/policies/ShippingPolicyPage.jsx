@@ -6,7 +6,7 @@ import { FiClock, FiTruck, FiPackage, FiMapPin } from 'react-icons/fi';
 import { FREE_SHIPPING_THRESHOLD, DELIVERY_OPTIONS, CONTACT_DETAILS } from '../../constants';
 
 // Retrieve values from site config
-const standardDeliveryOption = DELIVERY_OPTIONS.find(opt => opt.value === 'standard');
+const standardDeliveryOption = (DELIVERY_OPTIONS || []).find(opt => opt?.value === 'standard');
 const standardDeliveryPrice = standardDeliveryOption?.price || 99;
 const standardDeliveryTime = standardDeliveryOption?.days || '3-7 business days';
 
@@ -272,15 +272,15 @@ export default function ShippingPolicyPage() {
               <div className="space-y-4 text-[15px] text-[#756A63]">
                 <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
                   <span className="font-medium text-[#25221F] min-w-[120px]">Email:</span>
-                  <a href={`mailto:${CONTACT_DETAILS.email}`} className="hover:text-[#B08D57] transition-colors">{CONTACT_DETAILS.email}</a>
+                  <a href={`mailto:${CONTACT_DETAILS?.email || ''}`} className="hover:text-[#B08D57] transition-colors">{CONTACT_DETAILS?.email || 'Support'}</a>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
                   <span className="font-medium text-[#25221F] min-w-[120px]">Phone/WhatsApp:</span>
-                  <a href={`tel:${CONTACT_DETAILS.phone.replace(/\s+/g, '')}`} className="hover:text-[#B08D57] transition-colors">{CONTACT_DETAILS.phone}</a>
+                  <a href={`tel:${CONTACT_DETAILS?.phone?.replace(/\s+/g, '') || ''}`} className="hover:text-[#B08D57] transition-colors">{CONTACT_DETAILS?.phone || 'Support'}</a>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
                   <span className="font-medium text-[#25221F] min-w-[120px]">Support Hours:</span>
-                  <span>{CONTACT_DETAILS.hours}</span>
+                  <span>{CONTACT_DETAILS?.hours || 'Standard Business Hours'}</span>
                 </div>
               </div>
             </div>
