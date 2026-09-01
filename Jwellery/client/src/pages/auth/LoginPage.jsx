@@ -95,8 +95,8 @@ export default function LoginPage() {
           {/* Background image & gradient overlay */}
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1200&q=85"
-              alt="Diamond Jewelry Showcase"
+              src="/images/luxury_login_banner.png"
+              alt="Luxury Diamond Jewelry Showcase"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/45 to-[#C5A059]/25" />
