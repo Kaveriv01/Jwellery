@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInstagram, FiFacebook, FiPlus, FiMinus } from 'react-icons/fi';
-import { FaPinterestP } from 'react-icons/fa';
+import { FaPinterestP, FaCcVisa, FaCcMastercard } from 'react-icons/fa';
 
 const footerLinks = {
   shop: [
@@ -26,9 +26,9 @@ const footerLinks = {
     { label: 'Contact Us', to: '/contact' }
   ],
   social: [
-    { label: 'Instagram', icon: <FiInstagram size={16} />, to: '#' },
-    { label: 'Facebook', icon: <FiFacebook size={16} />, to: '#' },
-    { label: 'Pinterest', icon: <FaPinterestP size={16} />, to: '#' }
+    { label: 'Instagram', icon: <FiInstagram size={14} />, to: '#' },
+    { label: 'Facebook', icon: <FiFacebook size={14} />, to: '#' },
+    { label: 'Pinterest', icon: <FaPinterestP size={14} />, to: '#' }
   ]
 };
 
@@ -41,24 +41,33 @@ function FooterAccordion({ title, links, isSocial = false }) {
         onClick={() => setIsOpen(!isOpen)}
         className="flex justify-between items-center w-full py-5 text-left"
       >
-        <span className="text-[13px] font-medium text-white uppercase tracking-[0.1em] font-sans">
+        <span className="text-[11px] font-medium text-[#C9A96A] uppercase tracking-[0.2em] font-sans">
           {title}
         </span>
         <span className="text-[#D8CFC7]">
           {isOpen ? <FiMinus size={16} /> : <FiPlus size={16} />}
         </span>
       </button>
-      <div className={`overflow-hidden transition-all duration-400 ease-in-out ${isOpen ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-        <ul className="flex flex-col space-y-4">
-          {links.map((link, idx) => (
-            <li key={idx}>
-              <Link to={link.to} className="text-[14px] text-[#D8CFC7] hover:text-[#C9B28A] transition-colors flex items-center gap-3 font-sans">
-                {isSocial && <span className="text-[#D8CFC7] group-hover:text-[#B79A6B] transition-colors">{link.icon}</span>}
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 pb-6' : 'max-h-0'}`}>
+        {isSocial ? (
+           <div className="flex items-center gap-4 pt-2">
+              {links.map((link, idx) => (
+                <a key={idx} href={link.to} className="w-10 h-10 rounded-full border border-[#C9A96A]/40 flex items-center justify-center text-[#FDFBF7] hover:bg-[#C9A96A] hover:border-[#C9A96A] hover:text-[#0a0708] transition-all duration-300">
+                  {link.icon}
+                </a>
+              ))}
+           </div>
+        ) : (
+          <ul className="flex flex-col space-y-4">
+            {links.map((link, idx) => (
+              <li key={idx}>
+                <Link to={link.to} className="text-[13px] text-[#FDFBF7]/70 hover:text-[#C9A96A] hover:translate-x-1 transition-all duration-300 inline-block font-sans">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
@@ -66,29 +75,49 @@ function FooterAccordion({ title, links, isSocial = false }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#211719] pt-20 pb-10 border-t border-[#DED3C4]/20">
-      <div className="max-w-[1400px] mx-auto px-5 md:px-8 xl:px-12">
+    <footer className="relative bg-[#0a0708] overflow-hidden">
+      {/* Subtle radial glow background behind the logo */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#C9A96A] opacity-[0.03] blur-[100px] rounded-full pointer-events-none"></div>
+      
+      {/* Noise Texture Overlay for depth */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-screen"></div>
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-28 pb-10">
         
-        {/* TOP: Brand Statement */}
-        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
-          <h2 className="text-[32px] md:text-[44px] text-white mb-4 tracking-[0.05em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        {/* TOP: Brand Statement & Newsletter */}
+        <div className="flex flex-col items-center text-center mb-24">
+          <h2 className="text-[44px] md:text-[54px] text-[#FDFBF7] mb-4 tracking-[0.2em] md:tracking-[0.25em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             TARINI
           </h2>
-          <p className="text-[16px] md:text-[18px] text-[#D8CFC7] italic max-w-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <p className="text-[15px] md:text-[17px] text-[#FDFBF7]/70 italic max-w-lg tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Timeless fine jewellery designed to celebrate every moment.
           </p>
+
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C9A96A]/30 to-transparent my-16"></div>
+
+          <div className="flex flex-col items-center w-full max-w-md">
+            <h3 className="text-[13px] text-[#FDFBF7] uppercase tracking-[0.15em] mb-6 font-sans">Join the TARINI Circle</h3>
+            <form className="w-full flex items-center border-b border-[#FDFBF7]/30 pb-3 group focus-within:border-[#C9A96A] transition-colors duration-300" onSubmit={(e) => e.preventDefault()}>
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="flex-1 bg-transparent border-none outline-none text-[14px] text-[#FDFBF7] placeholder-[#FDFBF7]/40 font-light tracking-wide px-2"
+              />
+              <button type="submit" className="text-[11px] font-medium uppercase tracking-[0.1em] text-[#C9A96A] hover:text-[#FDFBF7] transition-colors px-2">
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
 
-        <div className="w-full h-px bg-white/10 mb-12 md:mb-16"></div>
-
         {/* MIDDLE: Desktop Navigation */}
-        <div className="hidden md:grid grid-cols-4 gap-8 mb-20">
+        <div className="hidden md:grid grid-cols-4 gap-12 lg:gap-16 mb-24">
           <div>
-            <h4 className="text-[12px] font-medium text-white uppercase tracking-[0.15em] mb-8 font-sans">SHOP</h4>
-            <ul className="flex flex-col space-y-5">
+            <h4 className="text-[11px] font-medium text-[#C9A96A] uppercase tracking-[0.2em] mb-8 font-sans">Shop</h4>
+            <ul className="flex flex-col space-y-4">
               {footerLinks.shop.map((link, idx) => (
                 <li key={idx}>
-                  <Link to={link.to} className="text-[14px] text-[#D8CFC7] hover:text-[#C9B28A] transition-colors font-sans block">
+                  <Link to={link.to} className="text-[13px] text-[#FDFBF7]/70 hover:text-[#C9A96A] hover:translate-x-1.5 transition-transform duration-300 inline-block font-sans">
                     {link.label}
                   </Link>
                 </li>
@@ -96,11 +125,11 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-[12px] font-medium text-white uppercase tracking-[0.15em] mb-8 font-sans">ABOUT</h4>
-            <ul className="flex flex-col space-y-5">
+            <h4 className="text-[11px] font-medium text-[#C9A96A] uppercase tracking-[0.2em] mb-8 font-sans">About</h4>
+            <ul className="flex flex-col space-y-4">
               {footerLinks.about.map((link, idx) => (
                 <li key={idx}>
-                  <Link to={link.to} className="text-[14px] text-[#D8CFC7] hover:text-[#C9B28A] transition-colors font-sans block">
+                  <Link to={link.to} className="text-[13px] text-[#FDFBF7]/70 hover:text-[#C9A96A] hover:translate-x-1.5 transition-transform duration-300 inline-block font-sans">
                     {link.label}
                   </Link>
                 </li>
@@ -108,11 +137,11 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-[12px] font-medium text-white uppercase tracking-[0.15em] mb-8 font-sans">CUSTOMER CARE</h4>
-            <ul className="flex flex-col space-y-5">
+            <h4 className="text-[11px] font-medium text-[#C9A96A] uppercase tracking-[0.2em] mb-8 font-sans">Customer Care</h4>
+            <ul className="flex flex-col space-y-4">
               {footerLinks.customerCare.map((link, idx) => (
                 <li key={idx}>
-                  <Link to={link.to} className="text-[14px] text-[#D8CFC7] hover:text-[#C9B28A] transition-colors font-sans block">
+                  <Link to={link.to} className="text-[13px] text-[#FDFBF7]/70 hover:text-[#C9A96A] hover:translate-x-1.5 transition-transform duration-300 inline-block font-sans">
                     {link.label}
                   </Link>
                 </li>
@@ -120,40 +149,45 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-[12px] font-medium text-white uppercase tracking-[0.15em] mb-8 font-sans">CONNECT</h4>
-            <ul className="flex flex-col space-y-5">
+            <h4 className="text-[11px] font-medium text-[#C9A96A] uppercase tracking-[0.2em] mb-8 font-sans">Connect</h4>
+            <div className="flex items-center gap-4">
               {footerLinks.social.map((link, idx) => (
-                <li key={idx}>
-                  <a href={link.to} className="text-[14px] text-[#D8CFC7] hover:text-[#C9B28A] transition-all duration-400 flex items-center gap-3 font-sans group">
-                    <span className="text-[#D8CFC7] group-hover:text-[#B79A6B] transition-colors">{link.icon}</span>
-                    {link.label}
-                  </a>
-                </li>
+                <a key={idx} href={link.to} className="w-10 h-10 rounded-full border border-[#C9A96A]/40 flex items-center justify-center text-[#FDFBF7]/90 hover:bg-[#C9A96A] hover:border-[#C9A96A] hover:text-[#0a0708] transition-all duration-400">
+                  {link.icon}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
         {/* MIDDLE: Mobile Accordion */}
-        <div className="block md:hidden mb-16">
-          <div className="border-t border-white/10">
-            <FooterAccordion title="SHOP" links={footerLinks.shop} />
-            <FooterAccordion title="ABOUT" links={footerLinks.about} />
-            <FooterAccordion title="CUSTOMER CARE" links={footerLinks.customerCare} />
-            <FooterAccordion title="CONNECT" links={footerLinks.social} isSocial={true} />
-          </div>
+        <div className="block md:hidden mb-20 border-t border-white/10">
+          <FooterAccordion title="Shop" links={footerLinks.shop} />
+          <FooterAccordion title="About" links={footerLinks.about} />
+          <FooterAccordion title="Customer Care" links={footerLinks.customerCare} />
+          <FooterAccordion title="Connect" links={footerLinks.social} isSocial={true} />
         </div>
 
         {/* BOTTOM */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-[12px] text-[#A99D95] font-sans text-center md:text-left">
-            <span>© 2026 TARINI. All Rights Reserved.</span>
+        <div className="pt-8 border-t border-[#C9A96A]/20 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6">
+          <div className="flex items-center gap-6 text-[#FDFBF7]/50">
+            <div className="text-[11px] font-sans tracking-wide">
+              <span>© {new Date().getFullYear()} TARINI. All Rights Reserved.</span>
+            </div>
+            {/* Subtle Payment Icons */}
+            <div className="hidden md:flex items-center gap-3 opacity-60">
+              <FaCcVisa size={20} />
+              <FaCcMastercard size={20} />
+              <span className="text-[10px] border border-current rounded-[2px] px-1.5 py-[1px] font-bold tracking-wider">UPI</span>
+            </div>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-5 md:gap-8 text-[12px] text-[#D8CFC7] font-sans">
-            <Link to="/privacy-policy" className="hover:text-[#C9B28A] transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-[#C9B28A] transition-colors">Terms & Conditions</Link>
-            <Link to="/shipping-policy" className="hover:text-[#C9B28A] transition-colors">Shipping Policy</Link>
+          <div className="flex flex-wrap justify-center items-center text-[11px] text-[#FDFBF7]/60 font-sans tracking-wide">
+            <Link to="/privacy-policy" className="hover:text-[#C9A96A] transition-colors">Privacy Policy</Link>
+            <span className="mx-3 text-[#C9A96A]/40">•</span>
+            <Link to="/terms" className="hover:text-[#C9A96A] transition-colors">Terms & Conditions</Link>
+            <span className="mx-3 text-[#C9A96A]/40">•</span>
+            <Link to="/shipping-policy" className="hover:text-[#C9A96A] transition-colors">Shipping</Link>
           </div>
         </div>
 
