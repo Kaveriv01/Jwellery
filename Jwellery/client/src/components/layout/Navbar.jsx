@@ -117,15 +117,15 @@ export default function Navbar() {
             </button>
 
             {/* LEFT: Logo */}
-            <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-8 lg:mr-2">
+            <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-8 lg:mr-2 select-none outline-none focus:outline-none">
               {/* Star / Diamond Motif */}
               <svg viewBox="0 0 24 24" className="w-4 h-4 lg:w-5 lg:h-5 text-[#C5A059] group-hover:scale-110 transition-transform duration-300 mb-0.5" fill="currentColor">
                 <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
               </svg>
-              <span className="font-cinzel text-[20px] lg:text-[24px] tracking-[0.2em] font-normal uppercase text-[#1F1517] group-hover:text-[#C5A059] transition-colors leading-none pl-[0.2em]">
+              <span className="font-cinzel text-[20px] lg:text-[24px] tracking-[0.2em] font-normal uppercase text-[#1F1517] group-hover:text-[#C5A059] transition-colors leading-none select-none">
                 TARINI
               </span>
-              <span className="text-[7.5px] uppercase tracking-[0.28em] text-[#756A63] font-montserrat mt-1 pl-[0.28em] font-semibold">
+              <span className="text-[7.5px] uppercase tracking-[0.28em] text-[#756A63] font-montserrat mt-1 font-semibold select-none">
                 FINE JEWELLERY
               </span>
             </Link>
@@ -143,16 +143,6 @@ export default function Navbar() {
 
             {/* RIGHT: Actions */}
             <div className="flex items-center gap-4 sm:gap-6">
-              {/* Direct Admin Access Button */}
-              <Link
-                to="/admin"
-                className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10.5px] font-semibold tracking-wider uppercase bg-[#1F1517] text-[#C5A059] hover:bg-[#2B0E14] hover:text-[#FAF7F2] border border-[#C5A059]/40 transition-all duration-300 shadow-sm group"
-                title="Tarini Administration Suite"
-              >
-                <ShieldCheck size={14} className="text-[#C5A059] group-hover:scale-110 transition-transform" />
-                <span>Admin</span>
-              </Link>
-
               <button onClick={() => setSearchOpen(true)} className="group text-[#2A2020] hover:text-[#5A3034] transition-all duration-300" aria-label="Search">
                 <Search size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
               </button>
@@ -229,19 +219,6 @@ export default function Navbar() {
                 <button onClick={() => setMenuOpen(false)} className="text-[#1F1517] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
               <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-white">
-                {/* Mobile Admin Suite Button */}
-                <Link
-                  to="/admin"
-                  onClick={() => setMenuOpen(false)}
-                  className="py-3 px-4 mb-3 rounded-lg bg-[#1F1517] text-[#C5A059] text-[12px] uppercase tracking-wider font-semibold flex items-center justify-between shadow-sm"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <ShieldCheck size={16} />
-                    <span>Admin Panel</span>
-                  </div>
-                  <span className="text-[9px] bg-[#C5A059] text-black font-bold px-2 py-0.5 rounded">SUITE</span>
-                </Link>
-
                 <MobileNavLink to="/products?isNewArrival=true">New In</MobileNavLink>
                 <MobileNavLink to="/category/necklaces">Necklaces</MobileNavLink>
                 <MobileNavLink to="/category/earrings">Earrings</MobileNavLink>
