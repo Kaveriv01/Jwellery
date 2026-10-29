@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
-import { Plus, Trash2, Edit2, Tag } from 'lucide-react';
+import { Plus, Trash2, Edit2, Tag, Percent, Sparkles } from 'lucide-react';
 import { couponService } from '../../services/otherServices';
-import { formatDate } from '../../lib/utils';
+import { formatDate, formatPrice } from '../../lib/utils';
 import { toast } from 'sonner';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from "@/components/ui/table";
 
 export default function AdminCoupons() {
   const queryClient = useQueryClient();
@@ -28,7 +34,7 @@ export default function AdminCoupons() {
     mutationFn: (body) => couponService.create(body),
     onSuccess: () => {
       queryClient.invalidateQueries(['admin-coupons']);
-      toast.success('Coupon created.');
+      toast.success('Promotional code created successfully.');
       resetForm();
     },
     onError: () => toast.error('Failed to create coupon.'),
@@ -38,7 +44,7 @@ export default function AdminCoupons() {
     mutationFn: ({ id, body }) => couponService.update(id, body),
     onSuccess: () => {
       queryClient.invalidateQueries(['admin-coupons']);
-      toast.success('Coupon updated.');
+      toast.success('Promotional code updated.');
       resetForm();
     },
     onError: () => toast.error('Failed to update coupon.'),
@@ -48,7 +54,7 @@ export default function AdminCoupons() {
     mutationFn: (id) => couponService.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries(['admin-coupons']);
-      toast.success('Coupon deleted.');
+      toast.success('Coupon removed.');
     },
     onError: () => toast.error('Failed to delete coupon.'),
   });
@@ -71,13 +77,16 @@ export default function AdminCoupons() {
     setDiscountValue(c.discountValue);
     setMinimumPurchase(c.minimumPurchase || '');
     setMaxDiscountAmount(c.maxDiscountAmount || '');
-    setExpiryDate(c.expiryDate ? new Date(c.expiryDate).toISOString().split('T')[0] : '');
+    setExpiryDate(c.expiryDate ? c.expiryDate.split('T')[0] : '');
     setUsageLimit(c.usageLimit || '');
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!code.trim() || !discountValue) return;
+    if (!code.trim() || !discountValue) {
+      toast.error('Code and discount value are required');
+      return;
+    }
 
     const payload = {
       code: code.toUpperCase(),
@@ -85,8 +94,8 @@ export default function AdminCoupons() {
       discountValue: Number(discountValue),
       minimumPurchase: minimumPurchase ? Number(minimumPurchase) : 0,
       maxDiscountAmount: maxDiscountAmount ? Number(maxDiscountAmount) : null,
-      expiryDate: expiryDate ? new Date(expiryDate) : null,
-      usageLimit: usageLimit ? Number(usageLimit) : null,
+      expiryDate: expiryDate || '2026-12-31',
+      usageLimit: usageLimit ? Number(usageLimit) : 100,
     };
 
     if (editingCoupon) {
@@ -96,166 +105,222 @@ export default function AdminCoupons() {
     }
   };
 
-  const handleDelete = (id) => {
-    if (window.confirm('Delete this coupon?')) {
+  const handleDelete = (id, cCode) => {
+    if (window.confirm(`Delete the "${cCode}" coupon?`)) {
       deleteMutation.mutate(id);
     }
   };
 
   return (
     <>
-      <Helmet><title>Coupons — Admin | Jwellery</title></Helmet>
+      <Helmet><title>Privilege Vouchers & Codes — Admin Suite | Tarini</title></Helmet>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Form Column */}
-        <div className="bg-white rounded-2xl p-5 border border-[#DED3C4] shadow-sm h-fit">
-          <h2 className="font-serif text-xl text-gray-900 mb-4 flex items-center gap-2">
-            <Tag size={18} className="text-[#C5A059]" />
-            {editingCoupon ? 'Edit Coupon' : 'Create Coupon'}
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Coupon Code *</label>
-              <input
-                type="text"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                placeholder="WELCOME10"
-                className="input-gold"
-                required
-              />
-            </div>
+      <div className="space-y-6 max-w-7xl mx-auto">
+        {/* Title */}
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="font-serif text-2xl sm:text-3xl text-gray-900 font-light tracking-wide">
+              Privilege Codes & Special Concessions
+            </h1>
+            <Badge variant="gold" className="text-[10px]">
+              {coupons.length} Vouchers
+            </Badge>
+          </div>
+          <p className="text-xs sm:text-sm text-[#756A63] mt-1 font-light">
+            Issue bridal gift vouchers, seasonal privileges, and high-jewellery promotions.
+          </p>
+        </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Discount Type</label>
-                <select
-                  value={discountType}
-                  onChange={(e) => setDiscountType(e.target.value)}
-                  className="input-gold cursor-pointer"
-                >
-                  <option value="percentage">Percentage (%)</option>
-                  <option value="fixed">Fixed Amount (₹)</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Discount Value *</label>
-                <input
-                  type="number"
-                  value={discountValue}
-                  onChange={(e) => setDiscountValue(e.target.value)}
-                  placeholder={discountType === 'percentage' ? '10' : '100'}
-                  className="input-gold"
+        {/* 2-Column: Form on Left, Table on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Form Card using shadcn Card */}
+          <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-6 shadow-xs h-fit">
+            <CardHeader className="p-0 mb-4">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                {editingCoupon ? 'Modify Privilege Voucher' : 'Issue New Voucher'}
+              </CardTitle>
+              <CardDescription className="text-xs text-[#756A63]">
+                Set concession percentages or flat rate deductions
+              </CardDescription>
+            </CardHeader>
+
+            <form onSubmit={handleSubmit} className="space-y-3.5">
+              <div className="space-y-1">
+                <Label htmlFor="cpn-code" className="text-xs font-semibold text-gray-800">
+                  Promotional Code
+                </Label>
+                <Input
+                  id="cpn-code"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.toUpperCase())}
+                  placeholder="e.g. ROYALWEDDING25"
                   required
+                  className="font-mono uppercase text-xs h-9 rounded-xl border-[#DED3C4]"
                 />
               </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Min. Purchase (₹)</label>
-                <input
-                  type="number"
-                  value={minimumPurchase}
-                  onChange={(e) => setMinimumPurchase(e.target.value)}
-                  className="input-gold"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Max. Discount (₹)</label>
-                <input
-                  type="number"
-                  value={maxDiscountAmount}
-                  onChange={(e) => setMaxDiscountAmount(e.target.value)}
-                  className="input-gold"
-                  disabled={discountType === 'fixed'}
-                />
-              </div>
-            </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <Label htmlFor="disc-type" className="text-xs font-semibold text-gray-800">
+                    Type
+                  </Label>
+                  <select
+                    id="disc-type"
+                    value={discountType}
+                    onChange={(e) => setDiscountType(e.target.value)}
+                    className="w-full h-9 px-3 bg-white border border-[#DED3C4] rounded-xl text-xs text-gray-800 outline-none focus:border-[#C5A059]"
+                  >
+                    <option value="percentage">Percentage (%)</option>
+                    <option value="fixed">Flat Amount (₹)</option>
+                  </select>
+                </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Expiry Date</label>
-                <input
+                <div className="space-y-1">
+                  <Label htmlFor="disc-val" className="text-xs font-semibold text-gray-800">
+                    Value
+                  </Label>
+                  <Input
+                    id="disc-val"
+                    type="number"
+                    value={discountValue}
+                    onChange={(e) => setDiscountValue(e.target.value)}
+                    placeholder={discountType === 'percentage' ? '15%' : '5000'}
+                    required
+                    className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <Label htmlFor="min-pur" className="text-xs font-semibold text-gray-800">
+                    Min Acquisition (₹)
+                  </Label>
+                  <Input
+                    id="min-pur"
+                    type="number"
+                    value={minimumPurchase}
+                    onChange={(e) => setMinimumPurchase(e.target.value)}
+                    placeholder="50000"
+                    className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <Label htmlFor="max-disc" className="text-xs font-semibold text-gray-800">
+                    Max Deduction (₹)
+                  </Label>
+                  <Input
+                    id="max-disc"
+                    type="number"
+                    value={maxDiscountAmount}
+                    onChange={(e) => setMaxDiscountAmount(e.target.value)}
+                    placeholder="15000"
+                    className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <Label htmlFor="exp-date" className="text-xs font-semibold text-gray-800">
+                  Expiry Date
+                </Label>
+                <Input
+                  id="exp-date"
                   type="date"
                   value={expiryDate}
                   onChange={(e) => setExpiryDate(e.target.value)}
-                  className="input-gold cursor-pointer"
+                  className="text-xs h-9 rounded-xl border-[#DED3C4]"
                 />
               </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Usage Limit</label>
-                <input
-                  type="number"
-                  value={usageLimit}
-                  onChange={(e) => setUsageLimit(e.target.value)}
-                  className="input-gold"
-                />
+
+              <div className="pt-2 flex items-center gap-2">
+                <Button
+                  type="submit"
+                  disabled={createMutation.isPending || updateMutation.isPending}
+                  className="flex-1 bg-[#1F1517] hover:bg-[#2B0E14] text-[#C5A059] font-semibold text-xs tracking-wider uppercase h-10 rounded-xl cursor-pointer"
+                >
+                  {editingCoupon ? 'Save Changes' : '+ Issue Voucher'}
+                </Button>
+                {editingCoupon && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={resetForm}
+                    className="h-10 text-xs rounded-xl cursor-pointer"
+                  >
+                    Cancel
+                  </Button>
+                )}
               </div>
-            </div>
+            </form>
+          </Card>
 
-            <div className="flex gap-2 pt-2">
-              <button
-                type="submit"
-                disabled={createMutation.isPending || updateMutation.isPending}
-                className="flex-1 btn-gold rounded-xl py-2.5 text-xs font-semibold"
-              >
-                {editingCoupon ? 'Save Changes' : '✓ Add Coupon'}
-              </button>
-              {editingCoupon && (
-                <button type="button" onClick={resetForm} className="btn-outline-gold rounded-xl py-2.5 px-4 text-xs">
-                  Cancel
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
-
-        {/* List Column */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#DED3C4] shadow-sm overflow-hidden">
-          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-[#DED3C4]">Coupons Directory</h2>
-
-          {isLoading ? (
-            <div className="p-5 space-y-2">
-              {[...Array(4)].map((_, i) => <div key={i} className="skeleton h-14 rounded-xl animate-pulse" />)}
-            </div>
-          ) : coupons.length === 0 ? (
-            <div className="p-10 text-center text-[#756A63]">No coupons active.</div>
-          ) : (
-            <div className="divide-y divide-gray-100">
-              {coupons.map((c) => (
-                <div key={c._id} className="flex items-center justify-between p-4 hover:bg-gray-50/50 transition-colors">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono font-bold text-gray-800 text-sm bg-gray-100 px-2 py-0.5 rounded">{c.code}</span>
-                      <span className="text-xs text-green-600 font-medium">
-                        {c.discountType === 'percentage' ? `${c.discountValue}% off` : `₹${c.discountValue} off`}
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-x-4 gap-y-0.5 mt-1.5 text-xs text-[#756A63]">
-                      {c.minimumPurchase > 0 && <span>Min: ₹{c.minimumPurchase}</span>}
-                      {c.expiryDate && <span>Expires: {formatDate(c.expiryDate)}</span>}
-                      {c.usedCount !== undefined && <span>Used: {c.usedCount} times</span>}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      onClick={() => handleEdit(c)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-[#756A63] hover:text-[#C5A059] transition-colors"
-                    >
-                      <Edit2 size={15} />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(c._id)}
-                      className="p-2 hover:bg-red-50 rounded-lg text-gray-300 hover:text-red-500 transition-colors"
-                    >
-                      <Trash2 size={15} />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          {/* Existing Coupons Table on Right */}
+          <Card className="lg:col-span-2 border border-[#DED3C4]/60 bg-white rounded-2xl overflow-hidden shadow-xs h-fit">
+            <CardHeader className="p-5 pb-3 border-b border-gray-100">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                Active Privilege Vouchers
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Code</TableHead>
+                    <TableHead>Concession</TableHead>
+                    <TableHead>Min Spend</TableHead>
+                    <TableHead>Redeemed</TableHead>
+                    <TableHead>Validity</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {coupons.map((c) => (
+                    <TableRow key={c._id} className="hover:bg-amber-50/20">
+                      <TableCell>
+                        <Badge variant="gold" className="font-mono text-xs tracking-wider">
+                          {c.code}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="font-bold text-xs text-gray-900">
+                        {c.discountType === 'percentage' ? `${c.discountValue}% OFF` : `₹${c.discountValue?.toLocaleString()} OFF`}
+                      </TableCell>
+                      <TableCell className="text-xs text-[#756A63]">
+                        {c.minimumPurchase ? formatPrice(c.minimumPurchase) : 'No Minimum'}
+                      </TableCell>
+                      <TableCell className="text-xs text-gray-700 font-medium">
+                        {c.usedCount || 0} / {c.usageLimit || 100}
+                      </TableCell>
+                      <TableCell className="text-xs text-[#756A63]">
+                        {c.expiryDate ? formatDate(c.expiryDate) : 'Ongoing'}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <div className="flex items-center justify-end gap-1">
+                          <Button
+                            variant="ghost"
+                            size="icon-sm"
+                            onClick={() => handleEdit(c)}
+                            className="text-[#8C6D2D] hover:bg-amber-50"
+                          >
+                            <Edit2 size={13} />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon-sm"
+                            onClick={() => handleDelete(c._id, c.code)}
+                            className="text-gray-400 hover:text-red-600 hover:bg-red-50"
+                          >
+                            <Trash2 size={13} />
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </>

@@ -86,6 +86,7 @@ export default function Footer() {
                 <li><Link to="/collections" className="hover:text-[#C6A15B] transition-colors">Collections</Link></li>
                 <li><Link to="/about" className="hover:text-[#C6A15B] transition-colors">About Us</Link></li>
                 <li><Link to="/contact" className="hover:text-[#C6A15B] transition-colors">Contact</Link></li>
+                <li><Link to="/admin" className="text-[#C6A15B] hover:text-white font-medium transition-colors flex items-center gap-1.5 pt-1"><span>👑</span> Admin Portal</Link></li>
               </ul>
             </div>
 
@@ -107,7 +108,15 @@ export default function Footer() {
               <ul className="flex flex-col space-y-4 text-[13px] font-light text-[#A69C9F]">
                 <li className="flex items-start gap-3">
                   <FiPhone className="mt-1 flex-shrink-0 text-[#C6A15B]" size={14} />
-                  <span>{CONTACT_DETAILS.phone}</span>
+                  <a href={`tel:${CONTACT_DETAILS.phone}`} className="hover:text-white transition-colors">{CONTACT_DETAILS.phone}</a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="#25D366" className="mt-1 flex-shrink-0">
+                    <path d="M12.04 2C6.544 2 2.08 6.463 2.08 11.96c0 1.98.583 3.826 1.59 5.385L2 22l4.82-1.611a9.907 9.907 0 005.22 1.531h.004c5.494 0 9.957-4.464 9.957-9.96 0-2.66-1.036-5.161-2.919-7.043A9.894 9.894 0 0012.04 2zm0 18.234h-.003a8.23 8.23 0 01-4.2-1.155l-.301-.179-3.125 1.045 1.05-3.045-.196-.312A8.204 8.204 0 013.78 11.96c0-4.555 3.707-8.261 8.263-8.261 2.207 0 4.282.86 5.843 2.421a8.214 8.214 0 012.418 5.84c0 4.557-3.707 8.274-8.264 8.274z" />
+                  </svg>
+                  <a href={`https://wa.me/${CONTACT_DETAILS.whatsapp}?text=${encodeURIComponent('Hello Tarini Jewellery!')}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] transition-colors">
+                    WhatsApp: {CONTACT_DETAILS.whatsappDisplay}
+                  </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <FiMail className="mt-1 flex-shrink-0 text-[#C6A15B]" size={14} />

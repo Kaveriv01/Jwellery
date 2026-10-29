@@ -1,24 +1,21 @@
-import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import PageLoader from './PageLoader';
 
 /**
  * Admin route guard.
- * Wraps the AdminLayout — only allows users with role === 'admin'.
+ * Wraps the AdminLayout — auto-initializes demo admin if no active admin session exists.
  */
 export default function AdminRoute({ children }) {
-  const { isAuthenticated, isAdmin, loading } = useAuth();
+  const { isAuthenticated, isAdmin, loading, loginAsAdminDemo } = useAuth();
+
+  useEffect(() => {
+    if (!loading && (!isAuthenticated || !isAdmin)) {
+      loginAsAdminDemo();
+    }
+  }, [loading, isAuthenticated, isAdmin, loginAsAdminDemo]);
 
   if (loading) return <PageLoader />;
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  // Temporarily disabled for development preview
-  // if (!isAdmin) {
-  //   return <Navigate to="/" replace />;
-  // }
 
   return children;
 }

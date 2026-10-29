@@ -30,7 +30,7 @@ export default function EditorialBanner() {
               <img
                 src="https://plus.unsplash.com/premium_photo-1681276169450-4504a2442173?q=80&w=800&auto=format&fit=crop"
                 alt="Luxury Pearl Necklace"
-                className="w-full h-full object-cover transition-transform duration-[700ms] group-hover:scale-[1.03] ease-out"
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.div>

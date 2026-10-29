@@ -30,21 +30,17 @@ export default function ShopByCategory() {
 
           <div className="grid grid-cols-2 gap-3">
             {CATEGORIES.map((cat, index) => (
-              <motion.div 
+              <div 
                 key={cat.id} 
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
               >
-                <Link to={`/category/${cat.id}`} className="premium-image-container group block w-full aspect-[4/5] shadow-sm">
-                  <div className="premium-image-inner relative w-full h-full">
+                <Link to={`/category/${cat.id}`} className="group block w-full aspect-[4/5] overflow-hidden rounded-[2px] bg-[#FAF8F5] shadow-sm relative">
+                  <div className="relative w-full h-full">
                     <img
                       src={cat.image}
                       alt={cat.name}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 rounded-[20px]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-0 left-0 w-full p-4 text-center">
                       <span 
                         className="text-[12px] text-white font-[500] tracking-[0.15em] uppercase drop-shadow-md"
@@ -55,7 +51,7 @@ export default function ShopByCategory() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -68,24 +64,19 @@ export default function ShopByCategory() {
           >
             <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
             
-            {CATEGORIES.map((cat, index) => (
-              <motion.div 
+            {CATEGORIES.map((cat) => (
+              <div 
                 key={cat.id} 
                 className="snap-start shrink-0 flex flex-col items-center group"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
               >
                 <Link to={`/category/${cat.id}`} className="flex flex-col items-center">
-                  <div className="relative w-24 h-24 md:w-28 md:h-28 mb-3 transition-all duration-300">
-                    <div className="premium-image-container !rounded-full w-full h-full border-2 border-white bg-[#FDFBF7] shadow-sm">
-                      <div className="premium-image-inner relative w-full h-full">
-                        <img
-                          src={cat.image}
-                          alt={cat.name}
-                          className="w-full h-full object-cover !rounded-full"
-                        />
-                      </div>
+                  <div className="relative w-24 h-24 md:w-28 md:h-28 mb-3">
+                    <div className="rounded-full w-full h-full border-2 border-white bg-[#FDFBF7] overflow-hidden shadow-sm">
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        className="w-full h-full object-cover rounded-full"
+                      />
                     </div>
                   </div>
                   <span 

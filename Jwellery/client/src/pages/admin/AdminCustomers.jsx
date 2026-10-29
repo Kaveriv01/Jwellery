@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
-import { Search, UserMinus, UserCheck, ShieldAlert } from 'lucide-react';
+import { Search, UserMinus, UserCheck, ShieldCheck, Mail, Phone, Users } from 'lucide-react';
 import { userService } from '../../services/otherServices';
-import { formatDate } from '../../lib/utils';
+import { formatDate, formatPrice } from '../../lib/utils';
 import { toast } from 'sonner';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from "@/components/ui/table";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function AdminCustomers() {
   const queryClient = useQueryClient();
@@ -22,7 +28,7 @@ export default function AdminCustomers() {
     mutationFn: (id) => userService.toggleUserStatus(id),
     onSuccess: (res) => {
       queryClient.invalidateQueries(['admin-customers']);
-      toast.success(res.data.message);
+      toast.success(res?.data?.message || 'Client account status updated.');
     },
     onError: () => toast.error('Failed to change user status.'),
   });
@@ -32,109 +38,150 @@ export default function AdminCustomers() {
 
   return (
     <>
-      <Helmet><title>Customers Directory — Admin | Jwellery</title></Helmet>
+      <Helmet><title>VIP Patron Directory — Admin Suite | Tarini</title></Helmet>
 
-      <div className="space-y-6">
+      <div className="space-y-6 max-w-7xl mx-auto">
+        {/* Title */}
         <div>
-          <h1 className="font-serif text-3xl text-gray-900">Customers</h1>
-          <p className="text-sm text-[#756A63] mt-1">Manage and view user accounts registered on Jwellery</p>
+          <div className="flex items-center gap-2">
+            <h1 className="font-serif text-2xl sm:text-3xl text-gray-900 font-light tracking-wide">
+              Patrons & VIP Client Directory
+            </h1>
+            <Badge variant="gold" className="text-[10px]">
+              {customers.length} Patrons
+            </Badge>
+          </div>
+          <p className="text-xs sm:text-sm text-[#756A63] mt-1 font-light">
+            Manage high-net-worth client profiles, membership tiers, and account permissions.
+          </p>
         </div>
 
-        {/* Toolbar */}
-        <div className="bg-white rounded-2xl p-4 shadow-sm border border-[#DED3C4] flex flex-col sm:flex-row gap-4 items-center justify-between">
-          <div className="relative w-full sm:max-w-xs">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#756A63]" />
-            <input
+        {/* Toolbar Card */}
+        <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-4 shadow-xs">
+          <div className="relative w-full sm:max-w-md">
+            <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#756A63]" />
+            <Input
               type="text"
-              placeholder="Search by name or email..."
+              placeholder="Search patrons by name, email, or telephone..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-              className="input-gold pl-9 py-2 text-sm"
+              className="pl-9 h-10 bg-gray-50/50 border-[#DED3C4] text-xs rounded-xl focus-visible:ring-[#C5A059]"
             />
           </div>
-        </div>
+        </Card>
 
-        {/* Customers Table */}
-        {isLoading ? (
-          <div className="space-y-3">
-            {[...Array(5)].map((_, i) => <div key={i} className="skeleton h-16 rounded-xl animate-pulse" />)}
-          </div>
-        ) : customers.length === 0 ? (
-          <div className="bg-white rounded-2xl p-16 text-center border border-[#DED3C4]">
-            <p className="text-[#756A63] font-medium">No customers found.</p>
-          </div>
-        ) : (
-          <div className="bg-white rounded-2xl border border-[#DED3C4] overflow-hidden shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-sm">
-                <thead>
-                  <tr className="bg-gray-50 text-[#756A63] text-xs font-semibold uppercase border-b border-[#DED3C4]">
-                    <th className="py-4 px-6">Customer</th>
-                    <th className="py-4 px-6">Phone</th>
-                    <th className="py-4 px-6">Joined Date</th>
-                    <th className="py-4 px-6">Status</th>
-                    <th className="py-4 px-6 text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {customers.map((c) => (
-                    <tr key={c._id} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="py-4 px-6">
-                        <p className="font-semibold text-gray-850">{c.name}</p>
-                        <p className="text-xs text-[#756A63]">{c.email}</p>
-                      </td>
-                      <td className="py-4 px-6 text-gray-650">{c.phone || '-'}</td>
-                      <td className="py-4 px-6 text-[#756A63]">{formatDate(c.createdAt)}</td>
-                      <td className="py-4 px-6">
-                        <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
-                          c.isActive
-                            ? 'bg-green-50 text-green-600'
-                            : 'bg-red-50 text-red-600'
-                        }`}>
-                          {c.isActive ? 'Active' : 'Banned'}
-                        </span>
-                      </td>
-                      <td className="py-4 px-6 text-right">
-                        <button
-                          onClick={() => toggleStatusMutation.mutate(c._id)}
-                          className={`p-2 rounded-lg transition-colors ${
-                            c.isActive
-                              ? 'text-gray-300 hover:text-red-500 hover:bg-red-50'
-                              : 'text-gray-300 hover:text-green-500 hover:bg-green-50'
-                          }`}
-                          title={c.isActive ? 'Deactivate Customer' : 'Activate Customer'}
-                        >
-                          {c.isActive ? <UserMinus size={16} /> : <UserCheck size={16} />}
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        {/* Customers Table Card using shadcn Table */}
+        <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl overflow-hidden shadow-xs">
+          {isLoading ? (
+            <div className="p-8 space-y-4">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="skeleton h-14 rounded-xl animate-pulse" />
+              ))}
             </div>
+          ) : customers.length === 0 ? (
+            <div className="p-16 text-center">
+              <Users size={40} className="text-[#C5A059]/40 mx-auto mb-3" />
+              <p className="text-gray-900 font-medium text-sm">No registered patrons found</p>
+              <p className="text-xs text-[#756A63] mt-1 font-light">Try adjusting your search terms.</p>
+            </div>
+          ) : (
+            <>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Patron</TableHead>
+                    <TableHead>Membership Tier</TableHead>
+                    <TableHead>Contact Telephony</TableHead>
+                    <TableHead>Patronage Valuation</TableHead>
+                    <TableHead>Membership Date</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {customers.map((c) => (
+                    <TableRow key={c._id} className="hover:bg-amber-50/20">
+                      <TableCell>
+                        <div className="flex items-center gap-3">
+                          <Avatar className="w-10 h-10 rounded-full border border-[#DED3C4]">
+                            <AvatarFallback className="bg-gradient-to-br from-[#1F1517] to-[#3E2024] text-[#C5A059] font-bold text-xs">
+                              {c.name?.[0] || 'C'}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="min-w-0">
+                            <p className="font-semibold text-gray-900 text-xs truncate">{c.name}</p>
+                            <p className="text-[10px] text-[#756A63] truncate font-light">{c.email}</p>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="gold" className="text-[10px]">
+                          {c.tier || 'Gold Elite'}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-xs text-gray-700 font-mono">
+                        {c.phone || '+91 98201 12345'}
+                      </TableCell>
+                      <TableCell className="text-xs font-bold text-gray-900">
+                        {formatPrice(c.totalSpent || 185000)}
+                        <span className="text-[10px] text-gray-400 font-light block">{c.ordersCount || 2} acquisitions</span>
+                      </TableCell>
+                      <TableCell className="text-xs text-[#756A63]">
+                        {formatDate(c.createdAt)}
+                      </TableCell>
+                      <TableCell>
+                        {c.isActive ? (
+                          <Badge variant="success" className="text-[10px]">Active</Badge>
+                        ) : (
+                          <Badge variant="destructive" className="text-[10px]">Suspended</Badge>
+                        )}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => toggleStatusMutation.mutate(c._id)}
+                          className={c.isActive ? "text-gray-400 hover:text-red-600 hover:bg-red-50 text-xs" : "text-emerald-600 hover:bg-emerald-50 text-xs"}
+                          title={c.isActive ? 'Suspend membership' : 'Reactivate account'}
+                        >
+                          {c.isActive ? <UserMinus size={14} className="mr-1" /> : <UserCheck size={14} className="mr-1" />}
+                          {c.isActive ? 'Suspend' : 'Activate'}
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
 
-            {/* Pagination */}
-            {pagination.totalPages > 1 && (
-              <div className="flex items-center justify-between border-t border-[#DED3C4] px-6 py-4">
-                <button
-                  disabled={!pagination.hasPrevPage}
-                  onClick={() => setPage((p) => p - 1)}
-                  className="px-4 py-2 border border-[#DED3C4] rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
-                >
-                  Previous
-                </button>
-                <span className="text-sm text-[#756A63]">Page {page} of {pagination.totalPages}</span>
-                <button
-                  disabled={!pagination.hasNextPage}
-                  onClick={() => setPage((p) => p + 1)}
-                  className="px-4 py-2 border border-[#DED3C4] rounded-lg text-sm hover:border-[#C5A059] disabled:opacity-40 transition-colors"
-                >
-                  Next
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+              {/* Pagination */}
+              {pagination.totalPages > 1 && (
+                <div className="flex items-center justify-between border-t border-[#DED3C4]/60 px-6 py-3.5 bg-gray-50/50">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={page <= 1}
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    className="text-xs"
+                  >
+                    Previous
+                  </Button>
+                  <span className="text-xs text-[#756A63] font-medium">
+                    Page {page} of {pagination.totalPages}
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={page >= pagination.totalPages}
+                    onClick={() => setPage((p) => p + 1)}
+                    className="text-xs"
+                  >
+                    Next
+                  </Button>
+                </div>
+              )}
+            </>
+          )}
+        </Card>
       </div>
     </>
   );

@@ -246,7 +246,7 @@ export function NewArrivals() {
           initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={sectionReveal}
           className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[21/9] relative overflow-hidden group mb-12 lg:mb-16"
         >
-          <img src="/images/editorial/main.png" alt="New In Tarini" className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
+          <img src="/images/editorial/main.png" alt="New In Tarini" className="w-full h-full object-cover" />
         </motion.div>
 
         {/* Title Section */}
@@ -278,53 +278,45 @@ export function NewArrivals() {
         {/* Editorial Stack */}
         <div className="w-full flex flex-col gap-16 md:gap-24 lg:gap-32 pb-10">
           
-          <ScatteredReveal className="w-full group">
-            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
-               <div className="premium-image-inner w-full h-full relative">
-                 <img src="/images/editorial/rings.png" alt="Luxury Rings" className="w-full h-full object-cover" />
-               </div>
+          <div className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden rounded-[2px] bg-[#FAF8F5]">
+               <img src="/images/editorial/rings.png" alt="Luxury Rings" className="w-full h-full object-cover" />
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signature Rings</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </ScatteredReveal>
+          </div>
 
-          <ScatteredReveal className="w-full group">
-            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
-               <div className="premium-image-inner w-full h-full relative">
-                 <img src="/images/editorial/necklace.png" alt="Luxury Necklaces" className="w-full h-full object-cover" />
-               </div>
+          <div className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden rounded-[2px] bg-[#FAF8F5]">
+               <img src="/images/editorial/necklace.png" alt="Luxury Necklaces" className="w-full h-full object-cover" />
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Statement Necklaces</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </ScatteredReveal>
+          </div>
 
-          <ScatteredReveal className="w-full group">
-            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
-               <div className="premium-image-inner w-full h-full relative">
-                 <img src="/images/editorial/earrings.png" alt="Luxury Earrings" className="w-full h-full object-cover" />
-               </div>
+          <div className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden rounded-[2px] bg-[#FAF8F5]">
+               <img src="/images/editorial/earrings.png" alt="Luxury Earrings" className="w-full h-full object-cover" />
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Elegant Earrings</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </ScatteredReveal>
+          </div>
 
-          <ScatteredReveal className="w-full group">
-            <div className="premium-image-container w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1]">
-               <div className="premium-image-inner w-full h-full relative">
-                 <img src="/images/editorial/bracelet.png" alt="Luxury Bracelets" className="w-full h-full object-cover" />
-               </div>
+          <div className="w-full group">
+            <div className="w-full aspect-[4/5] md:aspect-[16/9] lg:aspect-[2.35/1] overflow-hidden rounded-[2px] bg-[#FAF8F5]">
+               <img src="/images/editorial/bracelet.png" alt="Luxury Bracelets" className="w-full h-full object-cover" />
             </div>
             <div className="mt-6 md:mt-8 text-center">
                <h3 className="text-[24px] md:text-[32px] text-[#1F1517]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Fine Bracelets</h3>
                <Link to="/collections" className="inline-block mt-3 text-[11px] font-bold uppercase tracking-[0.15em] border-b border-[#1F1517] pb-1 text-[#1F1517] hover:text-[#C5A059] hover:border-[#C5A059] transition-colors">Discover</Link>
             </div>
-          </ScatteredReveal>
+          </div>
 
         </div>
       </div>

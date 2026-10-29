@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
   return (
@@ -71,9 +71,21 @@ export default function ContactPage() {
                     <Phone size={20} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="text-[11px] font-bold text-[#1F1517] uppercase tracking-[0.15em] mb-1" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>Call Us</h3>
-                    <a href="tel:+919876543210" className="text-[16px] text-[#1F1517] font-medium group-hover:text-[#C5A059] transition-colors">+91 98765 43210</a>
+                    <h3 className="text-[11px] font-bold text-[#1F1517] uppercase tracking-[0.15em] mb-1 font-montserrat">Call Us</h3>
+                    <a href="tel:+918619859463" className="text-[16px] text-[#1F1517] font-medium group-hover:text-[#C5A059] transition-colors">+91 86198 59463</a>
                     <p className="text-[12px] text-[#1F1517]/50 mt-1">Mon - Sat | 10:00 AM - 7:00 PM (IST)</p>
+                  </div>
+                </div>
+
+                {/* WhatsApp */}
+                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-3 lg:gap-5 group cursor-pointer">
+                  <div className="w-12 h-12 rounded-full border border-[#25D366] flex items-center justify-center flex-shrink-0 text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all duration-300">
+                    <MessageCircle size={20} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 className="text-[11px] font-bold text-[#1F1517] uppercase tracking-[0.15em] mb-1 font-montserrat">WhatsApp Concierge</h3>
+                    <a href="https://wa.me/918619859463?text=Hello%20Tarini%20Jewellery%2C%20I%20would%20like%20to%20connect%20with%20your%20concierge." target="_blank" rel="noopener noreferrer" className="text-[16px] text-[#1F1517] font-medium group-hover:text-[#25D366] transition-colors">+91 86198 59463</a>
+                    <p className="text-[12px] text-[#1F1517]/50 mt-1">Instant chat, assistance & video calls</p>
                   </div>
                 </div>
 

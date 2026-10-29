@@ -29,6 +29,7 @@
     "@radix-ui/react-tabs": "^1.1.18",
     "@radix-ui/react-toast": "^1.2.20",
     "@radix-ui/react-tooltip": "^1.2.13",
+    "@rolldown/binding-win32-x64-msvc": "https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.1.5.tgz",
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-query": "^5.101.4",

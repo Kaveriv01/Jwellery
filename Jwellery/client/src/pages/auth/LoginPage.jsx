@@ -23,7 +23,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showSplash, setShowSplash] = useState(false);
   const [displayName, setDisplayName] = useState('तारिणी');
-  const { login } = useAuth();
+  const { login, loginAsAdminDemo } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
@@ -237,7 +237,7 @@ export default function LoginPage() {
                   </motion.div>
 
                   {/* Sign In Button */}
-                  <motion.div variants={itemVariants} className="pt-2">
+                  <motion.div variants={itemVariants} className="pt-2 space-y-3">
                     <Button
                       type="submit"
                       disabled={isSubmitting}
@@ -245,6 +245,24 @@ export default function LoginPage() {
                     >
                       {isSubmitting ? 'Signing in...' : 'Sign In'}
                     </Button>
+
+                    <div className="relative flex py-1 items-center">
+                      <div className="flex-grow border-t border-[#DED3C4]"></div>
+                      <span className="flex-shrink mx-3 text-[10px] uppercase tracking-wider text-[#756A63]">or quick access</span>
+                      <div className="flex-grow border-t border-[#DED3C4]"></div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        loginAsAdminDemo();
+                        toast.success('Welcome back, Administrator!');
+                        navigate('/admin');
+                      }}
+                      className="w-full h-[48px] bg-[#1F1517] hover:bg-[#2B0E14] text-[#C5A059] hover:text-[#E8DED1] border border-[#C5A059]/60 font-semibold text-xs tracking-[0.15em] uppercase rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                    >
+                      <span>👑</span> Sign In as Demo Administrator
+                    </button>
                   </motion.div>
                 </form>
               </CardContent>

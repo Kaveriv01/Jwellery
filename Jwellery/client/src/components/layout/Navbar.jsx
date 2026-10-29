@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ShoppingBag, Heart, User, Menu, X, LogOut, Package, Settings } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, Menu, X, LogOut, Package, Settings, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -117,13 +117,16 @@ export default function Navbar() {
             </button>
 
             {/* LEFT: Logo */}
-            <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-10 lg:mr-4">
-              {/* Simple Star Motif */}
-              <svg viewBox="0 0 24 24" className="w-5 h-5 lg:w-6 lg:h-6 text-[#2A2020] group-hover:text-[#C5A059] transition-colors duration-500 mb-1" fill="currentColor">
+            <Link to="/" className="flex flex-col items-center justify-center flex-shrink-0 group lg:pr-8 lg:mr-2">
+              {/* Star / Diamond Motif */}
+              <svg viewBox="0 0 24 24" className="w-4 h-4 lg:w-5 lg:h-5 text-[#C5A059] group-hover:scale-110 transition-transform duration-300 mb-0.5" fill="currentColor">
                 <path d="M12 0C12 5.5 16.5 10 22 10C16.5 10 12 14.5 12 24C12 14.5 7.5 10 2 10C7.5 10 12 5.5 12 0Z" />
               </svg>
-              <span className="text-[26px] lg:text-[34px] font-light tracking-[0.15em] text-[#2A2020] group-hover:text-[#5A3034] transition-colors duration-500 leading-none mt-1 pl-[0.15em]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                तारिणी
+              <span className="font-cinzel text-[20px] lg:text-[24px] tracking-[0.2em] font-normal uppercase text-[#1F1517] group-hover:text-[#C5A059] transition-colors leading-none pl-[0.2em]">
+                TARINI
+              </span>
+              <span className="text-[7.5px] uppercase tracking-[0.28em] text-[#756A63] font-montserrat mt-1 pl-[0.28em] font-semibold">
+                FINE JEWELLERY
               </span>
             </Link>
 
@@ -139,7 +142,17 @@ export default function Navbar() {
             </nav>
 
             {/* RIGHT: Actions */}
-            <div className="flex items-center gap-5 sm:gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
+              {/* Direct Admin Access Button */}
+              <Link
+                to="/admin"
+                className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10.5px] font-semibold tracking-wider uppercase bg-[#1F1517] text-[#C5A059] hover:bg-[#2B0E14] hover:text-[#FAF7F2] border border-[#C5A059]/40 transition-all duration-300 shadow-sm group"
+                title="Tarini Administration Suite"
+              >
+                <ShieldCheck size={14} className="text-[#C5A059] group-hover:scale-110 transition-transform" />
+                <span>Admin</span>
+              </Link>
+
               <button onClick={() => setSearchOpen(true)} className="group text-[#2A2020] hover:text-[#5A3034] transition-all duration-300" aria-label="Search">
                 <Search size={22} strokeWidth={1.5} className="transition-transform duration-300 group-hover:scale-110" />
               </button>
@@ -158,16 +171,25 @@ export default function Navbar() {
                             <p className="text-xs text-[#756A63] truncate mt-0.5">{user?.email}</p>
                           </div>
                           <div className="py-2">
-                            {isAdmin && <Link to="/admin" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#756A63] hover:text-[#1F1517] hover:bg-gray-50 transition-colors"><Settings size={14} className="group-hover:rotate-90 transition-transform duration-500" /> Admin</Link>}
+                            <Link to="/admin" onClick={() => setUserMenuOpen(false)} className="group flex items-center justify-between px-5 py-2.5 text-xs text-[#1F1517] bg-amber-50/70 hover:bg-[#FAF6F2] hover:text-[#C5A059] border-b border-[#DED3C4]/60 transition-colors font-medium">
+                              <div className="flex items-center gap-3">
+                                <Settings size={14} className="text-[#C5A059] group-hover:rotate-90 transition-transform duration-500" />
+                                <span>Admin Dashboard</span>
+                              </div>
+                              <span className="text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded bg-[#C5A059]/20 text-[#8C6D2D]">Suite</span>
+                            </Link>
                             <Link to="/profile" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#756A63] hover:text-[#1F1517] hover:bg-gray-50 transition-colors"><User size={14} className="group-hover:scale-110 transition-transform" /> Profile</Link>
                             <Link to="/profile/orders" onClick={() => setUserMenuOpen(false)} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-[#756A63] hover:text-[#1F1517] hover:bg-gray-50 transition-colors"><Package size={14} className="group-hover:scale-110 transition-transform" /> Orders</Link>
                             <button onClick={handleLogout} className="group flex items-center gap-3 px-5 py-2.5 text-xs text-red-500 hover:bg-gray-50 w-full text-left transition-colors"><LogOut size={14} className="group-hover:-translate-x-1 transition-transform" /> Logout</button>
                           </div>
                         </>
                       ) : (
-                        <div className="p-5">
-                          <Link to="/login" onClick={() => setUserMenuOpen(false)} className="block w-full text-center mb-2 py-3 text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#1F1517] text-white hover:bg-[#333] transition-colors duration-300">Sign In</Link>
+                        <div className="p-5 space-y-2">
+                          <Link to="/login" onClick={() => setUserMenuOpen(false)} className="block w-full text-center py-3 text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#1F1517] text-white hover:bg-[#333] transition-colors duration-300">Sign In</Link>
                           <Link to="/register" onClick={() => setUserMenuOpen(false)} className="block w-full text-center py-3 text-[10px] font-semibold uppercase tracking-[0.1em] border border-[#1F1517] text-[#1F1517] hover:bg-gray-50 transition-colors duration-300">Create Account</Link>
+                          <Link to="/admin" onClick={() => setUserMenuOpen(false)} className="flex items-center justify-center gap-1.5 w-full text-center py-2.5 text-[10px] font-semibold uppercase tracking-[0.1em] bg-amber-50 text-[#8C6D2D] border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-black transition-colors duration-300 rounded-sm">
+                            <ShieldCheck size={12} /> Admin Suite
+                          </Link>
                         </div>
                       )}
                     </motion.div>
@@ -207,6 +229,19 @@ export default function Navbar() {
                 <button onClick={() => setMenuOpen(false)} className="text-[#1F1517] hover:text-[#666] transition-all duration-300"><X size={20} strokeWidth={1.5} /></button>
               </div>
               <nav className="flex-1 px-5 py-5 flex flex-col gap-1 bg-white">
+                {/* Mobile Admin Suite Button */}
+                <Link
+                  to="/admin"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-3 px-4 mb-3 rounded-lg bg-[#1F1517] text-[#C5A059] text-[12px] uppercase tracking-wider font-semibold flex items-center justify-between shadow-sm"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <ShieldCheck size={16} />
+                    <span>Admin Panel</span>
+                  </div>
+                  <span className="text-[9px] bg-[#C5A059] text-black font-bold px-2 py-0.5 rounded">SUITE</span>
+                </Link>
+
                 <MobileNavLink to="/products?isNewArrival=true">New In</MobileNavLink>
                 <MobileNavLink to="/category/necklaces">Necklaces</MobileNavLink>
                 <MobileNavLink to="/category/earrings">Earrings</MobileNavLink>

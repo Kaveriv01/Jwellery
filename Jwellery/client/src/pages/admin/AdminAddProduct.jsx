@@ -5,10 +5,16 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Upload, Plus, Trash2, Check } from 'lucide-react';
+import { ArrowLeft, Upload, Plus, Trash2, Check, Sparkles, Gem } from 'lucide-react';
 import { productService } from '../../services/productService';
 import { categoryService } from '../../services/otherServices';
 import { toast } from 'sonner';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 
 const schema = z.object({
   name: z.string().min(3, 'Product name is required'),
@@ -34,6 +40,7 @@ export default function AdminAddProduct() {
   const navigate = useNavigate();
   const [imageFiles, setImageFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
+  const [customImageUrl, setCustomImageUrl] = useState('');
 
   const { data: catData } = useQuery({
     queryKey: ['categories'],
@@ -44,13 +51,22 @@ export default function AdminAddProduct() {
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
-    defaultValues: { isFeatured: false, isNewArrival: false, isBestSeller: false },
+    defaultValues: { 
+      isFeatured: false, 
+      isNewArrival: true, 
+      isBestSeller: false,
+      sku: `TAR-${Math.floor(1000 + Math.random() * 9000)}`,
+      material: '18k Yellow Gold',
+      purity: '18K',
+      gender: 'Women',
+      occasion: 'Bridal & Celebrations'
+    },
   });
 
   const addMutation = useMutation({
     mutationFn: (formData) => productService.create(formData),
-    onSuccess: () => {
-      toast.success('Product created successfully!');
+    onSuccess: (res) => {
+      toast.success('Jewellery piece added to vault and published live!');
       navigate('/admin/products');
     },
     onError: (err) => {
@@ -61,7 +77,6 @@ export default function AdminAddProduct() {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setImageFiles((prev) => [...prev, ...files]);
-
     const newPreviews = files.map((file) => URL.createObjectURL(file));
     setPreviews((prev) => [...prev, ...newPreviews]);
   };
@@ -71,181 +86,316 @@ export default function AdminAddProduct() {
     setPreviews((prev) => prev.filter((_, i) => i !== idx));
   };
 
-  const onSubmit = (data) => {
-    if (imageFiles.length === 0) {
-      toast.error('Please upload at least one image.');
-      return;
-    }
-
-    const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => {
-      if (value !== undefined && value !== null) {
-        formData.append(key, value);
-      }
-    });
-
-    imageFiles.forEach((file) => {
-      formData.append('images', file);
-    });
-
-    addMutation.mutate(formData);
+  const onSubmit = (formData) => {
+    const payload = {
+      ...formData,
+      imageUrl: customImageUrl || previews[0]
+    };
+    addMutation.mutate(payload);
   };
 
   return (
     <>
-      <Helmet><title>Add New Product — Admin | Jwellery</title></Helmet>
+      <Helmet><title>Add New Jewellery Piece — Admin Suite | Tarini</title></Helmet>
 
-      <div className="space-y-6 max-w-4xl">
-        <button onClick={() => navigate('/admin/products')} className="flex items-center gap-2 text-sm text-[#756A63] hover:text-gray-800">
-          <ArrowLeft size={16} /> Back to Products
-        </button>
+      <div className="space-y-6 max-w-4xl mx-auto">
+        {/* Back button */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => navigate('/admin/products')}
+          className="text-xs text-[#756A63] hover:text-black gap-1.5 -ml-2"
+        >
+          <ArrowLeft size={14} /> Back to Products
+        </Button>
 
+        {/* Title */}
         <div>
-          <h1 className="font-serif text-3xl text-gray-900">Add New Product</h1>
-          <p className="text-sm text-[#756A63] mt-1">Create a new jewelry piece in your store catalog</p>
+          <div className="flex items-center gap-2">
+            <h1 className="font-serif text-2xl sm:text-3xl text-gray-900 font-light tracking-wide">
+              Commission New Jewellery Masterwork
+            </h1>
+            <Badge variant="gold" className="text-[10px]">
+              Vault Ingestion
+            </Badge>
+          </div>
+          <p className="text-xs sm:text-sm text-[#756A63] mt-1 font-light">
+            Enter metallurgy specifications, hallmarking certifications, stone cuts, and pricing.
+          </p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Main Info */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Product Details</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Product Name *</label>
-                <input {...register('name')} className={`input-gold ${errors.name ? 'border-red-400' : ''}`} />
-                {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">SKU *</label>
-                <input {...register('sku')} className={`input-gold ${errors.sku ? 'border-red-400' : ''}`} />
-                {errors.sku && <p className="text-red-400 text-xs mt-1">{errors.sku.message}</p>}
-              </div>
-            </div>
+          {/* General Information Card using shadcn Card */}
+          <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-6 shadow-xs">
+            <CardHeader className="p-0 mb-5">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                General Nomenclature
+              </CardTitle>
+              <CardDescription className="text-xs text-[#756A63]">
+                Piece designation, SKU, and atelier description
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-0 space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label htmlFor="name" className="text-xs font-semibold text-gray-800">
+                    Piece Name *
+                  </Label>
+                  <Input
+                    id="name"
+                    {...register('name')}
+                    placeholder="e.g. Maharani Polki Choker"
+                    className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                  />
+                  {errors.name && <p className="text-[10px] text-red-500">{errors.name.message}</p>}
+                </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Short Description</label>
-                <input {...register('shortDescription')} className="input-gold" />
+                <div className="space-y-1.5">
+                  <Label htmlFor="sku" className="text-xs font-semibold text-gray-800">
+                    Vault SKU *
+                  </Label>
+                  <Input
+                    id="sku"
+                    {...register('sku')}
+                    placeholder="TAR-1082"
+                    className="font-mono text-xs h-10 rounded-xl border-[#DED3C4]"
+                  />
+                  {errors.sku && <p className="text-[10px] text-red-500">{errors.sku.message}</p>}
+                </div>
               </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Category *</label>
-                <select {...register('category')} className={`input-gold ${errors.category ? 'border-red-400' : ''}`}>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="shortDescription" className="text-xs font-semibold text-gray-800">
+                  Short Tagline
+                </Label>
+                <Input
+                  id="shortDescription"
+                  {...register('shortDescription')}
+                  placeholder="e.g. Set in 18k Rose Gold with brilliant cut solitaire diamonds."
+                  className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="description" className="text-xs font-semibold text-gray-800">
+                  Full Atelier Description *
+                </Label>
+                <textarea
+                  id="description"
+                  {...register('description')}
+                  rows={4}
+                  placeholder="Detailed craftsmanship narrative, stone origin, setting type..."
+                  className="w-full p-3 bg-white border border-[#DED3C4] rounded-xl text-xs outline-none focus:border-[#C5A059] resize-none"
+                />
+                {errors.description && <p className="text-[10px] text-red-500">{errors.description.message}</p>}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Pricing & Stock Card */}
+          <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-6 shadow-xs">
+            <CardHeader className="p-0 mb-5">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                Valuation & Vault Allocation
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="space-y-1.5">
+                <Label htmlFor="price" className="text-xs font-semibold text-gray-800">
+                  Regular Price (₹) *
+                </Label>
+                <Input
+                  id="price"
+                  type="number"
+                  {...register('price')}
+                  placeholder="85000"
+                  className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                />
+                {errors.price && <p className="text-[10px] text-red-500">{errors.price.message}</p>}
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="discountPrice" className="text-xs font-semibold text-gray-800">
+                  Privilege Offer Price (₹)
+                </Label>
+                <Input
+                  id="discountPrice"
+                  type="number"
+                  {...register('discountPrice')}
+                  placeholder="74999 (optional)"
+                  className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <Label htmlFor="stock" className="text-xs font-semibold text-gray-800">
+                  Stock Units *
+                </Label>
+                <Input
+                  id="stock"
+                  type="number"
+                  {...register('stock')}
+                  placeholder="10"
+                  className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                />
+                {errors.stock && <p className="text-[10px] text-red-500">{errors.stock.message}</p>}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Classification & Metallurgy */}
+          <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-6 shadow-xs">
+            <CardHeader className="p-0 mb-5">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                Metallurgy & Gemmology Specifications
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="space-y-1.5">
+                <Label htmlFor="category" className="text-xs font-semibold text-gray-800">
+                  Category *
+                </Label>
+                <select
+                  id="category"
+                  {...register('category')}
+                  className="w-full h-10 px-3 bg-white border border-[#DED3C4] rounded-xl text-xs text-gray-800 outline-none focus:border-[#C5A059]"
+                >
                   <option value="">Select Category</option>
                   {categories.map((c) => (
                     <option key={c._id} value={c._id}>{c.name}</option>
                   ))}
                 </select>
-                {errors.category && <p className="text-red-400 text-xs mt-1">{errors.category.message}</p>}
+                {errors.category && <p className="text-[10px] text-red-500">{errors.category.message}</p>}
               </div>
-            </div>
 
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Description *</label>
-              <textarea {...register('description')} className={`input-gold h-32 resize-none ${errors.description ? 'border-red-400' : ''}`} />
-              {errors.description && <p className="text-red-400 text-xs mt-1">{errors.description.message}</p>}
-            </div>
-          </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="material" className="text-xs font-semibold text-gray-800">
+                  Metal Material *
+                </Label>
+                <select
+                  id="material"
+                  {...register('material')}
+                  className="w-full h-10 px-3 bg-white border border-[#DED3C4] rounded-xl text-xs text-gray-800 outline-none focus:border-[#C5A059]"
+                >
+                  <option value="18k Yellow Gold">18k Yellow Gold</option>
+                  <option value="18k Rose Gold">18k Rose Gold</option>
+                  <option value="18k White Gold">18k White Gold</option>
+                  <option value="22k Yellow Gold">22k Yellow Gold</option>
+                  <option value="950 Platinum">950 Platinum</option>
+                </select>
+              </div>
 
-          {/* Pricing & Stock */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Pricing & Inventory</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Original Price (₹) *</label>
-                <input type="number" {...register('price')} className={`input-gold ${errors.price ? 'border-red-400' : ''}`} />
-                {errors.price && <p className="text-red-400 text-xs mt-1">{errors.price.message}</p>}
+              <div className="space-y-1.5">
+                <Label htmlFor="stone" className="text-xs font-semibold text-gray-800">
+                  Primary Gemstone
+                </Label>
+                <Input
+                  id="stone"
+                  {...register('stone')}
+                  placeholder="e.g. Certified Solitaire"
+                  className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                />
               </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Discount Price (₹)</label>
-                <input type="number" {...register('discountPrice')} className="input-gold" />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Stock Count *</label>
-                <input type="number" {...register('stock')} className={`input-gold ${errors.stock ? 'border-red-400' : ''}`} />
-                {errors.stock && <p className="text-red-400 text-xs mt-1">{errors.stock.message}</p>}
-              </div>
-            </div>
-          </div>
 
-          {/* Attributes */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Specifications & Badges</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Material *</label>
-                <input {...register('material')} placeholder="e.g. Gold" className="input-gold" />
+              <div className="space-y-1.5">
+                <Label htmlFor="weight" className="text-xs font-semibold text-gray-800">
+                  Gross Weight (Grams)
+                </Label>
+                <Input
+                  id="weight"
+                  type="number"
+                  step="0.01"
+                  {...register('weight')}
+                  placeholder="6.5"
+                  className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                />
               </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Purity</label>
-                <input {...register('purity')} placeholder="e.g. 18K / 925" className="input-gold" />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Weight (g)</label>
-                <input type="number" step="0.01" {...register('weight')} className="input-gold" />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Stone</label>
-                <input {...register('stone')} placeholder="e.g. Diamond" className="input-gold" />
-              </div>
-            </div>
+            </CardContent>
+          </Card>
 
-            <div className="flex flex-wrap gap-6 pt-4 border-t border-gray-50">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('isFeatured')} className="accent-[#C5A059] h-4 w-4" />
-                <span className="text-sm font-medium text-gray-700">Featured Product</span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('isNewArrival')} className="accent-[#C5A059] h-4 w-4" />
-                <span className="text-sm font-medium text-gray-700">New Arrival</span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" {...register('isBestSeller')} className="accent-[#C5A059] h-4 w-4" />
-                <span className="text-sm font-medium text-gray-700">Best Seller</span>
-              </label>
-            </div>
-          </div>
+          {/* Visual Photography Card */}
+          <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-6 shadow-xs">
+            <CardHeader className="p-0 mb-4">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                Photography & Lookbook Visuals
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0 space-y-3">
+              <div className="space-y-1.5">
+                <Label htmlFor="custom-url" className="text-xs font-semibold text-gray-800">
+                  Direct Image URL (Instant Preview)
+                </Label>
+                <Input
+                  id="custom-url"
+                  value={customImageUrl}
+                  onChange={(e) => setCustomImageUrl(e.target.value)}
+                  placeholder="https://images.unsplash.com/..."
+                  className="text-xs h-10 rounded-xl border-[#DED3C4]"
+                />
+              </div>
 
-          {/* Media */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#DED3C4] space-y-4">
-            <h2 className="font-semibold text-gray-850 text-base border-b border-[#DED3C4] pb-3">Product Images *</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-              {previews.map((preview, idx) => (
-                <div key={idx} className="relative aspect-square rounded-xl overflow-hidden border border-[#DED3C4] group">
-                  <img src={preview} alt="" className="w-full h-full object-cover" />
-                  <button
-                    type="button"
-                    onClick={() => removeImage(idx)}
-                    className="absolute inset-0 bg-[#3E2024]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <Trash2 size={16} className="text-white" />
-                  </button>
+              <div className="border-2 border-dashed border-[#DED3C4] rounded-2xl p-6 text-center hover:border-[#C5A059] transition-colors bg-amber-50/20">
+                <Upload size={24} className="text-[#8C6D2D] mx-auto mb-2" />
+                <p className="text-xs font-medium text-gray-800">Drop jewellery photography here or browse</p>
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="mt-2 text-xs text-[#756A63]"
+                />
+              </div>
+
+              {customImageUrl && (
+                <div className="w-24 h-24 rounded-xl overflow-hidden border border-[#DED3C4]">
+                  <img src={customImageUrl} alt="Custom Preview" className="w-full h-full object-cover" />
                 </div>
-              ))}
-              <label className="aspect-square rounded-xl border-2 border-dashed border-[#DED3C4] hover:border-[#C5A059] flex flex-col items-center justify-center cursor-pointer transition-colors bg-gray-50/50">
-                <Upload size={20} className="text-[#756A63] mb-1" />
-                <span className="text-[10px] text-[#756A63] font-medium">Upload Image</span>
-                <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />
-              </label>
-            </div>
-          </div>
+              )}
+            </CardContent>
+          </Card>
 
-          <div className="flex gap-4">
-            <motion.button
-              type="submit"
-              disabled={addMutation.isPending}
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              className="btn-gold rounded-xl py-3 px-8 text-sm flex items-center gap-2 disabled:opacity-60"
-            >
-              {addMutation.isPending ? 'Saving...' : '✓ Create Product'}
-            </motion.button>
-            <button
+          {/* Merchandising Badges */}
+          <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-6 shadow-xs">
+            <CardHeader className="p-0 mb-4">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                Merchandising Badges
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0 flex flex-wrap gap-6 text-xs">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" {...register('isNewArrival')} className="accent-[#C5A059] w-4 h-4" />
+                <span className="font-medium text-gray-800">New In Showcase</span>
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" {...register('isFeatured')} className="accent-[#C5A059] w-4 h-4" />
+                <span className="font-medium text-gray-800">Editorial Featured</span>
+              </label>
+
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" {...register('isBestSeller')} className="accent-[#C5A059] w-4 h-4" />
+                <span className="font-medium text-gray-800">Atelier Best Seller</span>
+              </label>
+            </CardContent>
+          </Card>
+
+          {/* Submit Actions */}
+          <div className="flex items-center justify-end gap-3 pt-2">
+            <Button
               type="button"
+              variant="outline"
               onClick={() => navigate('/admin/products')}
-              className="btn-outline-gold rounded-xl py-3 px-8 text-sm"
+              className="text-xs h-11 px-6 rounded-xl"
             >
               Cancel
-            </button>
+            </Button>
+            <Button
+              type="submit"
+              disabled={addMutation.isPending}
+              className="bg-[#1F1517] hover:bg-[#2B0E14] text-[#C5A059] font-semibold text-xs tracking-wider uppercase h-11 px-8 rounded-xl shadow-md cursor-pointer"
+            >
+              {addMutation.isPending ? 'Publishing...' : '✨ Publish Piece to Store'}
+            </Button>
           </div>
         </form>
       </div>

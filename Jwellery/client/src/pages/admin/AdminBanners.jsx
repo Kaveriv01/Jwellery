@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
-import { Plus, Trash2, Edit2, Upload, Link as LinkIcon, Layers } from 'lucide-react';
+import { Plus, Trash2, Edit2, Upload, Layers, Image as ImageIcon } from 'lucide-react';
 import { bannerService } from '../../services/otherServices';
 import { toast } from 'sonner';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function AdminBanners() {
   const queryClient = useQueryClient();
@@ -15,8 +20,7 @@ export default function AdminBanners() {
   const [linkText, setLinkText] = useState('');
   const [type, setType] = useState('hero');
   const [position, setPosition] = useState(0);
-  const [imageFile, setImageFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
 
   const { data, isLoading } = useQuery({
     queryKey: ['admin-banners'],
@@ -29,7 +33,7 @@ export default function AdminBanners() {
     mutationFn: (formData) => bannerService.create(formData),
     onSuccess: () => {
       queryClient.invalidateQueries(['admin-banners']);
-      toast.success('Banner created successfully.');
+      toast.success('Campaign banner created successfully.');
       resetForm();
     },
     onError: () => toast.error('Failed to create banner.'),
@@ -63,8 +67,7 @@ export default function AdminBanners() {
     setLinkText('');
     setType('hero');
     setPosition(0);
-    setImageFile(null);
-    setImagePreview(null);
+    setImageUrl('');
   };
 
   const handleEdit = (banner) => {
@@ -76,171 +79,252 @@ export default function AdminBanners() {
     setLinkText(banner.linkText || '');
     setType(banner.type || 'hero');
     setPosition(banner.position || 0);
-    setImagePreview(banner.image?.url || null);
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      setImagePreview(URL.createObjectURL(file));
-    }
+    setImageUrl(banner.image?.url || '');
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!editingBanner && !imageFile) {
-      toast.error('Image file is required for new banners.');
+    if (!title.trim()) {
+      toast.error('Banner title is required');
       return;
     }
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('subtitle', subtitle);
-    formData.append('description', description);
-    formData.append('link', link);
-    formData.append('linkText', linkText);
-    formData.append('type', type);
-    formData.append('position', position);
-
-    if (imageFile) {
-      formData.append('image', imageFile);
-    }
+    const payload = {
+      title,
+      subtitle,
+      description,
+      link: link || '/products',
+      linkText: linkText || 'Explore',
+      type,
+      position: Number(position),
+      imageUrl: imageUrl || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1400'
+    };
 
     if (editingBanner) {
-      updateMutation.mutate({ id: editingBanner._id, formData });
+      updateMutation.mutate({ id: editingBanner._id, formData: payload });
     } else {
-      createMutation.mutate(formData);
+      createMutation.mutate(payload);
     }
   };
 
-  const handleDelete = (id) => {
-    if (window.confirm('Are you sure you want to delete this banner?')) {
+  const handleDelete = (id, bTitle) => {
+    if (window.confirm(`Delete the "${bTitle}" campaign banner?`)) {
       deleteMutation.mutate(id);
     }
   };
 
   return (
     <>
-      <Helmet><title>Banners & Promo — Admin | Jwellery</title></Helmet>
+      <Helmet><title>Editorial Banners & Highlights — Admin Suite | Tarini</title></Helmet>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Form Column */}
-        <div className="bg-white rounded-2xl p-5 border border-[#DED3C4] shadow-sm h-fit">
-          <h2 className="font-serif text-xl text-gray-900 mb-4 flex items-center gap-2">
-            <Layers size={18} className="text-[#C5A059]" />
-            {editingBanner ? 'Edit Banner' : 'Create Banner'}
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Banner Type</label>
-              <select value={type} onChange={(e) => setType(e.target.value)} className="input-gold cursor-pointer">
-                <option value="hero">Hero Slider (Home)</option>
-                <option value="offer">Promo/Offer Split</option>
-              </select>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Title</label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="input-gold" />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Subtitle</label>
-                <input type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)} className="input-gold" />
-              </div>
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Description</label>
-              <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="input-gold h-16 resize-none" />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Link Path / URL</label>
-                <input type="text" value={link} onChange={(e) => setLink(e.target.value)} placeholder="/category/rings" className="input-gold" />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-700 block mb-1.5">Link CTA Text</label>
-                <input type="text" value={linkText} onChange={(e) => setLinkText(e.target.value)} placeholder="Shop Now" className="input-gold" />
-              </div>
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Position (sorting)</label>
-              <input type="number" value={position} onChange={(e) => setPosition(Number(e.target.value))} className="input-gold" />
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1.5">Banner Image</label>
-              <div className="flex items-center gap-3">
-                {imagePreview && (
-                  <img src={imagePreview} alt="" className="w-12 h-12 object-cover rounded-lg border border-[#DED3C4]" />
-                )}
-                <label className="flex-1 border-2 border-dashed border-[#DED3C4] hover:border-[#C5A059] rounded-lg p-3 text-center cursor-pointer transition-colors bg-gray-50/50 flex items-center justify-center gap-2">
-                  <Upload size={16} className="text-[#756A63]" />
-                  <span className="text-xs text-[#756A63] font-medium">Upload File</span>
-                  <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
-                </label>
-              </div>
-            </div>
-
-            <div className="flex gap-2 pt-2">
-              <button
-                type="submit"
-                disabled={createMutation.isPending || updateMutation.isPending}
-                className="flex-1 btn-gold rounded-xl py-2.5 text-xs font-semibold"
-              >
-                {editingBanner ? 'Save Changes' : '✓ Create Banner'}
-              </button>
-              {editingBanner && (
-                <button type="button" onClick={resetForm} className="btn-outline-gold rounded-xl py-2.5 px-4 text-xs">
-                  Cancel
-                </button>
-              )}
-            </div>
-          </form>
+      <div className="space-y-6 max-w-7xl mx-auto">
+        {/* Title */}
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="font-serif text-2xl sm:text-3xl text-gray-900 font-light tracking-wide">
+              Editorial Campaigns & Lookbook Banners
+            </h1>
+            <Badge variant="gold" className="text-[10px]">
+              {banners.length} Campaigns
+            </Badge>
+          </div>
+          <p className="text-xs sm:text-sm text-[#756A63] mt-1 font-light">
+            Manage storefront hero slides, editorial spotlights, and promotional showcases.
+          </p>
         </div>
 
-        {/* List Column */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#DED3C4] shadow-sm overflow-hidden">
-          <h2 className="font-serif text-xl text-gray-900 p-5 border-b border-[#DED3C4]">Banners Directory</h2>
+        {/* 2-Column: Form on Left, Banners on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Form Card using shadcn Card */}
+          <Card className="border border-[#DED3C4]/60 bg-white rounded-2xl p-6 shadow-xs h-fit">
+            <CardHeader className="p-0 mb-4">
+              <CardTitle className="font-serif text-lg text-gray-900 font-normal">
+                {editingBanner ? 'Edit Campaign Banner' : 'Create Campaign Banner'}
+              </CardTitle>
+              <CardDescription className="text-xs text-[#756A63]">
+                Upload high-resolution photography and call-to-actions
+              </CardDescription>
+            </CardHeader>
 
-          {isLoading ? (
-            <div className="p-5 space-y-2">
-              {[...Array(3)].map((_, i) => <div key={i} className="skeleton h-16 rounded-xl animate-pulse" />)}
-            </div>
-          ) : banners.length === 0 ? (
-            <div className="p-10 text-center text-[#756A63]">No banners found.</div>
-          ) : (
-            <div className="divide-y divide-gray-100">
-              {banners.map((b) => (
-                <div key={b._id} className="flex items-center justify-between p-4 hover:bg-gray-50/50 transition-colors">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <img
-                      src={b.image?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=500'}
-                      alt={b.title}
-                      className="w-16 h-10 object-cover rounded-lg border border-[#DED3C4]"
-                    />
-                    <div className="min-w-0">
-                      <p className="font-semibold text-gray-800 text-sm truncate">{b.title || 'Untitled Banner'}</p>
-                      <p className="text-xs text-[#756A63] capitalize">{b.type} | Position: {b.position}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <button
-                      onClick={() => handleEdit(b)}
-                      className="p-2 hover:bg-gray-100 rounded-lg text-[#756A63] hover:text-[#C5A059] transition-colors"
-                    >
-                      <Edit2 size={15} />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(b._id)}
-                      className="p-2 hover:bg-red-50 rounded-lg text-gray-300 hover:text-red-500 transition-colors"
-                    >
-                      <Trash2 size={15} />
-                    </button>
-                  </div>
+            <form onSubmit={handleSubmit} className="space-y-3.5">
+              <div className="space-y-1">
+                <Label htmlFor="ban-title" className="text-xs font-semibold text-gray-800">
+                  Headline Title
+                </Label>
+                <Input
+                  id="ban-title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="e.g. Tarini Bridal Symphony 2026"
+                  required
+                  className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label htmlFor="ban-sub" className="text-xs font-semibold text-gray-800">
+                  Subtitle
+                </Label>
+                <Input
+                  id="ban-sub"
+                  value={subtitle}
+                  onChange={(e) => setSubtitle(e.target.value)}
+                  placeholder="e.g. Rare Solitaires & Heritage Kundan"
+                  className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label htmlFor="ban-desc" className="text-xs font-semibold text-gray-800">
+                  Description
+                </Label>
+                <textarea
+                  id="ban-desc"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Short editorial copy..."
+                  rows={2}
+                  className="w-full p-2.5 bg-white border border-[#DED3C4] rounded-xl text-xs outline-none focus:border-[#C5A059] resize-none"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <Label htmlFor="ban-type" className="text-xs font-semibold text-gray-800">
+                    Banner Placement
+                  </Label>
+                  <select
+                    id="ban-type"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                    className="w-full h-9 px-3 bg-white border border-[#DED3C4] rounded-xl text-xs text-gray-800 outline-none focus:border-[#C5A059]"
+                  >
+                    <option value="hero">Hero Showcase</option>
+                    <option value="promo">Promotional Banner</option>
+                    <option value="editorial">Editorial Spotlight</option>
+                  </select>
                 </div>
+
+                <div className="space-y-1">
+                  <Label htmlFor="ban-link-text" className="text-xs font-semibold text-gray-800">
+                    Button Label
+                  </Label>
+                  <Input
+                    id="ban-link-text"
+                    value={linkText}
+                    onChange={(e) => setLinkText(e.target.value)}
+                    placeholder="Explore Collection"
+                    className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <Label htmlFor="ban-link" className="text-xs font-semibold text-gray-800">
+                  Destination Link
+                </Label>
+                <Input
+                  id="ban-link"
+                  value={link}
+                  onChange={(e) => setLink(e.target.value)}
+                  placeholder="/collections"
+                  className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label htmlFor="ban-img" className="text-xs font-semibold text-gray-800">
+                  Photography URL
+                </Label>
+                <Input
+                  id="ban-img"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  placeholder="https://images.unsplash.com/..."
+                  className="text-xs h-9 rounded-xl border-[#DED3C4]"
+                />
+              </div>
+
+              {imageUrl && (
+                <div className="w-full h-28 rounded-xl overflow-hidden border border-[#DED3C4]">
+                  <img src={imageUrl} alt="Banner Preview" className="w-full h-full object-cover" />
+                </div>
+              )}
+
+              <div className="pt-2 flex items-center gap-2">
+                <Button
+                  type="submit"
+                  disabled={createMutation.isPending || updateMutation.isPending}
+                  className="flex-1 bg-[#1F1517] hover:bg-[#2B0E14] text-[#C5A059] font-semibold text-xs tracking-wider uppercase h-10 rounded-xl cursor-pointer"
+                >
+                  {editingBanner ? 'Save Changes' : '+ Publish Banner'}
+                </Button>
+                {editingBanner && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={resetForm}
+                    className="h-10 text-xs rounded-xl cursor-pointer"
+                  >
+                    Cancel
+                  </Button>
+                )}
+              </div>
+            </form>
+          </Card>
+
+          {/* Existing Banners Showcase on Right */}
+          <div className="lg:col-span-2 space-y-4">
+            <h2 className="font-serif text-lg text-gray-900 font-normal">Active Showcases</h2>
+            <div className="space-y-4">
+              {banners.map((b) => (
+                <Card key={b._id} className="border border-[#DED3C4]/60 bg-white rounded-2xl overflow-hidden shadow-xs hover:border-[#C5A059]/60 transition-all flex flex-col md:flex-row">
+                  <div className="relative md:w-56 h-36 md:h-auto overflow-hidden bg-gray-100 flex-shrink-0">
+                    <img
+                      src={b.image?.url || 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1000'}
+                      alt={b.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <CardContent className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <Badge variant="gold" className="text-[9px] uppercase">
+                          {b.type || 'Hero'}
+                        </Badge>
+                        <span className="text-[10px] text-gray-400 font-mono">Link: {b.link || '/products'}</span>
+                      </div>
+                      <h3 className="font-serif text-lg font-light text-gray-900">{b.title}</h3>
+                      {b.subtitle && <p className="text-xs text-[#8C6D2D] font-medium">{b.subtitle}</p>}
+                      {b.description && <p className="text-xs text-[#756A63] mt-1 font-light line-clamp-2">{b.description}</p>}
+                    </div>
+
+                    <div className="flex items-center justify-between pt-3 mt-3 border-t border-gray-100">
+                      <span className="text-xs font-semibold text-gray-700">CTA: "{b.linkText || 'Explore'}"</span>
+                      <div className="flex items-center gap-1">
+                        <Button
+                          variant="ghost"
+                          size="icon-sm"
+                          onClick={() => handleEdit(b)}
+                          className="text-[#8C6D2D] hover:bg-amber-50"
+                        >
+                          <Edit2 size={13} />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon-sm"
+                          onClick={() => handleDelete(b._id, b.title)}
+                          className="text-gray-400 hover:text-red-600 hover:bg-red-50"
+                        >
+                          <Trash2 size={13} />
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </>

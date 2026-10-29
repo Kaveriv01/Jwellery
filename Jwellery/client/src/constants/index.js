@@ -279,6 +279,8 @@ export const TRUST_FEATURES = [
 
 export const CONTACT_DETAILS = {
   email: 'care@tarinijewellers.com',
-  phone: '+91 98765 43210',
-  hours: 'Monday to Saturday, 10:00 AM - 6:00 PM'
+  phone: '+91 86198 59463',
+  whatsapp: '918619859463',
+  whatsappDisplay: '+91 86198 59463',
+  hours: 'Monday to Saturday, 10:00 AM - 7:00 PM (IST)'
 };

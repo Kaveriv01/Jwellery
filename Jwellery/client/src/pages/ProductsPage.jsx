@@ -8,6 +8,8 @@ import ProductCard from '../components/product/ProductCard';
 import { productService } from '../services/productService';
 import { categoryService } from '../services/otherServices';
 import { SORT_OPTIONS, MATERIAL_OPTIONS, GENDER_OPTIONS, PRICE_RANGES } from '../constants';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 
 const ITEMS_PER_PAGE = 48;
 
@@ -338,11 +340,85 @@ export default function ProductsPage() {
       {/* TITLE & PRODUCT GRID SECTION */}
       <div className="container-luxury py-8 lg:py-10">
         {/* Title row */}
-        <div className="mb-6">
+        <div className="mb-4">
            <h2 className="text-[20px] md:text-[24px] text-[#111] font-[400]" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
              {currentCategoryName} <span className="text-[#756A63] text-[16px] md:text-[18px]">({pagination.totalItems || products.length} Designs)</span>
            </h2>
         </div>
+
+        {/* Active Filters Row with shadcn Badges */}
+        {(categoryId || material || gender || minPrice || maxPrice || inStock === 'true' || search) && (
+          <div className="flex flex-wrap items-center gap-2 mb-6 p-3 bg-[#FAF8F5] rounded border border-[#C5A059]/25">
+            <span className="text-[11px] uppercase font-bold tracking-wider text-[#756A63] mr-1">Active Filters:</span>
+            
+            {categoryId && (
+              <Badge 
+                variant="gold" 
+                className="cursor-pointer gap-1.5 py-1 px-2.5 text-[11px] hover:bg-[#C5A059] hover:text-[#160B0E] transition-colors"
+                onClick={() => updateParam('category', '')}
+              >
+                Category: {categoryName || 'Selected'} <X size={12} />
+              </Badge>
+            )}
+
+            {material && (
+              <Badge 
+                variant="gold" 
+                className="cursor-pointer gap-1.5 py-1 px-2.5 text-[11px] hover:bg-[#C5A059] hover:text-[#160B0E] transition-colors"
+                onClick={() => updateParam('material', '')}
+              >
+                Material: {material} <X size={12} />
+              </Badge>
+            )}
+
+            {gender && (
+              <Badge 
+                variant="gold" 
+                className="cursor-pointer gap-1.5 py-1 px-2.5 text-[11px] hover:bg-[#C5A059] hover:text-[#160B0E] transition-colors"
+                onClick={() => updateParam('gender', '')}
+              >
+                Gender: {gender} <X size={12} />
+              </Badge>
+            )}
+
+            {(minPrice || maxPrice) && (
+              <Badge 
+                variant="gold" 
+                className="cursor-pointer gap-1.5 py-1 px-2.5 text-[11px] hover:bg-[#C5A059] hover:text-[#160B0E] transition-colors"
+                onClick={() => { updateParam('minPrice', ''); updateParam('maxPrice', ''); }}
+              >
+                Price: {minPrice ? `₹${minPrice}` : '₹0'} - {maxPrice ? `₹${maxPrice}` : 'Above'} <X size={12} />
+              </Badge>
+            )}
+
+            {inStock === 'true' && (
+              <Badge 
+                variant="gold" 
+                className="cursor-pointer gap-1.5 py-1 px-2.5 text-[11px] hover:bg-[#C5A059] hover:text-[#160B0E] transition-colors"
+                onClick={() => updateParam('inStock', '')}
+              >
+                In Stock Only <X size={12} />
+              </Badge>
+            )}
+
+            {search && (
+              <Badge 
+                variant="outline" 
+                className="cursor-pointer gap-1.5 py-1 px-2.5 text-[11px] border-[#C5A059] text-[#160B0E]"
+                onClick={() => updateParam('search', '')}
+              >
+                Search: "{search}" <X size={12} />
+              </Badge>
+            )}
+
+            <button 
+              onClick={clearAllFilters} 
+              className="text-[11px] uppercase tracking-wider text-[#C5A059] hover:text-[#9A7B38] font-bold ml-auto transition-colors"
+            >
+              Clear All Filters
+            </button>
+          </div>
+        )}
 
         {/* Grid Area */}
         {isLoading || isFetching ? (
@@ -413,11 +489,11 @@ export default function ProductsPage() {
               <div className="overflow-y-auto p-5 space-y-6 pb-24">
                 {/* Mobile Sort */}
                 <div>
-                  <h3 className="text-[13px] font-[600] uppercase tracking-wider text-[#111] mb-3">Sort By</h3>
+                  <h3 className="text-[12px] font-bold uppercase tracking-wider text-[#160B0E] mb-3">Sort By</h3>
                   <select
                     value={sortBy}
                     onChange={(e) => updateParam('sortBy', e.target.value)}
-                    className="w-full border border-[#DED3C4] rounded-[4px] bg-transparent text-[14px] font-[500] py-3 px-3 outline-none focus:border-black"
+                    className="w-full border border-[#C5A059]/40 rounded-lg bg-white text-[13px] font-medium py-3 px-3 outline-none focus:ring-2 focus:ring-[#C5A059]"
                   >
                     {SORT_OPTIONS.map((opt) => (
                       <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -427,11 +503,11 @@ export default function ProductsPage() {
 
                 {/* Mobile Filters */}
                 <div>
-                  <h3 className="text-[13px] font-[600] uppercase tracking-wider text-[#111] mb-3">Category</h3>
+                  <h3 className="text-[12px] font-bold uppercase tracking-wider text-[#160B0E] mb-3">Category</h3>
                   <div className="flex flex-col gap-2">
                      {categoryOptions.map((opt, i) => (
                         <label key={i} className="flex items-center gap-3 py-2 cursor-pointer">
-                           <input type="checkbox" checked={opt.checked} onChange={opt.onChange} className="w-4 h-4 accent-[#E8345E]" />
+                           <input type="checkbox" checked={opt.checked} onChange={opt.onChange} className="w-4 h-4 accent-[#C5A059]" />
                            <span className="text-[14px] text-gray-700">{opt.label}</span>
                         </label>
                      ))}
@@ -439,11 +515,23 @@ export default function ProductsPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-[13px] font-[600] uppercase tracking-wider text-[#111] mb-3">Price</h3>
+                  <h3 className="text-[12px] font-bold uppercase tracking-wider text-[#160B0E] mb-3">Price</h3>
                   <div className="flex flex-col gap-2">
                      {priceOptions.map((opt, i) => (
                         <label key={i} className="flex items-center gap-3 py-2 cursor-pointer">
-                           <input type="checkbox" checked={opt.checked} onChange={opt.onChange} className="w-4 h-4 accent-[#E8345E]" />
+                           <input type="checkbox" checked={opt.checked} onChange={opt.onChange} className="w-4 h-4 accent-[#C5A059]" />
+                           <span className="text-[14px] text-gray-700">{opt.label}</span>
+                        </label>
+                     ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-[12px] font-bold uppercase tracking-wider text-[#160B0E] mb-3">Material</h3>
+                  <div className="flex flex-col gap-2">
+                     {materialOptions.map((opt, i) => (
+                        <label key={i} className="flex items-center gap-3 py-2 cursor-pointer">
+                           <input type="checkbox" checked={opt.checked} onChange={opt.onChange} className="w-4 h-4 accent-[#C5A059]" />
                            <span className="text-[14px] text-gray-700">{opt.label}</span>
                         </label>
                      ))}
@@ -451,9 +539,21 @@ export default function ProductsPage() {
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-[#DED3C4] flex gap-3">
-                 <button onClick={clearAllFilters} className="flex-1 py-3 text-[13px] font-semibold text-gray-700 bg-gray-100 rounded-[4px]">Clear All</button>
-                 <button onClick={() => setMobileFilterOpen(false)} className="flex-1 py-3 text-[13px] font-semibold text-white bg-[#E8345E] rounded-[4px]">Apply</button>
+              <div className="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-[#DED3C4] flex gap-3 shadow-lg">
+                 <Button 
+                   variant="outline" 
+                   onClick={clearAllFilters} 
+                   className="flex-1 py-3 text-xs uppercase tracking-wider font-bold border-[#C5A059]/40 text-[#160B0E]"
+                 >
+                   Clear All
+                 </Button>
+                 <Button 
+                   variant="gold" 
+                   onClick={() => setMobileFilterOpen(false)} 
+                   className="flex-1 py-3 text-xs uppercase tracking-wider font-bold shadow-md"
+                 >
+                   Apply Filters
+                 </Button>
               </div>
             </motion.div>
           </motion.div>

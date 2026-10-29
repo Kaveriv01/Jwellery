@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import CartDrawer from '../components/cart/CartDrawer';
+import WhatsAppButton from '../components/common/WhatsAppButton';
 import TariniLoader from '../components/home/TariniLoader';
 
 
@@ -42,6 +43,7 @@ export default function RootLayout() {
         </main>
         <Footer />
         <CartDrawer />
+        <WhatsAppButton />
       </div>
     </>
   );

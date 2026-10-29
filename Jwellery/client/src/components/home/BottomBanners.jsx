@@ -27,7 +27,7 @@ export default function BottomBanners() {
             <img
               src="/images/home/summer-sale-new.png"
               alt="Summer Sale"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 group-hover:from-black/85 transition-all duration-500" />
@@ -72,7 +72,7 @@ export default function BottomBanners() {
             <img
               src="/images/home/join-club-new.png"
               alt="Join the Club"
-              className="absolute inset-0 w-full h-full object-cover opacity-35 transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              className="absolute inset-0 w-full h-full object-cover opacity-35"
               loading="lazy"
             />
             {/* Geometric gold accent */}

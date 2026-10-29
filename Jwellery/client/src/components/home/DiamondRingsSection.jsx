@@ -157,12 +157,12 @@ export default function DiamondRingsSection() {
           <div className="flex items-center gap-4">
             <div className="w-[2px] h-8 bg-[#1F1517]" />
             <div>
-              <h2 className="text-[22px] sm:text-[26px] lg:text-[32px] font-normal text-[#1F1517] leading-tight flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="font-cinzel text-[22px] sm:text-[26px] lg:text-[30px] font-normal text-[#1F1517] leading-tight flex items-center gap-2 uppercase tracking-[0.05em]">
                 Diamond Rings
-                <Gem size={18} className="text-[#C5A059]" />
+                <Gem size={17} className="text-[#C5A059]" />
               </h2>
-              <p className="text-[11px] text-[#1F1517] mt-1 font-medium tracking-[0.1em] uppercase" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>
-                GIA Certified · BIS Hallmarked · Free Engraving
+              <p className="font-montserrat text-[10px] sm:text-[11px] text-[#756A63] mt-1 font-medium tracking-[0.15em] uppercase">
+                IGI Certified · BIS Hallmarked · Free Insured Shipping
                 {total > 0 && <span className="ml-1.5 text-[#1F1517] font-semibold">({total} designs)</span>}
               </p>
             </div>
@@ -170,13 +170,12 @@ export default function DiamondRingsSection() {
 
           <div className="flex items-center gap-3">
             {/* Sort Dropdown */}
-            <div className="flex items-center gap-2 bg-[#FDFBF7] border border-[#EAE6DF] rounded-[2px] px-3 py-1.5">
+            <div className="flex items-center gap-2 bg-[#FDFBF7] border border-[#EAE6DF] rounded-[2px] px-3 py-1.5 font-montserrat">
               <SlidersHorizontal size={12} className="text-[#746760]" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-[10px] font-medium text-[#1F1517] bg-transparent outline-none cursor-pointer tracking-[0.1em] uppercase"
-                style={{ fontFamily: "'Nunito Sans', sans-serif" }}
+                className="text-[10px] font-semibold text-[#1F1517] bg-transparent outline-none cursor-pointer tracking-[0.1em] uppercase font-montserrat"
               >
                 {SORT_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
