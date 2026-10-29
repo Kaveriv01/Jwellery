@@ -128,34 +128,34 @@ export default function RegisterPage() {
 
           <div className="relative z-10 max-w-md">
             <Badge variant="gold" className="mb-4 text-[10px] tracking-widest uppercase">
-              ✦ Exclusive Patron Circle ✦
+              ✦ Exclusive Jewellery Club ✦
             </Badge>
             <h2 className="font-serif text-5xl text-[#FAF8F5] leading-tight mb-4 font-normal">
               Join Our<br />
-              <span className="italic font-light text-[#C5A059]">Private Salon</span>
+              <span className="italic font-light text-[#C5A059]">Jewellery Circle</span>
             </h2>
             <p className="text-[#DED3C4] text-xs leading-relaxed mb-6 font-sans">
-              Enjoy bespoke private appointments, preview high jewellery collections before release, and receive personalized concierge recommendations.
+              Get early access to pure gold, diamond and silver collections, exclusive festive offers, and personalized jewellery recommendations.
             </p>
 
             <div className="grid grid-cols-2 gap-3 text-xs text-[#FAF8F5]">
               <div className="flex items-center gap-2 bg-[#1A1215]/80 p-2.5 rounded border border-[#C5A059]/20">
                 <CheckCircle2 size={14} className="text-[#C5A059]" />
-                <span className="text-[11px]">BIS 916 Certified</span>
+                <span className="text-[11px]">BIS 916 Hallmark</span>
               </div>
               <div className="flex items-center gap-2 bg-[#1A1215]/80 p-2.5 rounded border border-[#C5A059]/20">
                 <CheckCircle2 size={14} className="text-[#C5A059]" />
-                <span className="text-[11px]">Insured Transit</span>
+                <span className="text-[11px]">Certified Diamonds</span>
               </div>
             </div>
           </div>
 
           <div className="relative z-10 pt-4 border-t border-[#C5A059]/20 flex items-center justify-between">
             <p className="text-[#C5A059] text-[11px] tracking-widest uppercase font-semibold">
-              ✦ WELCOME10 — 10% Off First Acquisition ✦
+              ✦ WELCOME10 — 10% Off Your First Jewellery Order ✦
             </p>
             <Link to="/products" className="text-xs text-[#FAF8F5] hover:text-[#C5A059] underline underline-offset-4">
-              Explore Catalog →
+              Explore Jewellery →
             </Link>
           </div>
         </div>
@@ -181,9 +181,9 @@ export default function RegisterPage() {
                 Create Account
               </h1>
               <p className="text-xs text-[#756A63]">
-                Already a patron?{' '}
+                Already have an account?{' '}
                 <Link to="/login" className="text-[#C5A059] hover:text-[#9A7B38] font-bold underline underline-offset-2">
-                  Sign in to your salon
+                  Sign in to your account
                 </Link>
               </p>
             </div>
