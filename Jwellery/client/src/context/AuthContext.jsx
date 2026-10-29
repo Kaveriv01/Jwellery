@@ -124,11 +124,25 @@ export const AuthProvider = ({ children }) => {
     });
   }, []);
 
+  const register = useCallback(async (formData) => {
+    const res = await authService.register(formData);
+    const registeredUser = res.data?.user;
+    if (registeredUser) {
+      setUser(registeredUser);
+      setIsAuthenticated(true);
+      localStorage.setItem('tarini_user', JSON.stringify(registeredUser));
+      if (res.data?.accessToken) {
+        sessionStorage.setItem('accessToken', res.data.accessToken);
+      }
+    }
+    return res.data;
+  }, []);
+
   const isAdmin = user?.role === 'admin';
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, isAuthenticated, isAdmin, login, loginAsAdminDemo, logout, fetchUser, updateUser }}
+      value={{ user, loading, isAuthenticated, isAdmin, login, register, loginAsAdminDemo, logout, fetchUser, updateUser }}
     >
       {children}
     </AuthContext.Provider>

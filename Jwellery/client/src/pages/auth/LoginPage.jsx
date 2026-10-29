@@ -35,13 +35,13 @@ export default function LoginPage() {
   const onSubmit = async (data) => {
     try {
       const res = await login(data);
-      setDisplayName(res.user.name || 'तारिणी');
+      setDisplayName(res.user?.name || 'तारिणी');
       setShowSplash(true);
 
-      // Navigate after 5 seconds (5000ms)
+      // Fast, snappy navigation (1200ms)
       setTimeout(() => {
         navigate(from, { replace: true });
-      }, 5000);
+      }, 1200);
     } catch (error) {
       const msg = getErrorMessage(error);
       if (error?.response?.data?.requiresVerification) {
@@ -359,9 +359,12 @@ export default function LoginPage() {
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: '90px' }}
-              transition={{ duration: 1.5, delay: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="h-0.5 mx-auto bg-gradient-to-r from-transparent via-[#C5A059] to-transparent shadow-[0_0_10px_#C5A059]"
             />
+            <p className="text-[10px] uppercase tracking-widest text-[#C5A059] opacity-75 mt-3">
+              Click anywhere to enter →
+            </p>
           </motion.div>
         </motion.div>
       )}

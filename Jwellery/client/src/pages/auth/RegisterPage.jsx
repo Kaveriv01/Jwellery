@@ -4,11 +4,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Eye, EyeOff, Gem, Mail, Lock, User, Phone } from 'lucide-react';
+import { Eye, EyeOff, Gem, Mail, Lock, User, Phone, Sparkles, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { authService } from '../../services/authService';
+import { useAuth } from '../../context/AuthContext';
 import { getErrorMessage } from '../../lib/utils';
 import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').max(50),
@@ -23,100 +26,268 @@ const schema = z.object({
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isQuickRegistering, setIsQuickRegistering] = useState(false);
+  const { register: registerUser } = useAuth();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+  const { register, handleSubmit, setValue, formState: { errors, isSubmitting } } = useForm({
     resolver: zodResolver(schema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+    }
   });
 
   const onSubmit = async (data) => {
     try {
-      const { data: res } = await authService.register({
+      const res = await registerUser({
         name: data.name,
         email: data.email,
         phone: data.phone,
         password: data.password,
       });
-      if (res.requiresVerification) {
+
+      if (res?.requiresVerification) {
         toast.success('Account created! Please verify your email.');
         navigate('/verify-otp', { state: { userId: res.userId } });
         return;
       }
 
-      if (res.accessToken) {
-        sessionStorage.setItem('accessToken', res.accessToken);
-      }
-      toast.success(`Account created! Welcome, ${res.user?.name || data.name}! 🎉`);
-      // Reload or navigate home so auth state refreshes
-      window.location.href = '/';
+      toast.success(`Welcome to Tarini, ${data.name}! Your account is active. 🎉`);
+      navigate('/', { replace: true });
     } catch (error) {
-      toast.error(getErrorMessage(error));
+      toast.error(getErrorMessage(error) || 'Registration could not be completed');
+    }
+  };
+
+  const handleQuickDemoRegister = async () => {
+    setIsQuickRegistering(true);
+    const demoPatrons = [
+      { name: 'Raj Patil', email: 'raj.patil@gmail.com', phone: '9875464756' },
+      { name: 'Pooja Kulkarni', email: 'pooja.kulkarni@gmail.com', phone: '9822012345' },
+      { name: 'Aarav Mehta', email: 'aarav.mehta@gmail.com', phone: '9819098765' }
+    ];
+    const patron = demoPatrons[Math.floor(Math.random() * demoPatrons.length)];
+    const uniqueEmail = patron.email.replace('@', `${Math.floor(100 + Math.random() * 900)}@`);
+
+    setValue('name', patron.name);
+    setValue('email', uniqueEmail);
+    setValue('phone', patron.phone);
+    setValue('password', 'Tarini@123');
+    setValue('confirmPassword', 'Tarini@123');
+
+    try {
+      await registerUser({
+        name: patron.name,
+        email: uniqueEmail,
+        phone: patron.phone,
+        password: 'Tarini@123'
+      });
+      toast.success(`Welcome, ${patron.name}! Account registered and active. 🎉`);
+      navigate('/', { replace: true });
+    } catch (err) {
+      toast.error('Quick registration failed');
+    } finally {
+      setIsQuickRegistering(false);
     }
   };
 
   return (
     <>
-      <Helmet><title>Create Account — Jwellery</title></Helmet>
-      <div className="min-h-screen flex">
-        {/* Left panel */}
-        <div className="hidden lg:flex lg:w-1/2 bg-[#1a1a1a] flex-col justify-between p-12 relative overflow-hidden">
+      <Helmet><title>Create Account — Tarini Fine Jewellery</title></Helmet>
+      <div className="min-h-screen flex bg-gradient-to-br from-[#FDFBF7] via-[#FDFBF7] to-[#F6EBD5] overflow-hidden">
+        {/* Left Editorial Brand Panel */}
+        <div className="hidden lg:flex lg:w-1/2 bg-[#160B0E] flex-col justify-between p-16 relative overflow-hidden border-r border-[#C5A059]/20">
           <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1603974372039-adc49044b6bd?w=900" alt="" className="w-full h-full object-cover opacity-20" />
+            <img 
+              src="https://images.unsplash.com/photo-1603974372039-adc49044b6bd?w=1200&auto=format&fit=crop&q=80" 
+              alt="Tarini High Jewellery Showcase" 
+              className="w-full h-full object-cover opacity-25 scale-105" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#160B0E] via-transparent to-[#160B0E]/80" />
           </div>
+
           <div className="relative z-10">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-700 flex items-center justify-center">
-                <Gem size={15} className="text-white" />
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C5A059] to-[#8C6D2D] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                <Gem size={18} className="text-[#160B0E]" />
               </div>
-              <span className="font-serif text-2xl text-white">JWELLERY</span>
+              <div>
+                <span className="font-serif text-2xl tracking-[0.2em] text-[#FAF8F5] block leading-none">
+                  TARINI
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.3em] text-[#C5A059] block mt-1">
+                  Fine Jewellery
+                </span>
+              </div>
             </Link>
           </div>
-          <div className="relative z-10">
-            <p className="font-serif text-5xl text-white leading-tight mb-4">Join Our<br />Circle</p>
-            <p className="text-white/50 text-sm">Get early access, exclusive offers, and personalized jewelry recommendations.</p>
+
+          <div className="relative z-10 max-w-md">
+            <Badge variant="gold" className="mb-4 text-[10px] tracking-widest uppercase">
+              ✦ Exclusive Patron Circle ✦
+            </Badge>
+            <h2 className="font-serif text-5xl text-[#FAF8F5] leading-tight mb-4 font-normal">
+              Join Our<br />
+              <span className="italic font-light text-[#C5A059]">Private Salon</span>
+            </h2>
+            <p className="text-[#DED3C4] text-xs leading-relaxed mb-6 font-sans">
+              Enjoy bespoke private appointments, preview high jewellery collections before release, and receive personalized concierge recommendations.
+            </p>
+
+            <div className="grid grid-cols-2 gap-3 text-xs text-[#FAF8F5]">
+              <div className="flex items-center gap-2 bg-[#1A1215]/80 p-2.5 rounded border border-[#C5A059]/20">
+                <CheckCircle2 size={14} className="text-[#C5A059]" />
+                <span className="text-[11px]">BIS 916 Certified</span>
+              </div>
+              <div className="flex items-center gap-2 bg-[#1A1215]/80 p-2.5 rounded border border-[#C5A059]/20">
+                <CheckCircle2 size={14} className="text-[#C5A059]" />
+                <span className="text-[11px]">Insured Transit</span>
+              </div>
+            </div>
           </div>
-          <p className="relative z-10 text-[#C5A059] text-xs tracking-widest">✦ WELCOME10 — 10% off your first order ✦</p>
+
+          <div className="relative z-10 pt-4 border-t border-[#C5A059]/20 flex items-center justify-between">
+            <p className="text-[#C5A059] text-[11px] tracking-widest uppercase font-semibold">
+              ✦ WELCOME10 — 10% Off First Acquisition ✦
+            </p>
+            <Link to="/products" className="text-xs text-[#FAF8F5] hover:text-[#C5A059] underline underline-offset-4">
+              Explore Catalog →
+            </Link>
+          </div>
         </div>
 
-        {/* Right panel */}
-        <div className="flex-1 flex items-center justify-center px-6 py-12 bg-white">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-md">
-            <Link to="/" className="flex items-center gap-2 mb-8 lg:hidden">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-700 flex items-center justify-center"><Gem size={15} className="text-white" /></div>
-              <span className="font-serif text-xl text-gray-900">JWELLERY</span>
+        {/* Right Form Container */}
+        <div className="flex-1 flex items-center justify-center px-6 py-12 lg:px-16 overflow-y-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.4 }} 
+            className="w-full max-w-md my-auto"
+          >
+            {/* Mobile Header */}
+            <Link to="/" className="flex items-center gap-2 mb-6 lg:hidden">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C5A059] to-[#8C6D2D] flex items-center justify-center">
+                <Gem size={15} className="text-[#160B0E]" />
+              </div>
+              <span className="font-serif text-xl tracking-widest text-[#160B0E]">TARINI</span>
             </Link>
-            <h1 className="font-serif text-3xl text-gray-900 mb-1">Create Account</h1>
-            <p className="text-sm text-[#756A63] mb-8">Already have an account? <Link to="/login" className="text-[#C5A059] hover:underline font-medium">Sign in</Link></p>
+
+            <div className="mb-6">
+              <h1 className="font-serif text-3xl font-normal text-[#160B0E] mb-1.5 tracking-wide">
+                Create Account
+              </h1>
+              <p className="text-xs text-[#756A63]">
+                Already a patron?{' '}
+                <Link to="/login" className="text-[#C5A059] hover:text-[#9A7B38] font-bold underline underline-offset-2">
+                  Sign in to your salon
+                </Link>
+              </p>
+            </div>
+
+            {/* Quick Demo Register Shortcut Button */}
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleQuickDemoRegister}
+              disabled={isQuickRegistering || isSubmitting}
+              className="w-full mb-6 border-[#C5A059]/40 bg-[#FAF8F5] hover:bg-[#C5A059]/15 text-[#160B0E] text-xs font-bold uppercase tracking-wider py-5 rounded-lg flex items-center justify-center gap-2 shadow-sm transition-all"
+            >
+              <Sparkles size={14} className="text-[#C5A059]" />
+              {isQuickRegistering ? 'Registering Patron...' : '⚡ One-Click Instant Registration'}
+            </Button>
+
+            <div className="relative mb-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-[#DED3C4]" />
+              </div>
+              <div className="relative flex justify-center text-xs">
+                <span className="bg-[#FDFBF7] px-3 text-[11px] uppercase tracking-wider text-[#756A63] font-semibold">
+                  Or Register Manually
+                </span>
+              </div>
+            </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <FormField icon={User} label="Full Name" error={errors.name?.message}>
-                <input {...register('name')} placeholder="Your full name" className={`input-gold !pl-10 ${errors.name ? 'border-red-400' : ''}`} />
+                <input 
+                  {...register('name')} 
+                  placeholder="e.g. Raj Patil" 
+                  className={`w-full h-11 pl-10 pr-3 rounded-lg border text-xs bg-white text-[#160B0E] outline-none transition-all placeholder:text-[#9E8E89] ${
+                    errors.name ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-[#C5A059]/30 focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]'
+                  }`} 
+                />
               </FormField>
 
               <FormField icon={Mail} label="Email Address" error={errors.email?.message}>
-                <input {...register('email')} type="email" placeholder="your@email.com" className={`input-gold !pl-10 ${errors.email ? 'border-red-400' : ''}`} />
+                <input 
+                  {...register('email')} 
+                  type="email" 
+                  placeholder="e.g. raj@gmail.com" 
+                  className={`w-full h-11 pl-10 pr-3 rounded-lg border text-xs bg-white text-[#160B0E] outline-none transition-all placeholder:text-[#9E8E89] ${
+                    errors.email ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-[#C5A059]/30 focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]'
+                  }`} 
+                />
               </FormField>
 
-              <FormField icon={Phone} label="Mobile Number (optional)" error={errors.phone?.message}>
-                <input {...register('phone')} type="tel" placeholder="9876543210" className={`input-gold !pl-10 ${errors.phone ? 'border-red-400' : ''}`} />
+              <FormField icon={Phone} label="Mobile Number (Optional)" error={errors.phone?.message}>
+                <input 
+                  {...register('phone')} 
+                  type="tel" 
+                  placeholder="e.g. 9875464756" 
+                  className={`w-full h-11 pl-10 pr-3 rounded-lg border text-xs bg-white text-[#160B0E] outline-none transition-all placeholder:text-[#9E8E89] ${
+                    errors.phone ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-[#C5A059]/30 focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]'
+                  }`} 
+                />
               </FormField>
 
               <FormField icon={Lock} label="Password" error={errors.password?.message}>
-                <input {...register('password')} type={showPassword ? 'text' : 'password'} placeholder="Min. 6 characters" className={`input-gold !pl-10 !pr-10 ${errors.password ? 'border-red-400' : ''}`} />
-                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#756A63]">
-                  {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
-                </button>
+                <div className="relative">
+                  <input 
+                    {...register('password')} 
+                    type={showPassword ? 'text' : 'password'} 
+                    placeholder="Min. 6 characters" 
+                    className={`w-full h-11 pl-10 pr-10 rounded-lg border text-xs bg-white text-[#160B0E] outline-none transition-all placeholder:text-[#9E8E89] ${
+                      errors.password ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-[#C5A059]/30 focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]'
+                    }`} 
+                  />
+                  <button 
+                    type="button" 
+                    onClick={() => setShowPassword(!showPassword)} 
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#756A63] hover:text-[#160B0E]"
+                  >
+                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
+                  </button>
+                </div>
               </FormField>
 
               <FormField icon={Lock} label="Confirm Password" error={errors.confirmPassword?.message}>
-                <input {...register('confirmPassword')} type="password" placeholder="Re-enter password" className={`input-gold !pl-10 ${errors.confirmPassword ? 'border-red-400' : ''}`} />
+                <input 
+                  {...register('confirmPassword')} 
+                  type="password" 
+                  placeholder="Re-enter password" 
+                  className={`w-full h-11 pl-10 pr-3 rounded-lg border text-xs bg-white text-[#160B0E] outline-none transition-all placeholder:text-[#9E8E89] ${
+                    errors.confirmPassword ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-[#C5A059]/30 focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]'
+                  }`} 
+                />
               </FormField>
 
-              <p className="text-[11px] text-[#756A63]">By creating an account, you agree to our <Link to="/terms" className="text-[#C5A059] hover:underline">Terms</Link> and <Link to="/privacy" className="text-[#C5A059] hover:underline">Privacy Policy</Link>.</p>
+              <p className="text-[11px] text-[#756A63] leading-relaxed pt-1">
+                By creating an account, you agree to our{' '}
+                <Link to="/terms" className="text-[#C5A059] hover:underline">Terms</Link> and{' '}
+                <Link to="/privacy" className="text-[#C5A059] hover:underline">Privacy Policy</Link>.
+              </p>
 
-              <motion.button type="submit" disabled={isSubmitting} whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="btn-gold w-full rounded-xl py-3.5 text-sm disabled:opacity-60">
-                {isSubmitting ? 'Creating account...' : 'Create Account'}
-              </motion.button>
+              <Button
+                type="submit" 
+                disabled={isSubmitting || isQuickRegistering} 
+                className="w-full bg-[#C5A059] hover:bg-[#d8b56f] text-[#160B0E] font-bold text-xs uppercase tracking-[0.2em] py-6 rounded-lg shadow-md transition-all mt-2"
+              >
+                {isSubmitting ? 'Creating Account...' : 'Create Account'}
+              </Button>
             </form>
           </motion.div>
         </div>
@@ -128,12 +299,14 @@ export default function RegisterPage() {
 function FormField({ icon: Icon, label, error, children }) {
   return (
     <div>
-      <label className="block text-[12px] font-bold text-[#1F1517] uppercase tracking-wide mb-1.5" style={{ fontFamily: "'Nunito Sans', sans-serif" }}>{label}</label>
+      <label className="block text-[11px] font-bold text-[#1F1517] uppercase tracking-wider mb-1">
+        {label}
+      </label>
       <div className="relative">
-        <Icon size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#756A63] z-10" />
+        <Icon size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#756A63] z-10" />
         {children}
       </div>
-      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+      {error && <p className="text-red-500 text-[11px] mt-1">{error}</p>}
     </div>
   );
 }
